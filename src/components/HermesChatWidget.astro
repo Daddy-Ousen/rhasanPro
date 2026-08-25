@@ -1,0 +1,318 @@
+---
+// Hermes AI Ambassador Chat Widget (Fireworks AI Powered Demo)
+---
+
+<!-- Floating Launcher Button -->
+<div class="fixed bottom-6 right-6 z-40">
+  <button 
+    id="hermes-launcher-btn" 
+    type="button" 
+    class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 light:bg-white text-white light:text-slate-950 border border-slate-700 light:border-slate-300 shadow-2xl hover:border-amber-400/80 light:hover:border-amber-500 transition-all hover:scale-105 active:scale-95 group cursor-pointer"
+    aria-label="Open Hermes AI Chatbot Demo"
+  >
+    <div class="relative flex items-center justify-center">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute opacity-75"></span>
+    </div>
+    <div class="flex items-center gap-1.5 font-mono text-xs font-bold">
+      <span class="text-amber-400 light:text-amber-600">Hermes AI</span>
+      <span class="text-slate-400 light:text-slate-500 font-normal">(Demo)</span>
+    </div>
+  </button>
+</div>
+
+<!-- Expandable Chat Window Drawer -->
+<div 
+  id="hermes-chat-drawer" 
+  class="fixed bottom-6 right-6 z-50 w-[92vw] sm:w-[420px] max-h-[82vh] h-[580px] rounded-2xl bg-[#0b0f17]/95 light:bg-white/95 backdrop-blur-xl border border-slate-800 light:border-slate-300 shadow-2xl flex flex-col justify-between overflow-hidden transition-all duration-300 transform translate-y-8 opacity-0 pointer-events-none"
+  role="dialog"
+  aria-labelledby="hermes-dialog-title"
+>
+  
+  <!-- Header -->
+  <div class="px-5 py-4 border-b border-slate-800 light:border-slate-200 bg-slate-950/60 light:bg-slate-50 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-mono text-xs font-bold text-amber-400 light:text-amber-600">
+        H
+      </div>
+      <div>
+        <h3 id="hermes-dialog-title" class="text-xs font-bold text-white light:text-slate-950 flex items-center gap-1.5">
+          <span>Hermes AI</span>
+          <span class="text-[10px] font-mono font-medium px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20">Demo</span>
+        </h3>
+        <p class="text-[11px] text-slate-400 light:text-slate-500">Robiul Hasan's AI Ambassador</p>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-1">
+      <button 
+        id="hermes-clear-btn" 
+        type="button" 
+        class="p-1.5 rounded-lg text-slate-400 hover:text-white light:hover:text-black transition-colors" 
+        title="Clear conversation"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      </button>
+      <button 
+        id="hermes-close-btn" 
+        type="button" 
+        class="p-1.5 rounded-lg text-slate-400 hover:text-white light:hover:text-black transition-colors" 
+        title="Close chat window"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Safety Notice Banner -->
+  <div class="px-4 py-2 bg-amber-500/5 light:bg-amber-50 border-b border-amber-500/10 text-[11px] font-mono text-amber-400/90 light:text-amber-700 flex items-center justify-between">
+    <span>🛡️ Rate-limited & knowledge-scoped demo</span>
+    <span class="text-slate-500 text-[10px]">Llama 3.3</span>
+  </div>
+
+  <!-- Scrollable Messages Container -->
+  <div id="hermes-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
+    
+    <!-- Welcome message from Hermes -->
+    <div class="flex items-start gap-2.5">
+      <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
+        H
+      </div>
+      <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[88%] space-y-2">
+        <p>
+          Hello! I am a lightweight public demo of Robiul Hasan's self-hosted <strong>Hermes AI</strong> assistant.
+        </p>
+        <p>
+          I am configured to act as Robiul's ambassador. You can ask me about his <strong>enterprise MSP scope</strong> (2,500+ endpoints), <strong>certifications (MD-102)</strong>, <strong>systems administration skills</strong>, or <strong>projects</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Suggested Question Chips -->
+    <div id="hermes-suggestions" class="pt-1 flex flex-wrap gap-1.5">
+      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
+        What is Robiul's MSP experience?
+      </button>
+      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
+        What certifications does he hold?
+      </button>
+      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
+        Tell me about the Hermes architecture
+      </button>
+      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
+        How do I contact Robiul?
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Chat Input Form -->
+  <form id="hermes-form" class="p-3 border-t border-slate-800 light:border-slate-200 bg-slate-950/60 light:bg-slate-50 space-y-2">
+    <div class="relative flex items-center">
+      <input 
+        id="hermes-input" 
+        type="text" 
+        maxlength="350" 
+        placeholder="Ask about skills, experience, or projects..." 
+        autocomplete="off" 
+        class="w-full pl-3.5 pr-10 py-2.5 rounded-xl bg-slate-900 light:bg-white text-white light:text-slate-950 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-amber-400 light:focus:border-amber-500 text-xs transition-colors"
+      />
+      <button 
+        id="hermes-send-btn" 
+        type="submit" 
+        class="absolute right-2 p-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+        aria-label="Send message"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
+    </div>
+
+    <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+      <span>Protected against prompt injection</span>
+      <span id="hermes-char-count">0/350</span>
+    </div>
+  </form>
+
+</div>
+
+<script>
+  // Hermes Chat Client Script
+  const launcherBtn = document.getElementById('hermes-launcher-btn');
+  const chatDrawer = document.getElementById('hermes-chat-drawer');
+  const closeBtn = document.getElementById('hermes-close-btn');
+  const clearBtn = document.getElementById('hermes-clear-btn');
+  const chatForm = document.getElementById('hermes-form');
+  const chatInput = document.getElementById('hermes-input') as HTMLInputElement;
+  const messagesContainer = document.getElementById('hermes-messages');
+  const charCount = document.getElementById('hermes-char-count');
+  const sendBtn = document.getElementById('hermes-send-btn') as HTMLButtonElement;
+
+  let conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }> = [];
+  let isSubmitting = false;
+
+  // Toggle Chat Drawer
+  const openChat = () => {
+    if (chatDrawer) {
+      chatDrawer.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+      chatDrawer.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      chatInput?.focus();
+    }
+  };
+
+  const closeChat = () => {
+    if (chatDrawer) {
+      chatDrawer.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      chatDrawer.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+    }
+  };
+
+  launcherBtn?.addEventListener('click', () => {
+    const isOpen = chatDrawer?.classList.contains('opacity-100');
+    if (isOpen) closeChat();
+    else openChat();
+  });
+
+  closeBtn?.addEventListener('click', closeChat);
+
+  // Clear Chat History
+  clearBtn?.addEventListener('click', () => {
+    conversationHistory = [];
+    if (messagesContainer) {
+      messagesContainer.innerHTML = `
+        <div class="flex items-start gap-2.5">
+          <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
+            H
+          </div>
+          <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[88%] space-y-2">
+            <p>Conversation history cleared. Ask me anything about Robiul's infrastructure experience or projects!</p>
+          </div>
+        </div>
+      `;
+    }
+  });
+
+  // Character Counter
+  chatInput?.addEventListener('input', () => {
+    if (charCount && chatInput) {
+      charCount.textContent = `${chatInput.value.length}/350`;
+    }
+  });
+
+  // Handle Question Chips
+  document.querySelectorAll('.hermes-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const text = chip.textContent?.trim();
+      if (text && chatInput) {
+        chatInput.value = text;
+        submitMessage(text);
+      }
+    });
+  });
+
+  // Append Message to UI
+  const appendMessage = (role: 'user' | 'assistant', text: string) => {
+    if (!messagesContainer) return;
+
+    const messageRow = document.createElement('div');
+    messageRow.className = 'flex items-start gap-2.5' + (role === 'user' ? ' justify-end' : '');
+
+    if (role === 'assistant') {
+      messageRow.innerHTML = `
+        <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
+          H
+        </div>
+        <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[88%]">
+          ${escapeHtml(text)}
+        </div>
+      `;
+    } else {
+      messageRow.innerHTML = `
+        <div class="p-3.5 rounded-xl rounded-tr-none bg-amber-500 text-slate-950 font-medium leading-relaxed max-w-[88%]">
+          ${escapeHtml(text)}
+        </div>
+      `;
+    }
+
+    messagesContainer.appendChild(messageRow);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  };
+
+  // Append Loading State
+  const appendLoading = (): HTMLElement => {
+    const loadingRow = document.createElement('div');
+    loadingRow.id = 'hermes-loading';
+    loadingRow.className = 'flex items-start gap-2.5';
+    loadingRow.innerHTML = `
+      <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
+        H
+      </div>
+      <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-400 leading-relaxed flex items-center gap-1.5 font-mono text-[11px]">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse delay-100"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse delay-200"></span>
+        <span class="ml-1 text-slate-400">Processing query...</span>
+      </div>
+    `;
+    messagesContainer?.appendChild(loadingRow);
+    if (messagesContainer) messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    return loadingRow;
+  };
+
+  const escapeHtml = (unsafe: string) => {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  // Submit Message Action
+  const submitMessage = async (userText: string) => {
+    if (!userText.trim() || isSubmitting) return;
+
+    isSubmitting = true;
+    if (sendBtn) sendBtn.disabled = true;
+    if (chatInput) chatInput.value = '';
+    if (charCount) charCount.textContent = '0/350';
+
+    appendMessage('user', userText);
+    const loadingElem = appendLoading();
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userText,
+          history: conversationHistory,
+        }),
+      });
+
+      const data = await response.json();
+      loadingElem.remove();
+
+      if (!response.ok) {
+        appendMessage('assistant', data.error || 'Server error occurred. Please try again.');
+      } else {
+        const reply = data.reply || 'No response returned.';
+        appendMessage('assistant', reply);
+        conversationHistory.push({ role: 'user', content: userText });
+        conversationHistory.push({ role: 'assistant', content: reply });
+      }
+    } catch (err) {
+      loadingElem.remove();
+      appendMessage('assistant', 'Network error connecting to Hermes demo service. Please check your connection.');
+    } finally {
+      isSubmitting = false;
+      if (sendBtn) sendBtn.disabled = false;
+      chatInput?.focus();
+    }
+  };
+
+  chatForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (chatInput) submitMessage(chatInput.value);
+  });
+</script>
