@@ -1,11 +1,11 @@
 ---
-// Dedicated Skills Page: Comprehensive Technical Competency Matrix
+// Dedicated Skills Page: Comprehensive Technical Competency Matrix across 6 Domains
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const pageTitle = "Technical Skills & Competencies — Robiul Hasan";
-const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering Microsoft 365, Azure, Entra ID, Windows Server, Hyper-V, Intune, BCDR, Service Desk Leadership, Python, and Agentic AI.";
+const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering Microsoft 365, Azure, Entra ID, Windows Server, VMware, Intune, Bitdefender EDR, Datto BCDR, NinjaOne, Python, Next.js, and Agentic AI.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -16,7 +16,7 @@ const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering
     <!-- Page Header -->
     <header class="space-y-4">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-        COMPETENCY MATRIX &bull; 4 DOMAINS
+        COMPETENCY MATRIX &bull; 6 CORE DOMAINS
       </div>
 
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
@@ -24,11 +24,11 @@ const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering
       </h1>
       
       <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
-        A structured breakdown of my technical capabilities across enterprise cloud environments, core infrastructure, service operations, and intelligent automation.
+        A structured breakdown of my enterprise IT infrastructure, cybersecurity, BCDR, operations management, and software engineering capabilities.
       </p>
     </header>
 
-    <!-- 4 DOMAINS DETAILED BREAKDOWN -->
+    <!-- 6 DOMAINS DETAILED BREAKDOWN -->
     <section class="space-y-8 pt-6 border-t border-slate-800 light:border-slate-200">
       
       <!-- Domain 1: Cloud & Identity -->
@@ -44,125 +44,189 @@ const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering
         </div>
 
         <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-          Comprehensive tenant administration, identity lifecycle management, and security baseline deployment across modern Microsoft cloud environments.
+          Full lifecycle Microsoft cloud administration, identity security, cross-tenant migrations, and serverless workflow management.
         </p>
 
         <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Microsoft 365 Administration</strong>
-            <p class="text-slate-400 light:text-slate-600">Tenant configuration, user lifecycle provisioning, license management, and security governance.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft 365 & Office 365 Admin</strong>
+            <p class="text-slate-400 light:text-slate-600">Tenant setup, license management, exchange transport rules, shared mailboxes, and security baselines.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Azure & Entra ID</strong>
-            <p class="text-slate-400 light:text-slate-600">Directory synchronization, Conditional Access policies, Multi-Factor Authentication (MFA), and RBAC controls.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Azure & Azure Functions</strong>
+            <p class="text-slate-400 light:text-slate-600">Azure resource management, RBAC, subscription billing, and serverless automation execution.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Exchange Online</strong>
-            <p class="text-slate-400 light:text-slate-600">Mail routing, transport rules, shared mailbox management, SPF/DKIM/DMARC anti-phishing protection.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Entra ID (Azure AD) & User Management</strong>
+            <p class="text-slate-400 light:text-slate-600">Directory synchronization, Conditional Access policies, MFA enforcement, and user onboarding/offboarding.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Intune (MDM / MAM)</strong>
-            <p class="text-slate-400 light:text-slate-600">Endpoint compliance policies, automated app packaging and deployment, configuration profiles, and Windows Autopilot.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Intune & Cloud Migration</strong>
+            <p class="text-slate-400 light:text-slate-600">Device configuration profiles, compliance policies, Windows Autopilot, and on-prem to cloud server migrations.</p>
           </div>
         </div>
       </div>
 
-      <!-- Domain 2: Infrastructure & Security -->
+      <!-- Domain 2: Systems, Virtualization & Networking -->
       <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
         <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
           <div>
             <span class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-semibold uppercase tracking-wider">Domain 02</span>
-            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Enterprise Systems & Infrastructure</h2>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Systems, Virtualization & Networking</h2>
           </div>
           <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 light:text-cyan-700 border border-cyan-500/20 text-xs font-mono">
-            Systems & BCDR
+            Infrastructure
           </span>
         </div>
 
         <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-          On-premise and hybrid server management, virtualization, endpoint security, and business continuity systems.
+          On-premises and hybrid server management, enterprise virtualization platforms, domain directory architecture, and core networking.
         </p>
 
         <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Windows Server & Hyper-V</strong>
-            <p class="text-slate-400 light:text-slate-600">Virtual machine provisioning, resource allocation, failover clustering, and OS maintenance.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Windows Server & Windows 11</strong>
+            <p class="text-slate-400 light:text-slate-600">Server administration, patch management, system hardening, and enterprise Windows 11 endpoint rollouts.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Active Directory & Group Policy (GPO)</strong>
-            <p class="text-slate-400 light:text-slate-600">Domain controller health, OU architecture, security group management, and global policy enforcement.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Active Directory & Domain Management</strong>
+            <p class="text-slate-400 light:text-slate-600">Domain controller health, OU structuring, Group Policy (GPO) deployment, and domain trust management.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">DNS, DHCP & Networking</strong>
-            <p class="text-slate-400 light:text-slate-600">Network zone configuration, scope management, subnets, routing troubleshooting, and VPN connectivity.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Hyper-V & VMware Infrastructure</strong>
+            <p class="text-slate-400 light:text-slate-600">VM provisioning, virtual network switching, storage allocation, and host maintenance.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Datto BCDR & Datto RMM</strong>
-            <p class="text-slate-400 light:text-slate-600">Disaster recovery agent deployment, continuous backup verification, remote monitoring, and automated patch management.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">DNS, DHCP & Linux Administration</strong>
+            <p class="text-slate-400 light:text-slate-600">Zone configuration, record management, subnets, routing troubleshooting, and Linux server management.</p>
           </div>
         </div>
       </div>
 
-      <!-- Domain 3: Operations & Leadership -->
+      <!-- Domain 3: Endpoint Security, EDR & RMM Systems -->
       <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
         <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
           <div>
-            <span class="text-xs font-mono text-slate-400 light:text-slate-600 font-semibold uppercase tracking-wider">Domain 03</span>
+            <span class="text-xs font-mono text-emerald-400 light:text-emerald-600 font-semibold uppercase tracking-wider">Domain 03</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Endpoint Security, EDR & RMM Fleets</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 light:text-emerald-700 border border-emerald-500/20 text-xs font-mono">
+            Fleet Operations
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Bitdefender Endpoint Security / EDR</strong>
+            <p class="text-slate-400 light:text-slate-600">Administered 1,100+ endpoint security assets, quarantine remediation, threat prevention, and behavioral scanning.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Threat & Vulnerability Assessment</strong>
+            <p class="text-slate-400 light:text-slate-600">Vulnerability scanning, automated alerts triage, CVE mitigation, and proactive security patching.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">RMM Systems (Datto, NinjaOne, ConnectWise, Kaseya)</strong>
+            <p class="text-slate-400 light:text-slate-600">Centralized monitoring across 2,500+ endpoints, remote access, automated script deployment, and patch automation.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Email Security & Anti-Phishing</strong>
+            <p class="text-slate-400 light:text-slate-600">SPF/DKIM/DMARC authentication, malicious mail filtering, impersonation protection, and security incident response.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain 4: BCDR & Business Continuity -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-amber-400 light:text-amber-600 font-semibold uppercase tracking-wider">Domain 04</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">BCDR & Business Continuity Management</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono">
+            Resilience
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Datto BCDR Appliance Deployment</strong>
+            <p class="text-slate-400 light:text-slate-600">Configuring physical and virtual Datto SIRIS/ALTO appliances, snapshot scheduling, and off-site cloud sync.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Acronis Cyber Protect & Cloud Backup</strong>
+            <p class="text-slate-400 light:text-slate-600">Workstation and server image backups, bare-metal restore preparation, and cloud retention policies.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Quarterly BCDR Compliance Auditing</strong>
+            <p class="text-slate-400 light:text-slate-600">Authoring detailed quarterly disaster recovery compliance reports and verifying client SDO standards.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Automated Backup Integrity Verification</strong>
+            <p class="text-slate-400 light:text-slate-600">Automated boot screenshots, ransomware detection on backup images, and rapid point-in-time recovery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain 5: Service Desk Operations & Leadership -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-slate-400 light:text-slate-600 font-semibold uppercase tracking-wider">Domain 05</span>
             <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Service Desk Operations & Leadership</h2>
           </div>
           <span class="px-2.5 py-1 rounded bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 text-xs font-mono">
-            Leadership & SOPs
+            Management & SLAs
           </span>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Incident & Escalation Management</strong>
-            <p class="text-slate-400 light:text-slate-600">Triaging critical severity incidents, root-cause analysis, and cross-team escalation coordination.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Service Desk Co-Leadership</strong>
+            <p class="text-slate-400 light:text-slate-600">Co-leading 10+ support engineers, reviewing ticket queues, managing shifts, and maintaining >90% CSAT.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Service Desk Leadership & Mentoring</strong>
-            <p class="text-slate-400 light:text-slate-600">Co-leading a 10+ person team, training and evaluating L1 staff, and fostering a customer-centric culture.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Incident & Escalation Resolution</strong>
+            <p class="text-slate-400 light:text-slate-600">Handling complex Tier-2 escalations, root-cause investigations, and stakeholder communication.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">IT Documentation & SOPs</strong>
-            <p class="text-slate-400 light:text-slate-600">Authoring standardized technical documentation, troubleshooting runbooks, and client onboarding guides.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Team Training & Staff Evaluation</strong>
+            <p class="text-slate-400 light:text-slate-600">Onboarding L1 support technicians, authoring training curricula, and running monthly quality audits.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Stakeholder Communication</strong>
-            <p class="text-slate-400 light:text-slate-600">Clear executive and non-technical communication during maintenance windows and incident resolutions.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Technical SOPs & Documentation</strong>
+            <p class="text-slate-400 light:text-slate-600">Authoring standard operating procedures, internal knowledge bases, and client-facing release notes.</p>
           </div>
         </div>
       </div>
 
-      <!-- Domain 4: Automation & Agentic AI -->
+      <!-- Domain 6: Automation, AI & Software Engineering -->
       <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
         <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
           <div>
-            <span class="text-xs font-mono text-emerald-400 light:text-emerald-600 font-semibold uppercase tracking-wider">Domain 04</span>
-            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Automation & Agentic AI Engineering</h2>
+            <span class="text-xs font-mono text-emerald-400 light:text-emerald-600 font-semibold uppercase tracking-wider">Domain 06</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Automation, AI & Software Engineering</h2>
           </div>
           <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 light:text-emerald-700 border border-emerald-500/20 text-xs font-mono">
-            Python & AI
+            Engineering & Web
           </span>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Python & Bash Scripting</strong>
-            <p class="text-slate-400 light:text-slate-600">Automating repetitive administrative tasks, log parsing, automated reports, and scheduled cron jobs.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Python Programming & Bash Scripting</strong>
+            <p class="text-slate-400 light:text-slate-600">Automating repetitive infrastructure maintenance, log parsing, automated reports, and daemon tasks.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Agentic LLM Architectures</strong>
-            <p class="text-slate-400 light:text-slate-600">Function calling, tool orchestration, context retrieval, and structured JSON parsing.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">AI Agents & Large Language Models (LLM)</strong>
+            <p class="text-slate-400 light:text-slate-600">Function calling, tool orchestration, automated web actions, and self-hosted AI assistants (Hermes).</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Headless Browser Automation</strong>
-            <p class="text-slate-400 light:text-slate-600">Automating web interactions, portal data extraction, and routine web verification.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">Next.js 15, React 19, Astro & TypeScript</strong>
+            <p class="text-slate-400 light:text-slate-600">Modern component architecture, static site generation, server-side rendering, and responsive UI design.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
-            <strong class="text-white light:text-slate-900 font-semibold">Self-Hosted Deployment</strong>
-            <p class="text-slate-400 light:text-slate-600">Configuring dedicated Linux hosts, persistent storage, process daemons, and secure webhook gateways.</p>
+            <strong class="text-white light:text-slate-900 font-semibold">PostgreSQL, Tailwind CSS & Playwright</strong>
+            <p class="text-slate-400 light:text-slate-600">Relational schema design, bespoke Tailwind styling tokens, and automated end-to-end accessibility testing.</p>
           </div>
         </div>
       </div>
@@ -172,10 +236,10 @@ const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering
     <!-- NAVIGATION CTAs -->
     <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
       <h2 class="text-xl font-bold text-white light:text-slate-950">
-        Explore Projects & Implementations
+        Explore Real-World Projects
       </h2>
       <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-        See these skills in action across real-world systems, self-hosted AI assistants, and production web platforms.
+        See how these skills translate directly into operational results, autonomous AI agents, and production platforms.
       </p>
 
       <div class="pt-4 flex flex-wrap items-center gap-4">
@@ -183,7 +247,7 @@ const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering
           href="/projects" 
           class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
         >
-          View Projects &rarr;
+          View Projects Catalog &rarr;
         </a>
         <a 
           href="/credentials" 
