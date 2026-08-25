@@ -1,0 +1,200 @@
+---
+// Dedicated Skills Page: Comprehensive Technical Competency Matrix
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Technical Skills & Competencies — Robiul Hasan";
+const pageDescription = "Comprehensive technical matrix of Robiul Hasan covering Microsoft 365, Azure, Entra ID, Windows Server, Hyper-V, Intune, BCDR, Service Desk Leadership, Python, and Agentic AI.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+    
+    <!-- Page Header -->
+    <header class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
+        COMPETENCY MATRIX &bull; 4 DOMAINS
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
+        Technical Skills & Platform Competencies
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
+        A structured breakdown of my technical capabilities across enterprise cloud environments, core infrastructure, service operations, and intelligent automation.
+      </p>
+    </header>
+
+    <!-- 4 DOMAINS DETAILED BREAKDOWN -->
+    <section class="space-y-8 pt-6 border-t border-slate-800 light:border-slate-200">
+      
+      <!-- Domain 1: Cloud & Identity -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-amber-400 light:text-amber-600 font-semibold uppercase tracking-wider">Domain 01</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Cloud & Identity Governance</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono">
+            Microsoft Cloud
+          </span>
+        </div>
+
+        <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+          Comprehensive tenant administration, identity lifecycle management, and security baseline deployment across modern Microsoft cloud environments.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft 365 Administration</strong>
+            <p class="text-slate-400 light:text-slate-600">Tenant configuration, user lifecycle provisioning, license management, and security governance.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Azure & Entra ID</strong>
+            <p class="text-slate-400 light:text-slate-600">Directory synchronization, Conditional Access policies, Multi-Factor Authentication (MFA), and RBAC controls.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Exchange Online</strong>
+            <p class="text-slate-400 light:text-slate-600">Mail routing, transport rules, shared mailbox management, SPF/DKIM/DMARC anti-phishing protection.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Microsoft Intune (MDM / MAM)</strong>
+            <p class="text-slate-400 light:text-slate-600">Endpoint compliance policies, automated app packaging and deployment, configuration profiles, and Windows Autopilot.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain 2: Infrastructure & Security -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-semibold uppercase tracking-wider">Domain 02</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Enterprise Systems & Infrastructure</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 light:text-cyan-700 border border-cyan-500/20 text-xs font-mono">
+            Systems & BCDR
+          </span>
+        </div>
+
+        <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+          On-premise and hybrid server management, virtualization, endpoint security, and business continuity systems.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Windows Server & Hyper-V</strong>
+            <p class="text-slate-400 light:text-slate-600">Virtual machine provisioning, resource allocation, failover clustering, and OS maintenance.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Active Directory & Group Policy (GPO)</strong>
+            <p class="text-slate-400 light:text-slate-600">Domain controller health, OU architecture, security group management, and global policy enforcement.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">DNS, DHCP & Networking</strong>
+            <p class="text-slate-400 light:text-slate-600">Network zone configuration, scope management, subnets, routing troubleshooting, and VPN connectivity.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Datto BCDR & Datto RMM</strong>
+            <p class="text-slate-400 light:text-slate-600">Disaster recovery agent deployment, continuous backup verification, remote monitoring, and automated patch management.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain 3: Operations & Leadership -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-slate-400 light:text-slate-600 font-semibold uppercase tracking-wider">Domain 03</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Service Desk Operations & Leadership</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 text-xs font-mono">
+            Leadership & SOPs
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Incident & Escalation Management</strong>
+            <p class="text-slate-400 light:text-slate-600">Triaging critical severity incidents, root-cause analysis, and cross-team escalation coordination.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Service Desk Leadership & Mentoring</strong>
+            <p class="text-slate-400 light:text-slate-600">Co-leading a 10+ person team, training and evaluating L1 staff, and fostering a customer-centric culture.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">IT Documentation & SOPs</strong>
+            <p class="text-slate-400 light:text-slate-600">Authoring standardized technical documentation, troubleshooting runbooks, and client onboarding guides.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Stakeholder Communication</strong>
+            <p class="text-slate-400 light:text-slate-600">Clear executive and non-technical communication during maintenance windows and incident resolutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain 4: Automation & Agentic AI -->
+      <div class="p-8 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-4">
+          <div>
+            <span class="text-xs font-mono text-emerald-400 light:text-emerald-600 font-semibold uppercase tracking-wider">Domain 04</span>
+            <h2 class="text-2xl font-bold text-white light:text-slate-950 mt-0.5">Automation & Agentic AI Engineering</h2>
+          </div>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 light:text-emerald-700 border border-emerald-500/20 text-xs font-mono">
+            Python & AI
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Python & Bash Scripting</strong>
+            <p class="text-slate-400 light:text-slate-600">Automating repetitive administrative tasks, log parsing, automated reports, and scheduled cron jobs.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Agentic LLM Architectures</strong>
+            <p class="text-slate-400 light:text-slate-600">Function calling, tool orchestration, context retrieval, and structured JSON parsing.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Headless Browser Automation</strong>
+            <p class="text-slate-400 light:text-slate-600">Automating web interactions, portal data extraction, and routine web verification.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1">
+            <strong class="text-white light:text-slate-900 font-semibold">Self-Hosted Deployment</strong>
+            <p class="text-slate-400 light:text-slate-600">Configuring dedicated Linux hosts, persistent storage, process daemons, and secure webhook gateways.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- NAVIGATION CTAs -->
+    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
+      <h2 class="text-xl font-bold text-white light:text-slate-950">
+        Explore Projects & Implementations
+      </h2>
+      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+        See these skills in action across real-world systems, self-hosted AI assistants, and production web platforms.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center gap-4">
+        <a 
+          href="/projects" 
+          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
+        >
+          View Projects &rarr;
+        </a>
+        <a 
+          href="/credentials" 
+          class="px-5 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
+        >
+          View Certifications & Hackathons &rarr;
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
