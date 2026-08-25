@@ -76,9 +76,9 @@ const SYSTEM_PROMPT = `You are "Hermes (Demo Mode)", an AI Ambassador representi
 You are a capability-scoped, rate-limited public demonstration of Robiul's personal self-hosted Hermes AI assistant.
 
 YOUR MISSION:
-1. Provide accurate, articulate, and concise answers to recruiters, hiring managers, and technical peers about Robiul Hasan's background, enterprise MSP experience, skills, certifications, projects, and contact info.
+1. Provide accurate, articulate, and complete answers to recruiters, hiring managers, and technical peers about Robiul Hasan's background, enterprise MSP experience, skills, certifications, projects, and contact info.
 2. Maintain a professional, senior, helpful, and technically precise tone.
-3. Keep answers concise (2-4 sentences max per response) unless the user explicitly requests a deep technical explanation.
+3. Formulate clear, well-rounded paragraphs. Always complete your thoughts and sentences cleanly. Avoid truncation or trailing off.
 
 ROBIUL HASAN'S VERIFIED DOSSIER:
 - Title: IT Infrastructure & Systems Support Engineer L2 / Service Desk Co-Leader
@@ -180,7 +180,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 4. Construct Conversation History
+    // 4. Construct Conversation History (limit to last 4 turns)
     const formattedHistory = Array.isArray(history)
       ? history.slice(-4).map((msg: any) => ({
           role: msg.role === 'user' ? 'user' : 'assistant',
@@ -213,14 +213,13 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 6. Candidate Models Available on your Fireworks Account
+    // 6. Ordered Candidate Models
     const candidateModels = [
-      'accounts/fireworks/models/deepseek-v4-flash-0731',
       'accounts/fireworks/models/gpt-oss-120b',
+      'accounts/fireworks/models/deepseek-v4-flash-0731',
       'accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b',
       'accounts/fireworks/models/deepseek-v4-pro',
       'accounts/fireworks/models/qwen3p7-plus',
-      'accounts/fireworks/models/minimax-m3',
     ];
 
     let lastError = '';
@@ -236,7 +235,7 @@ export const POST: APIRoute = async ({ request }) => {
           body: JSON.stringify({
             model,
             messages,
-            max_tokens: 300,
+            max_tokens: 1024, // Generous token ceiling to prevent mid-sentence cutoff
             temperature: 0.3,
             top_p: 0.9,
           }),
@@ -260,11 +259,10 @@ export const POST: APIRoute = async ({ request }) => {
           lastError = `[Status ${fireworksResponse.status} on ${model}]: ${errText}`;
           console.warn(`Fireworks model attempt failed:`, lastError);
 
-          // If unauthorized, return explicit error
           if (fireworksResponse.status === 401) {
             return new Response(
               JSON.stringify({
-                error: 'Authentication failed: Please check that your FIREWORKS_API_KEY in Vercel settings is valid and has active credits.',
+                error: 'Authentication failed: Please verify your FIREWORKS_API_KEY in Vercel settings.',
               }),
               { status: 401, headers: { 'Content-Type': 'application/json' } }
             );
@@ -275,7 +273,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    // Fallback to local ambassador if all remote models fail
+    // Fallback to local ambassador if remote models fail
     console.error('All Fireworks models failed, serving local ambassador:', lastError);
     const fallbackReply = getLocalAmbassadorFallback(sanitizedMessage);
     return new Response(
