@@ -1,6 +1,7 @@
 ---
 // Base Layout with Full SEO, Open Graph, JSON-LD Person Schema, and Zero-Flicker Theme Support
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -179,5 +180,6 @@ const personSchema = {
         });
       }
     </script>
+    <Analytics />
   </body>
 </html>
