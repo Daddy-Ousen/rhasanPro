@@ -195,24 +195,32 @@ export const POST: APIRoute = async ({ request }) => {
     ];
 
     // 5. Check API Key
-    const rawApiKey = import.meta.env.FIREWORKS_API_KEY || process.env.FIREWORKS_API_KEY || '';
-    const apiKey = rawApiKey.trim();
+    const rawApiKey = 
+      process.env.FIREWORKS_API_KEY || 
+      import.meta.env.FIREWORKS_API_KEY || 
+      (typeof globalThis !== 'undefined' && (globalThis as any).process?.env?.FIREWORKS_API_KEY) || 
+      '';
+    const apiKey = typeof rawApiKey === 'string' ? rawApiKey.trim() : '';
 
     if (!apiKey || apiKey === 'your_fireworks_api_key_here') {
       const fallbackReply = getLocalAmbassadorFallback(sanitizedMessage);
       return new Response(
         JSON.stringify({
           reply: fallbackReply,
-          usage: { model: 'local-ambassador-fallback' },
+          modelUsed: 'local-ambassador-fallback',
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // 6. Try Primary Model (Llama 3.3 70B), then Fallback Model (Llama 3.1 8B)
+    // 6. Candidate Models Available on your Fireworks Account
     const candidateModels = [
-      'accounts/fireworks/models/llama-v3p3-70b-instruct',
-      'accounts/fireworks/models/llama-v3p1-8b-instruct',
+      'accounts/fireworks/models/deepseek-v4-flash-0731',
+      'accounts/fireworks/models/gpt-oss-120b',
+      'accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b',
+      'accounts/fireworks/models/deepseek-v4-pro',
+      'accounts/fireworks/models/qwen3p7-plus',
+      'accounts/fireworks/models/minimax-m3',
     ];
 
     let lastError = '';
@@ -241,20 +249,22 @@ export const POST: APIRoute = async ({ request }) => {
             return new Response(
               JSON.stringify({
                 reply,
-                usage: { ...data.usage, model },
+                modelUsed: model,
+                usage: data.usage || {},
               }),
               { status: 200, headers: { 'Content-Type': 'application/json' } }
             );
           }
         } else {
           const errText = await fireworksResponse.text();
-          lastError = `[Status ${fireworksResponse.status}]: ${errText}`;
-          console.warn(`Fireworks model ${model} failed:`, lastError);
+          lastError = `[Status ${fireworksResponse.status} on ${model}]: ${errText}`;
+          console.warn(`Fireworks model attempt failed:`, lastError);
 
+          // If unauthorized, return explicit error
           if (fireworksResponse.status === 401) {
             return new Response(
               JSON.stringify({
-                error: 'Authentication failed. Please verify that your FIREWORKS_API_KEY in Vercel settings is valid and has active credits.',
+                error: 'Authentication failed: Please check that your FIREWORKS_API_KEY in Vercel settings is valid and has active credits.',
               }),
               { status: 401, headers: { 'Content-Type': 'application/json' } }
             );
@@ -265,13 +275,14 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    // If both remote model attempts failed, return graceful local ambassador response
-    console.error('Fireworks all models exhausted, serving fallback:', lastError);
+    // Fallback to local ambassador if all remote models fail
+    console.error('All Fireworks models failed, serving local ambassador:', lastError);
     const fallbackReply = getLocalAmbassadorFallback(sanitizedMessage);
     return new Response(
       JSON.stringify({
         reply: fallbackReply,
-        usage: { model: 'resilient-fallback' },
+        modelUsed: 'local-ambassador-fallback',
+        debug: lastError,
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
