@@ -1,0 +1,62 @@
+---
+// Header Component with Sticky Navigation, Theme Toggle, and Mobile Menu
+---
+
+<header class="sticky top-0 z-50 bg-[#0b0f17]/90 light:bg-[#fbfbfd]/90 backdrop-blur-md border-b border-slate-800/80 light:border-slate-200 transition-colors">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    
+    <!-- Brand / Name -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-8 h-8 rounded-lg bg-slate-900 light:bg-slate-100 border border-slate-700 light:border-slate-300 flex items-center justify-center font-mono text-xs font-bold text-amber-400 light:text-amber-600 group-hover:border-amber-400/50 transition-colors">
+        RH
+      </div>
+      <div>
+        <span class="font-bold text-white light:text-slate-950 text-sm tracking-tight group-hover:text-amber-400 transition-colors">Robiul Hasan</span>
+        <span class="hidden sm:inline text-xs text-slate-400 font-mono ml-2">&bull; Dhaka, BD</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300 light:text-slate-600">
+      <a href="/#about" class="hover:text-white light:hover:text-slate-950 transition-colors">About</a>
+      <a href="/#experience" class="hover:text-white light:hover:text-slate-950 transition-colors">Experience</a>
+      <a href="/#skills" class="hover:text-white light:hover:text-slate-950 transition-colors">Skills</a>
+      <a href="/#projects" class="hover:text-white light:hover:text-slate-950 transition-colors">Projects</a>
+      <a href="/#credentials" class="hover:text-white light:hover:text-slate-950 transition-colors">Credentials</a>
+      <a href="/#contact" class="hover:text-white light:hover:text-slate-950 transition-colors">Contact</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Theme Switcher Button -->
+      <button 
+        id="theme-toggle" 
+        type="button" 
+        class="p-2 rounded-lg bg-slate-900/80 light:bg-slate-100 border border-slate-700 light:border-slate-300 text-slate-300 light:text-slate-700 hover:text-white light:hover:text-black transition-colors"
+        aria-label="Toggle Dark / Light Theme"
+      >
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Sun Icon for Dark Mode -->
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Moon Icon for Light Mode -->
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+      </button>
+
+      <!-- Download CV CTA -->
+      <a 
+        href="/Robiul_Hasan_CV.pdf" 
+        download 
+        class="px-3.5 py-1.5 rounded-lg bg-slate-800 light:bg-slate-900 hover:bg-slate-700 light:hover:bg-slate-800 text-slate-200 light:text-white border border-slate-700 light:border-slate-900 text-xs font-medium transition-colors flex items-center gap-2"
+      >
+        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        <span>CV</span>
+      </a>
+    </div>
+
+  </div>
+</header>

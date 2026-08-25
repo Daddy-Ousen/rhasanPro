@@ -1,0 +1,183 @@
+---
+// Base Layout with Full SEO, Open Graph, JSON-LD Person Schema, and Zero-Flicker Theme Support
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  articleDate?: string;
+}
+
+const {
+  title = "Robiul Hasan — IT Infrastructure & Systems Support Engineer L2",
+  description = "IT Support Engineer L2 and Service Desk Co-Leader managing 2,500+ endpoints and Azure/M365 cloud infrastructure. Exploring Systems Administration & Cloud roles.",
+  image = "https://rhasan.pro/og-image.png",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://rhasan.pro").href,
+} = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Robiul Hasan",
+  "jobTitle": "IT Support Engineer L2 & Service Desk Co-Leader",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Techants Solutions Pty Ltd"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressCountry": "Bangladesh"
+  },
+  "url": "https://rhasan.pro",
+  "sameAs": [
+    "https://linkedin.com/in/robiul-hasan-401296137",
+    "https://github.com/Daddy-Ousen"
+  ],
+  "knowsAbout": [
+    "Microsoft 365 Administration",
+    "Microsoft Azure",
+    "Microsoft Intune",
+    "Entra ID",
+    "Windows Server",
+    "Active Directory",
+    "Endpoint Security",
+    "BCDR & Disaster Recovery",
+    "Python Automation",
+    "Agentic AI Tooling"
+  ],
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Bangladesh University of Professionals (BUP)"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Microsoft 365 Certified: Endpoint Administrator Associate (MD-102)"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Microsoft Certified: Modern Desktop Administrator Associate (MD-100)"
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Robiul Hasan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Robiul Hasan Portfolio" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <!-- Zero-Flicker Theme Initializer Script -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'dark'; // Default to selected dark console/systems direction
+      })();
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-[#0b0f17] text-slate-200 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 transition-colors duration-200">
+    <slot />
+
+    <!-- Global Clipboard Toast Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none">
+      <div class="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs font-medium shadow-2xl flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span id="toast-message">Copied to clipboard</span>
+      </div>
+    </div>
+
+    <!-- Theme Toggle & Toast Client Script -->
+    <script>
+      // Toast notification helper
+      window.showToast = (message: string) => {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-message');
+        if (toast && toastMsg) {
+          toastMsg.textContent = message;
+          toast.classList.remove('translate-y-16', 'opacity-0');
+          toast.classList.add('translate-y-0', 'opacity-100');
+          setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-16', 'opacity-0');
+          }, 2500);
+        }
+      };
+
+      // Email copy helper
+      document.querySelectorAll('[data-copy-email]').forEach((button) => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const email = button.getAttribute('data-copy-email') || 'rhasan229@gmail.com';
+          navigator.clipboard.writeText(email).then(() => {
+            window.showToast('Email copied: ' + email);
+          });
+        });
+      });
+
+      // Theme toggle handler
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          if (isDark) {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

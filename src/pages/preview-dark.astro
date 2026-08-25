@@ -1,0 +1,456 @@
+---
+// Direction A Refined: Senior Systems & Cloud Infrastructure Engineer (Human, Precise, High Credibility)
+import '../styles/global.css';
+
+const pageTitle = "Robiul Hasan — IT Infrastructure & Systems Engineer";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#0b0f17] text-slate-200 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
+    
+    <!-- Top Status Bar & Navigation -->
+    <div class="sticky top-0 z-50 bg-[#0b0f17]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center font-mono text-xs font-bold text-amber-400 group-hover:border-amber-400/50 transition-colors">
+            RH
+          </div>
+          <div>
+            <span class="font-bold text-white text-sm tracking-tight group-hover:text-amber-400 transition-colors">Robiul Hasan</span>
+            <span class="hidden sm:inline text-xs text-slate-400 font-mono ml-2">&bull; Dhaka, BD</span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+          <a href="#hermes" class="hover:text-white transition-colors">Hermes AI</a>
+          <a href="#credentials" class="hover:text-white transition-colors">Credentials</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a 
+            href="/Robiul_Hasan_CV.pdf" 
+            download 
+            class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-colors flex items-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-6 py-12 lg:py-16 space-y-24">
+      
+      <!-- HERO SECTION -->
+      <section class="space-y-8 pt-4">
+        
+        <!-- Live Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Available for Systems Administration & Cloud Infrastructure Roles</span>
+        </div>
+
+        <div class="space-y-4 max-w-3xl">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+            Keeping enterprise systems reliable, compliant, and automated.
+          </h1>
+          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+            <strong class="text-white font-semibold">IT Support Engineer L2 & Service Desk Co-Leader</strong> with 5+ years managing 2,500+ endpoints, Microsoft 365/Azure environments, and disaster recovery. Building agentic AI tooling to eliminate operational toil.
+          </p>
+        </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+          <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div class="text-3xl font-bold font-mono text-white">2,500+</div>
+            <div class="text-xs text-slate-400 font-medium">Endpoints Managed</div>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div class="text-3xl font-bold font-mono text-white">1,100+</div>
+            <div class="text-xs text-slate-400 font-medium">Security Assets Administered</div>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div class="text-3xl font-bold font-mono text-white">25+</div>
+            <div class="text-xs text-slate-400 font-medium">Enterprise Projects Delivered</div>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
+            <div class="text-3xl font-bold font-mono text-emerald-400">&gt;90%</div>
+            <div class="text-xs text-slate-400 font-medium">Customer Satisfaction (CSAT)</div>
+          </div>
+        </div>
+
+        <!-- Primary CTAs -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a 
+            href="#contact" 
+            class="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors shadow-lg shadow-amber-500/10"
+          >
+            Get in Touch
+          </a>
+          <a 
+            href="#experience" 
+            class="px-5 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 text-sm font-medium transition-colors"
+          >
+            View Work History &darr;
+          </a>
+          <div class="flex items-center gap-4 ml-auto text-slate-400 text-sm">
+            <a href="https://linkedin.com/in/robiul-hasan-401296137" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              LinkedIn &rarr;
+            </a>
+            <a href="https://github.com/Daddy-Ousen" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              GitHub &rarr;
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">About</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-8">
+          <div class="md:col-span-4 space-y-3">
+            <h2 class="text-2xl font-bold text-white tracking-tight">Enterprise Infrastructure & Systems Leadership</h2>
+            <p class="text-sm text-slate-400">Dhaka, Bangladesh &bull; Native Bengali, Fluent English, Basic French</p>
+          </div>
+
+          <div class="md:col-span-8 space-y-4 text-slate-300 leading-relaxed text-base">
+            <p>
+              I'm an IT infrastructure and support engineer based in Dhaka, with 5+ years keeping enterprise environments reliable — from Microsoft 365 and Azure administration to endpoint security and business continuity.
+            </p>
+            <p>
+              I currently work as an <strong class="text-white">L2 Support Engineer and Service Desk Co-Leader at Techants Solutions</strong>, where I coordinate technical delivery across 25+ IT projects and manage infrastructure for 2,500+ endpoints and 1,100+ security assets across a diverse client portfolio. I co-lead a 10+ person service desk team — training L1 staff, owning quarterly BCDR reporting, and deploying disaster-recovery agents — while holding customer satisfaction above 90%.
+            </p>
+            <p>
+              Before Techants, I built my troubleshooting and infrastructure fundamentals as a Support Engineer at Cobait Dhaka and an IT Executive at AQSBD.
+            </p>
+            <p>
+              I hold Microsoft's <strong class="text-white">Endpoint Administrator (MD-102)</strong> and <strong class="text-white">Modern Desktop Administrator (MD-100)</strong> certifications, and I've extended that foundation with self-directed work in Python, Linux administration, and agentic AI.
+            </p>
+            <p class="text-white font-medium">
+              I am currently exploring roles in systems administration and cloud infrastructure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Experience</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="space-y-6">
+          
+          <!-- Role 1: Techants -->
+          <div class="p-6 sm:p-8 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-slate-800 pb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">L2 Support Engineer & Service Desk Co-Leader</h3>
+                <div class="text-sm text-amber-400 font-medium mt-0.5">Techants Solutions Pty Ltd &bull; Dhaka, Bangladesh</div>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded-full w-fit">
+                Oct 2022 – Present
+              </span>
+            </div>
+
+            <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed list-disc list-inside">
+              <li>Led delivery and technical coordination for 25+ enterprise IT projects across diverse client environments, and collaborated on 5+ additional large-scale rollouts.</li>
+              <li>Managed monthly maintenance and monitoring across 2,500+ endpoints and administered antivirus/endpoint security for 1,100+ devices.</li>
+              <li>Co-led a 10+ member Service Desk team, training and evaluating L1 staff on new systems, tools, and escalation handling.</li>
+              <li>Delivered quarterly BCDR reports and deployed backup/disaster-recovery agents across client endpoints; maintained SDO compliance.</li>
+              <li>Sustained customer satisfaction above 90% while managing complex escalations across multiple concurrent client accounts.</li>
+            </ul>
+          </div>
+
+          <!-- Role 2: Cobait -->
+          <div class="p-6 sm:p-8 rounded-xl bg-slate-900/30 border border-slate-800/80 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-slate-800/80 pb-4">
+              <div>
+                <h3 class="text-lg font-bold text-white">Jr. Support Engineer</h3>
+                <div class="text-sm text-slate-400 font-medium mt-0.5">Cobait Dhaka &bull; Dhaka, Bangladesh</div>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                2021 – 2022
+              </span>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside">
+              <li>Served as first point of contact for client calls, troubleshooting technical issues in a fast-paced, high-ticket-volume environment.</li>
+              <li>Diagnosed and resolved application-level technical issues across managed customer accounts.</li>
+              <li>Administered client server infrastructure and maintained server data backup processes.</li>
+            </ul>
+          </div>
+
+          <!-- Role 3: AQSBD -->
+          <div class="p-6 sm:p-8 rounded-xl bg-slate-900/30 border border-slate-800/80 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-slate-800/80 pb-4">
+              <div>
+                <h3 class="text-lg font-bold text-white">Information Technology Executive</h3>
+                <div class="text-sm text-slate-400 font-medium mt-0.5">AQSBD &bull; Dhaka, Bangladesh</div>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                2020
+              </span>
+            </div>
+
+            <ul class="space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside">
+              <li>Digitized outdated manual systems and led infrastructure documentation and process improvements.</li>
+              <li>Streamlined internal communication systems and IT support processes for the organization.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Skills</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <!-- Cloud & Identity -->
+          <div class="p-5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white tracking-wide">Cloud & Identity</h3>
+            <ul class="space-y-1.5 text-xs text-slate-300">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Microsoft 365 Administration</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Microsoft Azure</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Entra ID (Azure AD)</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Exchange Online</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Microsoft Intune</li>
+            </ul>
+          </div>
+
+          <!-- Infrastructure -->
+          <div class="p-5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white tracking-wide">Infrastructure</h3>
+            <ul class="space-y-1.5 text-xs text-slate-300">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Windows Server & Hyper-V</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Active Directory & Group Policy</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>DNS & Networking</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Datto BCDR & Datto RMM</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Endpoint & Antivirus Security</li>
+            </ul>
+          </div>
+
+          <!-- Operations -->
+          <div class="p-5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white tracking-wide">Operations</h3>
+            <ul class="space-y-1.5 text-xs text-slate-300">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Incident & Escalation Management</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Service Desk Leadership</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>L1 Staff Training & Mentoring</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>IT Documentation & SOPs</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Client & Stakeholder Relations</li>
+            </ul>
+          </div>
+
+          <!-- Automation & AI -->
+          <div class="p-5 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-white tracking-wide">Automation & AI</h3>
+            <ul class="space-y-1.5 text-xs text-slate-300">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Python & Bash Scripting</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Agentic LLM Workflow Automation</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Self-Hosted AI Deployment</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Headless Browser Automation</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Tool Calling Architecture</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FEATURED PROJECT: HERMES -->
+      <section id="hermes" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Featured Project</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="p-8 sm:p-10 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div class="space-y-2">
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-medium">
+                Personal Project &bull; Feb 2026 – Present
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white">Hermes — Self-Hosted AI Assistant</h3>
+            </div>
+            
+            <a 
+              href="https://github.com/Daddy-Ousen" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium border border-slate-700 transition-colors flex items-center gap-2 w-fit"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+
+          <p class="text-slate-300 leading-relaxed text-base">
+            Built and self-host an autonomous AI assistant engineered with tool-calling, browser automation, and messaging integration. Hermes automates personal workflows and serves as a real-world testing ground for how agentic architectures can reduce manual overhead in IT operations and systems administration.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
+              <div class="font-bold text-white text-sm">Tool-Calling Runtime</div>
+              <p class="text-xs text-slate-400 leading-relaxed">Executes terminal commands, file system actions, and custom API endpoints autonomously.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
+              <div class="font-bold text-white text-sm">Browser Automation</div>
+              <p class="text-xs text-slate-400 leading-relaxed">Automates web scraping, portal logins, and data extraction through headless browsers.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
+              <div class="font-bold text-white text-sm">Self-Hosted Infrastructure</div>
+              <p class="text-xs text-slate-400 leading-relaxed">Runs on a dedicated Linux instance with local state persistence and messaging webhooks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CREDENTIALS & EDUCATION -->
+      <section id="credentials" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Credentials & Education</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          
+          <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+            <h3 class="text-lg font-bold text-white">Certifications & Continuous Learning</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="p-3.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold text-white">Microsoft 365 Certified: Endpoint Administrator Associate</div>
+                  <div class="text-xs text-slate-400 font-mono">Exam MD-102</div>
+                </div>
+                <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Certified</span>
+              </li>
+              <li class="p-3.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold text-white">Microsoft Certified: Modern Desktop Administrator Associate</div>
+                  <div class="text-xs text-slate-400 font-mono">Exam MD-100</div>
+                </div>
+                <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Certified</span>
+              </li>
+              <li class="p-3.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold text-white">Python Programming</div>
+                  <div class="text-xs text-slate-400">University of Michigan (Coursera) &bull; 2020</div>
+                </div>
+              </li>
+              <li class="p-3.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-start justify-between gap-3">
+                <div>
+                  <div class="font-semibold text-white">Linux Operating System (Foundation)</div>
+                  <div class="text-xs text-slate-400">StudySection &bull; 2021</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+            <h3 class="text-lg font-bold text-white">Education & Languages</h3>
+            
+            <div class="p-4 rounded-lg bg-slate-950/60 border border-slate-800/80 space-y-1">
+              <div class="text-xs font-mono text-slate-400">2022 &bull; DHAKA, BANGLADESH</div>
+              <div class="font-bold text-white">Bachelor of Business Administration (BBA)</div>
+              <div class="text-sm text-slate-300">Bangladesh University of Professionals (BUP)</div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-slate-950/60 border border-slate-800/80 space-y-2">
+              <div class="text-xs font-medium text-slate-400">Languages</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-md bg-slate-800 text-xs text-slate-200">Bengali (Native)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800 text-xs text-slate-200">English (Fluent)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800 text-xs text-slate-200">French (Basic)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="space-y-6 pt-8 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Contact</span>
+          <div class="h-px bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="p-8 sm:p-12 rounded-2xl bg-slate-900/60 border border-slate-800 text-center max-w-2xl mx-auto space-y-6">
+          <div class="space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Let's discuss infrastructure and systems roles.</h2>
+            <p class="text-sm text-slate-300">
+              Open to Systems Administration, Enterprise Cloud Infrastructure, and Automation-Engineering opportunities.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <a 
+              href="mailto:rhasan229@gmail.com" 
+              class="w-full sm:w-auto px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              Send Email (rhasan229@gmail.com)
+            </a>
+            
+            <a 
+              href="/Robiul_Hasan_CV.pdf" 
+              download 
+              class="w-full sm:w-auto px-5 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-sm font-medium transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Download CV
+            </a>
+          </div>
+
+          <div class="flex items-center justify-center gap-6 pt-4 text-xs font-mono text-slate-400">
+            <a href="https://linkedin.com/in/robiul-hasan-401296137" target="_blank" rel="noopener noreferrer" class="hover:text-white underline underline-offset-4">
+              LinkedIn &nearr;
+            </a>
+            <span>&bull;</span>
+            <a href="https://github.com/Daddy-Ousen" target="_blank" rel="noopener noreferrer" class="hover:text-white underline underline-offset-4">
+              GitHub &nearr;
+            </a>
+            <span>&bull;</span>
+            <span>Dhaka, Bangladesh</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="max-w-6xl mx-auto px-6 py-10 border-t border-slate-800/80 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Robiul Hasan &bull; rhasan.pro</div>
+      <div class="text-slate-400">Built with Astro &bull; Hosted on Vercel</div>
+    </footer>
+
+  </body>
+</html>

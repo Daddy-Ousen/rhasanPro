@@ -1,0 +1,32 @@
+---
+// Primary Portfolio Homepage for Robiul Hasan (rhasan.pro)
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Certifications from '../components/Certifications.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Robiul Hasan — IT Infrastructure & Systems Support Engineer L2";
+const pageDescription = "Portfolio of Robiul Hasan — IT Support Engineer L2 & Service Desk Co-Leader at Techants Solutions managing 2,500+ endpoints, Microsoft 365, Azure, and BCDR. Exploring Systems Administration & Cloud roles.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <main class="max-w-6xl mx-auto px-6 py-12 lg:py-16 space-y-24">
+    <Hero />
+    <About />
+    <Experience />
+    <Skills />
+    <Projects />
+    <Certifications />
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>

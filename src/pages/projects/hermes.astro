@@ -1,0 +1,181 @@
+---
+// Dedicated Case Study: Hermes — Self-Hosted AI Assistant
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = "Hermes — Self-Hosted AI Assistant | Robiul Hasan";
+const pageDescription = "Technical case study of Hermes: an autonomous, self-hosted AI agent with dynamic tool calling, headless browser automation, and messaging integration built to reduce IT operations overhead.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+    
+    <!-- Breadcrumb & Back Link -->
+    <div class="flex items-center justify-between text-xs font-mono text-slate-400 light:text-slate-600">
+      <a href="/" class="hover:text-amber-400 light:hover:text-amber-600 flex items-center gap-1.5 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Overview</span>
+      </a>
+      <span>PROJECT CASE STUDY</span>
+    </div>
+
+    <!-- Project Header -->
+    <header class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-medium font-mono">
+        ACTIVE PRODUCTION BUILD &bull; FEB 2026 &ndash; PRESENT
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
+        Hermes &mdash; Self-Hosted AI Assistant
+      </h1>
+      
+      <p class="text-lg text-slate-300 light:text-slate-700 leading-relaxed">
+        An autonomous, self-hosted AI agent engineered with function tool-calling, headless browser automation, and messaging integration to automate operational workflows and investigate agentic systems in IT operations.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a 
+          href="https://github.com/Daddy-Ousen" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-2 shadow-sm"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>View on GitHub</span>
+        </a>
+
+        <div class="text-xs font-mono text-slate-400 light:text-slate-600">
+          Stack: Python &bull; Linux &bull; Bash &bull; Agentic Tool Calling &bull; Webhooks
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION: THE PROBLEM -->
+    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
+      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
+        The Operational Problem
+      </h2>
+      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
+        <p>
+          In high-volume IT support and infrastructure management environments, engineering time is heavily fragmented by repetitive operational toil: verifying portal logs, checking backup success reports, querying system statuses across disparate tools, and executing standardized SOP scripts.
+        </p>
+        <p>
+          Standard static scripts require manual execution, while traditional chatbots lack direct system execution capabilities. Hermes was built to bridge this gap: an autonomous agent that can understand high-level operational intents, select and execute local tools safely, interact with web portals, and communicate results back over messaging channels.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION: SYSTEM ARCHITECTURE PIPELINE -->
+    <section class="space-y-6 pt-6 border-t border-slate-800 light:border-slate-200">
+      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
+        System Architecture & Execution Pipeline
+      </h2>
+
+      <!-- Visual Flow Diagram -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 shadow-sm space-y-6">
+        <div class="text-xs font-mono text-amber-400 light:text-amber-600 font-semibold uppercase tracking-wider">
+          // High-Level Data & Tool Execution Flow
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 text-xs font-mono">
+          
+          <div class="p-4 rounded-xl bg-slate-950/80 light:bg-slate-50 border border-slate-800 light:border-slate-200 space-y-2">
+            <div class="text-amber-400 light:text-amber-600 font-bold">1. Input & Intent Layer</div>
+            <p class="text-slate-400 light:text-slate-600 leading-relaxed">
+              Inbound webhooks and messaging interfaces capture user requests or automated cron schedule triggers.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/80 light:bg-slate-50 border border-slate-800 light:border-slate-200 space-y-2">
+            <div class="text-cyan-400 light:text-cyan-600 font-bold">2. Agentic Reasoning</div>
+            <p class="text-slate-400 light:text-slate-600 leading-relaxed">
+              LLM evaluates context, selects required tools from the registered registry, and plans step-by-step actions.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/80 light:bg-slate-50 border border-slate-800 light:border-slate-200 space-y-2">
+            <div class="text-emerald-400 light:text-emerald-600 font-bold">3. Sandbox Execution</div>
+            <p class="text-slate-400 light:text-slate-600 leading-relaxed">
+              Executes Python/Bash subroutines, launches headless browser actions, or queries endpoints, returning structured output.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CORE CAPABILITIES -->
+    <section class="space-y-6 pt-6 border-t border-slate-800 light:border-slate-200">
+      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
+        Core Capabilities & Engineering Highlights
+      </h2>
+
+      <div class="space-y-4">
+        
+        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
+          <h3 class="text-base font-bold text-white light:text-slate-950 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>Dynamic Tool-Calling Engine</span>
+          </h3>
+          <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+            Hermes maintains a modular schema registry of executable tools. When presented with a task (e.g., querying DNS records, checking system health, parsing log files, or checking server uptime), the agent dynamically invokes the relevant script with validated arguments, captures stdout/stderr, and determines the next logical action.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
+          <h3 class="text-base font-bold text-white light:text-slate-950 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            <span>Headless Browser Automation</span>
+          </h3>
+          <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+            Integrated with automated browser drivers to navigate administrative portals that lack direct REST APIs. Handles automated authentication, status verification, routine report downloads, and structured HTML data extraction with full error recovery.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
+          <h3 class="text-base font-bold text-white light:text-slate-950 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Self-Hosted Privacy & Infrastructure Isolation</span>
+          </h3>
+          <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+            Deployed on a dedicated, self-managed Linux environment. All credentials, runtime logs, and conversational memory are persisted locally in secure storage, ensuring full privacy and zero leakage of sensitive operational credentials.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: TAKEAWAYS & NEXT STEPS -->
+    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
+      <h2 class="text-xl font-bold text-white light:text-slate-950">
+        Infrastructure Takeaway
+      </h2>
+      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+        Building and maintaining Hermes provides hands-on practical experience in bridging traditional systems administration with modern agentic AI tooling. It proves how automating incident triaging, telemetry reporting, and routine tasks transforms IT support from reactive ticket resolution to proactive systems engineering.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center gap-4">
+        <a 
+          href="/" 
+          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
+        >
+          &larr; Return to Homepage
+        </a>
+        <a 
+          href="https://github.com/Daddy-Ousen" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
+        >
+          Explore GitHub Repository &nearr;
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,476 @@
+---
+// Mockup B: Architectural Swiss Dossier & Monospaced Craft (Non-Generic Light Art Direction)
+import '../styles/global.css';
+
+const pageTitle = "Robiul Hasan — IT Systems & Cloud Dossier [Architectural Light]";
+---
+
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <style>
+      .font-editorial {
+        font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+      }
+      .font-tech-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .paper-card {
+        background-color: #ffffff;
+        border: 1px solid #1a1a1a;
+        box-shadow: 4px 4px 0px #1a1a1a;
+      }
+      .paper-card-subtle {
+        background-color: #ffffff;
+        border: 1px solid #dcdad3;
+      }
+      .stamp-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border: 1.5px solid #002aff;
+        color: #002aff;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body class="bg-[#f3f2ec] text-[#161616] font-sans antialiased selection:bg-[#002aff] selection:text-white">
+    
+    <!-- Top Controller Navigation Bar -->
+    <div class="sticky top-0 z-50 bg-[#f3f2ec]/95 backdrop-blur-md border-b border-[#1a1a1a] px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3 font-tech-mono text-xs tracking-wider">
+        <span class="inline-block w-2.5 h-2.5 bg-[#002aff]"></span>
+        <span class="text-[#161616] font-extrabold uppercase">DIRECTION B // ARCHITECTURAL DOSSIER</span>
+        <span class="text-[#8e8c85] hidden sm:inline">&bull;</span>
+        <span class="text-[#555] hidden sm:inline">SWISS TYPOGRAPHIC EDITORIAL</span>
+      </div>
+
+      <div class="flex items-center gap-3 font-tech-mono text-xs">
+        <a href="/preview-dark" class="px-3 py-1 bg-[#1a1a1a] hover:bg-black text-white rounded-none transition-colors flex items-center gap-1.5 font-bold">
+          &larr; Switch to Direction A (Blueprint Dark)
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Architectural Paper Canvas -->
+    <div class="max-w-[1300px] mx-auto px-4 sm:px-8 py-10 lg:py-16 space-y-16">
+      
+      <!-- TOP MASTHEAD & HEADER -->
+      <header class="border-b-4 border-[#161616] pb-8 space-y-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="stamp-badge">FOLIO REF: RH-2026</span>
+              <span class="font-tech-mono text-xs text-[#555] uppercase">Dhaka, Bangladesh [UTC+6]</span>
+            </div>
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold font-editorial tracking-tighter text-[#121212] uppercase leading-none">
+              ROBIUL HASAN
+            </h1>
+          </div>
+
+          <div class="font-tech-mono text-xs text-right space-y-1 text-[#444] border-l-2 md:border-l-0 md:border-r-2 border-[#161616] pl-3 md:pl-0 md:pr-3">
+            <div class="font-bold text-[#121212]">IT INFRASTRUCTURE &bull; SYSTEMS RELIABILITY</div>
+            <div>ENTERPRISE CLOUD CANDIDATE</div>
+            <div class="text-[#002aff] font-bold">RHASAN.PRO &bull; 2026 EDITION</div>
+          </div>
+        </div>
+
+        <!-- Role Headline Banner -->
+        <div class="bg-[#161616] text-[#f3f2ec] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-tech-mono">
+          <div class="text-xs sm:text-sm font-medium">
+            <span class="text-[#00e5ff] font-bold">&gt; ROLE:</span> IT Support Engineer L2 &bull; Microsoft 365, Azure & Endpoint Security
+          </div>
+          <div class="flex items-center gap-4 text-xs">
+            <a href="#contact" class="px-3 py-1 bg-[#002aff] hover:bg-blue-600 text-white font-bold transition-colors">
+              CONTACT &rarr;
+            </a>
+            <a href="/Robiul_Hasan_CV.pdf" download class="underline hover:text-white transition-colors">
+              DOWNLOAD CV (PDF)
+            </a>
+          </div>
+        </div>
+
+      </header>
+
+      <!-- 3-COLUMN METRICS GRID -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-tech-mono">
+        
+        <div class="paper-card p-6 space-y-2">
+          <div class="text-[11px] text-[#666] uppercase font-bold tracking-wider">// MONITORED FLEET</div>
+          <div class="text-4xl sm:text-5xl font-extrabold font-editorial text-[#121212]">2,500+</div>
+          <div class="text-xs text-[#444] border-t border-[#eee] pt-2">Active enterprise endpoints under management</div>
+        </div>
+
+        <div class="paper-card p-6 space-y-2">
+          <div class="text-[11px] text-[#666] uppercase font-bold tracking-wider">// SECURITY ASSETS</div>
+          <div class="text-4xl sm:text-5xl font-extrabold font-editorial text-[#002aff]">1,100+</div>
+          <div class="text-xs text-[#444] border-t border-[#eee] pt-2">Administered antivirus & endpoint devices</div>
+        </div>
+
+        <div class="paper-card p-6 space-y-2">
+          <div class="text-[11px] text-[#666] uppercase font-bold tracking-wider">// IT PROJECTS</div>
+          <div class="text-4xl sm:text-5xl font-extrabold font-editorial text-[#121212]">25+</div>
+          <div class="text-xs text-[#444] border-t border-[#eee] pt-2">Delivered + 5 enterprise rollouts</div>
+        </div>
+
+        <div class="paper-card p-6 space-y-2">
+          <div class="text-[11px] text-[#666] uppercase font-bold tracking-wider">// SERVICE CSAT</div>
+          <div class="text-4xl sm:text-5xl font-extrabold font-editorial text-[#002aff]">&gt;90%</div>
+          <div class="text-xs text-[#444] border-t border-[#eee] pt-2">Sustained multi-client customer satisfaction</div>
+        </div>
+
+      </section>
+
+      <!-- SECTION: ABOUT DOSSIER -->
+      <section class="grid lg:grid-cols-12 gap-8 border-t-2 border-[#161616] pt-10">
+        
+        <div class="lg:col-span-4 space-y-4 font-tech-mono">
+          <div class="text-xs font-bold text-[#002aff] uppercase tracking-wider">// SECTION 01</div>
+          <h2 class="text-3xl font-extrabold font-editorial text-[#121212] uppercase leading-tight">
+            Executive Summary & Track Record
+          </h2>
+          <div class="p-4 bg-white border border-[#161616] space-y-2 text-xs">
+            <div class="font-bold text-[#121212]">CURRENT EMPLOYMENT</div>
+            <div class="text-[#555]">Techants Solutions Pty Ltd</div>
+            <div class="text-[#002aff] font-bold">Oct 2022 &ndash; Present</div>
+            <p class="text-[#666] pt-1">Co-leading a 10+ member service desk team and coordinating delivery across 25+ enterprise IT client accounts.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-5 text-[#222] leading-relaxed text-base">
+          <p class="text-lg font-medium text-[#121212]">
+            I am an IT infrastructure and support engineer based in Dhaka, with 5+ years keeping enterprise environments reliable — from Microsoft 365 and Azure administration to endpoint security and business continuity.
+          </p>
+          <p>
+            I currently work as an <strong class="text-[#121212] bg-[#e6e4dc] px-1">L2 Support Engineer and Service Desk Co-Leader at Techants Solutions</strong>, where I coordinate technical delivery across 25+ IT projects and manage infrastructure for 2,500+ endpoints and 1,100+ security assets across a diverse client portfolio. I co-lead a 10+ person service desk team — training L1 staff, owning quarterly BCDR reporting, and deploying disaster-recovery agents — while holding customer satisfaction above 90%.
+          </p>
+          <p>
+            Before Techants, I built my troubleshooting and infrastructure fundamentals as a Support Engineer at Cobait Dhaka and an IT Executive at AQSBD.
+          </p>
+          <p>
+            I hold Microsoft's <strong class="text-[#002aff]">Endpoint Administrator (MD-102)</strong> and <strong class="text-[#002aff]">Modern Desktop Administrator (MD-100)</strong> certifications, and I've extended that foundation with self-directed work in Python, Linux administration, and agentic AI.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- SECTION: EXPERIENCE TIMELINE -->
+      <section class="border-t-2 border-[#161616] pt-10 space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 font-tech-mono">
+          <div>
+            <div class="text-xs font-bold text-[#002aff] uppercase tracking-wider">// SECTION 02</div>
+            <h2 class="text-3xl font-extrabold font-editorial text-[#121212] uppercase">
+              Employment History
+            </h2>
+          </div>
+          <span class="text-xs text-[#666]">5+ YEARS ENTERPRISE SERVICE DELIVERY</span>
+        </div>
+
+        <div class="space-y-6">
+          
+          <!-- Role 1 -->
+          <div class="paper-card p-6 sm:p-8 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b-2 border-[#161616] pb-3">
+              <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold font-editorial text-[#121212]">
+                  L2 Support Engineer & Service Desk Co-Leader
+                </h3>
+                <div class="font-tech-mono text-xs font-bold text-[#002aff]">
+                  Techants Solutions Pty Ltd &bull; Dhaka, Bangladesh
+                </div>
+              </div>
+              <span class="stamp-badge">Oct 2022 &ndash; Present</span>
+            </div>
+
+            <ul class="space-y-2.5 font-tech-mono text-xs sm:text-sm text-[#333] list-disc list-inside">
+              <li>Led delivery and technical coordination for 25+ enterprise IT projects across diverse client environments, and collaborated on 5+ additional large-scale rollouts.</li>
+              <li>Managed monthly maintenance and monitoring across 2,500+ endpoints and administered antivirus/endpoint security for 1,100+ devices.</li>
+              <li>Co-led a 10+ member Service Desk team, training and evaluating L1 staff on new systems, tools, and escalation handling.</li>
+              <li>Delivered quarterly BCDR reports and deployed backup/disaster-recovery agents across client endpoints; maintained SDO compliance.</li>
+              <li>Sustained customer satisfaction above 90% while managing complex escalations across multiple concurrent client accounts.</li>
+            </ul>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="paper-card-subtle p-6 sm:p-8 space-y-4 bg-white">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#ddd] pb-3">
+              <div>
+                <h3 class="text-lg sm:text-xl font-bold font-editorial text-[#121212]">
+                  Jr. Support Engineer
+                </h3>
+                <div class="font-tech-mono text-xs text-[#666]">
+                  Cobait Dhaka &bull; Dhaka, Bangladesh
+                </div>
+              </div>
+              <span class="font-tech-mono text-xs text-[#666] bg-[#f0eee6] px-2 py-0.5">2021 &ndash; 2022</span>
+            </div>
+
+            <ul class="space-y-2 font-tech-mono text-xs text-[#444] list-disc list-inside">
+              <li>Served as first point of contact for client calls, troubleshooting technical issues in a fast-paced, high-ticket-volume environment.</li>
+              <li>Diagnosed and resolved application-level technical issues across managed customer accounts.</li>
+              <li>Administered client server infrastructure and maintained server data backup processes.</li>
+            </ul>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="paper-card-subtle p-6 sm:p-8 space-y-4 bg-white">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#ddd] pb-3">
+              <div>
+                <h3 class="text-lg sm:text-xl font-bold font-editorial text-[#121212]">
+                  Information Technology Executive
+                </h3>
+                <div class="font-tech-mono text-xs text-[#666]">
+                  AQSBD &bull; Dhaka, Bangladesh
+                </div>
+              </div>
+              <span class="font-tech-mono text-xs text-[#666] bg-[#f0eee6] px-2 py-0.5">2020</span>
+            </div>
+
+            <ul class="space-y-2 font-tech-mono text-xs text-[#444] list-disc list-inside">
+              <li>Digitized outdated manual systems and led infrastructure documentation and process improvements.</li>
+              <li>Streamlined internal communication systems and IT support processes for the organization.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION: SKILLS TAXONOMY -->
+      <section class="border-t-2 border-[#161616] pt-10 space-y-6">
+        
+        <div class="font-tech-mono">
+          <div class="text-xs font-bold text-[#002aff] uppercase tracking-wider">// SECTION 03</div>
+          <h2 class="text-3xl font-extrabold font-editorial text-[#121212] uppercase">
+            Technical Competency Framework
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 font-tech-mono">
+          
+          <div class="paper-card p-5 space-y-3">
+            <div class="text-xs font-bold uppercase text-[#002aff] border-b border-[#eee] pb-2">
+              01 / Cloud & Identity
+            </div>
+            <ul class="text-xs space-y-1.5 text-[#333]">
+              <li>&bull; Microsoft 365 Admin</li>
+              <li>&bull; Microsoft Azure</li>
+              <li>&bull; Entra ID (Azure AD)</li>
+              <li>&bull; Exchange Online</li>
+              <li>&bull; Microsoft Intune</li>
+            </ul>
+          </div>
+
+          <div class="paper-card p-5 space-y-3">
+            <div class="text-xs font-bold uppercase text-[#121212] border-b border-[#eee] pb-2">
+              02 / Infrastructure
+            </div>
+            <ul class="text-xs space-y-1.5 text-[#333]">
+              <li>&bull; Windows Server / Hyper-V</li>
+              <li>&bull; Active Directory & GPO</li>
+              <li>&bull; DNS & Routing</li>
+              <li>&bull; Datto BCDR & RMM</li>
+              <li>&bull; Endpoint & Antivirus Security</li>
+            </ul>
+          </div>
+
+          <div class="paper-card p-5 space-y-3">
+            <div class="text-xs font-bold uppercase text-[#121212] border-b border-[#eee] pb-2">
+              03 / Operations & SOPs
+            </div>
+            <ul class="text-xs space-y-1.5 text-[#333]">
+              <li>&bull; Incident & Escalation Mgmt</li>
+              <li>&bull; Service Desk Leadership</li>
+              <li>&bull; L1 Staff Training</li>
+              <li>&bull; IT Documentation & SOPs</li>
+              <li>&bull; Client Communication</li>
+            </ul>
+          </div>
+
+          <div class="paper-card p-5 space-y-3">
+            <div class="text-xs font-bold uppercase text-[#002aff] border-b border-[#eee] pb-2">
+              04 / Automation & AI
+            </div>
+            <ul class="text-xs space-y-1.5 text-[#333]">
+              <li>&bull; Python & Bash Scripting</li>
+              <li>&bull; Agentic AI Workflows</li>
+              <li>&bull; Self-Hosted Deployments</li>
+              <li>&bull; Browser Automation</li>
+              <li>&bull; Tool-Calling APIs</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION: FEATURED INITIATIVE: HERMES -->
+      <section class="border-t-2 border-[#161616] pt-10 space-y-6">
+        
+        <div class="paper-card p-8 sm:p-10 space-y-6 bg-white">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-[#161616] pb-4">
+            <div>
+              <span class="stamp-badge">PROJECT CASE STUDY // ACTIVE BUILD</span>
+              <h3 class="text-2xl sm:text-4xl font-extrabold font-editorial text-[#121212] mt-1">
+                HERMES &ndash; Self-Hosted AI Assistant
+              </h3>
+            </div>
+            <a 
+              href="https://github.com/Daddy-Ousen" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-4 py-2 bg-[#161616] hover:bg-[#002aff] text-white font-tech-mono text-xs font-bold transition-colors w-fit"
+            >
+              GITHUB REPO &rarr;
+            </a>
+          </div>
+
+          <p class="font-tech-mono text-xs sm:text-sm text-[#333] leading-relaxed">
+            Built and self-host an autonomous AI assistant engineered with tool-calling, headless browser automation, and multi-channel messaging integrations. Designed to automate personal workflows, execute system-level operations, and explore practical agentic AI applications that reduce IT operations overhead.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 font-tech-mono text-xs">
+            <div class="p-4 bg-[#f8f7f2] border border-[#dcdad3] space-y-1">
+              <div class="font-bold text-[#121212]">01. Function Calling</div>
+              <p class="text-[#666] text-[11px]">Autonomous execution of terminal scripts and APIs.</p>
+            </div>
+            <div class="p-4 bg-[#f8f7f2] border border-[#dcdad3] space-y-1">
+              <div class="font-bold text-[#121212]">02. Browser Orchestration</div>
+              <p class="text-[#666] text-[11px]">Headless portal interaction and structured extraction.</p>
+            </div>
+            <div class="p-4 bg-[#f8f7f2] border border-[#dcdad3] space-y-1">
+              <div class="font-bold text-[#121212]">03. Self-Hosted Privacy</div>
+              <p class="text-[#666] text-[11px]">Dedicated Linux server with persistent memory.</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SECTION: CREDENTIALS & ACADEMICS -->
+      <section class="border-t-2 border-[#161616] pt-10 grid md:grid-cols-2 gap-8 font-tech-mono text-xs">
+        
+        <div class="space-y-4">
+          <div class="text-xs font-bold text-[#002aff] uppercase tracking-wider">// SECTION 05.A</div>
+          <h3 class="text-xl font-bold font-editorial text-[#121212] uppercase">
+            Certifications & Continuous Learning
+          </h3>
+          
+          <div class="space-y-2">
+            <div class="paper-card-subtle p-3.5 bg-white flex items-center justify-between">
+              <div>
+                <div class="font-bold text-[#121212]">Microsoft 365 Certified: Endpoint Administrator Associate</div>
+                <div class="text-[#666]">Exam MD-102</div>
+              </div>
+              <span class="stamp-badge">MSFT</span>
+            </div>
+
+            <div class="paper-card-subtle p-3.5 bg-white flex items-center justify-between">
+              <div>
+                <div class="font-bold text-[#121212]">Microsoft Certified: Modern Desktop Administrator Associate</div>
+                <div class="text-[#666]">Exam MD-100</div>
+              </div>
+              <span class="stamp-badge">MSFT</span>
+            </div>
+
+            <div class="paper-card-subtle p-3.5 bg-white flex items-center justify-between">
+              <div>
+                <div class="font-bold text-[#121212]">Python Programming</div>
+                <div class="text-[#666]">University of Michigan (Coursera) &bull; 2020</div>
+              </div>
+              <span class="text-[#666]">Course</span>
+            </div>
+
+            <div class="paper-card-subtle p-3.5 bg-white flex items-center justify-between">
+              <div>
+                <div class="font-bold text-[#121212]">Linux Operating System (Foundation)</div>
+                <div class="text-[#666]">StudySection &bull; 2021</div>
+              </div>
+              <span class="text-[#666]">Course</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="text-xs font-bold text-[#002aff] uppercase tracking-wider">// SECTION 05.B</div>
+          <h3 class="text-xl font-bold font-editorial text-[#121212] uppercase">
+            Education & Language Fluency
+          </h3>
+
+          <div class="paper-card p-5 bg-white space-y-2">
+            <div class="text-[10px] text-[#666] uppercase">Formal Education &bull; Graduated 2022</div>
+            <div class="text-sm font-bold text-[#121212]">Bachelor of Business Administration (BBA)</div>
+            <div class="text-xs text-[#555]">Bangladesh University of Professionals (BUP)</div>
+          </div>
+
+          <div class="paper-card-subtle p-4 bg-white space-y-2">
+            <div class="text-[10px] text-[#666] uppercase font-bold">Languages</div>
+            <div class="flex items-center gap-3 text-xs">
+              <span class="px-2.5 py-1 bg-[#f0eee6] font-bold">Bengali (Native)</span>
+              <span class="px-2.5 py-1 bg-[#f0eee6] font-bold">English (Fluent)</span>
+              <span class="px-2.5 py-1 bg-[#f0eee6]">French (Basic)</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SECTION: CONTACT & INQUIRIES -->
+      <section id="contact" class="border-t-4 border-[#161616] pt-10 text-center font-tech-mono space-y-6">
+        <div class="stamp-badge">DIRECT INQUIRIES // HIRING MANAGERS</div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold font-editorial text-[#121212] uppercase max-w-2xl mx-auto">
+          Let's discuss infrastructure & systems roles.
+        </h2>
+        <p class="text-xs sm:text-sm text-[#555] max-w-lg mx-auto">
+          Currently exploring Systems Administration, Cloud Infrastructure, and Automation-Engineering opportunities.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <a 
+            href="mailto:rhasan229@gmail.com" 
+            class="px-6 py-3 bg-[#161616] hover:bg-[#002aff] text-white font-bold text-xs uppercase tracking-wider transition-colors"
+          >
+            Direct Email: rhasan229@gmail.com
+          </a>
+          <a 
+            href="/Robiul_Hasan_CV.pdf" 
+            download 
+            class="px-5 py-3 bg-white border-2 border-[#161616] text-[#161616] font-bold text-xs uppercase hover:bg-[#f0eee6] transition-colors"
+          >
+            Download Resume (PDF)
+          </a>
+        </div>
+
+        <div class="pt-4 text-xs text-[#777] flex items-center justify-center gap-6">
+          <a href="https://linkedin.com/in/robiul-hasan-401296137" target="_blank" rel="noopener noreferrer" class="text-[#121212] font-bold hover:text-[#002aff] underline">
+            LinkedIn Profile &nearr;
+          </a>
+          <span>&bull;</span>
+          <a href="https://github.com/Daddy-Ousen" target="_blank" rel="noopener noreferrer" class="text-[#121212] font-bold hover:text-[#002aff] underline">
+            GitHub Profile &nearr;
+          </a>
+          <span>&bull;</span>
+          <span>Dhaka, Bangladesh</span>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="border-t border-[#dcdad3] pt-6 flex flex-col sm:flex-row items-center justify-between font-tech-mono text-xs text-[#888] gap-3">
+        <div>&copy; 2026 Robiul Hasan &bull; rhasan.pro</div>
+        <div>Engineered with Astro &bull; Zero Shipped JS</div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
