@@ -1,429 +1,342 @@
 ---
-// Hermes AI Ambassador Chat Widget (Fireworks AI Powered Demo)
+// HermesChatWidget.astro
 ---
 
-<!-- Floating Launcher Button -->
-<div class="fixed bottom-6 right-6 z-40">
-  <button 
-    id="hermes-launcher-btn" 
-    type="button" 
-    class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 light:bg-white text-white light:text-slate-950 border border-slate-700 light:border-slate-300 shadow-2xl hover:border-amber-400/80 light:hover:border-amber-500 transition-all hover:scale-105 active:scale-95 group cursor-pointer"
-    aria-label="Open Hermes AI Chatbot Demo"
+<!-- Floating AI Chat Launcher Button -->
+<div id="hermes-widget-container" class="fixed bottom-6 right-6 z-50">
+  <button
+    id="hermes-launcher-btn"
+    type="button"
+    aria-label="Open Hermes AI Assistant"
+    class="group relative flex items-center gap-3 px-4 py-3 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-amber-500/40 text-slate-100 shadow-[0_0_25px_rgba(245,158,11,0.25)] hover:shadow-[0_0_35px_rgba(245,158,11,0.4)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
   >
-    <div class="relative flex items-center justify-center">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute opacity-75"></span>
+    <!-- Radar Pulse Beacon -->
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+    </span>
+
+    <div class="flex flex-col text-left">
+      <span class="text-xs font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors flex items-center gap-1.5">
+        <span>Hermes AI</span>
+        <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">Demo</span>
+      </span>
+      <span class="text-[10px] text-slate-400 font-mono">Ask Robiul's Ambassador</span>
     </div>
-    <div class="flex items-center gap-1.5 font-mono text-xs font-bold">
-      <span class="text-amber-400 light:text-amber-600">Hermes AI</span>
-      <span class="text-slate-400 light:text-slate-500 font-normal">(Demo)</span>
+
+    <!-- Icon inside button -->
+    <div class="w-7 h-7 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500/30 transition-colors">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
     </div>
   </button>
-</div>
 
-<!-- Expandable Chat Window Drawer -->
-<div 
-  id="hermes-chat-drawer" 
-  class="fixed bottom-6 right-6 z-50 w-[92vw] sm:w-[430px] max-h-[84vh] h-[600px] rounded-2xl bg-[#0b0f17]/95 light:bg-white/95 backdrop-blur-xl border border-slate-800 light:border-slate-300 shadow-2xl flex flex-col justify-between overflow-hidden transition-all duration-300 transform translate-y-8 opacity-0 pointer-events-none"
-  role="dialog"
-  aria-labelledby="hermes-dialog-title"
->
-  
-  <!-- Header -->
-  <div class="px-5 py-4 border-b border-slate-800 light:border-slate-200 bg-slate-950/60 light:bg-slate-50 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-mono text-xs font-bold text-amber-400 light:text-amber-600">
-        H
+  <!-- Glassmorphic Chat Drawer -->
+  <div
+    id="hermes-chat-drawer"
+    class="fixed sm:absolute bottom-0 right-0 sm:bottom-16 sm:right-0 w-full sm:w-[420px] h-[85vh] sm:h-[580px] max-h-[90vh] rounded-t-3xl sm:rounded-3xl bg-[#0b0f17]/95 border border-white/15 shadow-2xl backdrop-blur-2xl flex flex-col overflow-hidden transition-all duration-300 transform scale-95 opacity-0 pointer-events-none origin-bottom-right z-50"
+  >
+    <!-- Drawer Header -->
+    <div class="p-4 bg-slate-900/90 border-b border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-mono font-bold text-slate-950 text-xs shadow-md">
+          H
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-sm font-bold text-white">Hermes AI Ambassador</h3>
+            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Live</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-mono">Knowledge-scoped AI Assistant</p>
+        </div>
       </div>
-      <div>
-        <h3 id="hermes-dialog-title" class="text-xs font-bold text-white light:text-slate-950 flex items-center gap-1.5">
-          <span>Hermes AI</span>
-          <span class="text-[10px] font-mono font-medium px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20">Demo</span>
-        </h3>
-        <p class="text-[11px] text-slate-400 light:text-slate-500">Robiul Hasan's AI Ambassador</p>
+
+      <div class="flex items-center gap-1">
+        <button
+          id="hermes-clear-btn"
+          type="button"
+          title="Clear Conversation"
+          class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors text-xs"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+        </button>
+        <button
+          id="hermes-close-btn"
+          type="button"
+          title="Close Drawer"
+          class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- Actions -->
-    <div class="flex items-center gap-1">
-      <button 
-        id="hermes-clear-btn" 
-        type="button" 
-        class="p-1.5 rounded-lg text-slate-400 hover:text-white light:hover:text-black transition-colors cursor-pointer" 
-        title="Clear conversation"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+    <!-- Safety & Rate-Limit Notice Banner -->
+    <div class="px-4 py-2 bg-amber-500/10 border-b border-amber-500/20 flex items-center justify-between text-[11px] text-amber-300">
+      <span class="flex items-center gap-1.5">
+        <span>🛡️</span>
+        <span>Rate-limited demo (5 msgs/min)</span>
+      </span>
+      <span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 uppercase font-semibold">In-House AI</span>
+    </div>
+
+    <!-- Chat Messages Scroll Container -->
+    <div id="hermes-messages-list" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs text-slate-200">
+      
+      <!-- Welcome Message -->
+      <div class="flex gap-2.5 items-start">
+        <div class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex-shrink-0 flex items-center justify-center text-[10px] text-amber-400 font-mono font-bold">
+          H
+        </div>
+        <div class="flex-1 p-3 rounded-2xl rounded-tl-sm bg-slate-900/80 border border-white/10 text-slate-200 shadow-sm leading-relaxed">
+          <p class="font-medium text-white mb-1.5">Hello! I am Hermes, Robiul Hasan's AI Ambassador.</p>
+          <p class="text-slate-300 mb-2">I can answer questions about his 5+ years of MSP infrastructure experience, Microsoft certifications, BCDR rollouts, or his autonomous software projects.</p>
+          <p class="text-slate-400 text-[11px] font-mono">Select a quick prompt below or type your question:</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 1-Click Suggestion Chips -->
+    <div id="hermes-chips-container" class="px-4 py-2 border-t border-white/5 bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+      <button type="button" class="hermes-chip text-[10px] whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 hover:text-amber-300 border border-white/10 hover:border-amber-500/30 transition-colors">
+        🏢 What is Robiul's MSP experience?
       </button>
-      <button 
-        id="hermes-close-btn" 
-        type="button" 
-        class="p-1.5 rounded-lg text-slate-400 hover:text-white light:hover:text-black transition-colors cursor-pointer" 
-        title="Close chat window"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <button type="button" class="hermes-chip text-[10px] whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 hover:text-amber-300 border border-white/10 hover:border-amber-500/30 transition-colors">
+        📜 What certifications does he hold?
+      </button>
+      <button type="button" class="hermes-chip text-[10px] whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 hover:text-amber-300 border border-white/10 hover:border-amber-500/30 transition-colors">
+        ⚡ Tell me about Hermes AI & Tools
+      </button>
+      <button type="button" class="hermes-chip text-[10px] whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 hover:text-amber-300 border border-white/10 hover:border-amber-500/30 transition-colors">
+        📬 How can I contact or hire Robiul?
       </button>
     </div>
+
+    <!-- Message Input & Form -->
+    <form id="hermes-chat-form" class="p-3 bg-slate-900/90 border-t border-white/10 flex flex-col gap-2">
+      <div class="relative flex items-center">
+        <input
+          id="hermes-input"
+          type="text"
+          maxlength="350"
+          placeholder="Ask a question about Robiul's background..."
+          autocomplete="off"
+          class="w-full pl-3.5 pr-10 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 focus:border-amber-500/60 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+        />
+        <button
+          id="hermes-send-btn"
+          type="submit"
+          aria-label="Send message"
+          class="absolute right-1.5 p-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Character Counter & Token Indicator -->
+      <div class="flex items-center justify-between px-1 text-[10px] text-slate-500 font-mono">
+        <span id="hermes-status-text">Ready for queries</span>
+        <span id="hermes-char-counter">0 / 350</span>
+      </div>
+    </form>
+
   </div>
-
-  <!-- Safety Notice Banner -->
-  <div class="px-4 py-2 bg-amber-500/5 light:bg-amber-50 border-b border-amber-500/10 text-[11px] font-mono text-amber-400/90 light:text-amber-700 flex items-center justify-between">
-    <span>🛡️ Rate-limited & knowledge-scoped demo</span>
-    <span class="text-slate-500 text-[10px]">In-House AI Demo</span>
-  </div>
-
-  <!-- Scrollable Messages Container -->
-  <div id="hermes-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
-    
-    <!-- Welcome message from Hermes -->
-    <div class="flex items-start gap-2.5">
-      <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
-        H
-      </div>
-      <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[90%] space-y-2">
-        <p>
-          Hello! I am a lightweight public demo of Robiul Hasan's self-hosted <strong>Hermes AI</strong> assistant.
-        </p>
-        <p>
-          I am configured to act as Robiul's ambassador. You can ask me about his <strong>enterprise MSP scope</strong> (2,500+ endpoints), <strong>certifications (MD-102)</strong>, <strong>systems administration skills</strong>, or <strong>projects</strong>.
-        </p>
-      </div>
-    </div>
-
-    <!-- Suggested Question Chips -->
-    <div id="hermes-suggestions" class="pt-1 flex flex-wrap gap-1.5">
-      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
-        What is Robiul's MSP experience?
-      </button>
-      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
-        What certifications does he hold?
-      </button>
-      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
-        Tell me about the Hermes architecture
-      </button>
-      <button type="button" class="hermes-chip px-2.5 py-1.5 rounded-lg bg-slate-900/90 light:bg-slate-100 hover:bg-amber-500/10 hover:border-amber-500/30 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-300 text-[11px] transition-colors text-left cursor-pointer">
-        How do I contact Robiul?
-      </button>
-    </div>
-
-  </div>
-
-  <!-- Chat Input Form -->
-  <form id="hermes-form" class="p-3 border-t border-slate-800 light:border-slate-200 bg-slate-950/60 light:bg-slate-50 space-y-2">
-    <div class="relative flex items-center">
-      <input 
-        id="hermes-input" 
-        type="text" 
-        maxlength="350" 
-        placeholder="Ask about skills, experience, or projects..." 
-        autocomplete="off" 
-        class="w-full pl-3.5 pr-10 py-2.5 rounded-xl bg-slate-900 light:bg-white text-white light:text-slate-950 border border-slate-800 light:border-slate-300 focus:outline-none focus:border-amber-400 light:focus:border-amber-500 text-xs transition-colors"
-      />
-      <button 
-        id="hermes-send-btn" 
-        type="submit" 
-        class="absolute right-2 p-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
-        aria-label="Send message"
-      >
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </button>
-    </div>
-
-    <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
-      <span>Protected against prompt injection</span>
-      <span id="hermes-char-count">0/350</span>
-    </div>
-  </form>
-
 </div>
 
 <script>
-  // Hermes Chat Client Script
-  const launcherBtn = document.getElementById('hermes-launcher-btn');
-  const chatDrawer = document.getElementById('hermes-chat-drawer');
-  const closeBtn = document.getElementById('hermes-close-btn');
-  const clearBtn = document.getElementById('hermes-clear-btn');
-  const chatForm = document.getElementById('hermes-form');
-  const chatInput = document.getElementById('hermes-input') as HTMLInputElement;
-  const messagesContainer = document.getElementById('hermes-messages');
-  const charCount = document.getElementById('hermes-char-count');
-  const sendBtn = document.getElementById('hermes-send-btn') as HTMLButtonElement;
+  function setupHermesWidget() {
+    const launcherBtn = document.getElementById('hermes-launcher-btn');
+    const drawer = document.getElementById('hermes-chat-drawer');
+    const closeBtn = document.getElementById('hermes-close-btn');
+    const clearBtn = document.getElementById('hermes-clear-btn');
+    const chatForm = document.getElementById('hermes-chat-form');
+    const input = document.getElementById('hermes-input') as HTMLInputElement | null;
+    const sendBtn = document.getElementById('hermes-send-btn') as HTMLButtonElement | null;
+    const messagesList = document.getElementById('hermes-messages-list');
+    const charCounter = document.getElementById('hermes-char-counter');
+    const statusText = document.getElementById('hermes-status-text');
+    const chips = document.querySelectorAll('.hermes-chip');
 
-  let conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }> = [];
-  let isSubmitting = false;
+    if (!launcherBtn || !drawer || !chatForm || !input || !messagesList) return;
 
-  // Toggle Chat Drawer
-  const openChat = () => {
-    if (chatDrawer) {
-      chatDrawer.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
-      chatDrawer.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
-      chatInput?.focus();
-    }
-  };
+    let isOpen = false;
+    let isSubmitting = false;
 
-  const closeChat = () => {
-    if (chatDrawer) {
-      chatDrawer.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
-      chatDrawer.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
-    }
-  };
+    function parseSimpleMarkdown(text: string): string {
+      let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 
-  launcherBtn?.addEventListener('click', () => {
-    const isOpen = chatDrawer?.classList.contains('opacity-100');
-    if (isOpen) closeChat();
-    else openChat();
-  });
+      // Bold: **text**
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-amber-300">$1</strong>');
+      // Italic: *text*
+      html = html.replace(/\*(.*?)\*/g, '<em class="italic text-slate-300">$1</em>');
+      // Inline Code: `code`
+      html = html.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-800 font-mono text-[11px] text-amber-400 border border-white/10">$1</code>');
 
-  closeBtn?.addEventListener('click', closeChat);
-
-  // Clear Chat History
-  clearBtn?.addEventListener('click', () => {
-    conversationHistory = [];
-    if (messagesContainer) {
-      messagesContainer.innerHTML = `
-        <div class="flex items-start gap-2.5">
-          <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
-            H
-          </div>
-          <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[90%] space-y-2">
-            <p>Conversation history cleared. Ask me anything about Robiul's infrastructure experience, skills, or projects!</p>
-          </div>
-        </div>
-      `;
-    }
-  });
-
-  // Character Counter
-  chatInput?.addEventListener('input', () => {
-    if (charCount && chatInput) {
-      charCount.textContent = `${chatInput.value.length}/350`;
-    }
-  });
-
-  // Handle Question Chips
-  document.querySelectorAll('.hermes-chip').forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const text = chip.textContent?.trim();
-      if (text && chatInput) {
-        chatInput.value = text;
-        submitMessage(text);
-      }
-    });
-  });
-
-  // Format Markdown for Small Chat Windows
-  const formatMarkdownMessage = (rawText: string): string => {
-    if (!rawText) return '';
-
-    // 1. Escape HTML special characters
-    let safe = rawText
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-
-    // 2. Format inline code `code`
-    safe = safe.replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-slate-800 light:bg-slate-200 text-amber-300 light:text-amber-700 font-mono text-[10px]">$1</code>');
-
-    // 3. Format bold text **text**
-    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-white light:text-slate-950">$1</strong>');
-
-    // 4. Format italic text *text*
-    safe = safe.replace(/\*([^*]+)\*/g, '<em class="italic text-slate-300 light:text-slate-700">$1</em>');
-
-    // 5. Process lines & convert lists / tables
-    const lines = safe.split('\n');
-    const output: string[] = [];
-    let inList = false;
-    let listType: 'ul' | 'ol' = 'ul';
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-
-      if (!line) {
-        if (inList) {
-          output.push(listType === 'ul' ? '</ul>' : '</ol>');
-          inList = false;
+      // Bullets lines starting with - or •
+      const lines = html.split('\n');
+      const formattedLines = lines.map((line) => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+          const content = trimmed.substring(2);
+          return `<div class="flex items-start gap-2 my-1"><span class="text-amber-400 font-bold">•</span><span class="flex-1">${content}</span></div>`;
         }
-        continue;
-      }
-
-      // Ignore table divider lines like |---|---|
-      if (new RegExp('^\\|[\\-:\\s\\|]+\\|$').test(line)) {
-        continue;
-      }
-
-      // Convert table rows into clean compact cards
-      if (line.startsWith('|') && line.endsWith('|')) {
-        const cells = line.split('|').map(c => c.trim()).filter(Boolean);
-        if (cells.length > 0) {
-          if (inList) {
-            output.push(listType === 'ul' ? '</ul>' : '</ol>');
-            inList = false;
-          }
-          output.push(`
-            <div class="p-2.5 rounded-lg bg-slate-950/70 light:bg-white border border-slate-800 light:border-slate-300 my-1.5 space-y-1 text-xs">
-              <span class="font-bold text-amber-400 light:text-amber-600 block">${cells[0]}</span>
-              <p class="text-slate-300 light:text-slate-700 text-[11px] leading-relaxed">${cells.slice(1).join(' &bull; ')}</p>
-            </div>
-          `);
-          continue;
+        if (trimmed.length === 0) {
+          return '<div class="h-2"></div>';
         }
-      }
-
-      // Bullet list item (*, -, •)
-      const bulletMatch = line.match(/^[\*\-•]\s+(.+)$/);
-      if (bulletMatch) {
-        if (!inList || listType !== 'ul') {
-          if (inList) output.push(listType === 'ul' ? '</ul>' : '</ol>');
-          output.push('<ul class="space-y-1.5 my-2 pl-4 list-disc marker:text-amber-400 light:marker:text-amber-600 text-xs">');
-          inList = true;
-          listType = 'ul';
-        }
-        output.push(`<li class="leading-relaxed pl-0.5">${bulletMatch[1]}</li>`);
-        continue;
-      }
-
-      // Numbered list item (1. , 2. )
-      const numberMatch = line.match(/^(\d+)\.\s+(.*)$/);
-      if (numberMatch) {
-        if (!inList || listType !== 'ol') {
-          if (inList) output.push(listType === 'ul' ? '</ul>' : '</ol>');
-          output.push('<ol class="space-y-1.5 my-2 pl-4 list-decimal marker:text-amber-400 light:marker:text-amber-600 text-xs">');
-          inList = true;
-          listType = 'ol';
-        }
-        output.push(`<li class="leading-relaxed pl-0.5">${numberMatch[2]}</li>`);
-        continue;
-      }
-
-      // Section Headings (### Title)
-      const headingMatch = line.match(/^#{1,4}\s+(.*)$/);
-      if (headingMatch) {
-        if (inList) {
-          output.push(listType === 'ul' ? '</ul>' : '</ol>');
-          inList = false;
-        }
-        output.push(`<h4 class="font-bold text-amber-400 light:text-amber-600 text-xs mt-2.5 mb-1 font-mono">${headingMatch[1]}</h4>`);
-        continue;
-      }
-
-      // Standard paragraph
-      if (inList) {
-        output.push(listType === 'ul' ? '</ul>' : '</ol>');
-        inList = false;
-      }
-      output.push(`<p class="leading-relaxed mb-1.5 last:mb-0">${line}</p>`);
-    }
-
-    if (inList) {
-      output.push(listType === 'ul' ? '</ul>' : '</ol>');
-    }
-
-    return output.join('\n');
-  };
-
-  const escapeHtml = (unsafe: string) => {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  };
-
-  // Append Message to UI
-  const appendMessage = (role: 'user' | 'assistant', text: string) => {
-    if (!messagesContainer) return;
-
-    const messageRow = document.createElement('div');
-    messageRow.className = 'flex items-start gap-2.5' + (role === 'user' ? ' justify-end' : '');
-
-    if (role === 'assistant') {
-      messageRow.innerHTML = `
-        <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
-          H
-        </div>
-        <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-200 light:text-slate-800 leading-relaxed max-w-[90%] space-y-1">
-          ${formatMarkdownMessage(text)}
-        </div>
-      `;
-    } else {
-      messageRow.innerHTML = `
-        <div class="p-3.5 rounded-xl rounded-tr-none bg-amber-500 text-slate-950 font-medium leading-relaxed max-w-[85%]">
-          ${escapeHtml(text)}
-        </div>
-      `;
-    }
-
-    messagesContainer.appendChild(messageRow);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  };
-
-  // Append Loading State
-  const appendLoading = (): HTMLElement => {
-    const loadingRow = document.createElement('div');
-    loadingRow.id = 'hermes-loading';
-    loadingRow.className = 'flex items-start gap-2.5';
-    loadingRow.innerHTML = `
-      <div class="w-6 h-6 rounded bg-slate-800 light:bg-slate-200 text-amber-400 light:text-amber-600 flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5">
-        H
-      </div>
-      <div class="p-3.5 rounded-xl rounded-tl-none bg-slate-900/80 light:bg-slate-100 border border-slate-800 light:border-slate-200 text-slate-400 leading-relaxed flex items-center gap-1.5 font-mono text-[11px]">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse delay-100"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse delay-200"></span>
-        <span class="ml-1 text-slate-400">Processing query...</span>
-      </div>
-    `;
-    messagesContainer?.appendChild(loadingRow);
-    if (messagesContainer) messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    return loadingRow;
-  };
-
-  // Submit Message Action
-  const submitMessage = async (userText: string) => {
-    if (!userText.trim() || isSubmitting) return;
-
-    isSubmitting = true;
-    if (sendBtn) sendBtn.disabled = true;
-    if (chatInput) chatInput.value = '';
-    if (charCount) charCount.textContent = '0/350';
-
-    appendMessage('user', userText);
-    const loadingElem = appendLoading();
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: userText,
-          history: conversationHistory,
-        }),
+        return `<p class="my-0.5">${trimmed}</p>`;
       });
 
-      const data = await response.json();
-      loadingElem.remove();
-
-      if (!response.ok) {
-        appendMessage('assistant', data.error || 'Server error occurred. Please try again.');
-      } else {
-        const reply = data.reply || 'No response returned.';
-        appendMessage('assistant', reply);
-        conversationHistory.push({ role: 'user', content: userText });
-        conversationHistory.push({ role: 'assistant', content: reply });
-      }
-    } catch (err) {
-      loadingElem.remove();
-      appendMessage('assistant', 'Network error connecting to Hermes demo service. Please check your connection.');
-    } finally {
-      isSubmitting = false;
-      if (sendBtn) sendBtn.disabled = false;
-      chatInput?.focus();
+      return formattedLines.join('');
     }
-  };
 
-  chatForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (chatInput) submitMessage(chatInput.value);
-  });
+    function toggleDrawer(open?: boolean) {
+      isOpen = open !== undefined ? open : !isOpen;
+      if (isOpen) {
+        drawer?.classList.remove('scale-95', 'opacity-0', 'pointer-events-none');
+        drawer?.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+        input?.focus();
+      } else {
+        drawer?.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+        drawer?.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+      }
+    }
+
+    launcherBtn.addEventListener('click', () => toggleDrawer());
+    closeBtn?.addEventListener('click', () => toggleDrawer(false));
+
+    // Clear Chat
+    clearBtn?.addEventListener('click', () => {
+      messagesList.innerHTML = `
+        <div class="flex gap-2.5 items-start">
+          <div class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex-shrink-0 flex items-center justify-center text-[10px] text-amber-400 font-mono font-bold">
+            H
+          </div>
+          <div class="flex-1 p-3 rounded-2xl rounded-tl-sm bg-slate-900/80 border border-white/10 text-slate-200 shadow-sm leading-relaxed">
+            <p class="font-medium text-white mb-1">Chat cleared.</p>
+            <p class="text-slate-300">How else may I help you regarding Robiul's engineering dossier?</p>
+          </div>
+        </div>
+      `;
+    });
+
+    // Character Counter
+    input.addEventListener('input', () => {
+      const len = input.value.length;
+      if (charCounter) charCounter.textContent = `${len} / 350`;
+    });
+
+    function appendMessage(sender: 'user' | 'hermes', content: string, isError = false) {
+      const msgWrapper = document.createElement('div');
+      msgWrapper.className = `flex gap-2.5 items-start ${sender === 'user' ? 'justify-end' : ''}`;
+
+      if (sender === 'user') {
+        msgWrapper.innerHTML = `
+          <div class="max-w-[85%] p-3 rounded-2xl rounded-tr-sm bg-gradient-to-br from-amber-500/20 to-amber-600/30 border border-amber-500/40 text-white shadow-sm leading-relaxed font-medium">
+            ${content}
+          </div>
+          <div class="w-6 h-6 rounded-full bg-slate-800 border border-white/20 flex-shrink-0 flex items-center justify-center text-[10px] text-slate-200 font-mono">
+            You
+          </div>
+        `;
+      } else {
+        const parsed = parseSimpleMarkdown(content);
+        msgWrapper.innerHTML = `
+          <div class="w-6 h-6 rounded-full ${isError ? 'bg-red-500/20 border-red-500/40 text-red-400' : 'bg-amber-500/20 border-amber-500/40 text-amber-400'} border flex-shrink-0 flex items-center justify-center text-[10px] font-mono font-bold">
+            H
+          </div>
+          <div class="flex-1 p-3 rounded-2xl rounded-tl-sm ${isError ? 'bg-red-950/40 border-red-500/30 text-red-200' : 'bg-slate-900/80 border-white/10 text-slate-200'} border shadow-sm leading-relaxed">
+            ${parsed}
+          </div>
+        `;
+      }
+
+      messagesList?.appendChild(msgWrapper);
+      messagesList?.scrollTo({ top: messagesList.scrollHeight, behavior: 'smooth' });
+    }
+
+    async function handleSendMessage(queryText: string) {
+      const text = queryText.trim();
+      if (!text || isSubmitting) return;
+
+      appendMessage('user', text);
+      if (input) input.value = '';
+      if (charCounter) charCounter.textContent = '0 / 350';
+
+      isSubmitting = true;
+      if (sendBtn) sendBtn.disabled = true;
+      if (statusText) statusText.textContent = 'Hermes is generating...';
+
+      // Temporary Loading Indicator
+      const loadingDiv = document.createElement('div');
+      loadingDiv.id = 'hermes-loading';
+      loadingDiv.className = 'flex gap-2.5 items-start';
+      loadingDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex-shrink-0 flex items-center justify-center text-[10px] text-amber-400 font-mono font-bold">
+          H
+        </div>
+        <div class="p-3 rounded-2xl rounded-tl-sm bg-slate-900/80 border border-white/10 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" style="animation-delay: 0.2s"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" style="animation-delay: 0.4s"></span>
+        </div>
+      `;
+      messagesList?.appendChild(loadingDiv);
+      messagesList?.scrollTo({ top: messagesList.scrollHeight, behavior: 'smooth' });
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text }),
+        });
+
+        const data = await res.json();
+        const loader = document.getElementById('hermes-loading');
+        loader?.remove();
+
+        if (!res.ok) {
+          appendMessage('hermes', data.error || 'Request failed. Please try again.', true);
+        } else {
+          appendMessage('hermes', data.reply || 'No response received.');
+        }
+      } catch {
+        const loader = document.getElementById('hermes-loading');
+        loader?.remove();
+        appendMessage('hermes', 'Network error reaching Hermes inference service. Please verify your connection or email Robiul directly.', true);
+      } finally {
+        isSubmitting = false;
+        if (sendBtn) sendBtn.disabled = false;
+        if (statusText) statusText.textContent = 'Ready for queries';
+        input?.focus();
+      }
+    }
+
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (input) handleSendMessage(input.value);
+    });
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const prompt = chip.textContent?.trim().replace(/^[^\w]+/, '').trim();
+        if (prompt) {
+          handleSendMessage(prompt);
+        }
+      });
+    });
+  }
+
+  setupHermesWidget();
+  document.addEventListener('astro:page-load', setupHermesWidget);
 </script>

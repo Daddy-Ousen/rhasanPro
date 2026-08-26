@@ -1,0 +1,86 @@
+---
+import { dossier } from '../data/dossier';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: string;
+}
+
+const {
+  title = `${dossier.name} — ${dossier.role}`,
+  description = dossier.shortBio,
+  image = "/og-image.png",
+  canonicalUrl = Astro.url.href,
+  type = "website",
+} = Astro.props;
+
+const siteTitle = title.includes(dossier.name) ? title : `${title} | ${dossier.name}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": dossier.name,
+  "jobTitle": dossier.role,
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Techants Solutions Pty Ltd"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": dossier.education.institution
+  },
+  "url": dossier.portfolioUrl,
+  "sameAs": [
+    dossier.linkedin,
+    dossier.github
+  ],
+  "email": dossier.email,
+  "description": dossier.fullBio,
+  "knowsAbout": [
+    "Microsoft 365 Administration",
+    "Microsoft Intune",
+    "Entra ID",
+    "Bitdefender EDR",
+    "Datto BCDR",
+    "Enterprise IT Operations",
+    "Python Automation",
+    "Agentic AI"
+  ]
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalUrl} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Fonts Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Structured Data JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,201 @@
+---
+import { skillDomains } from '../data/skills';
+---
+
+<div class="w-full max-w-6xl mx-auto py-6">
+  
+  <!-- Search & Domain Filter Bar -->
+  <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/10">
+    
+    <!-- Filter Chips -->
+    <div class="flex items-center gap-1.5 flex-wrap">
+      <button
+        type="button"
+        data-filter="all"
+        class="skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40"
+      >
+        All Domains (6)
+      </button>
+      {skillDomains.map((domain) => (
+        <button
+          type="button"
+          data-filter={domain.id}
+          class="skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5"
+        >
+          {domain.shortTitle}
+        </button>
+      ))}
+    </div>
+
+    <!-- Live Search Input -->
+    <div class="relative w-full md:w-64">
+      <input
+        id="skill-search-input"
+        type="text"
+        placeholder="Filter by keyword (e.g. Intune, EDR, Python)..."
+        class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 font-mono transition-colors"
+      />
+      <svg class="w-4 h-4 text-slate-500 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- Domains Grid -->
+  <div id="skills-container" class="space-y-12">
+    {skillDomains.map((domain) => (
+      <div class="domain-block" data-domain-id={domain.id}>
+        
+        <!-- Domain Header -->
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-bold text-white tracking-tight">{domain.title}</h3>
+            </div>
+            <p class="text-xs text-slate-400 mt-1 max-w-2xl">{domain.description}</p>
+          </div>
+
+          <span class="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-white/5">
+            {domain.skills.length} Competencies
+          </span>
+        </div>
+
+        <!-- Skills Cards in Domain -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {domain.skills.map((skill) => (
+            <div class="skill-card double-bezel-outer group" data-skill-name={skill.name.toLowerCase()} data-skill-tags={skill.tags.join(' ').toLowerCase()}>
+              <div class="double-bezel-inner p-5 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
+                
+                <div>
+                  <div class="flex items-start justify-between gap-2 mb-2">
+                    <h4 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">
+                      {skill.name}
+                    </h4>
+                    <span class={`text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold ${
+                      skill.proficiency === 'Mastery' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' :
+                      skill.proficiency === 'Advanced' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
+                      'bg-slate-700/50 text-slate-300 border border-white/10'
+                    }`}>
+                      {skill.proficiency}
+                    </span>
+                  </div>
+
+                  <!-- Proficiency Meter Bar -->
+                  <div class="my-3">
+                    <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                      <span>Proficiency</span>
+                      <span class="text-amber-400 font-bold">{skill.level}%</span>
+                    </div>
+                    <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                      <div
+                        class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-1000 ease-out"
+                        style={`width: ${skill.level}%`}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sub-tags -->
+                <div class="flex flex-wrap gap-1 mt-3 pt-3 border-t border-white/5">
+                  {skill.tags.map((tag) => (
+                    <span class="px-2 py-0.5 rounded text-[9.5px] font-mono bg-slate-900 text-slate-400 border border-white/5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Empty state for search -->
+  <div id="no-skills-msg" class="hidden text-center py-16 text-slate-400 text-sm font-mono">
+    No competencies found matching your search term.
+  </div>
+
+</div>
+
+<script>
+  function setupSkillsFilter() {
+    const filterBtns = document.querySelectorAll('.skill-filter-btn');
+    const domainBlocks = document.querySelectorAll('.domain-block');
+    const skillCards = document.querySelectorAll('.skill-card');
+    const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
+    const noResultsMsg = document.getElementById('no-skills-msg');
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function applyFilter() {
+      let totalVisible = 0;
+
+      domainBlocks.forEach((block) => {
+        const domainId = block.getAttribute('data-domain-id');
+        const matchesCategory = activeFilter === 'all' || activeFilter === domainId;
+
+        const cardsInBlock = block.querySelectorAll('.skill-card');
+        let domainVisibleCards = 0;
+
+        cardsInBlock.forEach((card) => {
+          const name = card.getAttribute('data-skill-name') || '';
+          const tags = card.getAttribute('data-skill-tags') || '';
+          const matchesSearch = !searchQuery || name.includes(searchQuery) || tags.includes(searchQuery);
+
+          if (matchesCategory && matchesSearch) {
+            (card as HTMLElement).style.display = 'block';
+            domainVisibleCards++;
+            totalVisible++;
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+
+        if (domainVisibleCards > 0) {
+          (block as HTMLElement).style.display = 'block';
+        } else {
+          (block as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (noResultsMsg) {
+        noResultsMsg.classList.toggle('hidden', totalVisible > 0);
+      }
+    }
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filterVal = btn.getAttribute('data-filter') || 'all';
+        activeFilter = filterVal;
+
+        filterBtns.forEach((b) => {
+          if (b === btn) {
+            b.className = 'skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 font-semibold';
+          } else {
+            b.className = 'skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5';
+          }
+        });
+
+        applyFilter();
+      });
+    });
+
+    searchInput?.addEventListener('input', () => {
+      searchQuery = searchInput.value.toLowerCase().trim();
+      applyFilter();
+    });
+  }
+
+  setupSkillsFilter();
+  document.addEventListener('astro:page-load', setupSkillsFilter);
+</script>

@@ -1,0 +1,218 @@
+---
+// TerminalSimulator.astro
+---
+
+<div class="w-full max-w-4xl mx-auto double-bezel-outer">
+  <div class="double-bezel-inner rounded-[calc(1.5rem-1.5px)] bg-[#070a10] border border-white/10 overflow-hidden shadow-2xl">
+    
+    <!-- Terminal Header Bar -->
+    <div class="px-4 py-3 bg-[#0d1320] border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
+      <!-- Mac-style dots & Title -->
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-1.5">
+          <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+        </div>
+        <span class="text-xs font-mono text-slate-400 pl-2 flex items-center gap-1.5 border-l border-white/10">
+          <svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span class="font-bold text-slate-200">rhasan@msp-core:~$</span>
+        </span>
+      </div>
+
+      <!-- Command Preset Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <button
+          type="button"
+          data-cmd="audit"
+          class="terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40"
+        >
+          audit-bcdr
+        </button>
+        <button
+          type="button"
+          data-cmd="intune"
+          class="terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5"
+        >
+          intune-sync
+        </button>
+        <button
+          type="button"
+          data-cmd="edr"
+          class="terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5"
+        >
+          edr-scan
+        </button>
+        <button
+          type="button"
+          data-cmd="telemetry"
+          class="terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5"
+        >
+          telemetry
+        </button>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="hidden sm:flex items-center gap-2">
+        <button
+          id="terminal-rerun-btn"
+          type="button"
+          title="Rerun Execution"
+          class="p-1 rounded text-slate-400 hover:text-amber-400 transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Terminal Content Area -->
+    <div class="p-4 sm:p-6 font-mono text-xs text-slate-300 min-h-[260px] max-h-[360px] overflow-y-auto space-y-3 leading-relaxed">
+      <!-- Active Command Prompt -->
+      <div class="flex items-center gap-2 text-slate-400">
+        <span class="text-emerald-400 font-bold">➜</span>
+        <span class="text-cyan-400">~</span>
+        <span id="terminal-cmd-text" class="text-amber-300 font-semibold">hermes run --audit-bcdr --target=fleet-appliances</span>
+        <span class="terminal-cursor"></span>
+      </div>
+
+      <!-- Dynamic Output Container -->
+      <div id="terminal-stdout" class="space-y-1.5 pt-1 text-[11.5px]">
+        <!-- Output will be injected by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Terminal Footer Status -->
+    <div class="px-4 py-2 bg-[#0a0e17] border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-500">
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>DAEMON: HERMES-CORE v2.4 (ACTIVE)</span>
+      </span>
+      <span>UTF-8 &bull; PTY-SESSION #4012</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function setupTerminalSimulator() {
+    const cmdText = document.getElementById('terminal-cmd-text');
+    const stdout = document.getElementById('terminal-stdout');
+    const tabBtns = document.querySelectorAll('.terminal-tab-btn');
+    const rerunBtn = document.getElementById('terminal-rerun-btn');
+
+    if (!cmdText || !stdout) return;
+
+    const commands: Record<string, { cmd: string; lines: { text: string; type?: 'info' | 'success' | 'warn' | 'cyan' | 'head'; delay?: number }[] }> = {
+      audit: {
+        cmd: 'hermes run --audit-bcdr --target=fleet-appliances',
+        lines: [
+          { text: '[INIT] Contacting Datto SIRIS & Acronis BCDR Orchestrator...', type: 'info' },
+          { text: '[VERIFY] Probing 38 active backup appliances across multi-tenant MSP nodes...', type: 'info' },
+          { text: '  ├─ Datto SIRIS-4 (Tenant-AUS): Screenshot Verification PASSED [RTO < 6m]', type: 'success' },
+          { text: '  ├─ Acronis Cloud Storage: Immutable Append-Only Ledger VALIDATED', type: 'success' },
+          { text: '  ├─ Local VM Standby Drill: Hyper-V snapshot booted successfully (0 dropped packets)', type: 'success' },
+          { text: '[SDO AUDIT] Compliance Score: 100% | RPO SLA: <15 mins | Status: NOMINAL', type: 'cyan' },
+        ],
+      },
+      intune: {
+        cmd: 'intune-cli sync-devices --tenant=m365-production --compliance=strict',
+        lines: [
+          { text: '[ENTRA ID] Authenticating via Certificate-Based Service Principal...', type: 'info' },
+          { text: '[INTUNE] Fetching device state for 2,500+ registered endpoints...', type: 'info' },
+          { text: '  ├─ Windows 11 Autopilot Fleet: 1,840 devices [100% Policy Baseline]', type: 'success' },
+          { text: '  ├─ macOS & iOS Dedicated Profiles: 660 devices [Compliant / FileVault ON]', type: 'success' },
+          { text: '  ├─ BitLocker Key Backup to Entra: 100% Escrowed', type: 'success' },
+          { text: '[SYNC COMPLETE] Zero non-compliant devices. Endpoint health check passed.', type: 'cyan' },
+        ],
+      },
+      edr: {
+        cmd: 'bitdefender-edr --scan-fleet --telemetry=realtime',
+        lines: [
+          { text: '[GRAVITYZONE] Connecting to Bitdefender Global Cloud Security Mesh...', type: 'info' },
+          { text: '[SENSOR] Telemetry active on 1,100+ Enterprise EDR endpoints...', type: 'info' },
+          { text: '  ├─ Threat Detection Engine: Zero active ransomware signatures found', type: 'success' },
+          { text: '  ├─ Anti-Phishing Filter: 47 suspicious inbound payloads neutralized today', type: 'warn' },
+          { text: '  ├─ Vulnerability Assessment: Patch Tuesday remediation at 99.4% fleet coverage', type: 'success' },
+          { text: '[STATUS] Fleet security posture: 0 Critical Alerts | Defense Grade: A+', type: 'cyan' },
+        ],
+      },
+      telemetry: {
+        cmd: 'systemctl status msp-service-desk --show-metrics',
+        lines: [
+          { text: '● msp-service-desk.service - Robiul Hasan L2 Co-Leader Queue Hub', type: 'head' },
+          { text: '   Loaded: loaded (/etc/systemd/system/msp-core.service; enabled)', type: 'info' },
+          { text: '   Active: active (running) since Oct 2022; 5+ years cumulative service', type: 'success' },
+          { text: '   Metrics: Sustained CSAT: >90% | Enterprise Projects Delivered: 25+', type: 'cyan' },
+          { text: '   Team: 10+ Engineers Co-Led & Mentored | SLA Adherence: 99.1%', type: 'success' },
+          { text: '   Status: Ready to accept new enterprise IT consultations & infrastructure roles', type: 'head' },
+        ],
+      },
+    };
+
+    let currentKey = 'audit';
+    let timeoutIds: NodeJS.Timeout[] = [];
+
+    function clearTimeouts() {
+      timeoutIds.forEach((t) => clearTimeout(t));
+      timeoutIds = [];
+    }
+
+    function renderCommand(key: string) {
+      clearTimeouts();
+      currentKey = key;
+      const target = commands[key];
+      if (!target) return;
+
+      // Update active tab styling
+      tabBtns.forEach((btn) => {
+        const btnCmd = btn.getAttribute('data-cmd');
+        if (btnCmd === key) {
+          btn.className = 'terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 font-semibold';
+        } else {
+          btn.className = 'terminal-tab-btn px-2.5 py-1 rounded-md text-[11px] font-mono transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5';
+        }
+      });
+
+      cmdText.textContent = target.cmd;
+      stdout.innerHTML = '';
+
+      target.lines.forEach((line, index) => {
+        const timeout = setTimeout(() => {
+          const row = document.createElement('div');
+          let colorClass = 'text-slate-300';
+          if (line.type === 'success') colorClass = 'text-emerald-400';
+          if (line.type === 'warn') colorClass = 'text-amber-400';
+          if (line.type === 'cyan') colorClass = 'text-cyan-300 font-semibold';
+          if (line.type === 'head') colorClass = 'text-white font-bold';
+
+          row.className = `${colorClass} leading-relaxed animate-fade-in`;
+          row.textContent = line.text;
+          stdout.appendChild(row);
+        }, (index + 1) * 160);
+
+        timeoutIds.push(timeout);
+      });
+    }
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cmdKey = btn.getAttribute('data-cmd');
+        if (cmdKey) renderCommand(cmdKey);
+      });
+    });
+
+    rerunBtn?.addEventListener('click', () => {
+      renderCommand(currentKey);
+    });
+
+    // Initial run
+    renderCommand('audit');
+  }
+
+  setupTerminalSimulator();
+  document.addEventListener('astro:page-load', setupTerminalSimulator);
+</script>

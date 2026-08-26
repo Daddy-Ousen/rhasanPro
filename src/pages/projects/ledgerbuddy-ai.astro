@@ -1,173 +1,160 @@
 ---
-// Dedicated Case Study: LedgerBuddy AI MVP (AMD AI Developer Hackathon Act II)
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
 
-const pageTitle = "LedgerBuddy AI MVP — AMD AI Developer Hackathon | Robiul Hasan";
-const pageDescription = "Technical case study of LedgerBuddy AI MVP, an autonomous financial document and ledger intelligence engine built during the AMD AI Developer Hackathon: Act II.";
+const project = projects.find((p) => p.slug === 'ledgerbuddy-ai') || projects[2];
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`${project.title} — Case Study | ${dossier.name}`}
+  description={project.tagline}
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
     
-    <!-- Breadcrumb & Back Link -->
-    <div class="flex items-center justify-between text-xs font-mono text-slate-400 light:text-slate-600">
-      <a href="/projects" class="hover:text-amber-400 light:hover:text-amber-600 flex items-center gap-1.5 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        <span>Back to Projects</span>
+    <!-- Breadcrumb & Tag -->
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
+        <span>←</span>
+        <span>Back to Projects Matrix</span>
       </a>
-      <span>HACKATHON AI PROTOTYPE</span>
+
+      <span class="px-3 py-1 rounded-full text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">
+        AMD AI Hackathon Act II
+      </span>
     </div>
 
-    <!-- Project Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-medium font-mono">
-        AMD AI DEVELOPER HACKATHON &bull; ACT II COMPETITIVE BUILD
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        LedgerBuddy AI MVP &mdash; Autonomous Financial Intelligence
+    <!-- Case Study Header -->
+    <div class="space-y-4">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        {project.title}
       </h1>
+      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
+        {project.subtitle}
+      </p>
+
+      <!-- Action Links -->
+      <div class="flex items-center gap-3 pt-2">
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs border border-white/15 hover:border-amber-500/40 shadow-lg transition-all hover:scale-105"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>View Source on GitHub (LedgerBuddyAIMVP)</span>
+        </a>
+
+        <a
+          href="https://lablab.ai/u/@rhasan22959110/ai-hackathons/amd-developer-hackathon-act-ii/certificate"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-red-500/10 hover:bg-red-500/20 text-red-400 font-mono text-xs border border-red-500/30 transition-colors"
+        >
+          <span>Lablab.ai Certificate</span>
+          <span>↗</span>
+        </a>
+      </div>
+
+      <!-- Key Metrics Strip -->
+      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
+        {project.metrics.map((m) => (
+          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
+            <span class="block text-xl font-bold font-mono text-amber-400 mt-1">{m.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Case Study Narrative -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
       
-      <p class="text-lg text-slate-300 light:text-slate-700 leading-relaxed">
-        An AI-powered document intelligence and ledger extraction prototype engineered for the AMD AI Developer Hackathon (Act II). Leverages LLM function calling and structured prompt engineering to parse financial records and generate audit-ready entries.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a 
-          href="https://github.com/Daddy-Ousen/LedgerBuddyAIMVP" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-2 shadow-sm"
-        >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>View GitHub Repository</span>
-        </a>
-
-        <a 
-          href="https://lablab.ai/u/@rhasan22959110/ai-hackathons/amd-developer-hackathon-act-ii/certificate" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors flex items-center gap-1.5"
-        >
-          <span>Hackathon Certificate</span>
-          <span class="text-amber-400 light:text-amber-600">&nearr;</span>
-        </a>
-      </div>
-    </header>
-
-    <!-- SECTION: HACKATHON CONTEXT & PROBLEM -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Hackathon Challenge & Technical Scope
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          The <strong>AMD AI Developer Hackathon: Act II</strong> (hosted on lablab.ai) challenged builders to develop practical, high-throughput AI applications that tackle complex real-world data processing challenges using modern LLM capabilities.
-        </p>
-        <p>
-          Financial and accounting operations frequently suffer from manual data entry bottlenecks when handling invoices, receipts, and bank statements. <strong>LedgerBuddy AI MVP</strong> was designed to automate the end-to-end ingestion, schema normalization, and ledger reconciliation pipeline through structured AI agent reasoning.
-        </p>
-      </div>
-    </section>
-
-    <!-- SECTION: ARCHITECTURAL HIGHLIGHTS -->
-    <section class="space-y-6 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Core Architectural Capabilities
-      </h2>
-
-      <div class="grid sm:grid-cols-2 gap-4">
+      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
         
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-amber-400 light:text-amber-600 font-bold uppercase tracking-wider">01. Intelligent Extraction</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Structured Document Parsing</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Ingests unstructured financial documents, PDF receipts, and transaction records, extracting line items, tax rates, vendor identifiers, and transaction totals with strict schema validation.
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>The Challenge</span>
+          </h2>
+          <p>{project.challenge}</p>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>The Engineered Solution</span>
+          </h2>
+          <p>{project.solution}</p>
+          <p>
+            The engine ingests multi-format invoices (PDF, PNG, JPEG), routes raw byte streams through specialized OCR preprocessors, and prompts an LLM via strict Pydantic schemas to yield normalized ledger entries. Arithmetic assertion layers automatically flag discrepancies where Debit &ne; Credit before committing to PostgreSQL.
           </p>
         </div>
 
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-amber-400 light:text-amber-600 font-bold uppercase tracking-wider">02. Automated Reconciliation</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Double-Entry Ledger Generation</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Automatically maps raw receipts and invoices into standard debit/credit double-entry ledger rows, assigning appropriate chart-of-accounts classifications.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-amber-400 light:text-amber-600 font-bold uppercase tracking-wider">03. Anomaly Detection</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Discrepancy & Fraud Scanning</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Identifies mismatched line sums, duplicate billing entries, and suspicious outlier transactions before committing them to persistent accounting tables.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-amber-400 light:text-amber-600 font-bold uppercase tracking-wider">04. Reproducible Codebase</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Open Source Repository</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Engineered with modular Python components, clean virtual environments, and documented setup procedures for straightforward local execution and benchmarking.
-          </p>
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+            <span>Hackathon Results & Impact</span>
+          </h2>
+          <ul class="space-y-2.5">
+            {project.impact.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-400 font-bold text-base leading-none mt-0.5">▹</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
-    </section>
 
-    <!-- SECTION: TECH STACK SPECIFICATION -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Technology Stack & Tools
-      </h2>
+      <!-- Tech Stack & Specifications Sidebar -->
+      <div class="md:col-span-4 space-y-6">
+        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-4">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
+          <div class="flex flex-wrap gap-1.5">
+            {project.technologies.map((tech) => (
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-200 border border-white/5">
+                {tech}
+              </span>
+            ))}
+          </div>
 
-      <div class="p-6 rounded-xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 shadow-sm font-mono text-xs space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <div><strong class="text-white light:text-slate-900">Language:</strong> <span class="text-slate-400 light:text-slate-600">Python 3.10+</span></div>
-          <div><strong class="text-white light:text-slate-900">LLM Engine:</strong> <span class="text-slate-400 light:text-slate-600">Large Language Model Tool Calling & Prompt Pipelines</span></div>
-          <div><strong class="text-white light:text-slate-900">Data Parsing:</strong> <span class="text-slate-400 light:text-slate-600">Structured JSON Schema, Regex & Text Extraction</span></div>
-          <div><strong class="text-white light:text-slate-900">Competition:</strong> <span class="text-slate-400 light:text-slate-600">AMD AI Developer Hackathon: Act II (lablab.ai)</span></div>
-          <div><strong class="text-white light:text-slate-900">Repository:</strong> <span class="text-slate-400 light:text-slate-600">GitHub (Daddy-Ousen/LedgerBuddyAIMVP)</span></div>
+          <div class="pt-4 border-t border-white/10 space-y-2 text-xs font-mono text-slate-400">
+            <div class="flex justify-between">
+              <span>HACKATHON:</span>
+              <span class="text-slate-200">AMD AI Act II</span>
+            </div>
+            <div class="flex justify-between">
+              <span>PLATFORM:</span>
+              <span class="text-slate-200">Lablab.ai</span>
+            </div>
+            <div class="flex justify-between">
+              <span>LICENSE:</span>
+              <span class="text-emerald-400">Open Source (MIT)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-3">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">GitHub Repository</h4>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 underline"
+          >
+            <span>Daddy-Ousen/LedgerBuddyAIMVP</span>
+            <span>↗</span>
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION: NAVIGATION ACTIONS -->
-    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
-      <h2 class="text-xl font-bold text-white light:text-slate-950">
-        Review Code & Competitions
-      </h2>
-      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-        Explore the open-source repository on GitHub or verify the official hackathon certificate on lablab.ai.
-      </p>
+    </div>
 
-      <div class="pt-4 flex flex-wrap items-center gap-4">
-        <a 
-          href="https://github.com/Daddy-Ousen/LedgerBuddyAIMVP" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors flex items-center gap-2 shadow-sm"
-        >
-          <span>Open GitHub Repo &rarr;</span>
-        </a>
-        <a 
-          href="/credentials" 
-          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
-        >
-          View Hackathon Certificate &rarr;
-        </a>
-        <a 
-          href="/projects" 
-          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
-        >
-          &larr; Back to All Projects
-        </a>
-      </div>
-    </section>
+  </div>
 
-  </main>
-
-  <Footer />
-</Layout>
+</BaseLayout>

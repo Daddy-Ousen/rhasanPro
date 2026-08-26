@@ -1,131 +1,237 @@
 ---
-// Dedicated Contact Page: Direct Communication, Email Copy, and Professional Social Connections
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "Contact Robiul Hasan — IT Infrastructure & Systems Support Engineer";
-const pageDescription = "Get in touch with Robiul Hasan for systems administration, cloud infrastructure, enterprise IT support, and automation engineering opportunities.";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DhakaClock from '../components/DhakaClock.astro';
+import { dossier } from '../data/dossier';
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`Contact & Engineering Dispatch | ${dossier.name}`}
+  description="Connect directly with Robiul Hasan for enterprise infrastructure consulting, M365/Intune migrations, or service desk leadership roles."
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
     
-    <!-- Page Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-        DIRECT COMMUNICATION &bull; HIRING MANAGERS & RECRUITERS
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>OPEN FOR SELECT ENTERPRISE ENGAGEMENTS</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        Initialize Direct Communication
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+        Whether you have an infrastructure consultation request, enterprise migration, or service desk engineering inquiry, I'd love to connect.
+      </p>
+    </div>
+
+    <!-- Contact Split Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Direct Channels & Coordinates (Left 5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <div class="double-bezel-outer">
+          <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
+            
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Contact Dossier</span>
+              <h3 class="text-xl font-bold text-white mt-1">{dossier.name}</h3>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">{dossier.role}</p>
+            </div>
+
+            <!-- Live Timezone Clock -->
+            <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-white/5 space-y-2">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Local Timezone Status</span>
+              <DhakaClock />
+            </div>
+
+            <!-- Channels -->
+            <div class="space-y-3 pt-2">
+              
+              <!-- Email -->
+              <a
+                href={`mailto:${dossier.email}`}
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-amber-500/30 text-slate-200 hover:text-amber-400 transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="overflow-hidden">
+                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Direct Email</span>
+                  <span class="text-xs font-mono font-medium truncate block">{dossier.email}</span>
+                </div>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href={dossier.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-blue-500/30 text-slate-200 hover:text-blue-400 transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.88 0-1.6.72-1.6 1.6 0 .88.72 1.6 1.6 1.6.88 0 1.6-.72 1.6-1.6 0-.88-.72-1.6-1.6-1.6Z"/>
+                  </svg>
+                </div>
+                <div class="overflow-hidden">
+                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Professional Network</span>
+                  <span class="text-xs font-mono font-medium truncate block">linkedin.com/in/robiul-hasan</span>
+                </div>
+              </a>
+
+              <!-- GitHub -->
+              <a
+                href={dossier.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-purple-500/30 text-slate-200 hover:text-purple-400 transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                </div>
+                <div class="overflow-hidden">
+                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Code Repository</span>
+                  <span class="text-xs font-mono font-medium truncate block">github.com/Daddy-Ousen</span>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        Let's Connect & Discuss Opportunities
-      </h1>
-      
-      <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
-        I am currently exploring opportunities in Systems Administration, Enterprise Cloud Infrastructure, and Automation-Engineering.
-      </p>
-    </header>
-
-    <!-- CONTACT CARDS -->
-    <section class="space-y-8 pt-6 border-t border-slate-800 light:border-slate-200">
-      
-      <div class="p-8 sm:p-12 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-8">
-        
-        <div class="space-y-3">
-          <h2 class="text-2xl font-bold text-white light:text-slate-950">
-            Direct Email Transmission
-          </h2>
-          <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-            Feel free to reach out directly regarding job opportunities, technical delivery, cloud migrations, or automation inquiries. I typically respond within 24 hours.
-          </p>
-        </div>
-
-        <!-- Action Row -->
-        <div class="flex flex-col sm:flex-row items-center gap-4">
+      <!-- Interactive Contact Form (Right 7 Cols) -->
+      <div class="lg:col-span-7 double-bezel-outer">
+        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-200">
           
-          <!-- Copy Email Button -->
-          <button 
-            type="button" 
-            data-copy-email="rhasan229@gmail.com" 
-            class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/10 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-            </svg>
-            <span>Copy Email (rhasan229@gmail.com)</span>
-          </button>
-
-          <!-- Open mailto client -->
-          <a 
-            href="mailto:rhasan229@gmail.com" 
-            class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 border border-slate-700 light:border-slate-300 text-sm font-medium transition-colors flex items-center justify-center gap-2"
-          >
-            <svg class="w-4 h-4 text-amber-400 light:text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            <span>Open Email Client</span>
-          </a>
-
-          <!-- Download CV Button -->
-          <a 
-            href="/Robiul_Hasan_CV.pdf" 
-            download 
-            class="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 border border-slate-700 light:border-slate-300 text-sm font-medium transition-colors flex items-center justify-center gap-2"
-          >
-            <svg class="w-4 h-4 text-amber-400 light:text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            <span>Download CV</span>
-          </a>
-
-        </div>
-
-        <!-- Social Channels & Location Grid -->
-        <div class="grid sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800 light:border-slate-200 text-xs font-mono">
-          
-          <a 
-            href="https://linkedin.com/in/robiul-hasan-401296137" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 hover:border-amber-400/50 transition-colors flex items-center justify-between group"
-          >
-            <div>
-              <div class="text-slate-400 light:text-slate-500">Professional Network</div>
-              <div class="font-bold text-white light:text-slate-900 group-hover:text-amber-400 transition-colors">LinkedIn Profile</div>
-            </div>
-            <span class="text-amber-400 light:text-amber-600">&nearr;</span>
-          </a>
-
-          <a 
-            href="https://github.com/Daddy-Ousen" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 hover:border-amber-400/50 transition-colors flex items-center justify-between group"
-          >
-            <div>
-              <div class="text-slate-400 light:text-slate-500">Code & Projects</div>
-              <div class="font-bold text-white light:text-slate-900 group-hover:text-amber-400 transition-colors">GitHub Repositories</div>
-            </div>
-            <span class="text-amber-400 light:text-amber-600">&nearr;</span>
-          </a>
-
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 flex items-center justify-between">
-            <div>
-              <div class="text-slate-400 light:text-slate-500">Location</div>
-              <div class="font-bold text-white light:text-slate-900">Dhaka, Bangladesh</div>
-            </div>
-            <span class="text-emerald-400 light:text-emerald-600 font-mono">[UTC+6]</span>
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-white">Send a Dispatch Note</h3>
+            <p class="text-xs text-slate-400 mt-1">Fill out the message fields below or reach out via email directly.</p>
           </div>
 
-        </div>
+          <form id="contact-form" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-mono text-slate-300 mb-1.5">Your Name *</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  required
+                  placeholder="e.g. Alex Morgan"
+                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+                />
+              </div>
 
+              <div>
+                <label for="contact-email" class="block text-xs font-mono text-slate-300 mb-1.5">Your Email *</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  required
+                  placeholder="alex@enterprise.com"
+                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="contact-subject" class="block text-xs font-mono text-slate-300 mb-1.5">Subject / Engagement Area *</label>
+              <input
+                type="text"
+                id="contact-subject"
+                required
+                placeholder="e.g. Infrastructure Consultation / M365 Migration"
+                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-xs font-mono text-slate-300 mb-1.5">Message / Requirements *</label>
+              <textarea
+                id="contact-message"
+                required
+                rows="5"
+                placeholder="Provide context regarding your environment or role inquiry..."
+                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors leading-relaxed"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="contact-submit-btn"
+              class="w-full py-3.5 px-6 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg transition-all flex items-center justify-center gap-2"
+            >
+              <span>Transmit Message</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+
+            <div id="contact-feedback-msg" class="hidden p-3 rounded-xl text-center text-xs font-mono"></div>
+
+          </form>
+
+        </div>
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </div>
 
-  <Footer />
-</Layout>
+</BaseLayout>
+
+<script>
+  function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
+    const emailInput = document.getElementById('contact-email') as HTMLInputElement | null;
+    const subjectInput = document.getElementById('contact-subject') as HTMLInputElement | null;
+    const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+    const feedback = document.getElementById('contact-feedback-msg');
+    const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+
+    if (!form || !feedback) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = nameInput?.value.trim() || '';
+      const email = emailInput?.value.trim() || '';
+      const subject = subjectInput?.value.trim() || '';
+      const message = messageInput?.value.trim() || '';
+
+      if (!name || !email || !subject || !message) {
+        feedback.className = 'p-3 rounded-xl text-center text-xs font-mono bg-red-500/20 text-red-300 border border-red-500/30';
+        feedback.textContent = 'Please fill out all required fields before submitting.';
+        feedback.classList.remove('hidden');
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+
+      // Construct mailto link as seamless client-side dispatch
+      const mailtoUrl = `mailto:rhasan229@gmail.com?subject=${encodeURIComponent(`[Portfolio Dispatch] ${subject}`)}&body=${encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`)}`;
+      
+      feedback.className = 'p-3 rounded-xl text-center text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+      feedback.textContent = 'Preparing email dispatch client... Opening your email composer.';
+      feedback.classList.remove('hidden');
+
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+        if (submitBtn) submitBtn.disabled = false;
+      }, 600);
+    });
+  }
+
+  setupContactForm();
+  document.addEventListener('astro:page-load', setupContactForm);
+</script>

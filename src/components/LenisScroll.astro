@@ -1,0 +1,56 @@
+---
+// LenisScroll.astro
+---
+
+<script>
+  import Lenis from 'lenis';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let lenisInstance: Lenis | null = null;
+
+  function initLenis() {
+    // Respect reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    if (lenisInstance) {
+      lenisInstance.destroy();
+    }
+
+    lenisInstance = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    // Synchronize Lenis with GSAP ScrollTrigger
+    lenisInstance.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenisInstance?.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // Initialize on start and on client-side page load
+  initLenis();
+  document.addEventListener('astro:page-load', () => {
+    initLenis();
+    ScrollTrigger.refresh();
+  });
+
+  document.addEventListener('astro:before-swap', () => {
+    if (lenisInstance) {
+      lenisInstance.destroy();
+      lenisInstance = null;
+    }
+  });
+</script>

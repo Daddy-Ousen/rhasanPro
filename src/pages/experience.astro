@@ -1,195 +1,93 @@
 ---
-// Dedicated Experience Page: In-Depth Work History, Key Project Deliveries, and Technical Impact
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "Work Experience — Robiul Hasan | IT Support Engineer L2";
-const pageDescription = "Explore the detailed employment history, enterprise IT project deliveries, and service desk leadership track record of Robiul Hasan across Techants Solutions, Cobait, and AQSBD.";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import { dossier } from '../data/dossier';
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`Verified Experience & Timeline | ${dossier.name}`}
+  description="Chronological engineering timeline and milestone accomplishments across Techants Solutions, Cobait Dhaka, and AQSBD."
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-6xl mx-auto space-y-16">
     
-    <!-- Page Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-        WORK HISTORY &bull; ENTERPRISE TRACK RECORD
+    <!-- Header Section -->
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        <span>VERIFIED CAREER TRAJECTORY</span>
       </div>
-
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        Professional Experience & Technical Delivery
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        5+ Years of Systems Engineering & Service Desk Leadership
       </h1>
-      
-      <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
-        A comprehensive record of my roles in IT infrastructure support, enterprise project delivery, endpoint administration, and service desk leadership.
+      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+        From Tier-1 server triage to co-leading multi-tiered MSP service desks, delivering 25+ enterprise projects, and defending 1,100+ EDR endpoints.
       </p>
-    </header>
+    </div>
 
-    <!-- ROLES TIMELINE -->
-    <section class="space-y-10 pt-6 border-t border-slate-800 light:border-slate-200">
-      
-      <!-- Role 1: Techants Solutions Pty Ltd -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-slate-900/50 light:bg-white border border-slate-800 light:border-slate-200 shadow-md space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 border-b border-slate-800 light:border-slate-200 pb-5">
-          <div class="space-y-1">
-            <span class="text-xs font-mono text-amber-400 light:text-amber-600 font-semibold uppercase tracking-wider">
-              Current Role &bull; MSP Infrastructure
-            </span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white light:text-slate-950">
-              L2 Support Engineer & Service Desk Co-Leader
-            </h2>
-            <div class="text-sm font-medium text-slate-400 light:text-slate-600">
-              Techants Solutions Pty Ltd &bull; Dhaka, Bangladesh
-            </div>
-          </div>
-          <span class="text-xs font-mono text-slate-300 light:text-slate-700 bg-slate-800 light:bg-slate-100 px-3.5 py-1.5 rounded-full w-fit">
-            Oct 2022 &ndash; Present
-          </span>
-        </div>
-
-        <!-- Role Overview -->
-        <p class="text-sm sm:text-base text-slate-300 light:text-slate-700 leading-relaxed">
-          Lead technical delivery, Tier-2 escalation resolution, and infrastructure management for a broad portfolio of enterprise clients. Co-lead the internal service desk operation, ensuring strict SLA adherence, team mentoring, and continuous service delivery improvement.
-        </p>
-
-        <!-- Detailed Key Deliverables Grid -->
-        <div class="space-y-4 pt-2">
-          <h3 class="text-xs font-mono text-slate-400 light:text-slate-500 uppercase tracking-wider font-semibold">
-            Key Responsibilities & Measurable Impact
-          </h3>
-
-          <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-            
-            <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1.5">
-              <strong class="text-white light:text-slate-900 font-semibold flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                <span>Enterprise Project Delivery</span>
-              </strong>
-              <p class="text-slate-400 light:text-slate-600 leading-relaxed">
-                Led technical coordination and delivery for <strong>25+ enterprise IT projects</strong> across diverse client environments; collaborated on 5+ additional large-scale infrastructure rollouts.
-              </p>
-            </div>
-
-            <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1.5">
-              <strong class="text-white light:text-slate-900 font-semibold flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                <span>Fleet & Security Management</span>
-              </strong>
-              <p class="text-slate-400 light:text-slate-600 leading-relaxed">
-                Managed monthly maintenance, health monitoring, and patch cycles across <strong>2,500+ endpoints</strong>; administered endpoint security/EDR policies for <strong>1,100+ devices</strong>.
-              </p>
-            </div>
-
-            <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1.5">
-              <strong class="text-white light:text-slate-900 font-semibold flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>Service Desk Co-Leadership</span>
-              </strong>
-              <p class="text-slate-400 light:text-slate-600 leading-relaxed">
-                Co-led a 10+ member service desk team, training L1 engineers, standardizing escalation playbooks, and evaluating staff performance to maintain high operational standards.
-              </p>
-            </div>
-
-            <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 light:border-slate-200 space-y-1.5">
-              <strong class="text-white light:text-slate-900 font-semibold flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                <span>BCDR Compliance & CSAT</span>
-              </strong>
-              <p class="text-slate-400 light:text-slate-600 leading-relaxed">
-                Authored quarterly BCDR compliance reports, verified Datto backup agents, and sustained customer satisfaction <strong>above 90%</strong> across concurrent client accounts.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </article>
-
-      <!-- Role 2: Cobait Dhaka -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-slate-900/30 light:bg-white border border-slate-800/80 light:border-slate-200 shadow-sm space-y-5">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 border-b border-slate-800/80 light:border-slate-200 pb-5">
-          <div class="space-y-1">
-            <h2 class="text-xl sm:text-2xl font-bold text-white light:text-slate-950">
-              Jr. Support Engineer
-            </h2>
-            <div class="text-sm font-medium text-slate-400 light:text-slate-600">
-              Cobait Dhaka &bull; Dhaka, Bangladesh
-            </div>
-          </div>
-          <span class="text-xs font-mono text-slate-400 light:text-slate-600 bg-slate-800/60 light:bg-slate-100 px-3 py-1 rounded-full w-fit">
-            2021 &ndash; 2022
-          </span>
-        </div>
-
-        <p class="text-sm sm:text-base text-slate-300 light:text-slate-700 leading-relaxed">
-          Provided first-contact technical support and technical troubleshooting in a high-ticket-volume enterprise support environment, diagnosing hardware, networking, and server infrastructure issues.
-        </p>
-
-        <ul class="space-y-2 text-sm text-slate-300 light:text-slate-700 leading-relaxed list-disc list-inside">
-          <li>Served as primary point of contact for customer inbound technical calls, maintaining high resolution speed under tight SLAs.</li>
-          <li>Diagnosed and resolved software, operating system, and application-level technical issues across managed accounts.</li>
-          <li>Administered client server infrastructure, monitoring scheduled data backups and ensuring disaster readiness.</li>
-        </ul>
-      </article>
-
-      <!-- Role 3: AQSBD -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-slate-900/30 light:bg-white border border-slate-800/80 light:border-slate-200 shadow-sm space-y-5">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 border-b border-slate-800/80 light:border-slate-200 pb-5">
-          <div class="space-y-1">
-            <h2 class="text-xl sm:text-2xl font-bold text-white light:text-slate-950">
-              Information Technology Executive
-            </h2>
-            <div class="text-sm font-medium text-slate-400 light:text-slate-600">
-              AQSBD &bull; Dhaka, Bangladesh
-            </div>
-          </div>
-          <span class="text-xs font-mono text-slate-400 light:text-slate-600 bg-slate-800/60 light:bg-slate-100 px-3 py-1 rounded-full w-fit">
-            2020
-          </span>
-        </div>
-
-        <p class="text-sm sm:text-base text-slate-300 light:text-slate-700 leading-relaxed">
-          Oversaw internal IT operations, documentation standards, and modernization of manual support workflows to improve organizational efficiency.
-        </p>
-
-        <ul class="space-y-2 text-sm text-slate-300 light:text-slate-700 leading-relaxed list-disc list-inside">
-          <li>Digitized outdated manual IT processes and spearheaded infrastructure SOP documentation improvements.</li>
-          <li>Streamlined internal IT communication channels and standardized technical support procedures for employees.</li>
-        </ul>
-      </article>
-
-    </section>
-
-    <!-- NAVIGATION CTAs -->
-    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
-      <h2 class="text-xl font-bold text-white light:text-slate-950">
-        Review Technical Competencies
-      </h2>
-      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-        See how my practical experience maps across cloud platforms, infrastructure management, IT operations, and automation.
-      </p>
-
-      <div class="pt-4 flex flex-wrap items-center gap-4">
-        <a 
-          href="/skills" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
-        >
-          View Skills Matrix &rarr;
-        </a>
-        <a 
-          href="/Robiul_Hasan_CV.pdf" 
-          download 
-          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors flex items-center gap-2"
-        >
-          <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <span>Download CV (PDF)</span>
-        </a>
+    <!-- Overview Stats Banner -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+        <span class="block text-2xl sm:text-3xl font-mono font-bold text-white">2,500+</span>
+        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Endpoints Maintained</span>
       </div>
-    </section>
+      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+        <span class="block text-2xl sm:text-3xl font-mono font-bold text-red-400">1,100+</span>
+        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Bitdefender EDR</span>
+      </div>
+      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+        <span class="block text-2xl sm:text-3xl font-mono font-bold text-amber-400">25+</span>
+        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Projects Delivered</span>
+      </div>
+      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+        <span class="block text-2xl sm:text-3xl font-mono font-bold text-emerald-400">90%+</span>
+        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Sustained CSAT</span>
+      </div>
+    </div>
 
-  </main>
+    <!-- Scroll-Scrubbed Experience Timeline Component -->
+    <ExperienceTimeline />
 
-  <Footer />
-</Layout>
+    <!-- SDO Compliance & BCDR Deep Dive Callout -->
+    <div class="double-bezel-outer">
+      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-8 space-y-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Specialized Operational Mandate</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-white">
+              Service Delivery Optimization (SDO) & Appliance BCDR Audits
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              At Techants Solutions, Robiul produces quarterly SDO compliance audits across client fleets, evaluating RTO/RPO targets, patch compliance, and security posture. He directly manages on-premises Datto SIRIS/ALTO appliances and Acronis Cyber Protect cloud backups to ensure zero-loss recovery during disaster drills.
+            </p>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col gap-3">
+            <a
+              href={dossier.resumePdfUrl}
+              download="Robiul_Hasan_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3 px-5 rounded-xl text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download Complete Verified CV</span>
+            </a>
+            <a
+              href="/contact"
+              class="w-full py-3 px-5 rounded-xl text-center text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-white/10 transition-colors"
+            >
+              Request Consultation
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</BaseLayout>

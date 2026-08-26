@@ -1,222 +1,178 @@
 ---
-// Dedicated Projects Index Page: Full Portfolio of AI Tooling, Web Applications, and Systems Projects
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
 
-const pageTitle = "Projects & Engineering Initiatives — Robiul Hasan";
-const pageDescription = "Explore engineering projects, self-hosted AI tools, hackathon MVPs, and production web platforms built by Robiul Hasan, including Hermes AI, OGGRO Technologies, and LedgerBuddy AI MVP.";
+const categories = ["All", "AI & Automation", "Web Systems", "IT Infrastructure"];
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`Projects & Engineering Case Studies | ${dossier.name}`}
+  description="Explore technical case studies spanning autonomous AI agents, high-speed Next.js platforms, and enterprise MSP deployments."
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-6xl mx-auto space-y-12">
     
-    <!-- Page Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-        ENGINEERING SHOWCASE &bull; PRODUCTION & PERSONAL BUILDS
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        <span>PRODUCTION SYSTEMS & RESEARCH</span>
       </div>
-
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        Projects & Software Initiatives
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        Engineering Projects & Deep-Dive Case Studies
       </h1>
-      
-      <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
-        A catalog of autonomous AI tooling, hackathon MVPs, production web platforms, and automation software I have designed, engineered, and deployed.
+      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+        From self-hosted agentic tool-calling daemons to zero-runtime marketing architectures and global hackathon achievements.
       </p>
-    </header>
+    </div>
 
-    <!-- PROJECTS LIST -->
-    <section class="space-y-8 pt-6 border-t border-slate-800 light:border-slate-200">
-      
-      <!-- Project 1: Hermes -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 light:from-white light:to-slate-50 border border-slate-800 light:border-slate-200 shadow-md space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-          <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-              AGENTIC AI &bull; PERSONAL PROJECT &bull; FEB 2026 – PRESENT
+    <!-- Category Filter Chips -->
+    <div class="flex items-center justify-center gap-2 flex-wrap pb-4">
+      {categories.map((cat, idx) => (
+        <button
+          type="button"
+          data-category={cat}
+          class={`project-filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all ${
+            idx === 0
+              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40 font-semibold'
+              : 'bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5'
+          }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <div
+          class="project-card double-bezel-outer group flex flex-col"
+          data-project-category={project.category}
+        >
+          <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] flex-1 flex flex-col justify-between">
+            
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  {project.category}
+                </span>
+                {project.featured && (
+                  <span class="text-[10px] font-mono text-emerald-400 font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    FEATURED
+                  </span>
+                )}
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors leading-snug">
+                {project.title}
+              </h3>
+              <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+                {project.tagline}
+              </p>
+
+              <!-- Metrics -->
+              {project.metrics && (
+                <div class="grid grid-cols-3 gap-2 my-5 pt-3 border-t border-white/5">
+                  {project.metrics.map((m) => (
+                    <div class="p-2 rounded-lg bg-slate-900/80 border border-white/5 text-center">
+                      <span class="block text-[9px] text-slate-400 font-mono truncate">{m.label}</span>
+                      <span class="block text-xs font-bold font-mono text-emerald-400">{m.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <!-- Technologies -->
+              <div class="flex flex-wrap gap-1 mt-4">
+                {project.technologies.slice(0, 4).map((tech) => (
+                  <span class="px-2 py-0.5 rounded text-[9.5px] font-mono bg-slate-800 text-slate-300 border border-white/5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white light:text-slate-950">
-              Hermes &mdash; Self-Hosted AI Assistant
-            </h2>
-          </div>
-          
-          <div class="flex items-center gap-3">
-            <a 
-              href="/projects/hermes" 
-              class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
-            >
-              <span>Read Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-            <a 
-              href="https://github.com/Daddy-Ousen" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="px-4 py-2 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors flex items-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
 
-        <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
-          Built and self-host an autonomous AI assistant engineered with dynamic tool-calling, headless browser automation, and multi-channel messaging integration. Hermes automates personal workflows, executes terminal tasks, and explores practical applications of agentic AI architectures in IT operations.
-        </p>
+            <!-- Action Link Strip -->
+            <div class="pt-6 border-t border-white/5 flex items-center justify-between mt-6">
+              <a
+                href={project.caseStudyUrl}
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 group/link"
+              >
+                <span>Read Full Case Study</span>
+                <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+              </a>
 
-        <div class="grid sm:grid-cols-3 gap-4 pt-2">
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Tool-Calling Engine</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Autonomous execution of terminal commands, filesystem operations, and HTTP APIs.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span>Browser Automation</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Headless portal interaction, report downloads, and web data extraction.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>Self-Hosted Linux</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Dedicated Linux host with local state persistence and secure webhook gateways.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project 2: OGGRO Technologies -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 light:from-white light:to-slate-50 border border-slate-800 light:border-slate-200 shadow-md space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-          <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 light:text-cyan-700 border border-cyan-500/20 text-xs font-mono font-medium">
-              PRODUCTION WEB DEVELOPMENT &bull; CLIENT DELIVERY
+              <div class="flex items-center gap-2">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="View GitHub Repository"
+                    class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors text-xs"
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                  </a>
+                )}
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Visit Live Site"
+                    class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors text-xs"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white light:text-slate-950">
-              OGGRO Technologies &mdash; Marketing Website
-            </h2>
-          </div>
-          
-          <div class="flex items-center gap-3">
-            <a 
-              href="/projects/oggro-tech" 
-              class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
-            >
-              <span>Read Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-            <a 
-              href="https://www.oggro.tech/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="px-4 py-2 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors flex items-center gap-1.5"
-            >
-              <span>Live Site</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </a>
+
           </div>
         </div>
+      ))}
+    </div>
 
-        <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
-          A fast, fully static marketing website engineered for OGGRO Technologies Limited, the Bangladesh arm of Techants Solutions (Australia). Built with Next.js 15, React 19, TypeScript, and Tailwind CSS v4, shipped as zero-runtime static HTML on Apache/WHM with automated Playwright testing.
-        </p>
+  </div>
 
-        <div class="grid sm:grid-cols-3 gap-4 pt-2">
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span>Static HTML Export</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Pure static build deployed to Apache/WHM without requiring live Node.js servers.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span>Automated QA Testing</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Automated Playwright test suites for layout verification, console errors, and WCAG AA contrast.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-              <span>Vector Brand System</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Custom SVG vector logo system engineered from legacy raster assets for high-DPI clarity.</p>
-          </div>
-        </div>
-      </article>
+</BaseLayout>
 
-      <!-- Project 3: LedgerBuddy AI MVP -->
-      <article class="p-8 sm:p-10 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 light:from-white light:to-slate-50 border border-slate-800 light:border-slate-200 shadow-md space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-          <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-              AMD AI DEVELOPER HACKATHON &bull; ACT II COMPETITIVE BUILD
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white light:text-slate-950">
-              LedgerBuddy AI MVP &mdash; Financial Document Intelligence
-            </h2>
-          </div>
-          
-          <div class="flex items-center gap-3">
-            <a 
-              href="/projects/ledgerbuddy-ai" 
-              class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
-            >
-              <span>Read Case Study</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-            <a 
-              href="https://github.com/Daddy-Ousen/LedgerBuddyAIMVP" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="px-4 py-2 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors flex items-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
+<script>
+  function setupProjectsFilter() {
+    const filterBtns = document.querySelectorAll('.project-filter-btn');
+    const cards = document.querySelectorAll('.project-card');
 
-        <p class="text-slate-300 light:text-slate-700 leading-relaxed text-base">
-          An AI-driven accounting document extraction prototype developed for the AMD AI Developer Hackathon (Act II). Implements LLM tool-calling pipelines to parse unstructured PDF receipts, perform schema validation, and automatically generate double-entry ledger entries with discrepancy detection.
-        </p>
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-category');
 
-        <div class="grid sm:grid-cols-3 gap-4 pt-2">
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Document Parsing</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Automated ingestion of raw receipts and invoices into structured schema records.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Ledger Reconciliation</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Auto-generation of debit/credit rows and chart-of-accounts classification.</p>
-          </div>
-          <div class="p-4 rounded-xl bg-slate-950/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <strong class="text-white light:text-slate-900 text-xs font-mono font-bold flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Open Source MVP</span>
-            </strong>
-            <p class="text-xs text-slate-400 light:text-slate-600">Reproducible Python codebase engineered with clean virtual environments and tests.</p>
-          </div>
-        </div>
-      </article>
+        filterBtns.forEach((b) => {
+          if (b === btn) {
+            b.className = 'project-filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 font-semibold';
+          } else {
+            b.className = 'project-filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5';
+          }
+        });
 
-    </section>
+        cards.forEach((card) => {
+          const cardCat = card.getAttribute('data-project-category');
+          if (cat === 'All' || cardCat === cat) {
+            (card as HTMLElement).style.display = 'flex';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
 
-  </main>
-
-  <Footer />
-</Layout>
+  setupProjectsFilter();
+  document.addEventListener('astro:page-load', setupProjectsFilter);
+</script>

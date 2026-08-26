@@ -1,0 +1,46 @@
+---
+// DhakaClock.astro
+---
+
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-xs font-mono text-slate-300 shadow-inner">
+  <span class="relative flex h-2 w-2">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+  </span>
+  <span class="text-slate-400">DHAKA (UTC+6):</span>
+  <span id="dhaka-time-display" class="font-bold text-amber-400">--:--:--</span>
+</div>
+
+<script>
+  function initDhakaClock() {
+    const display = document.getElementById('dhaka-time-display');
+    if (!display) return;
+
+    function updateTime() {
+      try {
+        const options: Intl.DateTimeFormatOptions = {
+          timeZone: 'Asia/Dhaka',
+          hour12: true,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        };
+        const formatter = new Intl.DateTimeFormat('en-US', options);
+        display.textContent = formatter.format(new Date());
+      } catch {
+        const now = new Date();
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const dhakaDate = new Date(utc + 3600000 * 6);
+        display.textContent = dhakaDate.toLocaleTimeString();
+      }
+    }
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    document.addEventListener('astro:before-swap', () => clearInterval(interval), { once: true });
+  }
+
+  initDhakaClock();
+  document.addEventListener('astro:page-load', initDhakaClock);
+</script>

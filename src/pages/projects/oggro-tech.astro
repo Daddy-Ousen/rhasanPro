@@ -1,166 +1,180 @@
 ---
-// Dedicated Case Study: OGGRO Technologies Marketing Website
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
 
-const pageTitle = "OGGRO Technologies Marketing Website | Robiul Hasan";
-const pageDescription = "Technical case study of designing and building the high-performance, fully static marketing website for OGGRO Technologies Limited using Next.js 15, Tailwind CSS v4, and Playwright automated testing.";
+const project = projects.find((p) => p.slug === 'oggro-tech') || projects[1];
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`${project.title} — Case Study | ${dossier.name}`}
+  description={project.tagline}
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
     
-    <!-- Breadcrumb & Back Link -->
-    <div class="flex items-center justify-between text-xs font-mono text-slate-400 light:text-slate-600">
-      <a href="/" class="hover:text-amber-400 light:hover:text-amber-600 flex items-center gap-1.5 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        <span>Back to Overview</span>
+    <!-- Breadcrumb & Tag -->
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
+        <span>←</span>
+        <span>Back to Projects Matrix</span>
       </a>
-      <span>WEB DEVELOPMENT CASE STUDY</span>
+
+      <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">
+        Web Systems & Architecture
+      </span>
     </div>
 
-    <!-- Project Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 text-cyan-400 light:text-cyan-700 border border-cyan-500/20 text-xs font-medium font-mono">
-        PRODUCTION MARKETING PLATFORM &bull; CLIENT DELIVERY
+    <!-- Case Study Header -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          {project.title}
+        </h1>
+      </div>
+      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
+        {project.subtitle}
+      </p>
+
+      <!-- Outbound Live Site Button -->
+      <div class="pt-2">
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg transition-all hover:scale-105"
+        >
+          <span>Visit Live Production Site (oggro.tech)</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
       </div>
 
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        OGGRO Technologies &mdash; Marketing Website
-      </h1>
+      <!-- Key Metrics Strip -->
+      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
+        {project.metrics.map((m) => (
+          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
+            <span class="block text-xl font-bold font-mono text-emerald-400 mt-1">{m.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Architectural Highlight Bento Card -->
+    <div class="double-bezel-outer">
+      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Zero-Runtime Performance</span>
+            <h3 class="text-xl font-bold text-white mt-1">Next.js 15 App Router & Edge CDN Architecture</h3>
+          </div>
+          <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            100/100 Lighthouse
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-amber-400 font-mono text-xs font-bold block">01. Static Pre-rendering</span>
+            <p class="text-xs text-slate-400">Full static HTML export eliminating runtime Node.js overhead for instant global delivery.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-emerald-400 font-mono text-xs font-bold block">02. Tailwind CSS v4</span>
+            <p class="text-xs text-slate-400">Zero-bundle CSS engine optimized with lightning-fast Vite compiler transforms.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-blue-400 font-mono text-xs font-bold block">03. Playwright E2E CI/CD</span>
+            <p class="text-xs text-slate-400">Automated visual regression tests running on every pull request to ensure 0 visual defects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study Narrative -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
       
-      <p class="text-lg text-slate-300 light:text-slate-700 leading-relaxed">
-        A fast, fully static marketing website engineered for OGGRO Technologies Limited, the Bangladesh arm of Techants Solutions (Australia). Built with Next.js 15 and exported to pure static HTML for maximum speed and serverless deployment.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a 
-          href="https://www.oggro.tech/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors flex items-center gap-2 shadow-sm"
-        >
-          <span>Visit Live Website</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-
-        <div class="text-xs font-mono text-slate-400 light:text-slate-600">
-          Next.js 15 &bull; React 19 &bull; TypeScript &bull; Tailwind CSS v4 &bull; GSAP &bull; Playwright
-        </div>
-      </div>
-    </header>
-
-    <!-- SECTION: SCOPE & ARCHITECTURE -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Project Overview & Engineering Scope
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          I designed and built the complete corporate web presence for <strong>OGGRO Technologies Limited</strong>, a managed IT and cyber security provider. The platform covers the full information architecture across Services, Process, Case Studies, About, Careers, and FAQ pages.
-        </p>
-        <p>
-          The core engineering objective was delivering high visual polish and modern interactive animation without incurring ongoing Node.js server runtime overhead, ensuring the final deliverable could run statically on any basic hosting infrastructure (Apache/WHM) with instant load times.
-        </p>
-      </div>
-    </section>
-
-    <!-- SECTION: KEY TECHNICAL HIGHLIGHTS -->
-    <section class="space-y-6 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Key Architectural Highlights
-      </h2>
-
-      <div class="grid sm:grid-cols-2 gap-4">
+      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
         
-        <!-- Highlight 1 -->
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-bold uppercase tracking-wider">01. Pure Static Export</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Zero Server Runtime Dependency</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            The Next.js 15 App Router codebase compiles directly to static HTML, CSS, and client bundles. It deploys seamlessly to standard Apache/WHM hosting without requiring a live Node.js process, database, or server management.
-          </p>
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>The Challenge</span>
+          </h2>
+          <p>{project.challenge}</p>
         </div>
 
-        <!-- Highlight 2 -->
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-bold uppercase tracking-wider">02. Vector Brand System</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Custom Vector Logo Engineering</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Re-engineered the company's legacy raster image assets into an optimized, scalable SVG vector system that renders razor-sharp across all high-DPI displays and responsive breakpoints.
-          </p>
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>The Engineered Solution</span>
+          </h2>
+          <p>{project.solution}</p>
         </div>
 
-        <!-- Highlight 3 -->
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-bold uppercase tracking-wider">03. Accessibility Standards</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">WCAG AA Contrast & Theming</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Built with strict accessibility compliance. Color contrast ratios across all text, borders, and interactive states meet WCAG AA standards across both dark and light modes.
-          </p>
-        </div>
-
-        <!-- Highlight 4 -->
-        <div class="p-6 rounded-xl bg-slate-900/40 light:bg-white border border-slate-800 light:border-slate-200 space-y-2 shadow-sm">
-          <div class="text-xs font-mono text-cyan-400 light:text-cyan-600 font-bold uppercase tracking-wider">04. Automated Testing</div>
-          <h3 class="text-base font-bold text-white light:text-slate-950">Playwright Quality Assurance</h3>
-          <p class="text-xs text-slate-300 light:text-slate-700 leading-relaxed">
-            Authored automated end-to-end Playwright test suites to audit every page for visual regressions, console errors, responsive layout breaks, and accessibility issues prior to release.
-          </p>
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+            <span>Quantified Results</span>
+          </h2>
+          <ul class="space-y-2.5">
+            {project.impact.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <span class="text-emerald-400 font-bold text-base leading-none mt-0.5">▹</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
-    </section>
 
-    <!-- SECTION: TECH STACK SPECIFICATION -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Technology Stack Specification
-      </h2>
+      <!-- Tech Stack & Specifications Sidebar -->
+      <div class="md:col-span-4 space-y-6">
+        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-4">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
+          <div class="flex flex-wrap gap-1.5">
+            {project.technologies.map((tech) => (
+              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-200 border border-white/5">
+                {tech}
+              </span>
+            ))}
+          </div>
 
-      <div class="p-6 rounded-xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 shadow-sm font-mono text-xs space-y-3">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <div><strong class="text-white light:text-slate-900">Framework:</strong> <span class="text-slate-400 light:text-slate-600">Next.js 15 (App Router), React 19, TypeScript</span></div>
-          <div><strong class="text-white light:text-slate-900">Styling:</strong> <span class="text-slate-400 light:text-slate-600">Tailwind CSS v4 & custom design tokens</span></div>
-          <div><strong class="text-white light:text-slate-900">Motion:</strong> <span class="text-slate-400 light:text-slate-600">GSAP (GreenSock Animation Platform)</span></div>
-          <div><strong class="text-white light:text-slate-900">Theming:</strong> <span class="text-slate-400 light:text-slate-600">next-themes (zero-flicker Dark / Light)</span></div>
-          <div><strong class="text-white light:text-slate-900">Automated Testing:</strong> <span class="text-slate-400 light:text-slate-600">Playwright (A11y & layout test suites)</span></div>
-          <div><strong class="text-white light:text-slate-900">Deployment:</strong> <span class="text-slate-400 light:text-slate-600">Static export on Apache/WHM</span></div>
+          <div class="pt-4 border-t border-white/10 space-y-2 text-xs font-mono text-slate-400">
+            <div class="flex justify-between">
+              <span>HOSTING:</span>
+              <span class="text-slate-200">Vercel Edge</span>
+            </div>
+            <div class="flex justify-between">
+              <span>TESTING:</span>
+              <span class="text-slate-200">Playwright E2E</span>
+            </div>
+            <div class="flex justify-between">
+              <span>STATUS:</span>
+              <span class="text-emerald-400">Live Production</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-3">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">Live Destination</h4>
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 underline"
+          >
+            <span>https://www.oggro.tech</span>
+            <span>↗</span>
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION: NAVIGATION ACTIONS -->
-    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
-      <h2 class="text-xl font-bold text-white light:text-slate-950">
-        Explore the Live Project
-      </h2>
-      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-        The OGGRO Technologies website is live in production. You can inspect the design execution, responsive performance, and dark/light theming directly.
-      </p>
+    </div>
 
-      <div class="pt-4 flex flex-wrap items-center gap-4">
-        <a 
-          href="https://www.oggro.tech/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors flex items-center gap-2 shadow-sm"
-        >
-          <span>Open oggro.tech &rarr;</span>
-        </a>
-        <a 
-          href="/" 
-          class="px-4 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
-        >
-          &larr; Return to Homepage
-        </a>
-      </div>
-    </section>
+  </div>
 
-  </main>
-
-  <Footer />
-</Layout>
+</BaseLayout>

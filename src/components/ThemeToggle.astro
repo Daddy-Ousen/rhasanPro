@@ -1,0 +1,71 @@
+---
+// ThemeToggle.astro
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle dark/light mode"
+  class="relative p-2 rounded-full text-slate-300 hover:text-amber-400 dark:text-slate-300 dark:hover:text-amber-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 bg-slate-800/40 border border-white/10 hover:border-amber-500/30"
+>
+  <!-- Sun Icon (shown in dark mode) -->
+  <svg
+    id="theme-toggle-sun"
+    class="w-4 h-4 hidden"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+  </svg>
+  <!-- Moon Icon (shown in light mode) -->
+  <svg
+    id="theme-toggle-moon"
+    class="w-4 h-4 hidden"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  </svg>
+</button>
+
+<script>
+  function setupThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-toggle-sun');
+    const moonIcon = document.getElementById('theme-toggle-moon');
+
+    function applyTheme(isLight: boolean) {
+      if (isLight) {
+        document.documentElement.classList.add('light');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.remove('light');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    const isLight = savedTheme === 'light';
+    applyTheme(isLight);
+
+    toggleBtn?.addEventListener('click', () => {
+      const isCurrentlyLight = document.documentElement.classList.contains('light');
+      const newLightState = !isCurrentlyLight;
+      localStorage.setItem('theme', newLightState ? 'light' : 'dark');
+      applyTheme(newLightState);
+    });
+  }
+
+  // Run on initial load and after view transitions
+  setupThemeToggle();
+  document.addEventListener('astro:page-load', setupThemeToggle);
+</script>

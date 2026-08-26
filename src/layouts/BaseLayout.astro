@@ -1,0 +1,92 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import SeoHead from '../components/SeoHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LenisScroll from '../components/LenisScroll.astro';
+import HermesChatWidget from '../components/HermesChatWidget.astro';
+import Analytics from '@vercel/analytics/astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <SeoHead title={title} description={description} image={image} />
+    <ClientRouter />
+  </head>
+  <body class="bg-[#0b0f17] text-slate-100 min-h-screen relative selection:bg-amber-500/30 selection:text-amber-300">
+    
+    <!-- Background Noise & Circuit Grid -->
+    <div class="noise-overlay"></div>
+    <div class="fixed inset-0 bg-grid-mesh pointer-events-none z-0 opacity-40"></div>
+
+    <!-- Ambient Cursor Glow Spotlight -->
+    <div
+      id="ambient-cursor-glow"
+      class="fixed w-[500px] h-[500px] rounded-full bg-gradient-to-br from-amber-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500 z-0 opacity-0 md:opacity-70"
+    ></div>
+
+    <!-- Top Glow Accent Orbs -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none z-0"></div>
+    <div class="fixed top-20 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- Floating Navigation Bar -->
+      <Header />
+
+      <!-- Main Content Slot -->
+      <main class="flex-1 w-full">
+        <slot />
+      </main>
+
+      <!-- Global Double-Bezel Footer -->
+      <Footer />
+
+      <!-- Floating Hermes AI Ambassador -->
+      <HermesChatWidget />
+    </div>
+
+    <!-- Momentum Smooth Scrolling Engine -->
+    <LenisScroll />
+
+    <!-- Ambient Cursor Follower Script -->
+    <script>
+      function setupAmbientGlow() {
+        const glow = document.getElementById('ambient-cursor-glow');
+        if (!glow || window.matchMedia('(max-width: 768px)').matches) return;
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let currentX = mouseX;
+        let currentY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+          currentX += (mouseX - currentX) * 0.08;
+          currentY += (mouseY - currentY) * 0.08;
+          glow.style.transform = `translate3d(${currentX - 250}px, ${currentY - 250}px, 0)`;
+          requestAnimationFrame(animateGlow);
+        }
+
+        requestAnimationFrame(animateGlow);
+      }
+
+      setupAmbientGlow();
+      document.addEventListener('astro:page-load', setupAmbientGlow);
+    </script>
+    <Analytics />
+  </body>
+</html>

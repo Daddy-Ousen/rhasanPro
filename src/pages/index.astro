@@ -1,32 +1,229 @@
 ---
-// Primary Portfolio Homepage for Robiul Hasan (rhasan.pro)
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
-import Skills from '../components/Skills.astro';
-import Projects from '../components/Projects.astro';
-import Certifications from '../components/Certifications.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TelemetryBento from '../components/TelemetryBento.astro';
+import TerminalSimulator from '../components/TerminalSimulator.astro';
+import CredentialTiltCard from '../components/CredentialTiltCard.astro';
+import { dossier } from '../data/dossier';
+import { projects } from '../data/projects';
+import { credentials } from '../data/credentials';
+import DhakaClock from '../components/DhakaClock.astro';
 
-const pageTitle = "Robiul Hasan — IT Infrastructure & Systems Support Engineer L2";
-const pageDescription = "Portfolio of Robiul Hasan — IT Support Engineer L2 & Service Desk Co-Leader at Techants Solutions managing 2,500+ endpoints, Microsoft 365, Azure, and BCDR. Exploring Systems Administration & Cloud roles.";
+const featuredProjects = projects.filter((p) => p.featured);
+const featuredCredentials = credentials.slice(0, 3);
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
+<BaseLayout
+  title={`${dossier.name} — ${dossier.role}`}
+  description={dossier.shortBio}
+>
+  
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 pt-12 pb-20 max-w-6xl mx-auto">
+    
+    <!-- Operational Status Pill -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-8 shadow-[0_0_20px_rgba(16,185,129,0.15)] animate-fade-in">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <span class="font-bold tracking-wider">{dossier.statusBadge}</span>
+      <span class="text-slate-600">|</span>
+      <span class="text-slate-400 font-mono">TECHANTS SOLUTIONS (MSP)</span>
+    </div>
 
-  <main class="max-w-6xl mx-auto px-6 py-12 lg:py-16 space-y-24">
-    <Hero />
-    <About />
-    <Experience />
-    <Skills />
-    <Projects />
-    <Certifications />
-    <Contact />
-  </main>
+    <!-- Main Title & Headline -->
+    <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.1] mb-6">
+      Engineering Resilient <br class="hidden sm:block" />
+      <span class="bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
+        Enterprise Infrastructure
+      </span>
+      <br class="hidden sm:block" />
+      & Autonomous Systems
+    </h1>
 
-  <Footer />
-</Layout>
+    <p class="hero-subtitle text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+      Hi, I'm <strong class="text-white font-semibold">Robiul Hasan</strong>. L2 Systems Support Engineer and Service Desk Co-Leader managing 2,500+ endpoints, 1,100+ Bitdefender EDR assets, Datto BCDR appliances, and building agentic AI automations.
+    </p>
+
+    <!-- CTAs with Button-in-Button Micro-Interactions -->
+    <div class="hero-cta flex flex-wrap items-center justify-center gap-4">
+      
+      <!-- Primary: Explore Projects -->
+      <a
+        href="/projects"
+        class="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all hover:scale-105 active:scale-98"
+      >
+        <span>Explore Case Studies</span>
+        <div class="w-7 h-7 rounded-full bg-slate-950/20 group-hover:bg-slate-950/30 flex items-center justify-center text-slate-950 transition-transform group-hover:translate-x-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Secondary: Download Verified CV -->
+      <a
+        href={dossier.resumePdfUrl}
+        download="Robiul_Hasan_CV.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm border border-white/10 hover:border-amber-500/40 shadow-lg transition-all hover:scale-105 active:scale-98"
+      >
+        <span>Download Official CV</span>
+        <div class="w-7 h-7 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500/30 transition-transform group-hover:translate-y-0.5">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Tertiary: Contact / Dispatch -->
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+      >
+        <span>Get in Touch</span>
+        <span class="text-amber-400">→</span>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- TELEMETRY & BENTO SECTION -->
+  <section class="px-4 py-16 relative z-10">
+    <TelemetryBento />
+  </section>
+
+  <!-- INTERACTIVE SIMULATED TERMINAL -->
+  <section class="px-4 py-16 relative z-10 max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span>INTERACTIVE MSP & DAEMON TERMINAL</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        Simulated Infrastructure Automation
+      </h2>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">
+        Execute simulated diagnostic scripts to inspect BCDR backups, sync Intune fleets, and trigger Bitdefender EDR scans.
+      </p>
+    </div>
+
+    <TerminalSimulator />
+  </section>
+
+  <!-- FEATURED PROJECTS SHOWCASE -->
+  <section class="px-4 py-20 relative z-10 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span>AUTONOMOUS & WEB ARCHITECTURES</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          Featured Engineering Case Studies
+        </h2>
+      </div>
+
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 font-semibold group"
+      >
+        <span>View all systems & projects</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featuredProjects.map((project) => (
+        <div class="double-bezel-outer group flex flex-col">
+          <div class="double-bezel-inner p-6 sm:p-7 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] flex-1 flex flex-col justify-between">
+            
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  {project.category}
+                </span>
+                <span class="text-[10px] font-mono text-slate-500">Case Study</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors leading-snug">
+                {project.title}
+              </h3>
+              <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+                {project.tagline}
+              </p>
+
+              <!-- Metrics -->
+              {project.metrics && (
+                <div class="grid grid-cols-2 gap-2 my-4 pt-3 border-t border-white/5">
+                  {project.metrics.slice(0, 2).map((m) => (
+                    <div class="p-2 rounded-lg bg-slate-900/80 border border-white/5">
+                      <span class="block text-[9.5px] text-slate-400 font-mono truncate">{m.label}</span>
+                      <span class="block text-xs font-bold font-mono text-emerald-400">{m.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+              <a
+                href={project.caseStudyUrl}
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 group/link"
+              >
+                <span>Deep Dive Architecture</span>
+                <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+              </a>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Visit Live URL"
+                  class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors text-xs"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- VERIFIED CREDENTIALS STRIP -->
+  <section class="px-4 py-20 relative z-10 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+          <span>OFFICIAL CERTIFICATIONS & AWARDS</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          Verified Credentials
+        </h2>
+      </div>
+
+      <a
+        href="/credentials"
+        class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 font-semibold group"
+      >
+        <span>View all credentials & badges</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featuredCredentials.map((cred) => (
+        <CredentialTiltCard credential={cred} />
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>

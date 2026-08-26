@@ -1,131 +1,233 @@
 ---
-// Dedicated About Page: Deep-Dive Professional Background, Technical Scope, and Leadership Philosophy
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const pageTitle = "About Robiul Hasan — IT Infrastructure & Systems Engineer";
-const pageDescription = "Learn about Robiul Hasan's background in enterprise MSP infrastructure, 2,500+ endpoint management, service desk leadership, and career transition to systems administration and cloud infrastructure.";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { dossier } from '../data/dossier';
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Header />
-
-  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16 space-y-16">
+<BaseLayout
+  title={`About & Leadership Dossier | ${dossier.name}`}
+  description={dossier.fullBio}
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-20">
     
-    <!-- Page Header -->
-    <header class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 light:text-amber-700 border border-amber-500/20 text-xs font-mono font-medium">
-        PROFESSIONAL PROFILE &bull; 5+ YEARS EXPERIENCE
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        <span>ENGINEERING DOSSIER & BACKGROUND</span>
       </div>
-
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        Engineering Reliability Across Enterprise Infrastructure
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        Systems Integrity, Fleet Defense & Engineering Leadership
       </h1>
-      
-      <p class="text-lg sm:text-xl text-slate-300 light:text-slate-700 leading-relaxed">
-        An in-depth look at my background in IT systems support, multi-tenant MSP infrastructure management, service desk co-leadership, and self-hosted automation tooling.
+      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+        Discover Robiul Hasan's background, operating ethos, and approach to enterprise infrastructure resilience.
       </p>
-    </header>
+    </div>
 
-    <!-- SECTION 1: CORE BACKGROUND -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Who I Am & Professional Foundation
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          I am an IT infrastructure and support engineer based in Dhaka, Bangladesh, with over 5 years of hands-on experience keeping complex enterprise IT environments reliable, secure, and fully operational.
-        </p>
-        <p>
-          My technical foundation is built on deep practical administration across Microsoft 365, Azure Active Directory / Entra ID, Windows Server, Hyper-V, and modern endpoint management with Microsoft Intune. I approach every system with a reliability-first mindset: ensuring high uptime, strict access controls, prompt incident escalation handling, and seamless disaster recovery readiness.
-        </p>
-      </div>
-    </section>
-
-    <!-- SECTION 2: MSP ENVIRONMENT & SERVICE DESK CO-LEADERSHIP -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Multi-Tenant MSP Scale & Service Desk Leadership
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          Currently, I serve as an <strong>L2 Support Engineer & Service Desk Co-Leader at Techants Solutions Pty Ltd</strong>, a premier Managed Service Provider (MSP). In this role, I manage infrastructure and ongoing technical delivery across a diverse portfolio of enterprise client organizations.
-        </p>
-        
-        <div class="grid sm:grid-cols-2 gap-4 pt-2">
-          <div class="p-5 rounded-xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <div class="text-2xl font-bold font-mono text-white light:text-slate-900">2,500+</div>
-            <div class="text-xs text-amber-400 light:text-amber-600 font-semibold uppercase">Endpoints Under Monthly Maintenance</div>
-            <p class="text-xs text-slate-400 light:text-slate-600">Patch management, RMM monitoring, system updates, and compliance verification across distributed fleets.</p>
+    <!-- Core Bio & Profile Split -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Profile Dossier Card (Left 5 Cols) -->
+      <div class="lg:col-span-5 double-bezel-outer">
+        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
+          
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-mono font-extrabold text-slate-950 text-2xl shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+              RH
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">{dossier.name}</h2>
+              <p class="text-xs text-amber-400 font-mono mt-0.5">L2 Systems Support Engineer</p>
+              <p class="text-[11px] text-slate-400 font-mono">Techants Solutions Pty Ltd</p>
+            </div>
           </div>
 
-          <div class="p-5 rounded-xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-1.5 shadow-sm">
-            <div class="text-2xl font-bold font-mono text-white light:text-slate-900">1,100+</div>
-            <div class="text-xs text-cyan-400 light:text-cyan-600 font-semibold uppercase">Security & Antivirus Assets</div>
-            <p class="text-xs text-slate-400 light:text-slate-600">Endpoint detection and response (EDR), malware remediation, threat monitoring, and policy enforcement.</p>
+          <div class="space-y-2.5 pt-4 border-t border-white/10 text-xs font-mono">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">LOCATION:</span>
+              <span class="text-slate-200 font-semibold">{dossier.location}</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">TIMEZONE:</span>
+              <span class="text-emerald-400 font-semibold">{dossier.timezone} (UTC+6)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">EXPERIENCE:</span>
+              <span class="text-amber-400 font-semibold">{dossier.yearsOfExperience}</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">FLEET SCALE:</span>
+              <span class="text-slate-200 font-semibold">2,500+ Endpoints</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">EDR DEFENSE:</span>
+              <span class="text-red-400 font-semibold">1,100+ Bitdefender</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex flex-col gap-2.5">
+            <a
+              href={dossier.resumePdfUrl}
+              download="Robiul_Hasan_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-colors flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download Verified Resume</span>
+            </a>
+            <a
+              href="/contact"
+              class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-white/10 transition-colors"
+            >
+              Contact Directly
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Narrative & Background (Right 7 Cols) -->
+      <div class="lg:col-span-7 space-y-6 text-slate-300 text-sm leading-relaxed">
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-white/10 shadow-lg space-y-4">
+          <h3 class="text-lg font-bold text-white flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>Professional Journey</span>
+          </h3>
+          <p>
+            Robiul Hasan is an L2 IT Infrastructure & Systems Support Engineer and Service Desk Co-Leader at <strong>Techants Solutions Pty Ltd</strong>, a premier global Managed Services Provider (MSP). 
+          </p>
+          <p>
+            With over 5 years of hands-on experience spanning enterprise multi-tenant cloud migrations, automated endpoint compliance, and high-stakes disaster recovery operations, Robiul maintains the continuous availability and security posture of more than <strong>2,500+ endpoints</strong> and <strong>1,100+ Bitdefender GravityZone EDR</strong> protected devices.
+          </p>
+          <p>
+            Combining systematic root-cause problem solving with modern software automation, Robiul builds Python-driven orchestration tools, automated backup health validators for Datto and Acronis appliances, and autonomous LLM agents (such as <em>Hermes</em>) that eliminate repetitive engineering friction.
+          </p>
+        </div>
+
+        <!-- Academic Foundation -->
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-white/10 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span>Academic Foundation</span>
+            </h3>
+            <span class="text-xs font-mono text-amber-400 font-semibold">{dossier.education.year}</span>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold text-white">{dossier.education.degree}</h4>
+            <p class="text-xs text-slate-400 font-mono mt-0.5">{dossier.education.institution}</p>
+          </div>
+
+          <ul class="space-y-1.5 pt-2 text-xs text-slate-400">
+            {dossier.education.highlights.map((h) => (
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 font-bold mt-0.5">▹</span>
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Leadership Philosophy Banner -->
+    <div class="double-bezel-outer">
+      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-gradient-to-r from-[#0f1420] via-slate-900 to-[#0f1420] border border-amber-500/20">
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Leadership Credo</span>
+          <blockquote class="text-lg sm:text-2xl font-semibold text-white italic leading-snug">
+            "{dossier.leadershipQuote}"
+          </blockquote>
+          <p class="text-xs font-mono text-slate-400">
+            — Robiul Hasan, Service Desk Co-Leader (10+ Member Team)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Core Engineering Pillars -->
+    <div class="space-y-6">
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Core Engineering Principles
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">Non-negotiable standards guiding every infrastructure deployment.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="double-bezel-outer group">
+          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">
+                Immutable BCDR & Continuity
+              </h3>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Backups are only as valid as their last bare-metal restore drill. Every tenant appliance is verified daily with screenshot boot validation, air-gapped snapshots, and sub-15-minute RPO recovery points.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-amber-400">
+              Datto SIRIS &bull; Acronis &bull; SDO
+            </div>
           </div>
         </div>
 
-        <p>
-          As a Service Desk Co-Leader, I co-manage a team of 10+ technical support professionals. I am responsible for training and onboarding L1 staff, evaluating team performance on incident handling, managing Tier-2 escalations, and establishing standardized operating procedures (SOPs). Throughout this operational volume, our team sustains a <strong>customer satisfaction rate (CSAT) consistently above 90%</strong>.
-        </p>
+        <div class="double-bezel-outer group">
+          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-red-400 transition-colors">
+                Zero-Trust Endpoint Security
+              </h3>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Trust nothing; verify explicitly. Strict conditional access, mandatory MFA, automated Intune compliance policies, BitLocker encryption escrow, and active 24/7 EDR behavior telemetry.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-red-400">
+              Bitdefender EDR &bull; Intune &bull; Entra ID
+            </div>
+          </div>
+        </div>
+
+        <div class="double-bezel-outer group">
+          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+                Automation & Agentic Tooling
+              </h3>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                Repetitive manual tasks represent systemic debt. We build idempotent PowerShell/Bash fleet scripts, continuous Playwright testing suites, and sandboxed AI assistants to accelerate resolution speed.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-emerald-400">
+              Python &bull; Bash &bull; Agentic AI
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
+    </div>
 
-    <!-- SECTION 3: BCDR & SYSTEMS RELIABILITY -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Business Continuity & Disaster Recovery (BCDR)
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          A core pillar of my day-to-day responsibility is business continuity ownership. I oversee the deployment of Datto disaster recovery and backup agents across client servers and endpoints, verify backup integrity, and generate comprehensive quarterly BCDR audit reports to maintain Service Delivery Operations (SDO) compliance.
-        </p>
-      </div>
-    </section>
+  </div>
 
-    <!-- SECTION 4: AUTOMATION & AGENTIC AI VISION -->
-    <section class="space-y-4 pt-6 border-t border-slate-800 light:border-slate-200">
-      <h2 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-        Automation, Scripting & Agentic AI
-      </h2>
-      <div class="space-y-4 text-slate-300 light:text-slate-700 leading-relaxed text-base">
-        <p>
-          Beyond operational administration, I actively build software and automation to eliminate manual toil. Leveraging Python, Bash scripting, and modern LLM tool-calling APIs, I built and self-host <strong>Hermes</strong>, an autonomous AI assistant capable of executing shell scripts, navigating web portals through headless browsers, and interacting with messaging gateways.
-        </p>
-        <p>
-          I believe the future of enterprise systems administration lies at the intersection of rock-solid cloud infrastructure and intelligent, secure automation workflows.
-        </p>
-      </div>
-    </section>
-
-    <!-- SECTION 5: CAREER TRAJECTORY & GOALS -->
-    <section class="p-8 rounded-2xl bg-slate-900/60 light:bg-white border border-slate-800 light:border-slate-200 space-y-4 shadow-sm">
-      <h2 class="text-xl font-bold text-white light:text-slate-950">
-        Career Trajectory & Next Steps
-      </h2>
-      <p class="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
-        I am currently seeking opportunities to transition into dedicated <strong>Systems Administration, Cloud Infrastructure Engineering, and IT Operations Engineering</strong> roles where I can leverage my multi-tenant MSP experience, Microsoft cloud expertise, and automation mindset to scale enterprise systems.
-      </p>
-
-      <div class="pt-4 flex flex-wrap items-center gap-4">
-        <a 
-          href="/experience" 
-          class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-sm"
-        >
-          Review Full Experience &rarr;
-        </a>
-        <a 
-          href="/contact" 
-          class="px-5 py-2.5 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-white light:text-slate-900 text-xs font-medium border border-slate-700 light:border-slate-300 transition-colors"
-        >
-          Get in Touch
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <Footer />
-</Layout>
+</BaseLayout>
