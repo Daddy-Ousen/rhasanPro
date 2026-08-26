@@ -6,6 +6,8 @@ export interface Dossier {
   location: string;
   timezone: string;
   email: string;
+  phone: string;
+  whatsappUrl: string;
   github: string;
   linkedin: string;
   portfolioUrl: string;
@@ -42,6 +44,8 @@ export const dossier: Dossier = {
   location: "Dhaka, Bangladesh",
   timezone: "UTC+6",
   email: "rhasan229@gmail.com",
+  phone: "+8801843212123",
+  whatsappUrl: "https://wa.me/8801843212123",
   github: "https://github.com/Daddy-Ousen",
   linkedin: "https://linkedin.com/in/robiul-hasan-401296137",
   portfolioUrl: "https://rhasan.pro",

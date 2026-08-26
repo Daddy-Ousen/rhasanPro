@@ -6,7 +6,7 @@ import { dossier } from '../data/dossier';
 
 <BaseLayout
   title={`Contact & Engineering Dispatch | ${dossier.name}`}
-  description="Connect directly with Robiul Hasan for enterprise infrastructure consulting, M365/Intune migrations, or service desk leadership roles."
+  description="Connect directly with Robiul Hasan via WhatsApp (+8801843212123) or Email for enterprise infrastructure consulting, M365 migrations, or service desk leadership roles."
 >
   
   <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
@@ -17,10 +17,10 @@ import { dossier } from '../data/dossier';
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>OPEN FOR SELECT ENTERPRISE ENGAGEMENTS</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
         Initialize Direct Communication
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+      <p class="text-slate-400 light:text-slate-600 text-sm sm:text-base mt-4 leading-relaxed">
         Whether you have an infrastructure consultation request, enterprise migration, or service desk engineering inquiry, I'd love to connect.
       </p>
     </div>
@@ -32,27 +32,45 @@ import { dossier } from '../data/dossier';
       <div class="lg:col-span-5 space-y-6">
         
         <div class="double-bezel-outer">
-          <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
+          <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white text-slate-300 light:text-slate-700 space-y-6">
             
             <div>
               <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Contact Dossier</span>
-              <h3 class="text-xl font-bold text-white mt-1">{dossier.name}</h3>
-              <p class="text-xs text-slate-400 font-mono mt-0.5">{dossier.role}</p>
+              <h3 class="text-xl font-bold text-white light:text-slate-950 mt-1">{dossier.name}</h3>
+              <p class="text-xs text-slate-400 light:text-slate-600 font-mono mt-0.5">{dossier.role}</p>
             </div>
 
             <!-- Live Timezone Clock -->
-            <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-white/5 space-y-2">
-              <span class="text-[10px] font-mono text-slate-400 block uppercase">Local Timezone Status</span>
+            <div class="p-3.5 rounded-2xl bg-slate-900/90 light:bg-slate-50 border border-white/5 light:border-slate-200 space-y-2">
+              <span class="text-[10px] font-mono text-slate-400 light:text-slate-500 block uppercase">Local Timezone Status</span>
               <DhakaClock />
             </div>
 
             <!-- Channels -->
             <div class="space-y-3 pt-2">
               
+              <!-- WhatsApp Direct -->
+              <a
+                href={dossier.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-emerald-500/40 text-slate-200 light:text-slate-800 hover:text-emerald-400 transition-all group"
+              >
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.76-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+                  </svg>
+                </div>
+                <div class="overflow-hidden">
+                  <span class="block text-[10px] font-mono text-slate-500 uppercase">WhatsApp Direct</span>
+                  <span class="text-xs font-mono font-medium truncate block">{dossier.phone}</span>
+                </div>
+              </a>
+
               <!-- Email -->
               <a
                 href={`mailto:${dossier.email}`}
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-amber-500/30 text-slate-200 hover:text-amber-400 transition-all group"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-amber-500/30 text-slate-200 light:text-slate-800 hover:text-amber-400 transition-all group"
               >
                 <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,7 +88,7 @@ import { dossier } from '../data/dossier';
                 href={dossier.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-blue-500/30 text-slate-200 hover:text-blue-400 transition-all group"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-blue-500/30 text-slate-200 light:text-slate-800 hover:text-blue-400 transition-all group"
               >
                 <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -88,7 +106,7 @@ import { dossier } from '../data/dossier';
                 href={dossier.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/5 hover:border-purple-500/30 text-slate-200 hover:text-purple-400 transition-all group"
+                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-purple-500/30 text-slate-200 light:text-slate-800 hover:text-purple-400 transition-all group"
               >
                 <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -110,73 +128,78 @@ import { dossier } from '../data/dossier';
 
       <!-- Interactive Contact Form (Right 7 Cols) -->
       <div class="lg:col-span-7 double-bezel-outer">
-        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-200">
+        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white text-slate-200 light:text-slate-800">
           
           <div class="mb-6">
-            <h3 class="text-xl font-bold text-white">Send a Dispatch Note</h3>
-            <p class="text-xs text-slate-400 mt-1">Fill out the message fields below or reach out via email directly.</p>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]"></span>
+              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Instant Dispatch via WhatsApp</span>
+            </div>
+            <h3 class="text-xl font-bold text-white light:text-slate-950">Send a Dispatch Note</h3>
+            <p class="text-xs text-slate-400 light:text-slate-600 mt-1">Fill out the form below to send an instant message directly to Robiul on WhatsApp (+8801843212123).</p>
           </div>
 
           <form id="contact-form" class="space-y-4">
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="contact-name" class="block text-xs font-mono text-slate-300 mb-1.5">Your Name *</label>
+                <label for="contact-name" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Your Name *</label>
                 <input
                   type="text"
                   id="contact-name"
                   required
                   placeholder="e.g. Alex Morgan"
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
                 />
               </div>
 
               <div>
-                <label for="contact-email" class="block text-xs font-mono text-slate-300 mb-1.5">Your Email *</label>
+                <label for="contact-email" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Your Email *</label>
                 <input
                   type="email"
                   id="contact-email"
                   required
                   placeholder="alex@enterprise.com"
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label for="contact-subject" class="block text-xs font-mono text-slate-300 mb-1.5">Subject / Engagement Area *</label>
+              <label for="contact-subject" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Subject / Engagement Area *</label>
               <input
                 type="text"
                 id="contact-subject"
                 required
                 placeholder="e.g. Infrastructure Consultation / M365 Migration"
-                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors"
+                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
               />
             </div>
 
             <div>
-              <label for="contact-message" class="block text-xs font-mono text-slate-300 mb-1.5">Message / Requirements *</label>
+              <label for="contact-message" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Message / Requirements *</label>
               <textarea
                 id="contact-message"
                 required
                 rows="5"
                 placeholder="Provide context regarding your environment or role inquiry..."
-                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 transition-colors leading-relaxed"
+                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors leading-relaxed"
               ></textarea>
             </div>
 
             <button
               type="submit"
               id="contact-submit-btn"
-              class="w-full py-3.5 px-6 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg transition-all flex items-center justify-center gap-2"
+              class="w-full py-3.5 px-6 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer group"
             >
-              <span>Transmit Message</span>
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <svg class="w-4 h-4 fill-current text-slate-950" viewBox="0 0 24 24">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.76-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
               </svg>
+              <span>Transmit Message via WhatsApp</span>
+              <span class="group-hover:translate-x-1 transition-transform font-bold">→</span>
             </button>
 
-            <div id="contact-feedback-msg" class="hidden p-3 rounded-xl text-center text-xs font-mono"></div>
+            <div id="contact-feedback-msg" class="hidden p-3.5 rounded-xl text-center text-xs font-mono"></div>
 
           </form>
 
@@ -210,25 +233,30 @@ import { dossier } from '../data/dossier';
       const message = messageInput?.value.trim() || '';
 
       if (!name || !email || !subject || !message) {
-        feedback.className = 'p-3 rounded-xl text-center text-xs font-mono bg-red-500/20 text-red-300 border border-red-500/30';
-        feedback.textContent = 'Please fill out all required fields before submitting.';
+        feedback.className = 'p-3.5 rounded-xl text-center text-xs font-mono bg-red-500/20 text-red-300 border border-red-500/30';
+        feedback.textContent = '⚠️ Please fill out all required fields before dispatching.';
         feedback.classList.remove('hidden');
         return;
       }
 
       if (submitBtn) submitBtn.disabled = true;
 
-      // Construct mailto link as seamless client-side dispatch
-      const mailtoUrl = `mailto:rhasan229@gmail.com?subject=${encodeURIComponent(`[Portfolio Dispatch] ${subject}`)}&body=${encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`)}`;
+      // Construct formatted WhatsApp message
+      const formattedText = `*New Portfolio Dispatch Note (rhasan.pro)*\n\n👤 *From:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`;
+      const whatsappUrl = `https://wa.me/8801843212123?text=${encodeURIComponent(formattedText)}`;
       
-      feedback.className = 'p-3 rounded-xl text-center text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
-      feedback.textContent = 'Preparing email dispatch client... Opening your email composer.';
+      feedback.className = 'p-3.5 rounded-xl text-center text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+      feedback.textContent = '🚀 Dispatch formatted! Opening WhatsApp (+8801843212123)...';
       feedback.classList.remove('hidden');
 
       setTimeout(() => {
-        window.location.href = mailtoUrl;
+        // Open WhatsApp in new tab/window, fallback to direct location
+        const opened = window.open(whatsappUrl, '_blank');
+        if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+          window.location.href = whatsappUrl;
+        }
         if (submitBtn) submitBtn.disabled = false;
-      }, 600);
+      }, 400);
     });
   }
 
