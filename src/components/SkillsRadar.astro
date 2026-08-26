@@ -1,5 +1,5 @@
 ---
-import { skillDomains, type ProficiencyTier } from '../data/skills';
+import { skillDomains } from '../data/skills';
 ---
 
 <div class="w-full max-w-6xl mx-auto py-6">
@@ -69,94 +69,92 @@ import { skillDomains, type ProficiencyTier } from '../data/skills';
 
   </div>
 
-  <!-- Domains Grid -->
+  <!-- Domains High-Information Cards List -->
   <div id="skills-container" class="space-y-12">
     {skillDomains.map((domain) => (
-      <div class="domain-block" data-domain-id={domain.id}>
-        
-        <!-- Domain Header -->
-        <div class="flex items-start justify-between gap-4 mb-6">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </span>
-              <h3 class="text-xl font-bold text-white light:text-slate-950 tracking-tight">{domain.title}</h3>
+      <div class="domain-block double-bezel-outer" data-domain-id={domain.id}>
+        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white space-y-6">
+          
+          <!-- Domain Header -->
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-white/10 light:border-slate-200">
+            <div class="space-y-1.5">
+              <div class="text-xs font-mono font-bold text-amber-500 tracking-wider">
+                {domain.domainNumber}
+              </div>
+              <h3 class="text-2xl font-bold text-white light:text-slate-950 tracking-tight">
+                {domain.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-400 light:text-slate-600 leading-relaxed max-w-3xl pt-1">
+                {domain.description}
+              </p>
             </div>
-            <p class="text-xs text-slate-400 light:text-slate-600 mt-1 max-w-2xl">{domain.description}</p>
+
+            <div class="flex items-center gap-2 self-start">
+              <span class="font-mono text-[11px] px-3 py-1 rounded-md bg-amber-500/10 light:bg-amber-100 text-amber-400 light:text-amber-800 border border-amber-500/20 light:border-amber-300 font-bold whitespace-nowrap">
+                {domain.badge}
+              </span>
+            </div>
           </div>
 
-          <span class="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-white/5 light:border-slate-300">
-            {domain.skills.length} Competencies
-          </span>
-        </div>
-
-        <!-- Skills Cards in Domain -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {domain.skills.map((skill) => {
-            const isMastery = skill.proficiency === 'Mastery';
-            const isIntermediate = skill.proficiency === 'Intermediate';
-            
-            return (
-              <div class="skill-card double-bezel-outer group" data-skill-name={skill.name.toLowerCase()} data-skill-tags={skill.tags.join(' ').toLowerCase()} data-skill-tier={skill.proficiency.toLowerCase()}>
-                <div class="double-bezel-inner p-5 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white h-full flex flex-col justify-between">
-                  
-                  <div>
-                    <!-- Card Header: Title & Tier Badge -->
-                    <div class="flex items-start justify-between gap-2 mb-3">
+          <!-- 2x2 Rich Subcards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            {domain.skills.map((skill) => {
+              const isMastery = skill.proficiency === 'Mastery';
+              const isIntermediate = skill.proficiency === 'Intermediate';
+              
+              return (
+                <div
+                  class="skill-subcard p-5 rounded-2xl bg-slate-950/60 light:bg-slate-50 border border-white/5 light:border-slate-200 hover:border-amber-500/30 transition-all flex flex-col justify-between space-y-3 group"
+                  data-skill-name={skill.name.toLowerCase()}
+                  data-skill-desc={skill.description.toLowerCase()}
+                  data-skill-tags={skill.tags.join(' ').toLowerCase()}
+                  data-skill-tier={skill.proficiency.toLowerCase()}
+                >
+                  <div class="space-y-2.5">
+                    <!-- Subcard Title & Tier Badge -->
+                    <div class="flex items-start justify-between gap-2">
                       <h4 class="text-sm font-bold text-white light:text-slate-900 group-hover:text-amber-400 light:group-hover:text-amber-600 transition-colors">
                         {skill.name}
                       </h4>
-                      <span class={`text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold whitespace-nowrap ${
-                        isMastery 
-                          ? 'bg-amber-500/20 text-amber-300 light:text-amber-700 border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.15)]' 
-                          : isIntermediate 
-                          ? 'bg-cyan-500/20 text-cyan-300 light:text-cyan-700 border border-cyan-500/40 shadow-[0_0_12px_rgba(6,182,212,0.15)]' 
-                          : 'bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-white/10 light:border-slate-300'
-                      }`}>
-                        {isMastery ? '★ Mastery' : isIntermediate ? '◆ Intermediate' : '○ Beginner'}
-                      </span>
-                    </div>
-
-                    <!-- Tier Signal & Experience Tenure Indicator -->
-                    <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-white/5 light:border-slate-200 text-[11px] font-mono text-slate-400 light:text-slate-600 mb-3">
-                      <!-- 3-Dot Signal Gauge -->
-                      <div class="flex items-center gap-1.5">
-                        <span class={`w-2 h-2 rounded-full ${
-                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : isIntermediate ? 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]' : 'bg-slate-400'
-                        }`}></span>
-                        <span class={`w-2 h-2 rounded-full ${
-                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : isIntermediate ? 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]' : 'bg-slate-700 light:bg-slate-300'
-                        }`}></span>
-                        <span class={`w-2 h-2 rounded-full ${
-                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : 'bg-slate-700 light:bg-slate-300'
-                        }`}></span>
+                      <div class="flex items-center gap-1.5 flex-shrink-0">
+                        <span class={`text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold whitespace-nowrap ${
+                          isMastery 
+                            ? 'bg-amber-500/20 text-amber-300 light:text-amber-700 border border-amber-500/40 shadow-[0_0_10px_rgba(245,158,11,0.15)]' 
+                            : isIntermediate 
+                            ? 'bg-cyan-500/20 text-cyan-300 light:text-cyan-700 border border-cyan-500/40 shadow-[0_0_10px_rgba(6,182,212,0.15)]' 
+                            : 'bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 border border-white/10 light:border-slate-300'
+                        }`}>
+                          {isMastery ? '★ Mastery' : isIntermediate ? '◆ Intermediate' : '○ Beginner'}
+                        </span>
                       </div>
-
-                      <!-- Tenure Tag -->
-                      <span class="text-slate-400 light:text-slate-500 text-[10.5px]">
-                        {skill.experienceYears} production
-                      </span>
                     </div>
+
+                    <!-- Practical Description -->
+                    <p class="text-xs text-slate-300 light:text-slate-600 leading-relaxed">
+                      {skill.description}
+                    </p>
                   </div>
 
-                  <!-- Sub-tags -->
-                  <div class="flex flex-wrap gap-1 mt-3 pt-3 border-t border-white/5 light:border-slate-200">
-                    {skill.tags.map((tag) => (
-                      <span class="px-2 py-0.5 rounded text-[9.5px] font-mono bg-slate-900 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-white/5 light:border-slate-300">
-                        {tag}
-                      </span>
-                    ))}
+                  <!-- Subcard Footer: Tags & Experience Tenure -->
+                  <div class="pt-2 border-t border-white/5 light:border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[10px] font-mono">
+                    <div class="flex flex-wrap gap-1">
+                      {skill.tags.map((tag) => (
+                        <span class="px-2 py-0.5 rounded bg-slate-900 light:bg-white text-slate-400 light:text-slate-600 border border-white/5 light:border-slate-200 text-[9.5px]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span class="text-amber-400/80 light:text-amber-700 font-semibold">
+                      {skill.experienceYears}
+                    </span>
                   </div>
 
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
+        </div>
       </div>
     ))}
   </div>
@@ -185,17 +183,23 @@ import { skillDomains, type ProficiencyTier } from '../data/skills';
         const domainId = block.getAttribute('data-domain-id');
         const matchesCategory = activeFilter === 'all' || activeFilter === domainId;
 
-        const cardsInBlock = block.querySelectorAll('.skill-card');
+        const subcardsInBlock = block.querySelectorAll('.skill-subcard');
         let domainVisibleCards = 0;
 
-        cardsInBlock.forEach((card) => {
+        subcardsInBlock.forEach((card) => {
           const name = card.getAttribute('data-skill-name') || '';
+          const desc = card.getAttribute('data-skill-desc') || '';
           const tags = card.getAttribute('data-skill-tags') || '';
           const tier = card.getAttribute('data-skill-tier') || '';
-          const matchesSearch = !searchQuery || name.includes(searchQuery) || tags.includes(searchQuery) || tier.includes(searchQuery);
+          
+          const matchesSearch = !searchQuery || 
+            name.includes(searchQuery) || 
+            desc.includes(searchQuery) || 
+            tags.includes(searchQuery) || 
+            tier.includes(searchQuery);
 
           if (matchesCategory && matchesSearch) {
-            (card as HTMLElement).style.display = 'block';
+            (card as HTMLElement).style.display = 'flex';
             domainVisibleCards++;
             totalVisible++;
           } else {
