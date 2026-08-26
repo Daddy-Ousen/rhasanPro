@@ -1,18 +1,45 @@
 ---
-import { skillDomains } from '../data/skills';
+import { skillDomains, type ProficiencyTier } from '../data/skills';
 ---
 
 <div class="w-full max-w-6xl mx-auto py-6">
   
+  <!-- Tier Legend Strip -->
+  <div class="mb-8 p-4 rounded-2xl bg-slate-900/60 light:bg-slate-100 border border-white/5 light:border-slate-300 flex flex-wrap items-center justify-between gap-4 text-xs">
+    <span class="font-mono text-slate-400 light:text-slate-600 font-semibold uppercase tracking-wider text-[11px]">
+      // Competency Tiers
+    </span>
+    <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 light:text-amber-700 border border-amber-500/40 font-bold text-[11px]">
+          ★ Mastery
+        </span>
+        <span class="text-slate-400 light:text-slate-600">Enterprise Lead & Architecture</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 light:text-cyan-700 border border-cyan-500/40 font-bold text-[11px]">
+          ◆ Intermediate
+        </span>
+        <span class="text-slate-400 light:text-slate-600">Core Ops & Implementation</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded-full bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 border border-white/10 light:border-slate-300 font-bold text-[11px]">
+          ○ Beginner
+        </span>
+        <span class="text-slate-400 light:text-slate-600">Applied & Emerging</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Search & Domain Filter Bar -->
-  <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/10">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-white/10 light:border-slate-200">
     
     <!-- Filter Chips -->
     <div class="flex items-center gap-1.5 flex-wrap">
       <button
         type="button"
         data-filter="all"
-        class="skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40"
+        class="skill-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-pointer"
       >
         All Domains (6)
       </button>
@@ -20,7 +47,7 @@ import { skillDomains } from '../data/skills';
         <button
           type="button"
           data-filter={domain.id}
-          class="skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5"
+          class="skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-slate-200 light:hover:text-slate-900 border border-white/5 light:border-slate-300 cursor-pointer"
         >
           {domain.shortTitle}
         </button>
@@ -33,7 +60,7 @@ import { skillDomains } from '../data/skills';
         id="skill-search-input"
         type="text"
         placeholder="Filter by keyword (e.g. Intune, EDR, Python)..."
-        class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900/90 border border-white/10 focus:border-amber-500/50 focus:outline-none text-xs text-white placeholder-slate-500 font-mono transition-colors"
+        class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900/90 light:bg-white border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 font-mono transition-colors"
       />
       <svg class="w-4 h-4 text-slate-500 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -56,63 +83,78 @@ import { skillDomains } from '../data/skills';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </span>
-              <h3 class="text-xl font-bold text-white tracking-tight">{domain.title}</h3>
+              <h3 class="text-xl font-bold text-white light:text-slate-950 tracking-tight">{domain.title}</h3>
             </div>
-            <p class="text-xs text-slate-400 mt-1 max-w-2xl">{domain.description}</p>
+            <p class="text-xs text-slate-400 light:text-slate-600 mt-1 max-w-2xl">{domain.description}</p>
           </div>
 
-          <span class="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800 text-slate-400 border border-white/5">
+          <span class="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-white/5 light:border-slate-300">
             {domain.skills.length} Competencies
           </span>
         </div>
 
         <!-- Skills Cards in Domain -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {domain.skills.map((skill) => (
-            <div class="skill-card double-bezel-outer group" data-skill-name={skill.name.toLowerCase()} data-skill-tags={skill.tags.join(' ').toLowerCase()}>
-              <div class="double-bezel-inner p-5 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
-                
-                <div>
-                  <div class="flex items-start justify-between gap-2 mb-2">
-                    <h4 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">
-                      {skill.name}
-                    </h4>
-                    <span class={`text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold ${
-                      skill.proficiency === 'Mastery' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' :
-                      skill.proficiency === 'Advanced' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
-                      'bg-slate-700/50 text-slate-300 border border-white/10'
-                    }`}>
-                      {skill.proficiency}
-                    </span>
+          {domain.skills.map((skill) => {
+            const isMastery = skill.proficiency === 'Mastery';
+            const isIntermediate = skill.proficiency === 'Intermediate';
+            
+            return (
+              <div class="skill-card double-bezel-outer group" data-skill-name={skill.name.toLowerCase()} data-skill-tags={skill.tags.join(' ').toLowerCase()} data-skill-tier={skill.proficiency.toLowerCase()}>
+                <div class="double-bezel-inner p-5 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white h-full flex flex-col justify-between">
+                  
+                  <div>
+                    <!-- Card Header: Title & Tier Badge -->
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                      <h4 class="text-sm font-bold text-white light:text-slate-900 group-hover:text-amber-400 light:group-hover:text-amber-600 transition-colors">
+                        {skill.name}
+                      </h4>
+                      <span class={`text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold whitespace-nowrap ${
+                        isMastery 
+                          ? 'bg-amber-500/20 text-amber-300 light:text-amber-700 border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.15)]' 
+                          : isIntermediate 
+                          ? 'bg-cyan-500/20 text-cyan-300 light:text-cyan-700 border border-cyan-500/40 shadow-[0_0_12px_rgba(6,182,212,0.15)]' 
+                          : 'bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-white/10 light:border-slate-300'
+                      }`}>
+                        {isMastery ? '★ Mastery' : isIntermediate ? '◆ Intermediate' : '○ Beginner'}
+                      </span>
+                    </div>
+
+                    <!-- Tier Signal & Experience Tenure Indicator -->
+                    <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-white/5 light:border-slate-200 text-[11px] font-mono text-slate-400 light:text-slate-600 mb-3">
+                      <!-- 3-Dot Signal Gauge -->
+                      <div class="flex items-center gap-1.5">
+                        <span class={`w-2 h-2 rounded-full ${
+                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : isIntermediate ? 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]' : 'bg-slate-400'
+                        }`}></span>
+                        <span class={`w-2 h-2 rounded-full ${
+                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : isIntermediate ? 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]' : 'bg-slate-700 light:bg-slate-300'
+                        }`}></span>
+                        <span class={`w-2 h-2 rounded-full ${
+                          isMastery ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' : 'bg-slate-700 light:bg-slate-300'
+                        }`}></span>
+                      </div>
+
+                      <!-- Tenure Tag -->
+                      <span class="text-slate-400 light:text-slate-500 text-[10.5px]">
+                        {skill.experienceYears} production
+                      </span>
+                    </div>
                   </div>
 
-                  <!-- Proficiency Meter Bar -->
-                  <div class="my-3">
-                    <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
-                      <span>Proficiency</span>
-                      <span class="text-amber-400 font-bold">{skill.level}%</span>
-                    </div>
-                    <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                      <div
-                        class="skill-bar-fill h-full rounded-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-1000 ease-out"
-                        style={`width: ${skill.level}%`}
-                      ></div>
-                    </div>
+                  <!-- Sub-tags -->
+                  <div class="flex flex-wrap gap-1 mt-3 pt-3 border-t border-white/5 light:border-slate-200">
+                    {skill.tags.map((tag) => (
+                      <span class="px-2 py-0.5 rounded text-[9.5px] font-mono bg-slate-900 light:bg-slate-100 text-slate-400 light:text-slate-600 border border-white/5 light:border-slate-300">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </div>
 
-                <!-- Sub-tags -->
-                <div class="flex flex-wrap gap-1 mt-3 pt-3 border-t border-white/5">
-                  {skill.tags.map((tag) => (
-                    <span class="px-2 py-0.5 rounded text-[9.5px] font-mono bg-slate-900 text-slate-400 border border-white/5">
-                      {tag}
-                    </span>
-                  ))}
                 </div>
-
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
@@ -130,7 +172,6 @@ import { skillDomains } from '../data/skills';
   function setupSkillsFilter() {
     const filterBtns = document.querySelectorAll('.skill-filter-btn');
     const domainBlocks = document.querySelectorAll('.domain-block');
-    const skillCards = document.querySelectorAll('.skill-card');
     const searchInput = document.getElementById('skill-search-input') as HTMLInputElement | null;
     const noResultsMsg = document.getElementById('no-skills-msg');
 
@@ -150,7 +191,8 @@ import { skillDomains } from '../data/skills';
         cardsInBlock.forEach((card) => {
           const name = card.getAttribute('data-skill-name') || '';
           const tags = card.getAttribute('data-skill-tags') || '';
-          const matchesSearch = !searchQuery || name.includes(searchQuery) || tags.includes(searchQuery);
+          const tier = card.getAttribute('data-skill-tier') || '';
+          const matchesSearch = !searchQuery || name.includes(searchQuery) || tags.includes(searchQuery) || tier.includes(searchQuery);
 
           if (matchesCategory && matchesSearch) {
             (card as HTMLElement).style.display = 'block';
@@ -180,9 +222,9 @@ import { skillDomains } from '../data/skills';
 
         filterBtns.forEach((b) => {
           if (b === btn) {
-            b.className = 'skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 font-semibold';
+            b.className = 'skill-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all bg-amber-500/20 text-amber-400 border border-amber-500/40 cursor-pointer';
           } else {
-            b.className = 'skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 text-slate-400 hover:text-slate-200 border border-white/5';
+            b.className = 'skill-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all bg-slate-800/80 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-slate-200 light:hover:text-slate-900 border border-white/5 light:border-slate-300 cursor-pointer';
           }
         });
 
