@@ -63,8 +63,20 @@ function isActive(href: string) {
       })}
     </nav>
 
-    <!-- Right Controls: Theme Toggle & CV CTA -->
-    <div class="flex items-center gap-3">
+    <!-- Right Controls: NextVector, Theme Toggle & CV CTA -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- NextVector Launch Badge -->
+      <a
+        href="https://nextvector.rhasan.online/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-all shadow-[0_0_12px_rgba(16,185,129,0.15)] group"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>NextVector</span>
+        <span class="text-amber-400 group-hover:translate-x-0.5 transition-transform text-[11px]">↗</span>
+      </a>
+
       <ThemeToggle />
 
       <a
@@ -133,6 +145,16 @@ function isActive(href: string) {
     </div>
 
     <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
+      <a
+        href="https://nextvector.rhasan.online/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shadow-sm flex items-center justify-center gap-2"
+      >
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Launch NextVector Platform ↗</span>
+      </a>
+
       <a
         href={dossier.resumePdfUrl}
         download="Robiul_Hasan_CV.pdf"

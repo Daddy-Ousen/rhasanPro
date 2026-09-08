@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
+
+const project = projects.find((p) => p.slug === 'nextvector') || projects[0];
+---
+
+<BaseLayout
+  title={`${project.title} — Case Study | ${dossier.name}`}
+  description={project.tagline}
+>
+  
+  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
+    
+    <!-- Breadcrumb & Category Tag -->
+    <div class="flex items-center justify-between gap-4 flex-wrap">
+      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
+        <span>←</span>
+        <span>Back to Projects Matrix</span>
+      </a>
+
+      <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
+        Frontier AI Intelligence & Web Systems
+      </span>
+    </div>
+
+    <!-- Case Study Hero Header -->
+    <div class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-medium font-mono">
+        {project.badge}
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        {project.title}
+      </h1>
+      
+      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
+        {project.subtitle}
+      </p>
+
+      <!-- Action Buttons Strip -->
+      <div class="pt-3 flex flex-wrap items-center gap-3">
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold text-xs shadow-[0_0_25px_rgba(16,185,129,0.35)] transition-all hover:scale-105"
+        >
+          <span>Visit Live Platform (nextvector.rhasan.online)</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-white/10 hover:border-amber-500/40 font-semibold text-xs transition-colors"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub Repository</span>
+          </a>
+        )}
+      </div>
+
+      <!-- Key Metrics Strip -->
+      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
+        {project.metrics.map((m) => (
+          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
+            <span class="block text-xl sm:text-2xl font-bold font-mono text-emerald-400 mt-1">{m.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Architectural Highlight Bento Card -->
+    <div class="double-bezel-outer">
+      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Core Architecture</span>
+            <h3 class="text-xl font-bold text-white mt-1">High-Signal Technology Intelligence Engine</h3>
+          </div>
+          <span class="text-xs font-mono text-amber-400 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            135 Models • 24 Labs
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-emerald-400 font-mono text-xs font-bold block">01. 135 Models Registry</span>
+            <p class="text-xs text-slate-400 leading-relaxed">LMSYS Arena Elo rankings from #1 GPT-6 Astra down to #135 MiniMax M2, with real-time token pricing and dual table/card views.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-cyan-400 font-mono text-xs font-bold block">02. Benchmark Radar</span>
+            <p class="text-xs text-slate-400 leading-relaxed">Evaluation watchdog across OSWorld, WebArena, SWE-bench Verified, and Cyber-Eval distinguishing real capabilities from test contamination.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
+            <span class="text-amber-400 font-mono text-xs font-bold block">03. Three Questions Framework</span>
+            <p class="text-xs text-slate-400 leading-relaxed">Editorial methodology examining: What happened? Why does it matter? What could happen next? with live tickers and audio briefings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study Narrative -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
+        
+        <!-- Challenge -->
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-white tracking-tight">The Challenge: Benchmark Saturation & Marketing Noise</h2>
+          <p>
+            The accelerated release cycle of foundation AI models has saturated the industry with unverified marketing claims, hyper-optimized benchmark gaming, and synthetic evaluations that bear little resemblance to real production workflows.
+          </p>
+          <p class="text-slate-400">
+            Engineers, technical founders, and enterprise architects spend excessive time sifting through duplicate releases to determine real capability deltas, actual operational token costs, and empirical task performance.
+          </p>
+        </div>
+
+        <!-- Solution -->
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-white tracking-tight">The Solution: NextVector Digital Intelligence</h2>
+          <p>
+            Robiul engineered **NextVector** to serve as an objective, high-signal intelligence hub. Built from the ground up on React 19, TypeScript, Vite 8, and Tailwind CSS v4, the platform delivers zero-overhead client-side interactivity, instant multi-parameter filtering, and empirical audits.
+          </p>
+          <p>
+            Key architectural features include:
+          </p>
+          <ul class="space-y-2 text-xs font-mono text-slate-300 pl-4 border-l-2 border-emerald-500/30">
+            <li>• <strong class="text-white">Dual Table & Card Directory:</strong> High-density sortable LMSYS Arena leaderboard with instant Elo, context window, and parameter filters.</li>
+            <li>• <strong class="text-white">Side-by-Side Model Comparison Tray:</strong> Multi-model spec comparisons assessing operational costs and architectural nuances.</li>
+            <li>• <strong class="text-white">Operational Token Cost Estimator:</strong> Real-time calculator estimating monthly inference budgets based on prompt/completion volumes.</li>
+            <li>• <strong class="text-white">Command Palette (⌘K / Ctrl+K):</strong> Global keyboard-driven search indexing 135 models, research papers, and technical briefings.</li>
+          </ul>
+        </div>
+
+        <!-- Four-Phase Intelligence Pipeline -->
+        <div class="space-y-4 pt-4">
+          <h2 class="text-xl font-bold text-white tracking-tight">Four-Phase Intelligence Pipeline</h2>
+          
+          <div class="space-y-3">
+            {project.diagramSteps?.map((step) => (
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-4">
+                <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 font-mono font-bold text-xs flex items-center justify-center flex-shrink-0">
+                  {step.step}
+                </span>
+                <div>
+                  <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono">{step.title}</h4>
+                  <p class="text-xs text-slate-400 mt-1">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Impact -->
+        <div class="space-y-3 pt-4">
+          <h2 class="text-xl font-bold text-white tracking-tight">Empirical Results & Production Impact</h2>
+          <ul class="space-y-2.5">
+            {project.impact.map((point) => (
+              <li class="flex items-start gap-2.5 text-xs sm:text-sm">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Specs & Stack -->
+      <div class="md:col-span-4 space-y-6">
+        
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10 space-y-4">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Technical Specs</h3>
+          
+          <div class="space-y-3 text-xs">
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Core Framework</span>
+              <span class="font-bold text-white">React 19 & TypeScript</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Build Engine</span>
+              <span class="font-bold text-white">Vite 8 & Oxlint</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Styling System</span>
+              <span class="font-bold text-white">Tailwind CSS v4</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Frontier Models</span>
+              <span class="font-bold text-emerald-400">135 Ranked via LMSYS Arena</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Research Labs</span>
+              <span class="font-bold text-amber-400">24 Global AI Labs</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 font-mono uppercase">Deployment</span>
+              <span class="font-bold text-white">Edge CDN / Vercel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10 space-y-3">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
+          <div class="flex flex-wrap gap-1.5">
+            {project.technologies.map((t) => (
+              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300 border border-white/5">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 space-y-3">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-emerald-300 font-semibold">Live Exploration</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Experience the 135-model Arena directory, compare models side-by-side, and calculate real API inference budgets on NextVector.
+          </p>
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300"
+          >
+            <span>Open nextvector.rhasan.online</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Outbound CTA Footer Card -->
+    <div class="double-bezel-outer">
+      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Ready for Deep Exploration?</span>
+          <h3 class="text-xl font-bold text-white">Explore 135 Frontier Models & Empirical Benchmarks</h3>
+          <p class="text-xs text-slate-400 max-w-xl">
+            Filter through Western and Eastern foundation labs, inspect real Elo ratings, and audit contamination-resistant benchmarks.
+          </p>
+        </div>
+
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors shadow-lg whitespace-nowrap"
+        >
+          <span>Launch NextVector</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</BaseLayout>

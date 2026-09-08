@@ -78,13 +78,23 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 - Core Certifications: Microsoft 365 Certified: Endpoint Administrator Associate (MD-102), Microsoft Certified: Modern Desktop Administrator Associate (MD-100), AMD AI Developer Hackathon: Act II Certificate (Lablab.ai).
 - Previous Experience: Jr. Support Engineer at Cobait Dhaka (2021-2022), IT Executive at AQSBD (2020).
 - Education: Bachelor of Business Administration (BBA) from Bangladesh University of Professionals (BUP), 2022.
-- Key Projects: Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
-- Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, Next.js 15, Astro 5.
+- Key Projects: NextVector (Technology & AI digital intelligence platform with 135 frontier models registry across 24 labs and empirical benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
+- Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, React 19, Next.js 15, Astro 5.
 - Contact: Email rhasan229@gmail.com | Portfolio: rhasan.pro | Location: Dhaka, Bangladesh (UTC+6).
 `;
 
 function getLocalFallbackResponse(query: string): string {
   const q = query.toLowerCase();
+
+  if (q.includes("nextvector") || q.includes("frontier") || q.includes("arena") || q.includes("news")) {
+    return `NextVector is Robiul's flagship digital intelligence platform surfacing genuine technological progress and foundation AI breakthroughs.
+
+- **135 Frontier Models Registry**: LMSYS Chatbot Arena Elo rankings across 24 global research labs with real-time token pricing.
+- **Empirical Benchmark Radar**: Contamination watchdog evaluating OSWorld, WebArena, SWE-bench Verified, and Cyber-Eval.
+- **Modern Architecture**: Engineered with React 19, TypeScript, Vite 8, and Tailwind CSS v4 for sub-200ms client-side rendering.
+
+You can explore the live platform at nextvector.rhasan.online or view the architectural case study on /projects/nextvector.`;
+  }
 
   if (q.includes("cert") || q.includes("credential") || q.includes("md-102") || q.includes("md-100") || q.includes("exam")) {
     return `Robiul holds several industry-recognized Microsoft and engineering credentials validating his infrastructure expertise.
@@ -107,11 +117,11 @@ Feel free to inspect the interactive milestone tracer on the /experience page.`;
   }
 
   if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("ai")) {
-    return `Robiul engineers autonomous systems and high-speed web platforms alongside enterprise infrastructure.
+    return `Robiul engineers autonomous systems, digital intelligence platforms, and high-speed web architectures.
 
+- **NextVector Platform**: High-signal technology intelligence platform tracking 135 frontier models across 24 global labs with benchmark auditing.
 - **Hermes AI Assistant**: Self-hosted agentic daemon with autonomous tool-calling, headless browser control, and local execution sandboxes.
-- **OGGRO Technologies Platform**: Zero-runtime Next.js 15 marketing site boasting 100/100 Lighthouse metrics and Playwright automated tests.
-- **LedgerBuddy AI**: AMD AI Developer Hackathon MVP parsing complex invoices and reconciling double-entry ledgers.
+- **OGGRO Technologies & LedgerBuddy**: Next.js 15 enterprise marketing site (100/100 Lighthouse) and AMD Hackathon Act II financial reconciliation MVP.
 
 Deep-dive architecture case studies are accessible on the /projects page.`;
   }

@@ -28,6 +28,56 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
   {
+    id: "nextvector",
+    slug: "nextvector",
+    badge: "DIGITAL INTELLIGENCE PLATFORM • PRODUCTION DEPLOYMENT",
+    title: "NextVector — Technology & AI Intelligence Platform",
+    subtitle: "High-Signal Technology Intelligence Platform with 135 Frontier Models Registry & Empirical Benchmark Radar",
+    category: "AI & Automation",
+    tagline: "An independent digital intelligence platform dedicated to surfacing genuine technological progress, foundation AI breakthroughs, and scientific milestones.",
+    overview: "NextVector (nextvector.rhasan.online) is a high-signal technology intelligence platform engineered to cut through marketing hype and benchmark saturation. Built on the editorial principle that major developments should be understood through technical and empirical depth, NextVector features a full LMSYS Chatbot Arena-ranked registry of 135 frontier AI models across 24 global research labs, an audited benchmark watchdog, and a signature 'Three Questions Framework' editorial engine.",
+    challenge: "The rapid pace of AI releases has generated unprecedented marketing noise, contaminated benchmark scores, and superficial reporting. Tech leaders and engineers lack an objective, high-purity platform to evaluate true model performance, real token costs, and empirical capability leaps.",
+    solution: "Architected a zero-overhead digital intelligence platform combining an interactive 135-model registry (with dual table/card views and token cost calculators), an empirical evaluation watchdog (OSWorld, WebArena, SWE-bench, Cyber-Eval), and rapid-consumption executive briefings powered by React 19, TypeScript, and Tailwind CSS v4.",
+    impact: [
+      "Cataloged and benchmarked 135 frontier AI models across 24 research labs with real-time token pricing.",
+      "Engineered empirical benchmark radar distinguishing genuine capability shifts from dataset contamination.",
+      "Delivered sub-200ms initial load times and instant client-side filtering with zero-overhead Vite 8 architecture.",
+    ],
+    technologies: ["React 19", "TypeScript", "Vite 8", "Tailwind CSS v4", "Lucide React", "Edge CDN", "Oxlint"],
+    subcards: [
+      {
+        title: "135 Frontier AI Models Registry",
+        description: "LMSYS Chatbot Arena rankings across 24 global research labs with token pricing, context windows, and dual table/card views.",
+        dotColor: "emerald",
+      },
+      {
+        title: "Empirical Benchmark Radar",
+        description: "Contamination-audited evaluations across OSWorld, WebArena, SWE-bench Verified, and Cyber-Eval distinguishing real capability leaps.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Signal Purity & Editorial Engine",
+        description: "Signature Three Questions Framework with real-time breaking ticker, command palette (⌘K), and audio briefing player.",
+        dotColor: "amber",
+      },
+    ],
+    githubUrl: "https://github.com/Daddy-Ousen/NextVector",
+    liveUrl: "https://nextvector.rhasan.online/",
+    caseStudyUrl: "/projects/nextvector",
+    featured: true,
+    metrics: [
+      { label: "Models Tracked", value: "135" },
+      { label: "Global Labs", value: "24" },
+      { label: "Signal Purity", value: "100%" },
+    ],
+    diagramSteps: [
+      { step: 1, title: "Frontier Lab Disclosures", desc: "Ingests verified capability disclosures and preprint research across 24 global AI research labs.", icon: "cpu" },
+      { step: 2, title: "LMSYS Arena & Benchmark Audit", desc: "Cross-checks Elo rankings and scores across OSWorld, WebArena, SWE-bench, and Cyber-Eval.", icon: "play" },
+      { step: 3, title: "Three Questions Analysis", desc: "Applies editorial framework: What happened? Why does it matter? What could happen next?", icon: "terminal" },
+      { step: 4, title: "High-Signal Dispatch", desc: "Publishes interactive model specs, token cost calculations, and executive briefings.", icon: "check" },
+    ],
+  },
+  {
     id: "hermes-ai",
     slug: "hermes",
     badge: "AGENTIC AI • PERSONAL PROJECT • FEB 2026 – PRESENT",
