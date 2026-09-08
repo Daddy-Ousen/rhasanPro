@@ -78,7 +78,7 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 - Core Certifications: Microsoft 365 Certified: Endpoint Administrator Associate (MD-102), Microsoft Certified: Modern Desktop Administrator Associate (MD-100), AMD AI Developer Hackathon: Act II Certificate (Lablab.ai).
 - Previous Experience: Jr. Support Engineer at Cobait Dhaka (2021-2022), IT Executive at AQSBD (2020).
 - Education: Bachelor of Business Administration (BBA) from Bangladesh University of Professionals (BUP), 2022.
-- Key Projects: NextVector (Technology & AI digital intelligence platform with 135 frontier models registry across 24 labs and empirical benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
+- Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
 - Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, React 19, Next.js 15, Astro 5.
 - Contact: Email rhasan229@gmail.com | Portfolio: rhasan.pro | Location: Dhaka, Bangladesh (UTC+6).
 `;
@@ -86,14 +86,14 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 function getLocalFallbackResponse(query: string): string {
   const q = query.toLowerCase();
 
-  if (q.includes("nextvector") || q.includes("frontier") || q.includes("arena") || q.includes("news")) {
-    return `NextVector is Robiul's flagship digital intelligence platform surfacing genuine technological progress and foundation AI breakthroughs.
+  if (q.includes("nextvector") || q.includes("frontier") || q.includes("arena") || q.includes("news") || q.includes("newsletter") || q.includes("morning vector")) {
+    return `NextVector is Robiul's independent Technology & AI News platform and daily newsletter.
 
-- **135 Frontier Models Registry**: LMSYS Chatbot Arena Elo rankings across 24 global research labs with real-time token pricing.
-- **Empirical Benchmark Radar**: Contamination watchdog evaluating OSWorld, WebArena, SWE-bench Verified, and Cyber-Eval.
-- **Modern Architecture**: Engineered with React 19, TypeScript, Vite 8, and Tailwind CSS v4 for sub-200ms client-side rendering.
+- **Daily Tech News & Editorial**: Breaking coverage evaluated through the signature Three Questions Framework (What happened? Why does it matter? What could happen next?).
+- **'The Morning Vector' Newsletter**: Daily executive newsletter briefing dispatched from the site for a rapid 3-minute technical scan.
+- **Baked-in Model & Benchmark Radar**: Dynamic, expanding registry of frontier AI models (135+ models and growing across 24+ global research labs) with live LMSYS Arena Elo ratings and empirical benchmark audits.
 
-You can explore the live platform at nextvector.rhasan.online or view the architectural case study on /projects/nextvector.`;
+Explore the daily dispatches at nextvector.rhasan.online or view the case study on /projects/nextvector.`;
   }
 
   if (q.includes("cert") || q.includes("credential") || q.includes("md-102") || q.includes("md-100") || q.includes("exam")) {
@@ -117,9 +117,9 @@ Feel free to inspect the interactive milestone tracer on the /experience page.`;
   }
 
   if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("ai")) {
-    return `Robiul engineers autonomous systems, digital intelligence platforms, and high-speed web architectures.
+    return `Robiul engineers autonomous systems, digital news platforms, and high-speed web architectures.
 
-- **NextVector Platform**: High-signal technology intelligence platform tracking 135 frontier models across 24 global labs with benchmark auditing.
+- **NextVector News Platform**: Daily Technology & AI news platform and newsletter ('The Morning Vector') with baked-in expanding frontier AI model & benchmark tools.
 - **Hermes AI Assistant**: Self-hosted agentic daemon with autonomous tool-calling, headless browser control, and local execution sandboxes.
 - **OGGRO Technologies & LedgerBuddy**: Next.js 15 enterprise marketing site (100/100 Lighthouse) and AMD Hackathon Act II financial reconciliation MVP.
 
