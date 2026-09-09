@@ -25,10 +25,17 @@ function isActive(href: string) {
 <header class="sticky top-4 z-40 w-full px-4 max-w-6xl mx-auto transition-all duration-300">
   <div class="glass-pill rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between border border-white/10 shadow-2xl backdrop-blur-xl">
     
-    <!-- Logo / Monogram -->
+    <!-- Logo / Avatar -->
     <a href="/" class="group flex items-center gap-3 focus:outline-none">
-      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-mono font-bold text-slate-950 text-xs shadow-[0_0_12px_rgba(245,158,11,0.4)] group-hover:scale-105 transition-transform">
-        RH
+      <div class="w-8 h-8 rounded-full overflow-hidden border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.25)] group-hover:scale-105 group-hover:border-amber-400 transition-all bg-slate-900 flex-shrink-0">
+        <img
+          src={dossier.avatarUrl}
+          alt={dossier.name}
+          class="w-full h-full object-cover"
+          width="32"
+          height="32"
+          loading="eager"
+        />
       </div>
       <div class="flex flex-col">
         <span class="text-sm font-semibold text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight">

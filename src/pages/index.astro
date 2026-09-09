@@ -21,14 +21,17 @@ const featuredCredentials = credentials.slice(0, 3);
   <section class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 pt-12 pb-20 max-w-6xl mx-auto">
     
     <!-- Operational Status Pill -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4 shadow-[0_0_20px_rgba(16,185,129,0.15)] animate-fade-in">
-      <span class="relative flex h-2.5 w-2.5">
+    <div class="inline-flex items-center gap-2.5 pl-2 pr-4 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4 shadow-[0_0_20px_rgba(16,185,129,0.15)] animate-fade-in">
+      <div class="w-5 h-5 rounded-full overflow-hidden border border-emerald-400/50 flex-shrink-0 bg-slate-800">
+        <img src={dossier.avatarUrl} alt={dossier.name} class="w-full h-full object-cover" width="20" height="20" loading="eager" />
+      </div>
+      <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
       <span class="font-bold tracking-wider">{dossier.statusBadge}</span>
-      <span class="text-slate-600">|</span>
-      <span class="text-slate-400 font-mono">TECHANTS SOLUTIONS (MSP)</span>
+      <span class="text-slate-600 hidden sm:inline">|</span>
+      <span class="text-slate-400 font-mono hidden sm:inline">TECHANTS SOLUTIONS (MSP)</span>
     </div>
 
     <!-- Featured Platform Spotlight Banner -->

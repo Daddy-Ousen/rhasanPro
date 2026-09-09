@@ -32,8 +32,15 @@ import { dossier } from '../data/dossier';
         <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
           
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-mono font-extrabold text-slate-950 text-2xl shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-              RH
+            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.25)] bg-slate-900 flex-shrink-0">
+              <img
+                src={dossier.avatarUrl}
+                alt={dossier.name}
+                class="w-full h-full object-cover"
+                width="64"
+                height="64"
+                loading="eager"
+              />
             </div>
             <div>
               <h2 class="text-xl font-bold text-white">{dossier.name}</h2>

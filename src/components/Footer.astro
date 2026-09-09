@@ -14,8 +14,15 @@ const currentYear = new Date().getFullYear();
         <!-- Left: Identity & Status -->
         <div class="md:col-span-5 flex flex-col gap-4">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-mono font-bold text-slate-950 text-sm shadow-[0_0_15px_rgba(245,158,11,0.4)]">
-              RH
+            <div class="w-9 h-9 rounded-full overflow-hidden border border-amber-500/30 shadow-[0_0_12px_rgba(245,158,11,0.2)] bg-slate-900 flex-shrink-0">
+              <img
+                src={dossier.avatarUrl}
+                alt={dossier.name}
+                class="w-full h-full object-cover"
+                width="36"
+                height="36"
+                loading="lazy"
+              />
             </div>
             <div>
               <h3 class="text-base font-bold text-white tracking-tight">{dossier.name}</h3>

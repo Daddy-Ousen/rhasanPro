@@ -3,6 +3,7 @@ export interface Dossier {
   preferredName: string;
   role: string;
   headline: string;
+  avatarUrl: string;
   location: string;
   timezone: string;
   email: string;
@@ -41,6 +42,7 @@ export const dossier: Dossier = {
   preferredName: "Robiul",
   role: "IT Infrastructure & Systems Support Engineer L2 / Service Desk Co-Leader",
   headline: "Architecting Resilient Enterprise Infrastructure, Endpoint Security & Autonomous Systems",
+  avatarUrl: "/avatar.png",
   location: "Dhaka, Bangladesh",
   timezone: "UTC+6",
   email: "rhasan229@gmail.com",
