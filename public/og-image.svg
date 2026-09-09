@@ -13,7 +13,7 @@
 
   <!-- Title & Headline -->
   <text x="80" y="240" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-1">Robiul Hasan</text>
-  <text x="80" y="300" fill="#F59E0B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="600">IT Support Engineer L2 &bull; Microsoft 365, Azure &amp; Endpoint Security</text>
+  <text x="80" y="300" fill="#F59E0B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="600">IT Support Engineer L2 • Microsoft 365, Azure &amp; Endpoint Security</text>
   
   <text x="80" y="370" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400">Managing 2,500+ endpoints, leading service desk delivery, and building agentic AI tooling.</text>
 

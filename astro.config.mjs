@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rhasan.pro',
+  site: 'https://rhasan.online',
   output: 'static',
   adapter: vercel({
     webAnalytics: {
@@ -13,7 +13,9 @@ export default defineConfig({
     },
   }),
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/preview-'),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
+Disallow: /preview-dark/
+Disallow: /preview-light/
 
-Sitemap: https://rhasan.pro/sitemap-index.xml
+# AI Crawlers & Agents (GEO / AI Overview Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://rhasan.online/sitemap-index.xml
+

@@ -1,0 +1,36 @@
+# Robiul Hasan — Portfolio & Technical Dossier
+> IT Infrastructure & Systems Support Engineer L2 / Service Desk Co-Leader & Full-Stack AI Engineer
+
+- Website: https://rhasan.online
+- Email: rhasan229@gmail.com
+- WhatsApp: +8801843212123 (https://wa.me/8801843212123)
+- GitHub: https://github.com/Daddy-Ousen
+- LinkedIn: https://linkedin.com/in/robiul-hasan-401296137
+- Location: Dhaka, Bangladesh (UTC+6)
+- Current Employer: Techants Solutions Pty Ltd (Global Managed Service Provider)
+
+## Executive Summary
+Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk Co-Leader managing enterprise operations, zero-trust endpoint security, and autonomous cloud systems. He combines hands-on sysadmin expertise across 2,500+ endpoints and 1,100+ Bitdefender EDR assets with modern agentic AI engineering.
+
+## Key Projects
+- **NextVector** (https://nextvector.rhasan.online/): Independent digital intelligence publication delivering daily technology & AI news reporting, "The Morning Vector" newsletter, and an integrated, continuously expanding registry of 135+ frontier AI models and LMSYS Arena Elo benchmarks.
+- **Hermes AI Ambassador** (https://rhasan.online/projects/hermes/): Autonomous portfolio concierge and intelligent technical ambassador built with Groq Llama-3.3-70B inference, client-side cryptographic hashing, and dual-layer caching.
+- **LedgerBuddy AI** (https://rhasan.online/projects/ledgerbuddy-ai/): Multi-agent financial intelligence and double-entry bookkeeping assistant with rule-based heuristics, dynamic confidence scoring, and automated reconciliations.
+- **Oggro Tech Enterprise** (https://rhasan.online/projects/oggro-tech/): Enterprise corporate identity and digital transformation platform with dynamic client service portals and hardened infrastructure.
+
+## Core Competencies
+- **Cloud & Systems:** Microsoft 365 Administration, Microsoft Intune (MDM/MAM), Entra ID (Azure AD), Exchange Online, PowerShell Scripting, macOS/Jamf Pro, Windows Server.
+- **Security & BCDR:** Bitdefender GravityZone EDR, Incident Containment, Zero-Trust Policies, Datto SIRIS/ALTO BCDR, Acronis Cyber Protect, Disaster Recovery Drills.
+- **AI & Software Engineering:** Python, TypeScript, Astro, React, Tailwind CSS, Fastify/Node.js, Agentic AI Workflows, Prompt Engineering, Structured JSON-LD.
+
+## Key Pages & Documentation
+- About: https://rhasan.online/about/
+- Projects: https://rhasan.online/projects/
+- NextVector Case Study: https://rhasan.online/projects/nextvector/
+- Hermes Case Study: https://rhasan.online/projects/hermes/
+- LedgerBuddy AI Case Study: https://rhasan.online/projects/ledgerbuddy-ai/
+- Oggro Tech Case Study: https://rhasan.online/projects/oggro-tech/
+- Experience Timeline: https://rhasan.online/experience/
+- Skills Directory: https://rhasan.online/skills/
+- Professional Credentials: https://rhasan.online/credentials/
+- Contact: https://rhasan.online/contact/

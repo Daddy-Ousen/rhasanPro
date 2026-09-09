@@ -48,7 +48,7 @@ export const dossier: Dossier = {
   whatsappUrl: "https://wa.me/8801843212123",
   github: "https://github.com/Daddy-Ousen",
   linkedin: "https://linkedin.com/in/robiul-hasan-401296137",
-  portfolioUrl: "https://rhasan.pro",
+  portfolioUrl: "https://rhasan.online",
   resumePdfUrl: "/Robiul_Hasan_CV.pdf",
   statusBadge: "SYSTEMS OPERATIONAL • L2 CO-LEADER",
   yearsOfExperience: "5+ Years",

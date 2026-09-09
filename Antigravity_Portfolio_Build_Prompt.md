@@ -1,4 +1,4 @@
-# Project Brief: Personal Portfolio Website for Robiul Hasan (rhasan.pro)
+# Project Brief: Personal Portfolio Website for Robiul Hasan (rhasan.online)
 
 You are acting as my design + engineering partner to build my personal portfolio/showcase website. Read this entire brief before writing any code. Use your **taste skill** throughout — for the design direction, the mockups, and the final build — specifically to avoid generic "AI-generated website" aesthetics. I will call out what that means below.
 
@@ -118,12 +118,12 @@ Single-page scroll or lightly multi-page — your call based on the chosen desig
 
 ## 6. Technical requirements
 
-- **Framework/stack:** This will be hosted on **Vercel** with a custom domain (rhasan.pro). Prefer **Astro** (near-zero shipped JS by default, islands only where actually needed — e.g. a mobile nav toggle or theme switcher) for maximum raw performance on a mostly-static content site. Next.js with static export is an acceptable alternative if you have a strong reason to prefer it — if you choose it, justify that choice against the performance requirement below. Avoid heavyweight UI/animation libraries unless they earn their weight.
+- **Framework/stack:** This will be hosted on **Vercel** with a custom domain (rhasan.online). Prefer **Astro** (near-zero shipped JS by default, islands only where actually needed — e.g. a mobile nav toggle or theme switcher) for maximum raw performance on a mostly-static content site. Next.js with static export is an acceptable alternative if you have a strong reason to prefer it — if you choose it, justify that choice against the performance requirement below. Avoid heavyweight UI/animation libraries unless they earn their weight.
 - **Performance is a hard requirement, not a nice-to-have.** Target Lighthouse scores of 95+ on Performance, Accessibility, Best Practices, and SEO. Self-host and subset fonts (woff2, `font-display: swap`), serve optimized images (WebP/AVIF, responsive `srcset`), keep shipped JS minimal, and avoid render-blocking resources.
 - **Accessibility:** semantic HTML, proper heading hierarchy, sufficient color contrast (WCAG AA minimum), full keyboard navigability, visible focus states, alt text on any imagery.
 - **Responsive:** mobile-first, tested down to small phone widths and up to large desktop.
 - **SEO:** proper `<title>`/meta description, Open Graph + Twitter Card tags with a generated OG image, `sitemap.xml`, `robots.txt`, favicon + apple-touch-icon, and JSON-LD `Person` structured data using the content above (this site exists partly to support an active job search, so make it discoverable and shareable).
-- **Deployment:** ship it deploy-ready for Vercel (works with zero config via `vercel deploy` or GitHub integration). Include a short README covering local dev, build, and the DNS steps to point the rhasan.pro domain at the Vercel deployment.
+- **Deployment:** ship it deploy-ready for Vercel (works with zero config via `vercel deploy` or GitHub integration). Include a short README covering local dev, build, and the DNS steps to point the rhasan.online domain at the Vercel deployment.
 - **No backend/database needed.** If you add a contact form, use a simple serverless-friendly approach (e.g. a Vercel function + an email-sending service, or just a well-designed `mailto:` CTA) — don't over-engineer this.
 
 ## 7. Acceptance checklist
@@ -135,7 +135,7 @@ Single-page scroll or lightly multi-page — your call based on the chosen desig
 - [ ] Phone number not displayed publicly
 - [ ] Fully responsive, keyboard-accessible, WCAG AA contrast
 - [ ] Lighthouse 95+ across Performance/Accessibility/Best Practices/SEO
-- [ ] Deploy-ready for Vercel with README covering the rhasan.pro domain connection
+- [ ] Deploy-ready for Vercel with README covering the rhasan.online domain connection
 - [ ] Download CV button wired to a placeholder PDF path, documented in README
 
 Start with Section 2 (design direction + two mockups). Do not proceed past the mockups until I've picked a direction.

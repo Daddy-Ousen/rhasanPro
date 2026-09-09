@@ -80,7 +80,7 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 - Education: Bachelor of Business Administration (BBA) from Bangladesh University of Professionals (BUP), 2022.
 - Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
 - Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, React 19, Next.js 15, Astro 5.
-- Contact: Email rhasan229@gmail.com | Portfolio: rhasan.pro | Location: Dhaka, Bangladesh (UTC+6).
+- Contact: Email rhasan229@gmail.com | Portfolio: rhasan.online | Location: Dhaka, Bangladesh (UTC+6).
 `;
 
 function getLocalFallbackResponse(query: string): string {

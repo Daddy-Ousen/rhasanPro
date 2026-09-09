@@ -1,4 +1,4 @@
-# Robiul Hasan — Portfolio Website (rhasan.pro)
+# Robiul Hasan — Portfolio Website (rhasan.online)
 
 Personal portfolio and technical showcase for **Robiul Hasan** — IT Support Engineer L2 & Service Desk Co-Leader exploring Systems Administration & Cloud Infrastructure roles.
 
@@ -81,7 +81,7 @@ The **"Download CV"** button on the header, hero, and contact section is wired t
 
 ---
 
-## 🌐 Deploying to Vercel with Custom Domain (`rhasan.pro`)
+## 🌐 Deploying to Vercel with Custom Domain (`rhasan.online`)
 
 ### Option A: Deploy via GitHub (Recommended)
 1. Push this repository to GitHub: `git push origin main`.
@@ -94,9 +94,9 @@ The **"Download CV"** button on the header, hero, and contact section is wired t
 npx vercel
 ```
 
-### 🔗 Connecting Custom Domain `rhasan.pro`
+### 🔗 Connecting Custom Domain `rhasan.online`
 1. In your Vercel Dashboard, navigate to **Project Settings → Domains**.
-2. Add `rhasan.pro` and `www.rhasan.pro`.
+2. Add `rhasan.online` and `www.rhasan.online`.
 3. In your DNS provider (e.g. Cloudflare, Namecheap, GoDaddy), add the following DNS records:
    - **Type A**: `@` &rarr; `76.76.21.21`
    - **Type CNAME**: `www` &rarr; `cname.vercel-dns.com`
