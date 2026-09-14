@@ -1,263 +1,197 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TelemetryBento from '../components/TelemetryBento.astro';
 import TerminalSimulator from '../components/TerminalSimulator.astro';
-import CredentialTiltCard from '../components/CredentialTiltCard.astro';
+import Icon from '../components/Icon.astro';
 import { dossier } from '../data/dossier';
 import { projects } from '../data/projects';
+import { experiences } from '../data/experience';
 import { credentials } from '../data/credentials';
-import DhakaClock from '../components/DhakaClock.astro';
+import { metaFor, shortTitle, toneClass } from '../data/tones';
 
-const featuredProjects = projects.filter((p) => p.featured);
-const featuredCredentials = credentials.slice(0, 3);
+const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
+
+// Asymmetric 6-column grid: wide, narrow, half, half.
+const spans = ['md:col-span-4', 'md:col-span-2', 'md:col-span-3', 'md:col-span-3'];
+
+const stats = [
+  { value: dossier.metrics.endpointsManaged, label: 'endpoints managed' },
+  { value: dossier.metrics.edrProtected, label: 'EDR assets secured' },
+  { value: dossier.metrics.projectsDelivered, label: 'IT projects delivered' },
+  { value: dossier.metrics.csatRating, label: 'sustained CSAT' },
+];
+
+const tickerItems = [
+  ['2,500+', 'ENDPOINTS'],
+  ['1,100+', 'EDR ASSETS'],
+  ['99.9%', 'BACKUPS GREEN'],
+  ['90%+', 'CSAT'],
+  ['135+', 'AI MODELS TRACKED'],
+  ['25+', 'PROJECTS SHIPPED'],
+];
+
+const dayJobNotes: Record<string, string> = {
+  'techants-solutions': 'L2 engineer and service desk co-lead. Intune, GravityZone, Datto. Tier-2 escalations for clients worldwide.',
+  'cobait-dhaka': 'Jr. support engineer. 1,000+ tickets, Windows Server, AD and the first real backup drills.',
+  aqsbd: 'IT executive. Wrote the SOPs, cabled the LAN, digitised the paperwork.',
+};
 ---
 
-<BaseLayout
-  title={`${dossier.name} — ${dossier.role}`}
-  description={dossier.shortBio}
->
-  
-  <!-- HERO SECTION -->
-  <section class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 pt-12 pb-20 max-w-6xl mx-auto">
-    
-    <!-- Operational Status Pill -->
-    <div class="inline-flex items-center gap-2.5 pl-2 pr-4 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4 shadow-[0_0_20px_rgba(16,185,129,0.15)] animate-fade-in">
-      <div class="w-5 h-5 rounded-full overflow-hidden border border-emerald-400/50 flex-shrink-0 bg-slate-800">
-        <img src={dossier.avatarUrl} alt={dossier.name} class="w-full h-full object-cover" width="20" height="20" loading="eager" />
+<BaseLayout title={`${dossier.name} — ${dossier.role}`} description={dossier.shortBio}>
+
+  <!-- HERO -->
+  <section class="wrap pt-10 sm:pt-14 pb-16 grid gap-12 lg:grid-cols-12 lg:items-center">
+    <div class="lg:col-span-7">
+      <p class="kicker inline-flex items-center gap-2 bg-ink text-paper px-2.5 py-1.5">
+        <span class="led led-blink" aria-hidden="true"></span>Online in Dhaka · UTC+6
+      </p>
+      <h1 class="h1 mt-6 text-[clamp(48px,7.8vw,104px)]">
+        I fix computers <span class="hl">for a living.</span> Then I teach them to <span class="text-pink">fix themselves.</span>
+      </h1>
+      <p class="mt-7 text-lg sm:text-xl leading-relaxed text-muted max-w-[48ch]">
+        L2 systems engineer and service desk co-lead at an Australian MSP. 2,500 endpoints by day, AI side projects by night.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/projects" class="btn btn-teal">See what I built <Icon name="arrow" /></a>
+        <a href={dossier.resumePdfUrl} download="Robiul_Hasan_CV.pdf" class="btn">Grab my CV <Icon name="download" /></a>
       </div>
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-      </span>
-      <span class="font-bold tracking-wider">{dossier.statusBadge}</span>
-      <span class="text-slate-600 hidden sm:inline">|</span>
-      <span class="text-slate-400 font-mono hidden sm:inline">TECHANTS SOLUTIONS (MSP)</span>
-    </div>
-
-    <!-- Featured Platform Spotlight Banner -->
-    <a
-      href="https://nextvector.rhasan.online/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-slate-900 to-amber-500/15 border border-emerald-500/30 hover:border-emerald-400 text-xs font-mono mb-8 transition-all hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.15)] max-w-full truncate"
-    >
-      <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
-      <span class="text-emerald-400 font-bold uppercase tracking-wider flex-shrink-0">NEW PLATFORM:</span>
-      <span class="text-slate-200 group-hover:text-white font-medium truncate">NextVector — Daily Tech & AI News, Newsletter & Frontier AI Benchmarks</span>
-      <span class="text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform flex-shrink-0">↗</span>
-    </a>
-
-    <!-- Main Title & Headline -->
-    <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.1] mb-6">
-      Engineering Resilient <br class="hidden sm:block" />
-      <span class="bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
-        Enterprise Infrastructure
-      </span>
-      <br class="hidden sm:block" />
-      & Autonomous Systems
-    </h1>
-
-    <p class="hero-subtitle text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-      Hi, I'm <strong class="text-white font-semibold">Robiul Hasan</strong>. L2 Systems Support Engineer and Service Desk Co-Leader managing 2,500+ endpoints, 1,100+ Bitdefender EDR assets, Datto BCDR appliances, and building agentic AI automations.
-    </p>
-
-    <!-- CTAs with Button-in-Button Micro-Interactions -->
-    <div class="hero-cta flex flex-wrap items-center justify-center gap-4">
-      
-      <!-- Primary: Explore Projects -->
       <a
-        href="/projects"
-        class="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all hover:scale-105 active:scale-98"
-      >
-        <span>Explore Case Studies</span>
-        <div class="w-7 h-7 rounded-full bg-slate-950/20 group-hover:bg-slate-950/30 flex items-center justify-center text-slate-950 transition-transform group-hover:translate-x-1">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </div>
-      </a>
-
-      <!-- Secondary: Download Verified CV -->
-      <a
-        href={dossier.resumePdfUrl}
-        download="Robiul_Hasan_CV.pdf"
+        href="https://nextvector.rhasan.online/"
         target="_blank"
         rel="noopener noreferrer"
-        class="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm border border-white/10 hover:border-amber-500/40 shadow-lg transition-all hover:scale-105 active:scale-98"
+        class="mt-8 inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px] group"
       >
-        <span>Download Official CV</span>
-        <div class="w-7 h-7 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500/30 transition-transform group-hover:translate-y-0.5">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
+        <span class="kicker fill-pink px-2 py-1">New</span>
+        <span class="link">NextVector — daily tech &amp; AI news, now live</span>
+        <Icon name="external" class="w-4 h-4" />
+      </a>
+    </div>
+
+    <div class="lg:col-span-5 flex justify-center">
+      <div class="relative w-[min(82%,380px)]">
+        <div class="aspect-square max-w-full fill-teal border-2 border-line shadow-[10px_10px_0_var(--pink)] overflow-hidden">
+          <img
+            src={dossier.avatarUrl}
+            alt={`Pixel-art portrait of ${dossier.name}`}
+            class="pixel-img w-full h-full mix-blend-multiply"
+            width="380"
+            height="380"
+            loading="eager"
+          />
         </div>
-      </a>
-
-      <!-- Tertiary: Contact / Dispatch -->
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
-      >
-        <span>Get in Touch</span>
-        <span class="text-amber-400">→</span>
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- TELEMETRY & BENTO SECTION -->
-  <section class="px-4 py-16 relative z-10">
-    <TelemetryBento />
-  </section>
-
-  <!-- INTERACTIVE SIMULATED TERMINAL -->
-  <section class="px-4 py-16 relative z-10 max-w-6xl mx-auto">
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-3">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span>INTERACTIVE MSP & DAEMON TERMINAL</span>
+        <span class="kicker absolute -left-4 bottom-6 -rotate-6 fill-gold border-2 border-line px-2.5 py-2">MD-102<br />certified</span>
+        <span class="kicker absolute -right-3 top-5 rotate-[5deg] bg-card text-ink border-2 border-line px-2.5 py-2">5+ yrs<br />in the MSP<br />trenches</span>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-        Simulated Infrastructure Automation
-      </h2>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto mt-2">
-        Execute simulated diagnostic scripts to inspect BCDR backups, sync Intune fleets, and trigger Bitdefender EDR scans.
-      </p>
     </div>
-
-    <TerminalSimulator />
   </section>
 
-  <!-- FEATURED PROJECTS SHOWCASE -->
-  <section class="px-4 py-20 relative z-10 max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+  <!-- TICKER -->
+  <div class="ticker bg-[#16161a] text-[#f5f4ef] border-y-2 border-line py-3 font-pixel text-sm" aria-hidden="true">
+    <div class="ticker-track">
+      {[...tickerItems, ...tickerItems].map(([n, l]) => (
+        <span><span class="text-[#f2b31b]">{n}</span> {l}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="wrap py-16 sm:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-3">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          <span>AUTONOMOUS & WEB ARCHITECTURES</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          Featured Engineering Case Studies
-        </h2>
+        <p class="kicker text-muted">After hours</p>
+        <h2 class="h2 mt-2">Stuff I built</h2>
       </div>
-
-      <a
-        href="/projects"
-        class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 font-semibold group"
-      >
-        <span>View all systems & projects</span>
-        <span class="group-hover:translate-x-1 transition-transform">→</span>
-      </a>
+      <a href="/projects" class="link font-bold inline-flex items-center gap-2">All projects <Icon name="arrow" /></a>
     </div>
 
-    <div class="space-y-8">
-      {featuredProjects.map((project) => (
-        <div class="double-bezel-outer">
-          <div class="double-bezel-inner p-7 sm:p-9 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white space-y-6">
-            
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div class="space-y-2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 light:bg-amber-100 text-amber-400 light:text-amber-800 border border-amber-500/20 light:border-amber-300 text-xs font-medium font-mono">
-                  {project.badge}
+    <div class="grid gap-4 md:grid-cols-6">
+      {featuredProjects.map((project, i) => {
+        const meta = metaFor(project.id);
+        return (
+          <article class={`${toneClass[meta.tone]} ${spans[i] ?? 'md:col-span-3'} border-2 border-line p-6 flex flex-col gap-3 min-h-[260px]`}>
+            <p class="kicker opacity-90">{meta.tag}</p>
+            <h3 class="h2">
+              <a href={project.caseStudyUrl} class="hover:underline decoration-[3px] underline-offset-4">{shortTitle(project.title)}</a>
+            </h3>
+            <p class="text-[16px] leading-relaxed max-w-[50ch]">{meta.blurb}</p>
+            <dl class="mt-auto pt-4 border-t-2 border-current flex flex-wrap gap-x-6 gap-y-2">
+              {project.metrics.slice(0, 2).map((m) => (
+                <div>
+                  <dt class="text-[13px] opacity-90">{m.label}</dt>
+                  <dd class="font-display font-extrabold text-2xl leading-none tabular-nums">{m.value}</dd>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white light:text-slate-950 tracking-tight">
-                  {project.title}
-                </h3>
-              </div>
+              ))}
+            </dl>
+          </article>
+        );
+      })}
+    </div>
+  </section>
 
-              <div class="flex items-center gap-3 self-start">
-                <a
-                  href={project.caseStudyUrl}
-                  class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md flex items-center gap-1.5 whitespace-nowrap"
-                >
-                  <span>Read Case Study</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="px-3.5 py-2 rounded-xl bg-slate-900/80 light:bg-slate-100 hover:bg-slate-800 light:hover:bg-slate-200 text-slate-200 light:text-slate-800 text-xs font-medium border border-white/10 light:border-slate-300 transition-colors flex items-center gap-1.5"
-                  >
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                    </svg>
-                    <span>GitHub</span>
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="px-3.5 py-2 rounded-xl bg-slate-900/80 light:bg-slate-100 hover:bg-slate-800 light:hover:bg-slate-200 text-slate-200 light:text-slate-800 text-xs font-medium border border-white/10 light:border-slate-300 transition-colors flex items-center gap-1.5"
-                  >
-                    <span>Live Site</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                  </a>
-                )}
-              </div>
-            </div>
+  <!-- DAY JOB -->
+  <section class="wrap pb-16 sm:pb-20">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <div>
+        <p class="kicker text-muted">9 to 5 (ish)</p>
+        <h2 class="h2 mt-2">The day job</h2>
+      </div>
+      <a href="/experience" class="link font-bold inline-flex items-center gap-2">Full history <Icon name="arrow" /></a>
+    </div>
 
-            <p class="text-slate-300 light:text-slate-700 leading-relaxed text-sm sm:text-base">
-              {project.overview}
-            </p>
+    <dl class="grid grid-cols-2 lg:grid-cols-4 border-2 border-line bg-line gap-[2px] mb-6">
+      {stats.map((s) => (
+        <div class="bg-card p-5">
+          <dd class="font-display font-extrabold text-[clamp(32px,4vw,48px)] leading-none tabular-nums">{s.value}</dd>
+          <dt class="mt-2 text-[15px] text-muted">{s.label}</dt>
+        </div>
+      ))}
+    </dl>
 
-            {project.subcards && project.subcards.length > 0 && (
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                {project.subcards.map((subcard) => (
-                  <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-white/5 light:border-slate-200 space-y-1.5 shadow-sm">
-                    <div class="font-bold text-white light:text-slate-900 text-xs sm:text-sm flex items-center gap-2">
-                      <span class={`w-2 h-2 rounded-full ${
-                        subcard.dotColor === 'amber' ? 'bg-amber-400 shadow-[0_0_6px_#f59e0b]' :
-                        subcard.dotColor === 'emerald' ? 'bg-emerald-400 shadow-[0_0_6px_#10b981]' :
-                        'bg-cyan-400 shadow-[0_0_6px_#06b6d4]'
-                      }`}></span>
-                      <span>{subcard.title}</span>
-                    </div>
-                    <p class="text-xs text-slate-400 light:text-slate-600 leading-relaxed">
-                      {subcard.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-          </div>
+    <div class="grid md:grid-cols-3 border-2 border-line bg-line gap-[2px]">
+      {experiences.map((exp) => (
+        <div class="bg-card p-6 flex flex-col gap-2">
+          <p class="kicker text-teal">{exp.period}</p>
+          <h3 class="h3">{exp.company}</h3>
+          <p class="text-[15px] leading-relaxed text-muted">{dayJobNotes[exp.id] ?? exp.summary}</p>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- VERIFIED CREDENTIALS STRIP -->
-  <section class="px-4 py-20 relative z-10 max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono mb-3">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-          <span>OFFICIAL CERTIFICATIONS & AWARDS</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          Verified Credentials
-        </h2>
+  <!-- TERMINAL -->
+  <section class="border-y-2 border-line bg-sunk">
+    <div class="wrap py-16 sm:py-20 grid gap-10 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-4">
+        <p class="kicker text-muted">Night shift</p>
+        <h2 class="h2 mt-2">What a normal Tuesday looks like</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-muted">
+          Pick a command. It is a simulation, but the checks are the ones I really run: backup audits, Intune syncs, EDR sweeps.
+        </p>
       </div>
-
-      <a
-        href="/credentials"
-        class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 font-semibold group"
-      >
-        <span>View all credentials & badges</span>
-        <span class="group-hover:translate-x-1 transition-transform">→</span>
-      </a>
+      <div class="lg:col-span-8">
+        <TerminalSimulator />
+      </div>
     </div>
+  </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {featuredCredentials.map((cred) => (
-        <CredentialTiltCard credential={cred} />
+  <!-- CREDENTIALS -->
+  <section class="wrap pt-16 sm:pt-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="kicker text-muted">Paper trail</p>
+        <h2 class="h2 mt-2">Certified, verified</h2>
+      </div>
+      <a href="/credentials" class="link font-bold inline-flex items-center gap-2">All credentials <Icon name="arrow" /></a>
+    </div>
+    <ul class="mt-8 flex flex-wrap gap-3">
+      {credentials.map((c, i) => (
+        <li class={`border-2 border-line px-3.5 py-2.5 font-bold ${i % 3 === 2 ? 'fill-gold' : 'bg-card'} ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}`}>
+          <span class="font-pixel text-xs mr-2">{c.code}</span>{c.issuer}
+        </li>
       ))}
-    </div>
+      <li class="border-2 border-line px-3.5 py-2.5 font-bold fill-teal rotate-1">
+        <span class="font-pixel text-xs mr-2">BBA</span>{dossier.education.institutionShort}
+      </li>
+    </ul>
   </section>
 
 </BaseLayout>

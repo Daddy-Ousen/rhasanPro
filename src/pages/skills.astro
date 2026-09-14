@@ -1,54 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SkillsRadar from '../components/SkillsRadar.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SkillsMatrix from '../components/SkillsMatrix.astro';
+import Icon from '../components/Icon.astro';
 import { dossier } from '../data/dossier';
 ---
 
 <BaseLayout
-  title={`6-Domain Skill Architecture & Radar | ${dossier.name}`}
-  description="Explore Robiul Hasan's 6 core technical competencies across Cloud, Virtualization, Security, BCDR, Operations, and Software Automation."
+  title={`Skills | ${dossier.name}`}
+  description="Robiul Hasan's technical skills across cloud and identity, systems, endpoint security, BCDR, service desk leadership, and automation."
 >
-  
-  <div class="px-4 py-16 sm:py-24 max-w-6xl mx-auto space-y-12">
-    
-    <!-- Hero Header -->
-    <div class="text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-        <span>COMPREHENSIVE TECHNICAL TAXONOMY</span>
+
+  <PageHeader
+    kicker="Skills"
+    intro="Six areas, 24 skills, each with an honest level. Filter by area or search for a tool."
+  >
+    What I can <span class="hl">actually do.</span>
+  </PageHeader>
+
+  <section class="wrap py-12">
+    <SkillsMatrix />
+  </section>
+
+  <section class="wrap">
+    <div class="fill-gold border-2 border-line lift p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div>
+        <h2 class="h3">Need proof?</h2>
+        <p class="mt-2 max-w-[60ch]">MD-102, MD-100, the AMD hackathon and the Python specialisation all have issuer records.</p>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        6-Domain Technical Competency Matrix
-      </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
-        Filter through 30+ verified competencies across cloud infrastructure, endpoint security, BCDR appliances, and modern agentic software development.
-      </p>
+      <a href="/credentials" class="btn">See credentials <Icon name="arrow" /></a>
     </div>
-
-    <!-- Skills Radar & Filter Component -->
-    <SkillsRadar />
-
-    <!-- Certification Mapping Banner -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="space-y-2 text-center md:text-left">
-          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Credential Verification</span>
-          <h3 class="text-xl font-bold text-white">Looking for Official Proof of Competency?</h3>
-          <p class="text-xs sm:text-sm text-slate-400 max-w-xl">
-            All Microsoft (MD-102, MD-100), AMD Hackathon, and Python certifications are backed by public verifiable badges and credentials.
-          </p>
-        </div>
-
-        <a
-          href="/credentials"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors shadow-lg whitespace-nowrap"
-        >
-          <span>View Verified Badges</span>
-          <span>→</span>
-        </a>
-      </div>
-    </div>
-
-  </div>
+  </section>
 
 </BaseLayout>

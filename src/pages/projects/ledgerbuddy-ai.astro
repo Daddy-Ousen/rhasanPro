@@ -1,160 +1,73 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
 import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 
-const project = projects.find((p) => p.slug === 'ledgerbuddy-ai') || projects[2];
+const project = projects.find((p) => p.slug === 'ledgerbuddy-ai') || projects[0];
+
+const certificateUrl = 'https://lablab.ai/u/@rhasan22959110/ai-hackathons/amd-developer-hackathon-act-ii/certificate';
+
+const specs = [
+  { label: 'Event', value: 'AMD AI Developer Hackathon, Act II' },
+  { label: 'Platform', value: 'Lablab.ai' },
+  { label: 'Licence', value: 'Open source (MIT)' },
+  { label: 'Repository', value: 'Daddy-Ousen/LedgerBuddyAIMVP' },
+];
 ---
 
-<BaseLayout
-  title={`${project.title} — Case Study | ${dossier.name}`}
-  description={project.tagline}
->
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
-    
-    <!-- Breadcrumb & Tag -->
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
-        <span>←</span>
-        <span>Back to Projects Matrix</span>
-      </a>
+<BaseLayout title={`LedgerBuddy AI case study | ${dossier.name}`} description={project.tagline}>
 
-      <span class="px-3 py-1 rounded-full text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">
-        AMD AI Hackathon Act II
-      </span>
-    </div>
+  <CaseStudyHero project={project} kicker="AMD AI Hackathon · Act II">
+    <Fragment slot="actions">
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> Source on GitHub</a>
+      )}
+      <a href={certificateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Certificate <Icon name="external" /></a>
+    </Fragment>
+  </CaseStudyHero>
 
-    <!-- Case Study Header -->
-    <div class="space-y-4">
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        {project.title}
-      </h1>
-      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
-        {project.subtitle}
-      </p>
-
-      <!-- Action Links -->
-      <div class="flex items-center gap-3 pt-2">
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs border border-white/15 hover:border-amber-500/40 shadow-lg transition-all hover:scale-105"
-        >
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          <span>View Source on GitHub (LedgerBuddyAIMVP)</span>
-        </a>
-
-        <a
-          href="https://lablab.ai/u/@rhasan22959110/ai-hackathons/amd-developer-hackathon-act-ii/certificate"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-red-500/10 hover:bg-red-500/20 text-red-400 font-mono text-xs border border-red-500/30 transition-colors"
-        >
-          <span>Lablab.ai Certificate</span>
-          <span>↗</span>
-        </a>
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">Receipts don't come in one shape</h2>
+        <p>{project.challenge}</p>
       </div>
 
-      <!-- Key Metrics Strip -->
-      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
-        {project.metrics.map((m) => (
-          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
-            <span class="block text-xl font-bold font-mono text-amber-400 mt-1">{m.value}</span>
-          </div>
-        ))}
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">OCR, a schema, and arithmetic that must balance</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          The engine takes PDF, PNG and JPEG invoices, runs them through OCR pre-processing, and asks an LLM to fill strict Pydantic schemas. An arithmetic check flags any entry where debit ≠ credit before it reaches PostgreSQL.
+        </p>
+        <div class="grid sm:grid-cols-3 border-2 border-line bg-line gap-[2px] text-[16px]">
+          {project.subcards.map((sub) => (
+            <div class="bg-card p-4">
+              <p class="font-bold">{sub.title}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">How it went</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
       </div>
     </div>
 
-    <!-- Case Study Narrative -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      
-      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
-        
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span>The Challenge</span>
-          </h2>
-          <p>{project.challenge}</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>The Engineered Solution</span>
-          </h2>
-          <p>{project.solution}</p>
-          <p>
-            The engine ingests multi-format invoices (PDF, PNG, JPEG), routes raw byte streams through specialized OCR preprocessors, and prompts an LLM via strict Pydantic schemas to yield normalized ledger entries. Arithmetic assertion layers automatically flag discrepancies where Debit &ne; Credit before committing to PostgreSQL.
-          </p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-            <span>Hackathon Results & Impact</span>
-          </h2>
-          <ul class="space-y-2.5">
-            {project.impact.map((item) => (
-              <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-bold text-base leading-none mt-0.5">▹</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Tech Stack & Specifications Sidebar -->
-      <div class="md:col-span-4 space-y-6">
-        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
-          <div class="flex flex-wrap gap-1.5">
-            {project.technologies.map((tech) => (
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-200 border border-white/5">
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div class="pt-4 border-t border-white/10 space-y-2 text-xs font-mono text-slate-400">
-            <div class="flex justify-between">
-              <span>HACKATHON:</span>
-              <span class="text-slate-200">AMD AI Act II</span>
-            </div>
-            <div class="flex justify-between">
-              <span>PLATFORM:</span>
-              <span class="text-slate-200">Lablab.ai</span>
-            </div>
-            <div class="flex justify-between">
-              <span>LICENSE:</span>
-              <span class="text-emerald-400">Open Source (MIT)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-3">
-          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">GitHub Repository</h4>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 underline"
-          >
-            <span>Daddy-Ousen/LedgerBuddyAIMVP</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
 
 </BaseLayout>

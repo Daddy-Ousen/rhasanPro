@@ -1,0 +1,38 @@
+---
+import type { ProjectItem } from '../data/projects';
+import { metaFor, shortTitle, toneClass } from '../data/tones';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: ProjectItem;
+  kicker: string;
+}
+
+const { project, kicker } = Astro.props;
+const meta = metaFor(project.id);
+---
+
+<section class={`${toneClass[meta.heroTone]} border-b-2 border-line`}>
+  <div class="wrap pt-8 pb-14 sm:pb-20">
+    <a href="/projects" class="kicker inline-flex items-center gap-2 hover:underline underline-offset-4">
+      <Icon name="back" class="w-3.5 h-3.5" /> All projects
+    </a>
+
+    <p class="kicker mt-10 opacity-90">{kicker}</p>
+    <h1 class="h1 mt-3 text-[clamp(52px,10vw,132px)]">{shortTitle(project.title)}</h1>
+    <p class="mt-6 text-lg sm:text-xl leading-relaxed max-w-[58ch]">{project.subtitle}</p>
+
+    {Astro.slots.has('actions') && (
+      <div class="mt-8 flex flex-wrap gap-3"><slot name="actions" /></div>
+    )}
+
+    <dl class="mt-12 grid grid-cols-3 max-w-2xl border-2 border-line bg-line gap-[2px] text-ink">
+      {project.metrics.map((m) => (
+        <div class="bg-card p-4">
+          <dt class="kicker text-muted">{m.label}</dt>
+          <dd class="mt-1.5 font-display font-extrabold text-[clamp(20px,2.6vw,32px)] leading-none">{m.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

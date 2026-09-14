@@ -1,93 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import Icon from '../components/Icon.astro';
 import { dossier } from '../data/dossier';
+
+const stats = [
+  { value: '2,500+', label: 'endpoints maintained', tone: 'fill-card' },
+  { value: '1,100+', label: 'Bitdefender EDR assets', tone: 'fill-teal' },
+  { value: '25+', label: 'projects delivered', tone: 'fill-gold' },
+  { value: '90%+', label: 'sustained CSAT', tone: 'fill-pink' },
+];
 ---
 
 <BaseLayout
-  title={`Verified Experience & Timeline | ${dossier.name}`}
-  description="Chronological engineering timeline and milestone accomplishments across Techants Solutions, Cobait Dhaka, and AQSBD."
+  title={`Experience | ${dossier.name}`}
+  description="Career timeline across Techants Solutions, Cobait Dhaka, and AQSBD: service desk leadership, endpoint security, and BCDR."
 >
-  
-  <div class="px-4 py-16 sm:py-24 max-w-6xl mx-auto space-y-16">
-    
-    <!-- Header Section -->
-    <div class="text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-        <span>VERIFIED CAREER TRAJECTORY</span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        5+ Years of Systems Engineering & Service Desk Leadership
-      </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
-        From Tier-1 server triage to co-leading multi-tiered MSP service desks, delivering 25+ enterprise projects, and defending 1,100+ EDR endpoints.
-      </p>
-    </div>
 
-    <!-- Overview Stats Banner -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-        <span class="block text-2xl sm:text-3xl font-mono font-bold text-white">2,500+</span>
-        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Endpoints Maintained</span>
-      </div>
-      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-        <span class="block text-2xl sm:text-3xl font-mono font-bold text-red-400">1,100+</span>
-        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Bitdefender EDR</span>
-      </div>
-      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-        <span class="block text-2xl sm:text-3xl font-mono font-bold text-amber-400">25+</span>
-        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Projects Delivered</span>
-      </div>
-      <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-        <span class="block text-2xl sm:text-3xl font-mono font-bold text-emerald-400">90%+</span>
-        <span class="text-[11px] font-mono text-slate-400 mt-1 block">Sustained CSAT</span>
-      </div>
-    </div>
+  <PageHeader
+    kicker="Experience"
+    intro="From first-line triage to co-leading a multi-tier MSP service desk. Newest first."
+  >
+    Five years of <span class="hl">keeping the lights on.</span>
+  </PageHeader>
 
-    <!-- Scroll-Scrubbed Experience Timeline Component -->
-    <ExperienceTimeline />
-
-    <!-- SDO Compliance & BCDR Deep Dive Callout -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <div class="lg:col-span-8 space-y-4">
-            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Specialized Operational Mandate</span>
-            <h3 class="text-xl sm:text-2xl font-bold text-white">
-              Service Delivery Optimization (SDO) & Appliance BCDR Audits
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              At Techants Solutions, Robiul produces quarterly SDO compliance audits across client fleets, evaluating RTO/RPO targets, patch compliance, and security posture. He directly manages on-premises Datto SIRIS/ALTO appliances and Acronis Cyber Protect cloud backups to ensure zero-loss recovery during disaster drills.
-            </p>
-          </div>
-
-          <div class="lg:col-span-4 flex flex-col gap-3">
-            <a
-              href={dossier.resumePdfUrl}
-              download="Robiul_Hasan_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full py-3 px-5 rounded-xl text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-colors flex items-center justify-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              <span>Download Complete Verified CV</span>
-            </a>
-            <a
-              href="/contact"
-              class="w-full py-3 px-5 rounded-xl text-center text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-white/10 transition-colors"
-            >
-              Request Consultation
-            </a>
-          </div>
-
+  <section class="wrap pt-12">
+    <dl class="grid grid-cols-2 lg:grid-cols-4 border-2 border-line bg-line gap-[2px]">
+      {stats.map((s) => (
+        <div class={`${s.tone} p-5 sm:p-6`}>
+          <dd class="font-display font-extrabold text-[clamp(34px,4.4vw,56px)] leading-none tabular-nums">{s.value}</dd>
+          <dt class="mt-2 text-[15px]">{s.label}</dt>
         </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="wrap py-16">
+    <ExperienceTimeline />
+  </section>
+
+  <section class="wrap">
+    <div class="fill-navy border-2 border-line lift p-6 sm:p-10 grid gap-8 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-8">
+        <p class="kicker opacity-90">Also on my desk</p>
+        <h2 class="h2 mt-3">Quarterly SDO audits and backup appliance checks</h2>
+        <p class="mt-4 text-[17px] leading-relaxed opacity-90 max-w-[65ch]">
+          Every quarter I audit client fleets for Service Delivery Optimisation: RTO and RPO targets, patch compliance and security posture. I also run the on-site Datto SIRIS and ALTO appliances and Acronis cloud backups, so restore drills lose nothing.
+        </p>
+      </div>
+      <div class="lg:col-span-4 grid gap-3">
+        <a href={dossier.resumePdfUrl} download="Robiul_Hasan_CV.pdf" class="btn btn-gold">Download CV <Icon name="download" /></a>
+        <a href="/contact" class="btn">Talk to me <Icon name="arrow" /></a>
       </div>
     </div>
-
-  </div>
+  </section>
 
 </BaseLayout>

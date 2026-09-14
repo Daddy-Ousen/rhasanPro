@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
-  <rect width="32" height="32" rx="6" fill="#0B0F17"/>
-  <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" stroke="#1E293B"/>
-  <path d="M9 10H16C18.2091 10 20 11.7909 20 14C20 16.2091 18.2091 18 16 18H9V10Z" stroke="#F1F5F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M15 18L21 24" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M9 10V24" stroke="#F1F5F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <rect width="32" height="32" fill="#16161A"/>
+  <rect x="2" y="2" width="28" height="28" fill="#0E7F80"/>
+  <!-- pixel "R": ink shadow, then marigold face -->
+  <path fill="#16161A" d="M10 7h12v3h-12zM10 10h3v15h-3zM22 10h3v6h-3zM13 16h9v3h-9zM16 19h3v3h-3zM19 22h3v3h-3zM22 25h3v3h-3z"/>
+  <path fill="#F2B31B" d="M8 5h12v3h-12zM8 8h3v15h-3zM20 8h3v6h-3zM11 14h9v3h-9zM14 17h3v3h-3zM17 20h3v3h-3zM20 23h3v3h-3z"/>
 </svg>

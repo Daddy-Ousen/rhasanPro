@@ -1,240 +1,126 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
 import { dossier } from '../data/dossier';
+
+const facts = [
+  { label: 'Based in', value: dossier.location },
+  { label: 'Timezone', value: dossier.timezone },
+  { label: 'Experience', value: dossier.yearsOfExperience },
+  { label: 'Fleet', value: '2,500+ endpoints' },
+  { label: 'EDR', value: '1,100+ Bitdefender assets' },
+  { label: 'Team', value: '10+ engineers co-led' },
+];
+
+const principles = [
+  {
+    tone: 'fill-teal',
+    title: 'A backup is only real after a restore',
+    body: 'Every appliance gets verified: screenshot boot checks, off-site copies, and recovery points under 15 minutes. Drills, not hope.',
+    stack: 'Datto SIRIS · Acronis · SDO audits',
+  },
+  {
+    tone: 'fill-pink',
+    title: 'Trust nothing, verify every device',
+    body: 'Conditional access, MFA everywhere, Intune compliance, BitLocker keys escrowed, and EDR telemetry watching around the clock.',
+    stack: 'Bitdefender EDR · Intune · Entra ID',
+  },
+  {
+    tone: 'fill-gold',
+    title: 'If I do it twice, I script it',
+    body: 'Repeated manual work is debt. PowerShell and Bash for the fleet, Playwright for the web, and sandboxed AI agents for the rest.',
+    stack: 'PowerShell · Python · Agentic AI',
+  },
+];
 ---
 
-<BaseLayout
-  title={`About & Leadership Dossier | ${dossier.name}`}
-  description={dossier.fullBio}
->
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-20">
-    
-    <!-- Hero Header -->
-    <div class="text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-4">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-        <span>ENGINEERING DOSSIER & BACKGROUND</span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        Systems Integrity, Fleet Defense & Engineering Leadership
-      </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
-        Discover Robiul Hasan's background, operating ethos, and approach to enterprise infrastructure resilience.
-      </p>
-    </div>
+<BaseLayout title={`About | ${dossier.name}`} description={dossier.fullBio}>
 
-    <!-- Core Bio & Profile Split -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Profile Dossier Card (Left 5 Cols) -->
-      <div class="lg:col-span-5 double-bezel-outer">
-        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
-          
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl overflow-hidden border border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.25)] bg-slate-900 flex-shrink-0">
-              <img
-                src={dossier.avatarUrl}
-                alt={dossier.name}
-                class="w-full h-full object-cover"
-                width="64"
-                height="64"
-                loading="eager"
-              />
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-white">{dossier.name}</h2>
-              <p class="text-xs text-amber-400 font-mono mt-0.5">L2 Systems Support Engineer</p>
-              <p class="text-[11px] text-slate-400 font-mono">Techants Solutions Pty Ltd</p>
-            </div>
-          </div>
-
-          <div class="space-y-2.5 pt-4 border-t border-white/10 text-xs font-mono">
-            <div class="flex items-center justify-between">
-              <span class="text-slate-500">LOCATION:</span>
-              <span class="text-slate-200 font-semibold">{dossier.location}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-500">TIMEZONE:</span>
-              <span class="text-emerald-400 font-semibold">{dossier.timezone} (UTC+6)</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-500">EXPERIENCE:</span>
-              <span class="text-amber-400 font-semibold">{dossier.yearsOfExperience}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-500">FLEET SCALE:</span>
-              <span class="text-slate-200 font-semibold">2,500+ Endpoints</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-slate-500">EDR DEFENSE:</span>
-              <span class="text-red-400 font-semibold">1,100+ Bitdefender</span>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-white/10 flex flex-col gap-2.5">
-            <a
-              href={dossier.resumePdfUrl}
-              download="Robiul_Hasan_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-colors flex items-center justify-center gap-2"
-            >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              <span>Download Verified Resume</span>
-            </a>
-            <a
-              href="/contact"
-              class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-white/10 transition-colors"
-            >
-              Contact Directly
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Narrative & Background (Right 7 Cols) -->
-      <div class="lg:col-span-7 space-y-6 text-slate-300 text-sm leading-relaxed">
-        <div class="p-6 rounded-3xl bg-slate-900/60 border border-white/10 shadow-lg space-y-4">
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span>Professional Journey</span>
-          </h3>
-          <p>
-            Robiul Hasan is an L2 IT Infrastructure & Systems Support Engineer and Service Desk Co-Leader at <strong>Techants Solutions Pty Ltd</strong>, a premier global Managed Services Provider (MSP). 
-          </p>
-          <p>
-            With over 5 years of hands-on experience spanning enterprise multi-tenant cloud migrations, automated endpoint compliance, and high-stakes disaster recovery operations, Robiul maintains the continuous availability and security posture of more than <strong>2,500+ endpoints</strong> and <strong>1,100+ Bitdefender GravityZone EDR</strong> protected devices.
-          </p>
-          <p>
-            Combining systematic root-cause problem solving with modern software automation, Robiul builds Python-driven orchestration tools, automated backup health validators for Datto and Acronis appliances, and autonomous LLM agents (such as <em>Hermes</em>) that eliminate repetitive engineering friction.
-          </p>
-        </div>
-
-        <!-- Academic Foundation -->
-        <div class="p-6 rounded-3xl bg-slate-900/60 border border-white/10 shadow-lg space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-              <span>Academic Foundation</span>
-            </h3>
-            <span class="text-xs font-mono text-amber-400 font-semibold">{dossier.education.year}</span>
-          </div>
-
-          <div>
-            <h4 class="text-sm font-semibold text-white">{dossier.education.degree}</h4>
-            <p class="text-xs text-slate-400 font-mono mt-0.5">{dossier.education.institution}</p>
-          </div>
-
-          <ul class="space-y-1.5 pt-2 text-xs text-slate-400">
-            {dossier.education.highlights.map((h) => (
-              <li class="flex items-start gap-2">
-                <span class="text-amber-400 font-bold mt-0.5">▹</span>
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- Leadership Philosophy Banner -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-gradient-to-r from-[#0f1420] via-slate-900 to-[#0f1420] border border-amber-500/20">
-        <div class="max-w-3xl mx-auto text-center space-y-4">
-          <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Leadership Credo</span>
-          <blockquote class="text-lg sm:text-2xl font-semibold text-white italic leading-snug">
-            "{dossier.leadershipQuote}"
-          </blockquote>
-          <p class="text-xs font-mono text-slate-400">
-            — Robiul Hasan, Service Desk Co-Leader (10+ Member Team)
-          </p>
-        </div>
+  <PageHeader
+    kicker="About"
+    intro="Five years in managed services. I co-lead a service desk, own the hard tickets, and build tools so the same fire does not start twice."
+  >
+    Hi, I'm Robiul. I keep systems <span class="hl">boring</span> on purpose.
+    <div slot="aside" class="flex lg:justify-end">
+      <div class="w-44 sm:w-56 aspect-square fill-teal border-2 border-line shadow-[8px_8px_0_var(--pink)] overflow-hidden">
+        <img src={dossier.avatarUrl} alt={`Pixel-art portrait of ${dossier.name}`} class="pixel-img w-full h-full mix-blend-multiply" width="224" height="224" />
       </div>
     </div>
+  </PageHeader>
 
-    <!-- 3 Core Engineering Pillars -->
-    <div class="space-y-6">
-      <div class="text-center">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-          Core Engineering Principles
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">Non-negotiable standards guiding every infrastructure deployment.</p>
+  <section class="wrap py-16 grid gap-10 lg:grid-cols-12">
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start box lift">
+      <p class="kicker fill-gold border-b-2 border-line px-5 py-3">Quick facts</p>
+      <dl class="divide-y-2 divide-line">
+        {facts.map((f) => (
+          <div class="flex justify-between gap-4 px-5 py-3">
+            <dt class="text-muted">{f.label}</dt>
+            <dd class="font-bold text-right">{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="p-5 border-t-2 border-line grid gap-3">
+        <a href={dossier.resumePdfUrl} download="Robiul_Hasan_CV.pdf" class="btn btn-gold">Download CV <Icon name="download" /></a>
+        <a href="/contact" class="btn">Get in touch <Icon name="arrow" /></a>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-8 grid gap-12">
+      <div class="grid gap-5 text-[18px] leading-relaxed max-w-[65ch]">
+        <h2 class="h2">The short version</h2>
+        <p>
+          I'm an L2 infrastructure and systems support engineer, and service desk co-lead, at <strong>Techants Solutions Pty Ltd</strong>, an Australian managed services provider.
+        </p>
+        <p>
+          Day to day that means cloud migrations, endpoint compliance and disaster recovery for clients around the world. I look after more than <strong>2,500 endpoints</strong> and <strong>1,100 Bitdefender GravityZone</strong> protected devices.
+        </p>
+        <p>
+          The other half of me writes software. Python tools that check Datto and Acronis backups, and AI agents like <a href="/projects/hermes" class="link">Hermes</a> that take the repetitive parts off my plate.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="double-bezel-outer group">
-          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                </svg>
-              </div>
-              <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">
-                Immutable BCDR & Continuity
-              </h3>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                Backups are only as valid as their last bare-metal restore drill. Every tenant appliance is verified daily with screenshot boot validation, air-gapped snapshots, and sub-15-minute RPO recovery points.
-              </p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-amber-400">
-              Datto SIRIS &bull; Acronis &bull; SDO
-            </div>
-          </div>
+      <div class="box p-6 sm:p-8 grid gap-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="h3">Education</h2>
+          <span class="kicker text-teal">{dossier.education.year}</span>
         </div>
-
-        <div class="double-bezel-outer group">
-          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 class="text-base font-bold text-white group-hover:text-red-400 transition-colors">
-                Zero-Trust Endpoint Security
-              </h3>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                Trust nothing; verify explicitly. Strict conditional access, mandatory MFA, automated Intune compliance policies, BitLocker encryption escrow, and active 24/7 EDR behavior telemetry.
-              </p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-red-400">
-              Bitdefender EDR &bull; Intune &bull; Entra ID
-            </div>
-          </div>
+        <div>
+          <p class="font-bold text-lg">{dossier.education.degree}</p>
+          <p class="text-muted">{dossier.education.institution}</p>
         </div>
-
-        <div class="double-bezel-outer group">
-          <div class="double-bezel-inner p-6 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] h-full flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
-                Automation & Agentic Tooling
-              </h3>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                Repetitive manual tasks represent systemic debt. We build idempotent PowerShell/Bash fleet scripts, continuous Playwright testing suites, and sandboxed AI assistants to accelerate resolution speed.
-              </p>
-            </div>
-            <div class="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] text-emerald-400">
-              Python &bull; Bash &bull; Agentic AI
-            </div>
-          </div>
-        </div>
-
+        <ul class="grid gap-2 text-[16px]">
+          {dossier.education.highlights.map((h) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{h}</span></li>
+          ))}
+        </ul>
       </div>
     </div>
+  </section>
 
-  </div>
+  <section class="fill-pink border-y-2 border-line">
+    <figure class="wrap py-16 sm:py-24 max-w-5xl">
+      <p class="kicker opacity-90">How I lead</p>
+      <blockquote class="h2 mt-5 text-[clamp(30px,4.4vw,58px)]">“{dossier.leadershipQuote}”</blockquote>
+      <figcaption class="mt-6 font-pixel text-xs opacity-90">— Robiul, co-lead of a 10+ person service desk</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap pt-16 sm:pt-20">
+    <p class="kicker text-muted">House rules</p>
+    <h2 class="h2 mt-2">Three things I don't compromise on</h2>
+    <div class="mt-8 grid gap-5 md:grid-cols-3">
+      {principles.map((p) => (
+        <article class="box flex flex-col">
+          <div class={`${p.tone} h-3 border-b-2 border-line`} aria-hidden="true"></div>
+          <div class="p-6 flex flex-col gap-3 flex-1">
+            <h3 class="h3">{p.title}</h3>
+            <p class="text-[16px] leading-relaxed text-muted">{p.body}</p>
+            <p class="mt-auto pt-3 kicker">{p.stack}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
 </BaseLayout>

@@ -1,286 +1,116 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
 import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 
 const project = projects.find((p) => p.slug === 'nextvector') || projects[0];
+
+const specs = [
+  { label: 'Scope', value: 'Daily tech & AI news' },
+  { label: 'Newsletter', value: 'The Morning Vector' },
+  { label: 'Model registry', value: '135+ models, growing' },
+  { label: 'Labs tracked', value: '24+' },
+  { label: 'Built with', value: 'React 19, Vite 8, Tailwind v4' },
+  { label: 'Hosting', value: 'Edge CDN / Vercel' },
+];
 ---
 
-<BaseLayout
-  title={`${project.title} — Case Study | ${dossier.name}`}
-  description={project.tagline}
->
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
-    
-    <!-- Breadcrumb & Category Tag -->
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
-        <span>←</span>
-        <span>Back to Projects Matrix</span>
-      </a>
+<BaseLayout title={`NextVector case study | ${dossier.name}`} description={project.tagline}>
 
-      <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
-        Tech News • Daily Dispatches • Frontier AI
-      </span>
-    </div>
+  <CaseStudyHero project={project} kicker="Tech news · Newsletter · AI model registry">
+    <Fragment slot="actions">
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Read NextVector <Icon name="external" /></a>
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>
+      )}
+    </Fragment>
+  </CaseStudyHero>
 
-    <!-- Case Study Hero Header -->
-    <div class="space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-medium font-mono">
-        {project.badge}
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The idea</p>
+        <h2 class="h2">Less noise. More signal.</h2>
+        <p>
+          Tech news drowns in press releases, recycled headlines and cherry-picked benchmarks. I built <strong>NextVector</strong> as an independent daily publication that explains what actually changed, with real technical depth.
+        </p>
+        <p>Every story answers the same three questions:</p>
+        <ol class="grid gap-0 border-2 border-line bg-line gap-y-[2px] text-[17px]">
+          <li class="bg-card p-4 flex gap-4"><span class="font-display font-extrabold text-3xl leading-none text-pink">1</span><span><strong>What happened?</strong> The verified event, without the hype.</span></li>
+          <li class="bg-card p-4 flex gap-4"><span class="font-display font-extrabold text-3xl leading-none text-pink">2</span><span><strong>Why does it matter?</strong> The technical or structural significance.</span></li>
+          <li class="bg-card p-4 flex gap-4"><span class="font-display font-extrabold text-3xl leading-none text-pink">3</span><span><strong>What could happen next?</strong> Second-order effects and realistic timelines.</span></li>
+        </ol>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        {project.title}
-      </h1>
-      
-      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
-        {project.subtitle}
-      </p>
-
-      <!-- Action Buttons Strip -->
-      <div class="pt-3 flex flex-wrap items-center gap-3">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold text-xs shadow-[0_0_25px_rgba(16,185,129,0.35)] transition-all hover:scale-105"
-        >
-          <span>Visit Live News Platform (nextvector.rhasan.online)</span>
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
-
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-white/10 hover:border-amber-500/40 font-semibold text-xs transition-colors"
-          >
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            <span>GitHub Repository</span>
-          </a>
-        )}
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Daily coverage</p>
+        <h2 class="h2">The Morning Vector</h2>
+        <p>
+          Alongside the site, NextVector sends <strong>The Morning Vector</strong>, a newsletter that turns the day's big shifts into a three-minute read for developers, architects and technical leads.
+        </p>
+        <p class="text-muted">
+          Readers get a signal-purity slider to filter stories (70–100), audio narration, a live breaking-news ticker, and a command palette (Ctrl+K) to jump anywhere.
+        </p>
       </div>
 
-      <!-- Key Metrics Strip -->
-      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
-        {project.metrics.map((m) => (
-          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
-            <span class="block text-xl sm:text-2xl font-bold font-mono text-emerald-400 mt-1">{m.value}</span>
-          </div>
-        ))}
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Built in</p>
+        <h2 class="h2">A model registry and a benchmark watchdog</h2>
+        <p>
+          Instead of linking to someone else's tables, NextVector has its own <strong>AI model registry</strong>. It tracks <strong>135+ frontier models from 24+ labs</strong>, from OpenAI, Anthropic and Google DeepMind to DeepSeek, Qwen and Mistral, and grows as new models ship.
+        </p>
+        <ul class="grid gap-3 text-[17px]">
+          <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span><strong>Table and card views</strong> with LMSYS Arena Elo, context length, parameters and token pricing.</span></li>
+          <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span><strong>Side-by-side comparison</strong> of architecture, hardware needs and benchmark scores.</span></li>
+          <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span><strong>Token cost estimator</strong> for monthly inference budgets.</span></li>
+          <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span><strong>Benchmark watchdog</strong> checking claims against OSWorld, WebArena, SWE-bench Verified and Cyber-Eval for contamination.</span></li>
+        </ul>
       </div>
-    </div>
 
-    <!-- Architectural Highlight Bento Card -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Editorial & Intelligence Platform</span>
-            <h3 class="text-xl font-bold text-white mt-1">Daily Tech Journalism with Baked-in AI Benchmark Tools</h3>
-          </div>
-          <span class="text-xs font-mono text-amber-400 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            Updated Daily • Growing Registry
-          </span>
+      <div class="grid gap-6">
+        <div class="max-w-[65ch]">
+          <p class="kicker text-teal">Pipeline</p>
+          <h2 class="h2 mt-2">From story to inbox, in four steps</h2>
         </div>
+        <ol class="grid sm:grid-cols-2 border-2 border-line bg-line gap-[2px]">
+          {project.diagramSteps?.map((step) => (
+            <li class="bg-card p-5 grid gap-2 content-start">
+              <span class="font-display font-extrabold text-5xl leading-none text-teal">{step.step}</span>
+              <h3 class="font-bold text-lg">{step.title}</h3>
+              <p class="text-[15px] leading-relaxed text-muted">{step.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-emerald-400 font-mono text-xs font-bold block">01. Daily Tech News</span>
-            <p class="text-xs text-slate-400 leading-relaxed">Breaking technical coverage and deep dives across AI, enterprise compute, and quantum research, updated every day.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-amber-400 font-mono text-xs font-bold block">02. "The Morning Vector" Newsletter</span>
-            <p class="text-xs text-slate-400 leading-relaxed">Curated executive daily briefing dispatched from the site, giving technical readers a high-signal 3-minute scan.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-cyan-400 font-mono text-xs font-bold block">03. Baked-in AI Models & Benchmarks</span>
-            <p class="text-xs text-slate-400 leading-relaxed">Integrated, expanding registry (135+ models and growing) tracking LMSYS Elo ratings, token pricing, and contamination-tested benchmarks.</p>
-          </div>
-        </div>
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What it does today</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((point) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{point}</span></li>
+          ))}
+        </ul>
       </div>
     </div>
 
-    <!-- Case Study Narrative -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      
-      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
-        
-        <!-- Editorial Mission -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white tracking-tight">The Core Mission: "Less noise. More signal."</h2>
-          <p>
-            Technical news is frequently drowned in marketing buzzwords, press release regurgitation, and benchmark saturation. Robiul engineered **NextVector** as an independent daily technology news publication built on the editorial principle that every major development should be understood through empirical, architectural depth.
-          </p>
-          <p class="text-slate-400">
-            Every story on NextVector is structured around the signature **Three Questions Framework**:
-          </p>
-          <ul class="space-y-2 text-xs font-mono text-slate-300 pl-4 border-l-2 border-emerald-500/30">
-            <li>• <strong class="text-white">1. What happened?</strong> — The factual, verified event without hype or sensationalism.</li>
-            <li>• <strong class="text-white">2. Why does it matter?</strong> — The architectural, mathematical, or structural significance.</li>
-            <li>• <strong class="text-white">3. What could happen next?</strong> — The second-order impacts, competitive dynamics, and realistic deployment timelines.</li>
-          </ul>
-        </div>
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
 
-        <!-- Newsletter & Daily Coverage -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white tracking-tight">Daily Coverage & "The Morning Vector" Newsletter</h2>
-          <p>
-            Beyond real-time web publishing, NextVector maintains an active newsletter called **"The Morning Vector"** directly from the platform. It distills complex industry shifts into a crisp, 3-minute read for developers, system architects, and technical leaders.
-          </p>
-          <p class="text-slate-400">
-            Features include a **Signal Purity Slider** that lets readers filter articles by signal threshold (70–100), an **Audio Narration Player** for listening on the go, a **Live Breaking Signal Ticker**, and a **Command Palette (⌘K / Ctrl+K)** for instantaneous global navigation across stories, papers, and specs.
-          </p>
-        </div>
-
-        <!-- Baked-in Companion Tools: Models & Benchmarks -->
-        <div class="space-y-3">
-          <h2 class="text-xl font-bold text-white tracking-tight">Baked-in Intelligence: Dynamic Frontier Models & Benchmarks</h2>
-          <p>
-            Rather than relying on third-party tables, NextVector has a full **AI Models Registry and Empirical Benchmark Radar baked directly into the platform**. 
-          </p>
-          <p class="text-slate-400">
-            Currently tracking **135+ frontier models across 24+ global research labs** (from OpenAI, DeepSeek, Anthropic, and Google DeepMind to Moonshot AI, Alibaba Cloud Qwen, and Mistral), this registry is **continuously updated** as new foundation models, parameter tiers, and version weights are released.
-          </p>
-          <ul class="space-y-2 text-xs font-mono text-slate-300 pl-4 border-l-2 border-cyan-500/30">
-            <li>• <strong class="text-white">Dual Table & Card Views:</strong> Sortable LMSYS Chatbot Arena Elo ratings, context window lengths, parameter scales, and input/output token pricing.</li>
-            <li>• <strong class="text-white">Side-by-Side Model Comparison:</strong> Multi-model selection tray comparing hardware requirements, architecture, and verified benchmark scores.</li>
-            <li>• <strong class="text-white">Interactive Token Cost Estimator:</strong> Real-time operational budget calculator estimating monthly inference expenditures.</li>
-            <li>• <strong class="text-white">Empirical Benchmark Watchdog:</strong> Auditing scores against OSWorld, WebArena, SWE-bench Verified, and Cyber-Eval to expose dataset contamination and benchmark saturation.</li>
-          </ul>
-        </div>
-
-        <!-- Four-Phase Intelligence Pipeline -->
-        <div class="space-y-4 pt-4">
-          <h2 class="text-xl font-bold text-white tracking-tight">Four-Phase Intelligence Pipeline</h2>
-          
-          <div class="space-y-3">
-            {project.diagramSteps?.map((step) => (
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-4">
-                <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 font-mono font-bold text-xs flex items-center justify-center flex-shrink-0">
-                  {step.step}
-                </span>
-                <div>
-                  <h4 class="text-xs font-bold text-white uppercase tracking-wider font-mono">{step.title}</h4>
-                  <p class="text-xs text-slate-400 mt-1">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Impact -->
-        <div class="space-y-3 pt-4">
-          <h2 class="text-xl font-bold text-white tracking-tight">Key Capabilities & Features</h2>
-          <ul class="space-y-2.5">
-            {project.impact.map((point) => (
-              <li class="flex items-start gap-2.5 text-xs sm:text-sm">
-                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+  <section class="wrap">
+    <div class="fill-navy border-2 border-line lift p-6 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div>
+        <h2 class="h2">Read today's issue</h2>
+        <p class="mt-3 opacity-90 max-w-[55ch]">Daily tech news, The Morning Vector, and the full model registry.</p>
       </div>
-
-      <!-- Right Column: Specs & Stack -->
-      <div class="md:col-span-4 space-y-6">
-        
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10 space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Publication Specs</h3>
-          
-          <div class="space-y-3 text-xs">
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Editorial Scope</span>
-              <span class="font-bold text-white">Daily Tech & AI News</span>
-            </div>
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Newsletter</span>
-              <span class="font-bold text-amber-400">The Morning Vector</span>
-            </div>
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Baked-in Model Registry</span>
-              <span class="font-bold text-emerald-400">135+ Models (Expanding)</span>
-            </div>
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Global Research Labs</span>
-              <span class="font-bold text-white">24+ Labs Tracked</span>
-            </div>
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Technology Stack</span>
-              <span class="font-bold text-white">React 19, Vite 8, Tailwind v4</span>
-            </div>
-            <div>
-              <span class="block text-[10px] text-slate-400 font-mono uppercase">Deployment</span>
-              <span class="font-bold text-white">Edge CDN / Vercel</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-white/10 space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
-          <div class="flex flex-wrap gap-1.5">
-            {project.technologies.map((t) => (
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300 border border-white/5">
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-emerald-300 font-semibold">Live Exploration</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Read daily technical reporting, explore the growing frontier AI models directory, and scan "The Morning Vector" newsletter on NextVector.
-          </p>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300"
-          >
-            <span>Open nextvector.rhasan.online</span>
-            <span>→</span>
-          </a>
-        </div>
-
-      </div>
-
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Open NextVector <Icon name="external" /></a>
     </div>
-
-    <!-- Outbound CTA Footer Card -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="space-y-2 text-center sm:text-left">
-          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">Experience Less Noise, More Signal</span>
-          <h3 class="text-xl font-bold text-white">Explore NextVector Tech News & AI Intelligence</h3>
-          <p class="text-xs text-slate-400 max-w-xl">
-            Read daily tech news, subscribe to "The Morning Vector" newsletter, and inspect the expanding frontier AI model registry and benchmark audits.
-          </p>
-        </div>
-
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors shadow-lg whitespace-nowrap"
-        >
-          <span>Launch NextVector Platform</span>
-          <span>→</span>
-        </a>
-      </div>
-    </div>
-
-  </div>
+  </section>
 
 </BaseLayout>
