@@ -1,220 +1,123 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import Icon from './Icon.astro';
 import { dossier } from '../data/dossier';
 
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { name: "Overview", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Experience", href: "/experience" },
-  { name: "Skills", href: "/skills" },
-  { name: "Projects", href: "/projects" },
-  { name: "Credentials", href: "/credentials" },
-  { name: "Contact", href: "/contact" },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Experience', href: '/experience' },
+  { name: 'Skills', href: '/skills' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Credentials', href: '/credentials' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 function isActive(href: string) {
-  if (href === "/") {
-    return currentPath === "/" || currentPath === "";
-  }
+  if (href === '/') return currentPath === '/' || currentPath === '';
   return currentPath.startsWith(href);
 }
 ---
 
-<header class="sticky top-4 z-40 w-full px-4 max-w-6xl mx-auto transition-all duration-300">
-  <div class="glass-pill rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between border border-white/10 shadow-2xl backdrop-blur-xl">
-    
-    <!-- Logo / Avatar -->
-    <a href="/" class="group flex items-center gap-3 focus:outline-none">
-      <div class="w-8 h-8 rounded-full overflow-hidden border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.25)] group-hover:scale-105 group-hover:border-amber-400 transition-all bg-slate-900 flex-shrink-0">
-        <img
-          src={dossier.avatarUrl}
-          alt={dossier.name}
-          class="w-full h-full object-cover"
-          width="32"
-          height="32"
-          loading="eager"
-        />
-      </div>
-      <div class="flex flex-col">
-        <span class="text-sm font-semibold text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight">
-          Robiul Hasan
-        </span>
-        <span class="text-[10px] font-mono text-emerald-400 tracking-wider flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          L2 CO-LEADER
-        </span>
-      </div>
+<header class="sticky top-0 z-40 bg-paper border-b-2 border-line">
+  <div class="wrap h-16 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-3 shrink-0" aria-label={`${dossier.name}, home`}>
+      <img
+        src={dossier.avatarUrl}
+        alt=""
+        class="pixel-img w-9 h-9 border-2 border-line bg-teal"
+        width="36"
+        height="36"
+        loading="eager"
+      />
+      <span class="font-pixel text-[15px] leading-none">ROBIUL.HASAN</span>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="hidden lg:flex items-center gap-1">
-      {navLinks.map((link) => {
-        const active = isActive(link.href);
-        return (
-          <a
-            href={link.href}
-            class={`relative px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
-              active
-                ? "text-amber-400 bg-amber-500/10 shadow-[inset_0_1px_1px_rgba(245,158,11,0.2)] font-semibold"
-                : "text-slate-300 hover:text-slate-100 hover:bg-white/5"
-            }`}
-          >
-            {link.name}
-            {active && (
-              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></span>
-            )}
-          </a>
-        );
-      })}
+    <nav class="hidden xl:flex items-center gap-1.5" aria-label="Main">
+      {navLinks.map((link) => (
+        <a href={link.href} class="chip" aria-current={isActive(link.href) ? 'page' : undefined}>
+          {link.name}
+        </a>
+      ))}
     </nav>
 
-    <!-- Right Controls: NextVector, Theme Toggle & CV CTA -->
-    <div class="flex items-center gap-2 sm:gap-3">
-      <!-- NextVector Launch Badge -->
+    <div class="flex items-center gap-2.5">
       <a
         href="https://nextvector.rhasan.online/"
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-all shadow-[0_0_12px_rgba(16,185,129,0.15)] group"
+        class="hidden 2xl:inline-flex chip"
       >
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>NextVector</span>
-        <span class="text-amber-400 group-hover:translate-x-0.5 transition-transform text-[11px]">↗</span>
+        NextVector <Icon name="external" class="w-3.5 h-3.5" />
       </a>
-
       <ThemeToggle />
-
       <a
         href={dossier.resumePdfUrl}
         download="Robiul_Hasan_CV.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-white/10 hover:border-amber-500/40 transition-all group"
+        class="hidden sm:inline-flex btn btn-sm btn-gold"
       >
-        <span>CV / Resume</span>
-        <div class="w-5 h-5 rounded-full bg-amber-500/20 group-hover:bg-amber-500/40 flex items-center justify-center text-amber-400 transition-colors">
-          <svg class="w-3 h-3 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-        </div>
+        CV <Icon name="download" class="w-3.5 h-3.5" />
       </a>
-
-      <!-- Mobile Hamburger Button -->
       <button
         id="mobile-menu-btn"
         type="button"
-        aria-label="Toggle Navigation Menu"
-        class="lg:hidden p-2 rounded-full text-slate-300 hover:text-amber-400 bg-slate-800/50 border border-white/10 focus:outline-none"
+        class="xl:hidden btn btn-sm"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
       >
-        <svg id="hamburger-icon-open" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="hamburger-icon-close" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        Menu
       </button>
     </div>
   </div>
 
-  <!-- Mobile Dropdown Drawer -->
-  <div
-    id="mobile-nav-drawer"
-    class="lg:hidden fixed inset-x-4 top-20 rounded-3xl bg-[#0b0f17]/95 border border-white/10 p-6 backdrop-blur-2xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none -translate-y-4 z-50 flex flex-col gap-3"
-  >
-    <div class="flex items-center justify-between pb-3 border-b border-white/10">
-      <span class="text-xs font-mono uppercase tracking-widest text-slate-400">Navigation Menu</span>
-      <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        DHAKA UTC+6
-      </span>
+  <nav id="mobile-nav" class="xl:hidden border-t-2 border-line bg-paper" aria-label="Main" hidden>
+    <div class="wrap py-6 grid gap-6 sm:grid-cols-2">
+      <ul class="grid gap-1">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={`h3 flex items-center justify-between py-1.5 ${isActive(link.href) ? 'text-pink' : ''}`}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+            >
+              {link.name}
+              {isActive(link.href) && <span class="led" aria-hidden="true"></span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="flex flex-col gap-3 sm:justify-end">
+        <a href="https://nextvector.rhasan.online/" target="_blank" rel="noopener noreferrer" class="btn">
+          NextVector <Icon name="external" />
+        </a>
+        <a href={dossier.resumePdfUrl} download="Robiul_Hasan_CV.pdf" class="btn btn-gold">
+          Download CV <Icon name="download" />
+        </a>
+      </div>
     </div>
-
-    <div class="flex flex-col gap-1 py-2">
-      {navLinks.map((link, idx) => {
-        const active = isActive(link.href);
-        return (
-          <a
-            href={link.href}
-            class={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 flex items-center justify-between ${
-              active
-                ? "text-amber-400 bg-amber-500/10 border border-amber-500/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-white/5"
-            }`}
-            style={`transition-delay: ${idx * 30}ms`}
-          >
-            <span>{link.name}</span>
-            {active && <span class="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]"></span>}
-          </a>
-        );
-      })}
-    </div>
-
-    <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
-      <a
-        href="https://nextvector.rhasan.online/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shadow-sm flex items-center justify-center gap-2"
-      >
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Launch NextVector Platform ↗</span>
-      </a>
-
-      <a
-        href={dossier.resumePdfUrl}
-        download="Robiul_Hasan_CV.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-lg flex items-center justify-center gap-2"
-      >
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        <span>Download Robiul's Verified CV</span>
-      </a>
-    </div>
-  </div>
+  </nav>
 </header>
 
 <script>
   function setupMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
-    const drawer = document.getElementById('mobile-nav-drawer');
-    const openIcon = document.getElementById('hamburger-icon-open');
-    const closeIcon = document.getElementById('hamburger-icon-close');
+    const nav = document.getElementById('mobile-nav');
+    if (!btn || !nav) return;
 
-    if (!btn || !drawer) return;
+    const setOpen = (open: boolean) => {
+      nav.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Close' : 'Menu';
+    };
 
-    let isOpen = false;
-
-    function toggleMenu() {
-      isOpen = !isOpen;
-      if (isOpen) {
-        drawer?.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
-        drawer?.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        openIcon?.classList.add('hidden');
-        closeIcon?.classList.remove('hidden');
-      } else {
-        drawer?.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
-        drawer?.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        openIcon?.classList.remove('hidden');
-        closeIcon?.classList.add('hidden');
-      }
-    }
-
-    btn.addEventListener('click', toggleMenu);
-
-    // Close on navigation link click
-    const drawerLinks = drawer.querySelectorAll('a');
-    drawerLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (isOpen) toggleMenu();
-      });
+    btn.addEventListener('click', () => setOpen(nav.hidden));
+    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !nav.hidden) setOpen(false);
     });
   }
 
-  setupMobileMenu();
   document.addEventListener('astro:page-load', setupMobileMenu);
 </script>

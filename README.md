@@ -10,7 +10,8 @@ Built with **Astro 5** and **Tailwind CSS** for near-zero shipped JavaScript, su
 
 - **Framework:** [Astro](https://astro.build) (Static Site Generation)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com) with custom design tokens
-- **Typography:** Plus Jakarta Sans (human editorial hierarchy) + JetBrains Mono (precision telemetry metrics)
+- **Design:** "Dhaka Dispatch" — rickshaw-art fills (teal, pink, marigold, suit navy) with hard ink outlines; light and dark themes via tokens in `src/styles/global.css`
+- **Typography:** Bricolage Grotesque (display) + Hanken Grotesk (body) + Silkscreen (pixel labels) + IBM Plex Mono (terminal)
 - **SEO & Social:** Open Graph, Twitter Cards, Schema.org `Person` JSON-LD, `robots.txt`, and automated `sitemap-index.xml`
 - **Hosting:** [Vercel](https://vercel.com) (Static Edge Deployment)
 

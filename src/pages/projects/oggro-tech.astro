@@ -1,180 +1,77 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
 import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 
-const project = projects.find((p) => p.slug === 'oggro-tech') || projects[1];
+const project = projects.find((p) => p.slug === 'oggro-tech') || projects[0];
+
+const specs = [
+  { label: 'Client', value: 'OGGRO Technologies Ltd' },
+  { label: 'Hosting', value: 'Static export on Apache / WHM' },
+  { label: 'Testing', value: 'Playwright end-to-end' },
+  { label: 'Status', value: 'Live in production' },
+];
+
+const pillars = [
+  { title: 'Static pre-rendering', body: 'Full static HTML export. No Node.js server at runtime, so pages arrive instantly.' },
+  { title: 'Tailwind CSS v4', body: 'A small CSS bundle, compiled by Vite, with nothing left unused.' },
+  { title: 'Playwright on every PR', body: 'Visual regression tests run before merge, so broken layouts never ship.' },
+];
 ---
 
-<BaseLayout
-  title={`${project.title} — Case Study | ${dossier.name}`}
-  description={project.tagline}
->
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
-    
-    <!-- Breadcrumb & Tag -->
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
-        <span>←</span>
-        <span>Back to Projects Matrix</span>
-      </a>
+<BaseLayout title={`OGGRO Technologies case study | ${dossier.name}`} description={project.tagline}>
 
-      <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">
-        Web Systems & Architecture
-      </span>
+  <CaseStudyHero project={project} kicker="Client site · Production">
+    <Fragment slot="actions">
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Visit oggro.tech <Icon name="external" /></a>
+    </Fragment>
+  </CaseStudyHero>
+
+  <section class="wrap pt-16">
+    <p class="kicker text-teal">Why it's fast</p>
+    <h2 class="h2 mt-2">Three decisions that did the work</h2>
+    <div class="mt-8 grid md:grid-cols-3 border-2 border-line bg-line gap-[2px]">
+      {pillars.map((p) => (
+        <div class="bg-card p-6 grid gap-2 content-start">
+          <h3 class="h3">{p.title}</h3>
+          <p class="text-[16px] leading-relaxed text-muted">{p.body}</p>
+        </div>
+      ))}
     </div>
+  </section>
 
-    <!-- Case Study Header -->
-    <div class="space-y-4">
-      <div class="flex items-center gap-3">
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          {project.title}
-        </h1>
-      </div>
-      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
-        {project.subtitle}
-      </p>
-
-      <!-- Outbound Live Site Button -->
-      <div class="pt-2">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg transition-all hover:scale-105"
-        >
-          <span>Visit Live Production Site (oggro.tech)</span>
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The brief</p>
+        <h2 class="h2">Fast everywhere, and safe to change</h2>
+        <p>{project.overview}</p>
+        <p class="text-muted">{project.challenge}</p>
       </div>
 
-      <!-- Key Metrics Strip -->
-      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
-        {project.metrics.map((m) => (
-          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
-            <span class="block text-xl font-bold font-mono text-emerald-400 mt-1">{m.value}</span>
-          </div>
-        ))}
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">Static by default, tested on every merge</h2>
+        <p>{project.solution}</p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">The numbers</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
       </div>
     </div>
 
-    <!-- Architectural Highlight Bento Card -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-8 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Zero-Runtime Performance</span>
-            <h3 class="text-xl font-bold text-white mt-1">Next.js 15 App Router & Edge CDN Architecture</h3>
-          </div>
-          <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            100/100 Lighthouse
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-amber-400 font-mono text-xs font-bold block">01. Static Pre-rendering</span>
-            <p class="text-xs text-slate-400">Full static HTML export eliminating runtime Node.js overhead for instant global delivery.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-emerald-400 font-mono text-xs font-bold block">02. Tailwind CSS v4</span>
-            <p class="text-xs text-slate-400">Zero-bundle CSS engine optimized with lightning-fast Vite compiler transforms.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-900/80 border border-white/5 space-y-2">
-            <span class="text-blue-400 font-mono text-xs font-bold block">03. Playwright E2E CI/CD</span>
-            <p class="text-xs text-slate-400">Automated visual regression tests running on every pull request to ensure 0 visual defects.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case Study Narrative -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      
-      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
-        
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span>The Challenge</span>
-          </h2>
-          <p>{project.challenge}</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>The Engineered Solution</span>
-          </h2>
-          <p>{project.solution}</p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-            <span>Quantified Results</span>
-          </h2>
-          <ul class="space-y-2.5">
-            {project.impact.map((item) => (
-              <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-bold text-base leading-none mt-0.5">▹</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Tech Stack & Specifications Sidebar -->
-      <div class="md:col-span-4 space-y-6">
-        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Technologies</h3>
-          <div class="flex flex-wrap gap-1.5">
-            {project.technologies.map((tech) => (
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-200 border border-white/5">
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div class="pt-4 border-t border-white/10 space-y-2 text-xs font-mono text-slate-400">
-            <div class="flex justify-between">
-              <span>HOSTING:</span>
-              <span class="text-slate-200">Vercel Edge</span>
-            </div>
-            <div class="flex justify-between">
-              <span>TESTING:</span>
-              <span class="text-slate-200">Playwright E2E</span>
-            </div>
-            <div class="flex justify-between">
-              <span>STATUS:</span>
-              <span class="text-emerald-400">Live Production</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-3">
-          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">Live Destination</h4>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-xs font-mono text-amber-400 hover:text-amber-300 underline"
-          >
-            <span>https://www.oggro.tech</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
 
 </BaseLayout>

@@ -1,0 +1,119 @@
+---
+import { skillDomains } from '../data/skills';
+
+const tierStyle: Record<string, { cls: string; label: string }> = {
+  Mastery: { cls: 'fill-gold', label: '★ Mastery' },
+  Intermediate: { cls: 'fill-teal', label: '◆ Intermediate' },
+  Beginner: { cls: 'bg-card text-ink', label: '○ Beginner' },
+};
+---
+
+<div class="grid gap-12">
+  <!-- Controls -->
+  <div class="grid gap-5 lg:grid-cols-12 lg:items-end pb-8 border-b-2 border-line">
+    <div class="lg:col-span-8 flex flex-wrap gap-1.5" role="group" aria-label="Filter by domain">
+      <button type="button" data-filter="all" aria-pressed="true" class="skill-filter-btn chip">All domains</button>
+      {skillDomains.map((d) => (
+        <button type="button" data-filter={d.id} aria-pressed="false" class="skill-filter-btn chip">{d.shortTitle}</button>
+      ))}
+    </div>
+    <div class="lg:col-span-4">
+      <label for="skill-search-input" class="label">Search skills</label>
+      <input id="skill-search-input" type="search" class="field" placeholder="Intune, EDR, Python…" autocomplete="off" />
+    </div>
+    <div class="lg:col-span-12 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-muted">
+      <span><span class="kicker fill-gold border-2 border-line px-1.5 py-0.5 mr-2">★ Mastery</span>lead &amp; architect</span>
+      <span><span class="kicker fill-teal border-2 border-line px-1.5 py-0.5 mr-2">◆ Intermediate</span>run it day to day</span>
+      <span><span class="kicker bg-card text-ink border-2 border-line px-1.5 py-0.5 mr-2">○ Beginner</span>applied, still growing</span>
+    </div>
+  </div>
+
+  <!-- Domains -->
+  {skillDomains.map((domain) => (
+    <section class="domain-block" data-domain-id={domain.id}>
+      <header class="grid gap-3 md:grid-cols-12 md:items-end pb-5 border-b-2 border-line">
+        <div class="md:col-span-7">
+          <p class="kicker text-muted">{domain.badge}</p>
+          <h2 class="h2 mt-2">{domain.title}</h2>
+        </div>
+        <p class="md:col-span-5 text-[16px] leading-relaxed text-muted">{domain.description}</p>
+      </header>
+
+      <div class="grid gap-5 md:grid-cols-2 mt-6">
+        {domain.skills.map((skill) => {
+          const tier = tierStyle[skill.proficiency];
+          return (
+            <article
+              class="skill-subcard box p-5 sm:p-6 flex flex-col gap-3"
+              data-skill-name={skill.name.toLowerCase()}
+              data-skill-desc={skill.description.toLowerCase()}
+              data-skill-tags={skill.tags.join(' ').toLowerCase()}
+              data-skill-tier={skill.proficiency.toLowerCase()}
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-bold text-lg leading-snug">{skill.name}</h3>
+                <span class={`kicker shrink-0 border-2 border-line px-1.5 py-1 ${tier.cls}`}>{tier.label}</span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-muted">{skill.description}</p>
+              <div class="mt-auto pt-3 flex flex-wrap items-center justify-between gap-2">
+                <div class="flex flex-wrap gap-1.5 text-muted">
+                  {skill.tags.map((tag) => <span class="tag">{tag}</span>)}
+                </div>
+                <span class="kicker text-teal">{skill.experienceYears}</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+
+  <p id="no-skills-msg" class="box p-8 text-center text-lg" hidden>
+    Nothing matches that search. Try a tool name like <strong>Intune</strong> or <strong>Datto</strong>.
+  </p>
+</div>
+
+<script>
+  function setupSkillsFilter() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.skill-filter-btn');
+    const blocks = document.querySelectorAll<HTMLElement>('.domain-block');
+    const search = document.getElementById('skill-search-input') as HTMLInputElement | null;
+    const empty = document.getElementById('no-skills-msg');
+    if (buttons.length === 0) return;
+
+    let active = 'all';
+    let query = '';
+
+    function apply() {
+      let total = 0;
+      blocks.forEach((block) => {
+        const inDomain = active === 'all' || active === block.dataset.domainId;
+        let visible = 0;
+        block.querySelectorAll<HTMLElement>('.skill-subcard').forEach((card) => {
+          const haystack = [card.dataset.skillName, card.dataset.skillDesc, card.dataset.skillTags, card.dataset.skillTier].join(' ');
+          const show = inDomain && (!query || haystack.includes(query));
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        block.hidden = visible === 0;
+        total += visible;
+      });
+      if (empty) empty.hidden = total > 0;
+    }
+
+    buttons.forEach((btn) =>
+      btn.addEventListener('click', () => {
+        active = btn.dataset.filter || 'all';
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        apply();
+      })
+    );
+
+    search?.addEventListener('input', () => {
+      query = search.value.toLowerCase().trim();
+      apply();
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupSkillsFilter);
+</script>

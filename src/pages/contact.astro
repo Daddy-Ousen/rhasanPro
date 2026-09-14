@@ -1,277 +1,141 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
 import DhakaClock from '../components/DhakaClock.astro';
+import Icon from '../components/Icon.astro';
 import { dossier } from '../data/dossier';
+
+const channels = [
+  { label: 'WhatsApp', value: dossier.phone, href: dossier.whatsappUrl, icon: 'whatsapp', tone: 'fill-teal', external: true },
+  { label: 'Email', value: dossier.email, href: `mailto:${dossier.email}`, icon: 'mail', tone: 'fill-gold', external: false },
+  { label: 'LinkedIn', value: 'robiul-hasan', href: dossier.linkedin, icon: 'linkedin', tone: 'fill-navy', external: true },
+  { label: 'GitHub', value: 'Daddy-Ousen', href: dossier.github, icon: 'github', tone: 'fill-pink', external: true },
+] as const;
 ---
 
 <BaseLayout
-  title={`Contact & Engineering Dispatch | ${dossier.name}`}
-  description="Connect directly with Robiul Hasan via WhatsApp (+8801843212123) or Email for enterprise infrastructure consulting, M365 migrations, or service desk leadership roles."
+  title={`Contact | ${dossier.name}`}
+  description="Contact Robiul Hasan on WhatsApp (+8801843212123) or email about infrastructure work, M365 migrations, or service desk and sysadmin roles."
+  hideFooterCta
 >
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
-    
-    <!-- Hero Header -->
-    <div class="text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>OPEN FOR SELECT ENTERPRISE ENGAGEMENTS</span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white light:text-slate-950 tracking-tight leading-tight">
-        Initialize Direct Communication
-      </h1>
-      <p class="text-slate-400 light:text-slate-600 text-sm sm:text-base mt-4 leading-relaxed">
-        Whether you have an infrastructure consultation request, enterprise migration, or service desk engineering inquiry, I'd love to connect.
-      </p>
-    </div>
 
-    <!-- Contact Split Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Direct Channels & Coordinates (Left 5 Cols) -->
-      <div class="lg:col-span-5 space-y-6">
-        
-        <div class="double-bezel-outer">
-          <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white text-slate-300 light:text-slate-700 space-y-6">
-            
-            <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-xl overflow-hidden border border-amber-500/30 bg-slate-900 flex-shrink-0">
-                <img
-                  src={dossier.avatarUrl}
-                  alt={dossier.name}
-                  class="w-full h-full object-cover"
-                  width="48"
-                  height="48"
-                  loading="eager"
-                />
-              </div>
-              <div>
-                <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Contact Dossier</span>
-                <h3 class="text-lg sm:text-xl font-bold text-white light:text-slate-950 mt-0.5">{dossier.name}</h3>
-                <p class="text-xs text-slate-400 light:text-slate-600 font-mono mt-0.5">{dossier.role}</p>
-              </div>
-            </div>
+  <PageHeader
+    kicker="Contact"
+    intro="Infrastructure help, a migration, or a role on your team. I usually reply within a day, Dhaka time."
+  >
+    Say <span class="hl">hi.</span>
+  </PageHeader>
 
-            <!-- Live Timezone Clock -->
-            <div class="p-3.5 rounded-2xl bg-slate-900/90 light:bg-slate-50 border border-white/5 light:border-slate-200 space-y-2">
-              <span class="text-[10px] font-mono text-slate-400 light:text-slate-500 block uppercase">Local Timezone Status</span>
-              <DhakaClock />
-            </div>
-
-            <!-- Channels -->
-            <div class="space-y-3 pt-2">
-              
-              <!-- WhatsApp Direct -->
-              <a
-                href={dossier.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-emerald-500/40 text-slate-200 light:text-slate-800 hover:text-emerald-400 transition-all group"
-              >
-                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.76-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
-                  </svg>
-                </div>
-                <div class="overflow-hidden">
-                  <span class="block text-[10px] font-mono text-slate-500 uppercase">WhatsApp Direct</span>
-                  <span class="text-xs font-mono font-medium truncate block">{dossier.phone}</span>
-                </div>
-              </a>
-
-              <!-- Email -->
-              <a
-                href={`mailto:${dossier.email}`}
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-amber-500/30 text-slate-200 light:text-slate-800 hover:text-amber-400 transition-all group"
-              >
-                <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div class="overflow-hidden">
-                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Direct Email</span>
-                  <span class="text-xs font-mono font-medium truncate block">{dossier.email}</span>
-                </div>
-              </a>
-
-              <!-- LinkedIn -->
-              <a
-                href={dossier.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-blue-500/30 text-slate-200 light:text-slate-800 hover:text-blue-400 transition-all group"
-              >
-                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.88 0-1.6.72-1.6 1.6 0 .88.72 1.6 1.6 1.6.88 0 1.6-.72 1.6-1.6 0-.88-.72-1.6-1.6-1.6Z"/>
-                  </svg>
-                </div>
-                <div class="overflow-hidden">
-                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Professional Network</span>
-                  <span class="text-xs font-mono font-medium truncate block">linkedin.com/in/robiul-hasan</span>
-                </div>
-              </a>
-
-              <!-- GitHub -->
-              <a
-                href={dossier.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/60 light:bg-slate-50 hover:bg-slate-800/80 light:hover:bg-slate-100 border border-white/5 light:border-slate-200 hover:border-purple-500/30 text-slate-200 light:text-slate-800 hover:text-purple-400 transition-all group"
-              >
-                <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                  </svg>
-                </div>
-                <div class="overflow-hidden">
-                  <span class="block text-[10px] font-mono text-slate-500 uppercase">Code Repository</span>
-                  <span class="text-xs font-mono font-medium truncate block">github.com/Daddy-Ousen</span>
-                </div>
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Interactive Contact Form (Right 7 Cols) -->
-      <div class="lg:col-span-7 double-bezel-outer">
-        <div class="double-bezel-inner p-6 sm:p-8 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] light:bg-white text-slate-200 light:text-slate-800">
-          
-          <div class="mb-6">
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]"></span>
-              <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Instant Dispatch via WhatsApp</span>
-            </div>
-            <h3 class="text-xl font-bold text-white light:text-slate-950">Send a Dispatch Note</h3>
-            <p class="text-xs text-slate-400 light:text-slate-600 mt-1">Fill out the form below to send an instant message directly to Robiul on WhatsApp (+8801843212123).</p>
-          </div>
-
-          <form id="contact-form" class="space-y-4">
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contact-name" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Your Name *</label>
-                <input
-                  type="text"
-                  id="contact-name"
-                  required
-                  placeholder="e.g. Alex Morgan"
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label for="contact-email" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Your Email *</label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  required
-                  placeholder="alex@enterprise.com"
-                  class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="contact-subject" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Subject / Engagement Area *</label>
-              <input
-                type="text"
-                id="contact-subject"
-                required
-                placeholder="e.g. Infrastructure Consultation / M365 Migration"
-                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors"
-              />
-            </div>
-
-            <div>
-              <label for="contact-message" class="block text-xs font-mono text-slate-300 light:text-slate-700 mb-1.5">Message / Requirements *</label>
-              <textarea
-                id="contact-message"
-                required
-                rows="5"
-                placeholder="Provide context regarding your environment or role inquiry..."
-                class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 light:bg-slate-50 border border-white/10 light:border-slate-300 focus:border-amber-500/50 focus:outline-none text-xs text-white light:text-slate-900 placeholder-slate-500 transition-colors leading-relaxed"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              id="contact-submit-btn"
-              class="w-full py-3.5 px-6 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer group"
+  <section class="wrap py-16 grid gap-10 lg:grid-cols-12 lg:items-start">
+    <div class="lg:col-span-5 grid gap-6">
+      <ul class="box lift divide-y-2 divide-line">
+        {channels.map((c) => (
+          <li>
+            <a
+              href={c.href}
+              {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              class="flex items-center gap-4 p-4 hover:bg-sunk group"
             >
-              <svg class="w-4 h-4 fill-current text-slate-950" viewBox="0 0 24 24">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.76-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
-              </svg>
-              <span>Transmit Message via WhatsApp</span>
-              <span class="group-hover:translate-x-1 transition-transform font-bold">→</span>
-            </button>
+              <span class={`${c.tone} w-11 h-11 shrink-0 border-2 border-line grid place-items-center`}>
+                <Icon name={c.icon} class="w-5 h-5" />
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="kicker text-muted block">{c.label}</span>
+                <span class="font-bold text-[17px] block truncate">{c.value}</span>
+              </span>
+              <Icon name="arrow" class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+            </a>
+          </li>
+        ))}
+      </ul>
 
-            <div id="contact-feedback-msg" class="hidden p-3.5 rounded-xl text-center text-xs font-mono"></div>
-
-          </form>
-
-        </div>
+      <div class="box p-5 flex flex-wrap items-center justify-between gap-3">
+        <span class="text-muted">My local time</span>
+        <DhakaClock class="text-[15px]" />
       </div>
-
     </div>
 
-  </div>
+    <div class="lg:col-span-7 box lift p-6 sm:p-8">
+      <p class="kicker text-teal">Opens WhatsApp with your note filled in</p>
+      <h2 class="h2 mt-2">Write me a note</h2>
+
+      <form id="contact-form" class="mt-8 grid gap-5" novalidate>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="contact-name" class="label">Your name</label>
+            <input id="contact-name" type="text" class="field" required autocomplete="name" placeholder="Alex Morgan" />
+          </div>
+          <div>
+            <label for="contact-email" class="label">Your email</label>
+            <input id="contact-email" type="email" class="field" required autocomplete="email" placeholder="alex@company.com" />
+          </div>
+        </div>
+        <div>
+          <label for="contact-subject" class="label">What is it about?</label>
+          <input id="contact-subject" type="text" class="field" required placeholder="M365 migration, sysadmin role…" />
+        </div>
+        <div>
+          <label for="contact-message" class="label">Message</label>
+          <textarea id="contact-message" rows="6" class="field leading-relaxed" required placeholder="A little about your environment or the role."></textarea>
+        </div>
+
+        <button id="contact-submit-btn" type="submit" class="btn btn-teal w-full">
+          <Icon name="whatsapp" class="w-5 h-5" /> Send on WhatsApp
+        </button>
+
+        <p id="contact-feedback-msg" class="border-2 p-3 font-bold" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
 
 </BaseLayout>
 
 <script>
   function setupContactForm() {
-    const form = document.getElementById('contact-form');
-    const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
-    const emailInput = document.getElementById('contact-email') as HTMLInputElement | null;
-    const subjectInput = document.getElementById('contact-subject') as HTMLInputElement | null;
-    const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const feedback = document.getElementById('contact-feedback-msg');
     const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
-
     if (!form || !feedback) return;
+
+    const value = (id: string) => (document.getElementById(id) as HTMLInputElement | null)?.value.trim() || '';
+
+    const show = (message: string, ok: boolean) => {
+      feedback.textContent = message;
+      feedback.className = ok
+        ? 'border-2 border-line p-3 font-bold fill-teal'
+        : 'border-2 border-pink p-3 font-bold text-pink bg-card';
+      feedback.hidden = false;
+    };
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = nameInput?.value.trim() || '';
-      const email = emailInput?.value.trim() || '';
-      const subject = subjectInput?.value.trim() || '';
-      const message = messageInput?.value.trim() || '';
+      const name = value('contact-name');
+      const email = value('contact-email');
+      const subject = value('contact-subject');
+      const message = value('contact-message');
 
       if (!name || !email || !subject || !message) {
-        feedback.className = 'p-3.5 rounded-xl text-center text-xs font-mono bg-red-500/20 text-red-300 border border-red-500/30';
-        feedback.textContent = '⚠️ Please fill out all required fields before dispatching.';
-        feedback.classList.remove('hidden');
+        show('Fill in all four fields, then send again.', false);
         return;
       }
 
       if (submitBtn) submitBtn.disabled = true;
 
-      // Construct formatted WhatsApp message
-      const formattedText = `*New Portfolio Dispatch Note (rhasan.online)*\n\n👤 *From:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`;
-      const whatsappUrl = `https://wa.me/8801843212123?text=${encodeURIComponent(formattedText)}`;
-      
-      feedback.className = 'p-3.5 rounded-xl text-center text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
-      feedback.textContent = '🚀 Dispatch formatted! Opening WhatsApp (+8801843212123)...';
-      feedback.classList.remove('hidden');
+      const text = `*New note from rhasan.online*\n\n*From:* ${name}\n*Email:* ${email}\n*Subject:* ${subject}\n\n${message}`;
+      const url = `https://wa.me/8801843212123?text=${encodeURIComponent(text)}`;
+
+      show('Opening WhatsApp with your note…', true);
 
       setTimeout(() => {
-        // Open WhatsApp in new tab/window, fallback to direct location
-        const opened = window.open(whatsappUrl, '_blank');
+        const opened = window.open(url, '_blank');
         if (!opened || opened.closed || typeof opened.closed === 'undefined') {
-          window.location.href = whatsappUrl;
+          window.location.href = url;
         }
         if (submitBtn) submitBtn.disabled = false;
       }, 400);
     });
   }
 
-  setupContactForm();
   document.addEventListener('astro:page-load', setupContactForm);
 </script>

@@ -1,0 +1,28 @@
+---
+// Sidebar card for case studies: key/value specs plus technology tags.
+interface Props {
+  specs: { label: string; value: string }[];
+  technologies: string[];
+}
+
+const { specs, technologies } = Astro.props;
+---
+
+<div class="box lift">
+  <p class="kicker fill-gold border-b-2 border-line px-5 py-3">Specs</p>
+  <dl class="divide-y-2 divide-line">
+    {specs.map((s) => (
+      <div class="px-5 py-3">
+        <dt class="text-sm text-muted">{s.label}</dt>
+        <dd class="font-bold">{s.value}</dd>
+      </div>
+    ))}
+  </dl>
+  <div class="p-5 border-t-2 border-line">
+    <p class="kicker text-muted">Stack</p>
+    <div class="mt-3 flex flex-wrap gap-1.5">
+      {technologies.map((t) => <span class="tag">{t}</span>)}
+    </div>
+  </div>
+  <slot />
+</div>

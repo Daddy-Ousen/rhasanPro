@@ -1,175 +1,83 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
 import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 
 const project = projects.find((p) => p.slug === 'hermes') || projects[0];
+
+const specs = [
+  { label: 'Runs as', value: 'systemd daemon on Linux' },
+  { label: 'Tool interface', value: 'Pydantic JSON schemas' },
+  { label: 'Browser engine', value: 'Playwright Chromium' },
+  { label: 'Status', value: 'Personal project, Feb 2026 – now' },
+];
 ---
 
-<BaseLayout
-  title={`${project.title} — Technical Deep Dive | ${dossier.name}`}
-  description={project.tagline}
->
-  
-  <div class="px-4 py-16 sm:py-24 max-w-5xl mx-auto space-y-16">
-    
-    <!-- Breadcrumb & Tag -->
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300">
-        <span>←</span>
-        <span>Back to Projects Matrix</span>
-      </a>
+<BaseLayout title={`Hermes case study | ${dossier.name}`} description={project.tagline}>
 
-      <span class="px-3 py-1 rounded-full text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">
-        AI & Automation Deep Dive
-      </span>
-    </div>
+  <CaseStudyHero project={project} kicker="Agentic AI · Self-hosted">
+    <Fragment slot="actions">
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>
+      )}
+    </Fragment>
+  </CaseStudyHero>
 
-    <!-- Case Study Header -->
-    <div class="space-y-4">
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        {project.title}
-      </h1>
-      <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl">
-        {project.subtitle}
-      </p>
+  <section class="wrap pt-16">
+    <p class="kicker text-teal">How a request runs</p>
+    <h2 class="h2 mt-2 max-w-[20ch]">The tool-calling loop</h2>
+    <ol class="mt-8 grid md:grid-cols-4 border-2 border-line bg-line gap-[2px]">
+      {project.diagramSteps?.map((step) => (
+        <li class="bg-card p-5 grid gap-2 content-start">
+          <span class="font-display font-extrabold text-5xl leading-none text-pink">{step.step}</span>
+          <h3 class="font-bold text-lg leading-snug">{step.title}</h3>
+          <p class="text-[15px] leading-relaxed text-muted">{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
 
-      <!-- Key Metrics Strip -->
-      <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
-        {project.metrics.map((m) => (
-          <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
-            <span class="block text-xs font-mono text-slate-400">{m.label}</span>
-            <span class="block text-xl font-bold font-mono text-emerald-400 mt-1">{m.value}</span>
-          </div>
-        ))}
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">Too many tabs, too many terminals</h2>
+        <p>{project.challenge}</p>
+        <p class="text-muted">
+          In a busy MSP, engineers run hundreds of small checks a day: API tokens, backup snapshots, CVE advisories, device registration across tenants. Every switch between a portal and a terminal adds delay and room for mistakes.
+        </p>
       </div>
-    </div>
 
-    <!-- Interactive Animated Tool Execution Flow Diagram -->
-    <div class="double-bezel-outer">
-      <div class="double-bezel-inner p-6 sm:p-10 rounded-[calc(1.5rem-1.5px)] bg-[#0f1420] text-slate-300 space-y-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Architecture Runtime</span>
-            <h3 class="text-xl font-bold text-white mt-1">Hermes Autonomous Tool Execution Loop</h3>
-          </div>
-          <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Sandboxed Daemon
-          </span>
-        </div>
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">A sandboxed agent that uses real tools</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          Hermes runs as an isolated systemd daemon. It listens on local UNIX sockets and REST endpoints and turns questions into strict Pydantic schemas. Each tool call runs in a worker process with tight permissions, and the output comes back as a short, useful summary.
+        </p>
+      </div>
 
-        <!-- 4-Step Diagram Flow -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative pt-4">
-          {project.diagramSteps?.map((step, idx) => (
-            <div class="diagram-step-box p-4 rounded-2xl bg-slate-900/90 border border-white/10 hover:border-amber-500/40 transition-all flex flex-col justify-between relative group">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-xs">
-                    0{step.step}
-                  </span>
-                  <span class="text-[10px] font-mono text-slate-500">Node #{idx + 1}</span>
-                </div>
-                <h4 class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">
-                  {step.title}
-                </h4>
-                <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-
-              <div class="mt-4 pt-2 border-t border-white/5 text-[10px] font-mono text-slate-500 flex items-center gap-1">
-                <span class="text-emerald-400">✔</span>
-                <span>Deterministic</span>
-              </div>
-            </div>
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What changed</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
 
-    <!-- Case Study Narrative Breakdown -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      
-      <div class="md:col-span-8 space-y-8 text-slate-300 text-sm leading-relaxed">
-        
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span>The Challenge</span>
-          </h2>
-          <p>{project.challenge}</p>
-          <p>
-            In high-tempo MSP environments, engineers execute hundreds of repetitive verification commands daily: polling API tokens, verifying backup snapshots, retrieving CVE advisories, and checking device registration status across tenants. Context switching between web portals and terminals creates compounding latency and human error.
-          </p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>The Engineered Solution</span>
-          </h2>
-          <p>{project.solution}</p>
-          <p>
-            Hermes runs as an isolated systemd daemon on Linux. It binds to local UNIX sockets and REST interfaces, parsing conversational queries into strict Pydantic JSON schemas. When a tool call is generated, it executes inside a sub-process worker with strict permission boundaries, capturing stdout and returning actionable summaries in milliseconds.
-          </p>
-        </div>
-
-        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/50 border border-white/10 space-y-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-            <span>Quantified Impact</span>
-          </h2>
-          <ul class="space-y-2.5">
-            {project.impact.map((item) => (
-              <li class="flex items-start gap-2.5">
-                <span class="text-emerald-400 font-bold text-base leading-none mt-0.5">▹</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+      <div class="fill-gold border-2 border-line p-5">
+        <h3 class="font-bold text-lg">Try a version of Hermes</h3>
+        <p class="mt-2 text-[15px] leading-relaxed">A scoped web build answers questions about me. Open it with the “Ask Hermes” button in the corner.</p>
       </div>
-
-      <!-- Tech Stack & Specifications Sidebar -->
-      <div class="md:col-span-4 space-y-6">
-        <div class="p-6 rounded-3xl bg-slate-900/80 border border-white/10 space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Core Stack</h3>
-          <div class="flex flex-wrap gap-1.5">
-            {project.technologies.map((tech) => (
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-200 border border-white/5">
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div class="pt-4 border-t border-white/10 space-y-2 text-xs font-mono text-slate-400">
-            <div class="flex justify-between">
-              <span>DEPLOYMENT:</span>
-              <span class="text-slate-200">Systemd Linux</span>
-            </div>
-            <div class="flex justify-between">
-              <span>TOOL INTERFACE:</span>
-              <span class="text-slate-200">Pydantic Schemas</span>
-            </div>
-            <div class="flex justify-between">
-              <span>HEADLESS ENGINE:</span>
-              <span class="text-slate-200">Playwright Chromium</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-center space-y-3">
-          <h4 class="text-sm font-bold text-white">Experience Hermes Live</h4>
-          <p class="text-xs text-slate-300">
-            You can interact with a specialized knowledge-scoped web build of Hermes right on this portfolio using the bottom-right chat widget!
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+    </aside>
+  </section>
 
 </BaseLayout>
