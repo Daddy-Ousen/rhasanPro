@@ -10,7 +10,7 @@ export interface ProjectItem {
   badge: string;
   title: string;
   subtitle: string;
-  category: "AI & Automation" | "Web Systems" | "IT Infrastructure";
+  category: "SaaS Products" | "Cross-Platform Apps" | "AI & Automation" | "Web Systems" | "IT Infrastructure";
   tagline: string;
   overview: string;
   challenge: string;
@@ -20,6 +20,7 @@ export interface ProjectItem {
   subcards: ProjectSubcard[];
   githubUrl?: string;
   liveUrl?: string;
+  storeLinks?: { label: string; url: string }[];
   caseStudyUrl: string;
   featured: boolean;
   metrics: { label: string; value: string }[];
@@ -162,7 +163,7 @@ export const projects: ProjectItem[] = [
     ],
     liveUrl: "https://www.oggro.tech/",
     caseStudyUrl: "/projects/oggro-tech",
-    featured: true,
+    featured: false,
     metrics: [
       { label: "Lighthouse Score", value: "100/100" },
       { label: "Global TTFB", value: "<180ms" },
@@ -205,11 +206,190 @@ export const projects: ProjectItem[] = [
     ],
     githubUrl: "https://github.com/Daddy-Ousen/LedgerBuddyAIMVP",
     caseStudyUrl: "/projects/ledgerbuddy-ai",
-    featured: true,
+    featured: false,
     metrics: [
       { label: "Extraction Accuracy", value: "97.2%" },
       { label: "Reconciliation Speed", value: "3.4s" },
       { label: "Hackathon Track", value: "AMD Act II" },
+    ],
+  },
+  {
+    id: "timebuddy",
+    slug: "timebuddy",
+    badge: "SAAS PRODUCT • BUILT AT THRIVE IT SOLUTIONS",
+    title: "TimeBuddy — Workforce Time & Attendance SaaS",
+    subtitle: "Multi-Tenant Time Tracking, Attendance & Productivity Platform with a Native Windows Desktop Agent",
+    category: "SaaS Products",
+    tagline: "Workforce time tracking and attendance that gives managers visibility without keystroke logging, webcams or screenshots.",
+    overview: "TimeBuddy (timebuddy.orderbuddy.pro) is a multi-tenant SaaS for time tracking, attendance and team productivity, built under Thrive IT Solutions. Companies sign up, invite their team and see who is working, on what, and for how long. A small Windows agent records the active app and idle time. It never logs keystrokes, never uses the webcam, and cleans sensitive window titles before sending anything.",
+    challenge: "Most time-tracking tools either trust manual timesheets that nobody fills in, or turn into surveillance software with screenshots and keystroke logs. Teams lose trust, and managers still don't get clean attendance or project-hour data.",
+    solution: "Built a Turborepo + pnpm monorepo with a Next.js 15 web dashboard, an Express REST API on Prisma and PostgreSQL, shared Zod schemas, and a native Windows agent that reads the foreground window and last-input time through Win32 APIs. Each organisation is fully isolated, with four roles from owner to employee.",
+    impact: [
+      "Shipped 7 working modules: live workforce view, workday timeline, projects & tasks, teams & shifts, timesheets & approvals, reports, and policy settings.",
+      "Native Windows agent keeps working offline and uploads buffered activity when the network returns.",
+      "Privacy by design: no keystroke logging, no webcam, and automatic cleaning of banking, password and private-browsing window titles.",
+    ],
+    technologies: ["Next.js 15", "TypeScript", "Express", "Prisma", "PostgreSQL", "Redis", "Zod", "Win32 API", "Turborepo", "Docker"],
+    subcards: [
+      {
+        title: "Multi-Tenant SaaS",
+        description: "Self-service company sign-up, invite links, and four roles: owner, admin, team manager, employee.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Windows Desktop Agent",
+        description: "Reads the active app and idle time through Win32 APIs, with an offline store-and-forward buffer.",
+        dotColor: "amber",
+      },
+      {
+        title: "Timesheets & Reports",
+        description: "Auto-built timesheets, approval queues, punctuality scores, project-hour budgets and CSV export.",
+        dotColor: "emerald",
+      },
+    ],
+    liveUrl: "https://timebuddy.orderbuddy.pro/",
+    caseStudyUrl: "/projects/timebuddy",
+    featured: false,
+    metrics: [
+      { label: "Modules", value: "7" },
+      { label: "User Roles", value: "4" },
+      { label: "Agent", value: "Windows" },
+    ],
+  },
+  {
+    id: "orderbuddy",
+    slug: "orderbuddy",
+    badge: "SAAS PRODUCT • BUILT AT THRIVE IT SOLUTIONS",
+    title: "OrderBuddy — Courier Dispatch SaaS for E-commerce",
+    subtitle: "Multi-Tenant Courier Dispatch & Tracking Platform Unifying Pathao, RedX and More Behind One Dashboard",
+    category: "SaaS Products",
+    tagline: "One dashboard for e-commerce merchants to send, track and manage parcels across multiple Bangladeshi couriers.",
+    overview: "OrderBuddy (orderbuddy.pro) is a multi-tenant SaaS built under Thrive IT Solutions that unifies courier dispatch for e-commerce merchants. A merchant sends one order payload, and OrderBuddy formats and sends it to the right courier, such as Pathao or RedX. Slow courier API calls run in a background queue, so the dashboard stays fast. Courier API keys are encrypted at rest.",
+    challenge: "Online shops in Bangladesh work with several couriers at once. Each courier has its own dashboard, its own API and its own data format. Staff copy the same order into multiple portals, tracking is scattered, and API keys often sit in plain text.",
+    solution: "Built a Turborepo + pnpm monorepo: a Next.js web app for the landing page, merchant dashboard and public tracking pages; a Node.js worker that processes BullMQ jobs from Redis; a courier package using the strategy pattern so each courier is one adapter; and a crypto package that encrypts credentials with AES-256-GCM. Prisma runs on PostgreSQL with a multi-tenant client extension. A companion Expo mobile app is in progress.",
+    impact: [
+      "One order payload dispatches to Pathao or RedX. A new courier needs only one new adapter.",
+      "Courier API calls run in a BullMQ background worker, so the merchant dashboard never waits on slow courier APIs.",
+      "Courier secrets are encrypted at rest with AES-256-GCM, and every merchant's data is isolated at the database client layer.",
+    ],
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "BullMQ", "Redis", "Expo", "React Native", "Turborepo", "Vercel"],
+    subcards: [
+      {
+        title: "Unified Dispatch Engine",
+        description: "Strategy-pattern courier adapters turn one payload into the right Pathao or RedX API call.",
+        dotColor: "amber",
+      },
+      {
+        title: "Background Queue",
+        description: "BullMQ + Redis worker takes slow courier calls off the request path and retries failures.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Encrypted Credential Vault",
+        description: "AES-256-GCM encryption for every merchant's courier API keys and secrets.",
+        dotColor: "emerald",
+      },
+    ],
+    liveUrl: "https://orderbuddy.pro/",
+    caseStudyUrl: "/projects/orderbuddy",
+    featured: false,
+    metrics: [
+      { label: "Couriers", value: "Pathao, RedX" },
+      { label: "Secrets", value: "AES-256" },
+      { label: "Queue", value: "BullMQ" },
+    ],
+  },
+  {
+    id: "ledgerbuddy",
+    slug: "ledgerbuddy",
+    badge: "CROSS-PLATFORM APP • MICROSOFT STORE & GOOGLE PLAY",
+    title: "LedgerBuddy — Business Ledger, Inventory & POS App",
+    subtitle: "Offline-First Bookkeeping, Inventory and Point-of-Sale App for Small Businesses on Windows and Android",
+    category: "Cross-Platform Apps",
+    tagline: "Offline-first ledger, inventory and POS app for small businesses, live on Microsoft Store and Google Play.",
+    overview: "LedgerBuddy is a cross-platform finance and inventory app for small businesses, freelancers and shop owners, built under Thrive IT Solutions. It runs on Windows and Android, and is published on both the Microsoft Store and Google Play. It covers sales and PDF invoices, point of sale, stock, purchases, expenses, quotations, and customer and supplier balances. It works fully offline and syncs with the cloud when the internet is back. A separate marketing and account website runs at ledgerbuddy.thriveitbd.com.",
+    challenge: "Small shops still keep their accounts in paper khatas or scattered spreadsheets. Cloud-only tools stop working when the internet drops, and most desktop tools don't sync with the owner's phone.",
+    solution: "Built one Flutter codebase for Windows and Android using Clean Architecture and the BLoC pattern across 17 feature modules. Drift (SQLite) stores everything locally; a bidirectional sync engine keeps it in step with Supabase (Postgres, Auth, Realtime and Storage). A subscription system and role-based access support owners, admins, managers, accountants and salespeople.",
+    impact: [
+      "Published on the Microsoft Store and Google Play from one Flutter codebase.",
+      "Works fully offline, with two-way cloud sync to Supabase when a connection is available.",
+      "17 feature modules including POS with barcode scanning, PDF invoices, stock alerts, quotations and Excel import/export.",
+    ],
+    technologies: ["Flutter", "Dart", "BLoC", "Drift (SQLite)", "Supabase", "PostgreSQL", "GoRouter", "fpdart"],
+    subcards: [
+      {
+        title: "POS & Invoicing",
+        description: "Cart checkout with barcode scanning, multiple payment types, and branded PDF invoices.",
+        dotColor: "amber",
+      },
+      {
+        title: "Offline-First Sync",
+        description: "Local SQLite first, then bidirectional sync with Supabase when the internet is back.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Multi-Tenant SaaS",
+        description: "Trial, startup, full and lifetime plans with five business roles and access control.",
+        dotColor: "emerald",
+      },
+    ],
+    liveUrl: "https://ledgerbuddy.thriveitbd.com/",
+    storeLinks: [
+      { label: "Microsoft Store", url: "https://apps.microsoft.com/detail/9NSR6DN33V8T?hl=en-us&gl=BD&ocid=pdpshare" },
+      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.thriveitbd.ledgerbuddy" },
+    ],
+    caseStudyUrl: "/projects/ledgerbuddy",
+    featured: true,
+    metrics: [
+      { label: "Platforms", value: "Win + Android" },
+      { label: "Modules", value: "17" },
+      { label: "Stores", value: "MS + Play" },
+    ],
+  },
+  {
+    id: "equa",
+    slug: "equa",
+    badge: "CROSS-PLATFORM APP • MICROSOFT STORE",
+    title: "Equa — Offline-First Personal Finance Ledger",
+    subtitle: "Private, Double-Entry Personal Finance App for Windows, Android and Linux with Optional Cloud Sync",
+    category: "Cross-Platform Apps",
+    tagline: "A personal finance ledger that keeps your data on your device, with double-entry accuracy and zero rounding errors.",
+    overview: "Equa is an offline-first personal finance ledger built under Thrive IT Solutions, published on the Microsoft Store with builds for Android and Linux. All data lives on the device by default. Balances are always derived from transaction history using double-entry rules, and money is stored as integer cents. It tracks net worth, monthly cash flow and loans, with full JSON export and import. Optional cloud backup and sync is available as a premium extra. The product website runs at equa.thriveitbd.com.",
+    challenge: "Most personal finance apps ask you to link bank accounts, upload your data to their servers, and accept ad or analytics tracking. People who just want an accurate, private record of their money have few good options.",
+    solution: "Built a Flutter app with Clean Architecture and Riverpod, backed by Drift (SQLite) on the device. A core financial engine guards ledger integrity, so balances can't drift from the transactions behind them. Firebase Auth and Firestore power opt-in backup and cross-device sync, and in-app purchases unlock the premium tier. The website is a React 19 + Vite + Tailwind CSS v4 site.",
+    impact: [
+      "Published on the Microsoft Store, with Android and Linux builds from the same codebase.",
+      "No ads, no analytics SDKs, no bank linking. Data stays on the device unless the user turns on sync.",
+      "Integer-cent storage makes floating-point rounding errors structurally impossible.",
+    ],
+    technologies: ["Flutter", "Dart", "Riverpod", "Drift (SQLite)", "Firebase", "React 19", "Vite", "Tailwind CSS v4"],
+    subcards: [
+      {
+        title: "Double-Entry Engine",
+        description: "Balances are derived from transactions, never typed in, so the ledger always adds up.",
+        dotColor: "emerald",
+      },
+      {
+        title: "Private by Default",
+        description: "Offline-first storage with no ads or tracking; cloud sync is opt-in.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Analytics & Loans",
+        description: "Net worth, monthly cash-flow charts, and loan repayment tracking against principal.",
+        dotColor: "amber",
+      },
+    ],
+    liveUrl: "https://equa.thriveitbd.com/",
+    storeLinks: [
+      { label: "Microsoft Store", url: "https://apps.microsoft.com/detail/9PM1MTHMCSGK?hl=en-us&gl=BD&ocid=pdpshare" },
+    ],
+    caseStudyUrl: "/projects/equa",
+    featured: true,
+    metrics: [
+      { label: "Storage", value: "On-device" },
+      { label: "Money Math", value: "Integer cents" },
+      { label: "Platforms", value: "3" },
     ],
   },
 ];

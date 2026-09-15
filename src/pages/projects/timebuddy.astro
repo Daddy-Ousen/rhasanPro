@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
+
+const project = projects.find((p) => p.slug === 'timebuddy') || projects[0];
+
+const specs = [
+  { label: 'Built at', value: 'Thrive IT Solutions' },
+  { label: 'Type', value: 'Multi-tenant SaaS' },
+  { label: 'Parts', value: 'Web dashboard, REST API, Windows agent' },
+  { label: 'Live at', value: 'timebuddy.orderbuddy.pro' },
+];
+---
+
+<BaseLayout title={`TimeBuddy case study | ${dossier.name}`} description={project.tagline}>
+
+  <CaseStudyHero project={project} kicker="SaaS · Thrive IT Solutions">
+    <Fragment slot="actions">
+      {project.liveUrl && (
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Live site <Icon name="external" /></a>
+      )}
+    </Fragment>
+  </CaseStudyHero>
+
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">Tracking time without spying on people</h2>
+        <p>{project.challenge}</p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">A web app, an API, and a small Windows agent</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          The agent asks Windows which window is in front and when the last input happened. It strips sensitive window titles, such as banking or private tabs, before anything leaves the PC. If the network drops, it stores events locally and sends them later.
+        </p>
+        <div class="grid sm:grid-cols-3 border-2 border-line bg-line gap-[2px] text-[16px]">
+          {project.subcards.map((sub) => (
+            <div class="bg-card p-4">
+              <p class="font-bold">{sub.title}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What shipped</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
+
+</BaseLayout>

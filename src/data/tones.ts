@@ -43,6 +43,30 @@ export const projectMeta: Record<string, ProjectMeta> = {
     tag: 'AMD AI Hackathon',
     blurb: 'Reads messy invoices. Balances the books.',
   },
+  timebuddy: {
+    tone: 'teal',
+    heroTone: 'teal',
+    tag: 'SaaS · Thrive IT',
+    blurb: 'Time tracking and attendance for teams. Clear hours, no spying.',
+  },
+  orderbuddy: {
+    tone: 'gold',
+    heroTone: 'gold',
+    tag: 'SaaS · Thrive IT',
+    blurb: 'One dashboard to send and track parcels across Pathao, RedX and more.',
+  },
+  ledgerbuddy: {
+    tone: 'navy',
+    heroTone: 'navy',
+    tag: 'App · Windows + Android',
+    blurb: 'Books, stock and POS for small shops. Works offline. Live on Microsoft Store and Google Play.',
+  },
+  equa: {
+    tone: 'pink',
+    heroTone: 'pink',
+    tag: 'App · Microsoft Store',
+    blurb: 'A private money ledger. Your data stays on your device, and the numbers always add up.',
+  },
 };
 
 export const fallbackMeta: ProjectMeta = { tone: 'card', heroTone: 'teal', tag: 'Project', blurb: '' };

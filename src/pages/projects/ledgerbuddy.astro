@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
+
+const project = projects.find((p) => p.slug === 'ledgerbuddy') || projects[0];
+
+const specs = [
+  { label: 'Built at', value: 'Thrive IT Solutions' },
+  { label: 'Platforms', value: 'Windows, Android' },
+  { label: 'Stores', value: 'Microsoft Store, Google Play' },
+  { label: 'Website', value: 'ledgerbuddy.thriveitbd.com' },
+];
+---
+
+<BaseLayout title={`LedgerBuddy case study | ${dossier.name}`} description={project.tagline}>
+
+  <CaseStudyHero project={project} kicker="Cross-platform app · Thrive IT Solutions">
+    <Fragment slot="actions">
+      {project.storeLinks?.map((s) => (
+        <a href={s.url} target="_blank" rel="noopener noreferrer" class="btn btn-gold">{s.label} <Icon name="external" /></a>
+      ))}
+      {project.liveUrl && (
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">Website <Icon name="external" /></a>
+      )}
+    </Fragment>
+  </CaseStudyHero>
+
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">Small shops still run on paper khatas</h2>
+        <p>{project.challenge}</p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">Works offline, syncs when the internet comes back</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          Every sale, purchase and stock change is written to a local SQLite database first. A sync engine then pushes and pulls changes with Supabase in both directions. The shop keeps selling when the connection drops.
+        </p>
+        <div class="grid sm:grid-cols-3 border-2 border-line bg-line gap-[2px] text-[16px]">
+          {project.subcards.map((sub) => (
+            <div class="bg-card p-4">
+              <p class="font-bold">{sub.title}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What shipped</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
+
+</BaseLayout>
