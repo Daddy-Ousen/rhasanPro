@@ -28,7 +28,8 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 ## Core Competencies
 - **Cloud & Systems:** Microsoft 365 Administration, Microsoft Intune (MDM/MAM), Entra ID (Azure AD), Exchange Online, PowerShell Scripting, macOS/Jamf Pro, Windows Server.
 - **Security & BCDR:** Bitdefender GravityZone EDR, Incident Containment, Zero-Trust Policies, Datto SIRIS/ALTO BCDR, Acronis Cyber Protect, Disaster Recovery Drills.
-- **AI & Software Engineering:** Python, TypeScript, Astro, React, Tailwind CSS, Fastify/Node.js, Agentic AI Workflows, Prompt Engineering, Structured JSON-LD.
+- **AI Engineering & Automation:** AI Automation & Agentic Workflows, AI Deployment & Optimization (latency, token cost, caching, rate limiting), Prompt Engineering & Structured Output, AI/LLM API Integration & Configuration.
+- **Software Engineering:** Python, TypeScript, Astro, React, Tailwind CSS, Fastify/Node.js, Flutter, Cloud Deployment & CI/CD (Vercel, Render, Docker), Structured JSON-LD.
 
 ## Key Pages & Documentation
 - About: https://rhasan.online/about/

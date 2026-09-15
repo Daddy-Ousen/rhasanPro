@@ -56,8 +56,8 @@ export const projectMeta: Record<string, ProjectMeta> = {
     blurb: 'One dashboard to send and track parcels across Pathao, RedX and more.',
   },
   ledgerbuddy: {
-    tone: 'navy',
-    heroTone: 'navy',
+    tone: 'teal',
+    heroTone: 'teal',
     tag: 'App · Windows + Android',
     blurb: 'Books, stock and POS for small shops. Works offline. Live on Microsoft Store and Google Play.',
   },

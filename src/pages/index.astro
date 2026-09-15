@@ -8,10 +8,12 @@ import { experiences } from '../data/experience';
 import { credentials } from '../data/credentials';
 import { metaFor, shortTitle, toneClass } from '../data/tones';
 
-const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
-
-// Asymmetric 6-column grid: wide, narrow, half, half.
-const spans = ['md:col-span-4', 'md:col-span-2', 'md:col-span-3', 'md:col-span-3'];
+// Hermes leads as the full-width spotlight tile; the rest follow in a row of three.
+const spotlightId = 'hermes-ai';
+const featuredProjects = projects
+  .filter((p) => p.featured)
+  .slice(0, 4)
+  .sort((a, b) => Number(b.id === spotlightId) - Number(a.id === spotlightId));
 
 const stats = [
   { value: dossier.metrics.endpointsManaged, label: 'endpoints managed' },
@@ -48,7 +50,7 @@ const dayJobNotes: Record<string, string> = {
         I fix computers <span class="hl">for a living.</span> Then I teach them to <span class="text-pink">fix themselves.</span>
       </h1>
       <p class="mt-7 text-lg sm:text-xl leading-relaxed text-muted max-w-[48ch]">
-        L2 systems engineer and service desk co-lead at an Australian MSP. 2,500 endpoints by day, AI side projects by night.
+        L2 systems engineer and service desk co-lead at an Australian MSP. 2,500 endpoints by day. By night: AI automation, model deployment and tuning, prompt engineering, and API setups.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a href="/projects" class="btn btn-teal">See what I built <Icon name="arrow" /></a>
@@ -104,10 +106,45 @@ const dayJobNotes: Record<string, string> = {
     </div>
 
     <div class="grid gap-4 md:grid-cols-6">
-      {featuredProjects.map((project, i) => {
+      {featuredProjects.map((project) => {
         const meta = metaFor(project.id);
+        if (project.id === spotlightId) {
+          return (
+            <article class={`${toneClass[meta.tone]} md:col-span-6 border-2 border-line lift grid lg:grid-cols-12`}>
+              <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col gap-4">
+                <p class="kicker opacity-90">Spotlight · {meta.tag}</p>
+                <h3 class="h1 text-[clamp(48px,7vw,96px)]">
+                  <a href={project.caseStudyUrl} class="hover:underline decoration-[4px] underline-offset-8">{shortTitle(project.title)}</a>
+                </h3>
+                <p class="text-lg sm:text-xl leading-relaxed max-w-[52ch]">{project.tagline}</p>
+                <div class="mt-auto pt-2 flex flex-wrap gap-3">
+                  <button type="button" data-open-hermes class="btn btn-teal">Ask Hermes now</button>
+                  <a href={project.caseStudyUrl} class="btn">How it works <Icon name="arrow" /></a>
+                </div>
+              </div>
+              <div class="lg:col-span-5 p-6 sm:p-8 grid gap-5 content-start border-t-2 lg:border-t-0 lg:border-l-2 border-line">
+                <ul class="grid gap-3">
+                  {project.subcards.map((sub) => (
+                    <li class="border-2 border-line bg-card text-ink p-4">
+                      <p class="font-bold">{sub.title}</p>
+                      <p class="mt-1 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+                    </li>
+                  ))}
+                </ul>
+                <dl class="pt-4 border-t-2 border-current grid grid-cols-3 gap-3">
+                  {project.metrics.map((m) => (
+                    <div>
+                      <dt class="text-[13px] opacity-90">{m.label}</dt>
+                      <dd class="font-display font-extrabold text-2xl leading-none tabular-nums">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </article>
+          );
+        }
         return (
-          <article class={`${toneClass[meta.tone]} ${spans[i] ?? 'md:col-span-3'} border-2 border-line p-6 flex flex-col gap-3 min-h-[260px]`}>
+          <article class={`${toneClass[meta.tone]} md:col-span-2 border-2 border-line p-6 flex flex-col gap-3 min-h-[260px]`}>
             <p class="kicker opacity-90">{meta.tag}</p>
             <h3 class="h2">
               <a href={project.caseStudyUrl} class="hover:underline decoration-[3px] underline-offset-4">{shortTitle(project.title)}</a>
@@ -195,3 +232,17 @@ const dayJobNotes: Record<string, string> = {
   </section>
 
 </BaseLayout>
+
+<script>
+  // "Ask Hermes now" on the spotlight tile opens the site-wide chat widget.
+  function setupHermesSpotlight() {
+    document.querySelectorAll<HTMLButtonElement>('[data-open-hermes]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        const drawer = document.getElementById('hermes-chat-drawer');
+        if (drawer?.hidden) document.getElementById('hermes-launcher-btn')?.click();
+      })
+    );
+  }
+
+  document.addEventListener('astro:page-load', setupHermesSpotlight);
+</script>
