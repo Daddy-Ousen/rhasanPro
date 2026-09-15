@@ -64,8 +64,8 @@ export const dossier: Dossier = {
     csatRating: "90%+",
     csatNum: 94,
   },
-  shortBio: "L2 Infrastructure & Systems Support Engineer and Service Desk Co-Leader at Techants Solutions Pty Ltd (MSP). Managing 2,500+ endpoints, 1,100+ Bitdefender EDR security assets, and orchestrating Datto/Acronis BCDR data continuity for global enterprise clients.",
-  fullBio: "With over 5 years in managed service provider (MSP) environments and enterprise IT operations, Robiul combines battle-tested systems engineering with a passion for software automation and agentic AI. At Techants Solutions, he co-leads a 10+ member service desk, handles Tier-2 escalations, deploys zero-trust endpoint security via Microsoft Intune and Bitdefender GravityZone, and guarantees 99.9% data protection with Datto BCDR appliances.",
+  shortBio: "L2 Infrastructure & Systems Support Engineer and Service Desk Co-Leader at Techants Solutions Pty Ltd (MSP). Managing 2,500+ endpoints, 1,100+ Bitdefender EDR security assets, and orchestrating Datto/Acronis BCDR data continuity for global enterprise clients. Also builds AI automations, deploys and optimizes LLM services, and handles prompt engineering and AI API configuration.",
+  fullBio: "With over 5 years in managed service provider (MSP) environments and enterprise IT operations, Robiul combines battle-tested systems engineering with a passion for software automation and agentic AI. At Techants Solutions, he co-leads a 10+ member service desk, handles Tier-2 escalations, deploys zero-trust endpoint security via Microsoft Intune and Bitdefender GravityZone, and guarantees 99.9% data protection with Datto BCDR appliances. Outside the service desk, he works on AI automation, AI deployment and optimization, prompt engineering, and AI API integration and configuration.",
   leadershipQuote: "True engineering excellence is not just solving incidents quickly; it's building immutable infrastructure and mentoring teams so recurring incidents cease to exist.",
   education: {
     degree: "Bachelor of Business Administration (BBA)",

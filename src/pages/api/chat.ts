@@ -78,7 +78,8 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 - Core Certifications: Microsoft 365 Certified: Endpoint Administrator Associate (MD-102), Microsoft Certified: Modern Desktop Administrator Associate (MD-100), AMD AI Developer Hackathon: Act II Certificate (Lablab.ai).
 - Previous Experience: Jr. Support Engineer at Cobait Dhaka (2021-2022), IT Executive at AQSBD (2020).
 - Education: Bachelor of Business Administration (BBA) from Bangladesh University of Professionals (BUP), 2022.
-- Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation).
+- Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation). Built at Thrive IT Solutions: TimeBuddy (workforce time & attendance SaaS), OrderBuddy (courier dispatch SaaS), LedgerBuddy (business ledger & POS app on Microsoft Store and Google Play), Equa (offline-first personal finance app on Microsoft Store).
+- AI Engineering: AI automation and agentic workflows, AI deployment and optimization (latency, token cost, caching, rate limits), prompt engineering and structured JSON output, AI/LLM API integration and configuration.
 - Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, React 19, Next.js 15, Astro 5.
 - Contact: Email rhasan229@gmail.com | Portfolio: rhasan.online | Location: Dhaka, Bangladesh (UTC+6).
 `;
@@ -128,12 +129,12 @@ Feel free to inspect the interactive milestone tracer on the /experience page.`;
 Deep-dive architecture case studies are accessible on the /projects page.`;
   }
 
-  if (q.includes("skill") || q.includes("tool") || q.includes("intune") || q.includes("m365") || q.includes("bcdr") || q.includes("datto") || q.includes("bitdefender")) {
-    return `Robiul's technical capabilities span six comprehensive infrastructure and software domains.
+  if (q.includes("skill") || q.includes("tool") || q.includes("intune") || q.includes("m365") || q.includes("bcdr") || q.includes("datto") || q.includes("bitdefender") || q.includes("prompt") || q.includes("automation") || q.includes("deploy")) {
+    return `Robiul's technical capabilities span seven infrastructure, AI and software domains.
 
-- **Cloud & Endpoint Fleet**: Mastery in Microsoft Intune MDM/MAM, Entra ID, M365 Admin, and Bitdefender GravityZone EDR.
-- **BCDR & Continuity**: Expert deployment of Datto SIRIS/ALTO appliances and Acronis Cyber Protect for zero-data-loss SLAs.
-- **Systems & Automation**: Advanced Windows Server administration, Active Directory GPOs, Bash, PowerShell, and Python automation.
+- **Cloud, Endpoint & BCDR**: Mastery in Microsoft Intune, Entra ID, M365 Admin, Bitdefender GravityZone EDR, and Datto/Acronis continuity.
+- **AI Engineering & Automation**: AI automation and agents, AI deployment and optimization, prompt engineering, and AI API integration and configuration.
+- **Systems & Scripting**: Windows Server, Active Directory GPOs, Bash, PowerShell, and Python automation.
 
 You can explore the filterable matrix and proficiency gauges on the /skills page.`;
   }
