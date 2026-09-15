@@ -116,8 +116,10 @@ You can verify all official credential badges and links directly on the /credent
 Feel free to inspect the interactive milestone tracer on the /experience page.`;
   }
 
-  if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("ai")) {
-    return `Robiul engineers autonomous systems, digital news platforms, and high-speed web architectures.
+  if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("timebuddy") || q.includes("orderbuddy") || q.includes("equa") || q.includes("saas") || q.includes("ai")) {
+    return `Robiul engineers SaaS products, store-published apps, autonomous systems, and high-speed web architectures.
+
+- **Products at Thrive IT Solutions**: TimeBuddy (workforce time & attendance SaaS), OrderBuddy (courier dispatch SaaS for e-commerce), LedgerBuddy (business ledger & POS app on Microsoft Store and Google Play), and Equa (offline-first personal finance app on Microsoft Store).
 
 - **NextVector News Platform**: Daily Technology & AI news platform and newsletter ('The Morning Vector') with baked-in expanding frontier AI model & benchmark tools.
 - **Hermes AI Assistant**: Self-hosted agentic daemon with autonomous tool-calling, headless browser control, and local execution sandboxes.

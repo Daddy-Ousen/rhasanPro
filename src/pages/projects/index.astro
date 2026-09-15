@@ -6,17 +6,17 @@ import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 import { metaFor, shortTitle, toneClass } from '../../data/tones';
 
-const categories = ['All', 'AI & Automation', 'Web Systems'];
+const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automation', 'Web Systems'];
 ---
 
 <BaseLayout
   title={`Projects | ${dossier.name}`}
-  description="Case studies: a daily tech and AI news platform, a self-hosted AI agent, a production Next.js site, and an AMD hackathon build."
+  description="Case studies: SaaS products (TimeBuddy, OrderBuddy), store-published apps (LedgerBuddy, Equa), a daily tech and AI news platform, a self-hosted AI agent, a production Next.js site, and an AMD hackathon build."
 >
 
   <PageHeader
     kicker="Projects"
-    intro="Side projects, client work and one hackathon. Each has a case study with the problem, the build and the numbers."
+    intro="SaaS products and store apps built at Thrive IT Solutions, plus side projects, client work and one hackathon. Each has a case study with the problem, the build and the numbers."
   >
     Things I <span class="hl">built.</span>
   </PageHeader>
@@ -65,8 +65,11 @@ const categories = ['All', 'AI & Automation', 'Web Systems'];
 
               <div class="mt-auto flex flex-wrap gap-3">
                 <a href={project.caseStudyUrl} class="btn btn-teal">Read case study <Icon name="arrow" /></a>
+                {project.storeLinks?.map((s) => (
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" class="btn">{s.label} <Icon name="external" /></a>
+                ))}
                 {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">Live site <Icon name="external" /></a>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">{project.storeLinks ? 'Website' : 'Live site'} <Icon name="external" /></a>
                 )}
                 {project.githubUrl && (
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>

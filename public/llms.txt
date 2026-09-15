@@ -13,6 +13,13 @@
 Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk Co-Leader managing enterprise operations, zero-trust endpoint security, and autonomous cloud systems. He combines hands-on sysadmin expertise across 2,500+ endpoints and 1,100+ Bitdefender EDR assets with modern agentic AI engineering.
 
 ## Key Projects
+### Products built at Thrive IT Solutions
+- **TimeBuddy** (https://timebuddy.orderbuddy.pro/ · case study https://rhasan.online/projects/timebuddy/): Multi-tenant workforce time tracking and attendance SaaS with a Next.js dashboard, Express/Prisma API, and a native Windows Win32 desktop agent. No keystroke logging or webcam capture.
+- **OrderBuddy** (https://orderbuddy.pro/ · case study https://rhasan.online/projects/orderbuddy/): Multi-tenant courier dispatch SaaS for e-commerce merchants, unifying Pathao, RedX and more behind one dashboard, with a BullMQ/Redis background worker and AES-256-GCM encrypted credentials.
+- **LedgerBuddy** (https://ledgerbuddy.thriveitbd.com/ · case study https://rhasan.online/projects/ledgerbuddy/): Offline-first business ledger, inventory and POS app built with Flutter and Supabase sync. Published on Microsoft Store (https://apps.microsoft.com/detail/9NSR6DN33V8T) and Google Play (https://play.google.com/store/apps/details?id=com.thriveitbd.ledgerbuddy).
+- **Equa** (https://equa.thriveitbd.com/ · case study https://rhasan.online/projects/equa/): Offline-first, double-entry personal finance ledger built with Flutter, Riverpod and Drift. Published on Microsoft Store (https://apps.microsoft.com/detail/9PM1MTHMCSGK).
+
+### Personal projects
 - **NextVector** (https://nextvector.rhasan.online/): Independent digital intelligence publication delivering daily technology & AI news reporting, "The Morning Vector" newsletter, and an integrated, continuously expanding registry of 135+ frontier AI models and LMSYS Arena Elo benchmarks.
 - **Hermes AI Ambassador** (https://rhasan.online/projects/hermes/): Autonomous portfolio concierge and intelligent technical ambassador built with Groq Llama-3.3-70B inference, client-side cryptographic hashing, and dual-layer caching.
 - **LedgerBuddy AI** (https://rhasan.online/projects/ledgerbuddy-ai/): Multi-agent financial intelligence and double-entry bookkeeping assistant with rule-based heuristics, dynamic confidence scoring, and automated reconciliations.
@@ -30,6 +37,10 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 - Hermes Case Study: https://rhasan.online/projects/hermes/
 - LedgerBuddy AI Case Study: https://rhasan.online/projects/ledgerbuddy-ai/
 - Oggro Tech Case Study: https://rhasan.online/projects/oggro-tech/
+- TimeBuddy Case Study: https://rhasan.online/projects/timebuddy/
+- OrderBuddy Case Study: https://rhasan.online/projects/orderbuddy/
+- LedgerBuddy Case Study: https://rhasan.online/projects/ledgerbuddy/
+- Equa Case Study: https://rhasan.online/projects/equa/
 - Experience Timeline: https://rhasan.online/experience/
 - Skills Directory: https://rhasan.online/skills/
 - Professional Credentials: https://rhasan.online/credentials/
