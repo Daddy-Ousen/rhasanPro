@@ -78,7 +78,7 @@ VERIFIED FACTS ABOUT ROBIUL HASAN:
 - Core Certifications: Microsoft 365 Certified: Endpoint Administrator Associate (MD-102), Microsoft Certified: Modern Desktop Administrator Associate (MD-100), AMD AI Developer Hackathon: Act II Certificate (Lablab.ai).
 - Previous Experience: Jr. Support Engineer at Cobait Dhaka (2021-2022), IT Executive at AQSBD (2020).
 - Education: Bachelor of Business Administration (BBA) from Bangladesh University of Professionals (BUP), 2022.
-- Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation). Built at Thrive IT Solutions: TimeBuddy (workforce time & attendance SaaS), OrderBuddy (courier dispatch SaaS), LedgerBuddy (business ledger & POS app on Microsoft Store and Google Play), Equa (offline-first personal finance app on Microsoft Store).
+- Key Projects: NextVector (Daily Technology & AI news platform with 'The Morning Vector' newsletter, plus an expanding baked-in frontier AI model registry of 135+ models and benchmark radar at nextvector.rhasan.online), Hermes (Self-hosted autonomous AI agent with tool-calling & browser automation), OGGRO Technologies website (Next.js 15 marketing site, 100/100 Lighthouse), MediScribe Live (AssemblyAI Voice Agent Hackathon, September 2026: voice-first ER triage agent + ambient medical scribe with source-linked SOAP notes and HL7 FHIR R4 export, live at mediscribe.rhasan.online), LedgerBuddy AI MVP (AMD AI Hackathon Act II financial reconciliation). Built at Thrive IT Solutions: TimeBuddy (workforce time & attendance SaaS), OrderBuddy (courier dispatch SaaS), LedgerBuddy (business ledger & POS app on Microsoft Store and Google Play), Equa (offline-first personal finance app on Microsoft Store).
 - AI Engineering: AI automation and agentic workflows, AI deployment and optimization (latency, token cost, caching, rate limits), prompt engineering and structured JSON output, AI/LLM API integration and configuration.
 - Core Stack: Microsoft Intune, Entra ID, Windows Server, Active Directory, Bitdefender GravityZone, Datto BCDR, Acronis, Python, Bash, React 19, Next.js 15, Astro 5.
 - Contact: Email rhasan229@gmail.com | Portfolio: rhasan.online | Location: Dhaka, Bangladesh (UTC+6).
@@ -101,6 +101,7 @@ Explore the daily dispatches at nextvector.rhasan.online or view the case study 
     return `Robiul holds several industry-recognized Microsoft and engineering credentials validating his infrastructure expertise.
 
 - **Microsoft MD-102 & MD-100**: Certified Endpoint Administrator Associate & Modern Desktop Administrator for enterprise M365 and Intune fleets.
+- **AssemblyAI Voice Agent Hackathon (Sept 2026)**: Built MediScribe Live solo, a voice-first ER assistant using the AssemblyAI Voice Agent API, Realtime STT and LLM Gateway. Submitted; judging in progress.
 - **AMD AI Hackathon Act II**: Awarded official Certificate of Achievement on Lablab.ai for building the LedgerBuddy AI financial reconciliation engine.
 - **Python & Linux Foundations**: Specialized certifications from University of Michigan and StudySection in automation and system administration.
 
@@ -117,13 +118,14 @@ You can verify all official credential badges and links directly on the /credent
 Feel free to inspect the interactive milestone tracer on the /experience page.`;
   }
 
-  if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("timebuddy") || q.includes("orderbuddy") || q.includes("equa") || q.includes("saas") || q.includes("ai")) {
+  if (q.includes("hermes") || q.includes("project") || q.includes("oggro") || q.includes("ledgerbuddy") || q.includes("timebuddy") || q.includes("orderbuddy") || q.includes("equa") || q.includes("mediscribe") || q.includes("hackathon") || q.includes("saas") || q.includes("ai")) {
     return `Robiul engineers SaaS products, store-published apps, autonomous systems, and high-speed web architectures.
 
 - **Products at Thrive IT Solutions**: TimeBuddy (workforce time & attendance SaaS), OrderBuddy (courier dispatch SaaS for e-commerce), LedgerBuddy (business ledger & POS app on Microsoft Store and Google Play), and Equa (offline-first personal finance app on Microsoft Store).
 
 - **NextVector News Platform**: Daily Technology & AI news platform and newsletter ('The Morning Vector') with baked-in expanding frontier AI model & benchmark tools.
 - **Hermes AI Assistant**: Self-hosted agentic daemon with autonomous tool-calling, headless browser control, and local execution sandboxes.
+- **MediScribe Live**: AssemblyAI Voice Agent Hackathon build (Sept 2026). Voice triage agent with live tool calls, ambient medical scribe, and source-linked SOAP notes with FHIR R4 export. Try it at mediscribe.rhasan.online.
 - **OGGRO Technologies & LedgerBuddy**: Next.js 15 enterprise marketing site (100/100 Lighthouse) and AMD Hackathon Act II financial reconciliation MVP.
 
 Deep-dive architecture case studies are accessible on the /projects page.`;
