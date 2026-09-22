@@ -25,6 +25,16 @@ export interface ProjectItem {
   featured: boolean;
   metrics: { label: string; value: string }[];
   diagramSteps?: { step: number; title: string; desc: string; icon: string }[];
+  hackathon?: ProjectHackathon;
+}
+
+export interface ProjectHackathon {
+  event: string;
+  eventUrl: string;
+  submissionUrl?: string;
+  dates?: string;
+  team?: string;
+  result: string;
 }
 
 export const projects: ProjectItem[] = [
@@ -126,6 +136,60 @@ export const projects: ProjectItem[] = [
       { step: 3, title: "Sandboxed Tool Execution", desc: "Executes Python scripts, REST APIs, or Headless Browser sessions in isolated worker.", icon: "play" },
       { step: 4, title: "Telemetry & Verification", desc: "Validates output format, captures telemetry, and returns structured result to user.", icon: "check" },
     ],
+  },
+  {
+    id: "mediscribe-live",
+    slug: "mediscribe-live",
+    badge: "ASSEMBLYAI VOICE AGENT HACKATHON • LABLAB.AI • SEPTEMBER 2026",
+    title: "MediScribe Live — Voice Triage & Source-Linked Clinical Scribe",
+    subtitle: "A voice-first ER assistant built on AssemblyAI: bedside voice triage with live tool calls, and an ambient scribe that writes SOAP notes where every line links back to what was said.",
+    category: "AI & Automation",
+    tagline: "Voice triage and an ambient medical scribe. Every line of the note links to the exact words that were said.",
+    overview: "MediScribe Live is a voice-first assistant for emergency departments, built solo for the AssemblyAI Voice Agent Hackathon on lablab.ai. A full-duplex voice agent does bedside intake and calls tools while it talks. A medical-tuned realtime scribe transcribes the doctor-patient consultation. Then an LLM drafts a SOAP note in which every item cites the transcript turn it came from, and a named clinician must sign before the note is final.",
+    challenge: "Emergency clinicians lose a large part of every shift to typing EHR notes. AI scribes can help, but a clinician cannot trust a note when they cannot see where each line came from. Invented details, like a default 'no known allergies', are dangerous.",
+    solution: "Three AssemblyAI products do three separate jobs. The Voice Agent API runs bedside triage with barge-in and JSON-schema tool calls (record_patient_intake, check_drug_interaction, flag_critical_vital). Realtime STT (Universal-3.5 Pro, domain medical-v1, speaker labels) transcribes the consultation. The LLM Gateway drafts the SOAP note. The server numbers every transcript turn and checks each citation against the real turn text. Wrong citations are fixed or dropped, and items without a source are flagged 'NO SOURCE - VERIFY'.",
+    impact: [
+      "Submitted to the AssemblyAI Voice Agent Hackathon (lablab.ai, September 2026). Built solo as team Neuron Burners.",
+      "Uses three AssemblyAI products in one app: Voice Agent API, Realtime STT and LLM Gateway.",
+      "Nothing is invented: topics not discussed say so, allergies never default to NKDA, and a diagnosis appears only when the clinician states it.",
+      "Exports an HL7 FHIR R4 Bundle. The note moves from preliminary to final only after a named clinician signs.",
+      "The API key stays on the server. The browser gets short-lived tokens and connects straight to AssemblyAI over WebSockets.",
+    ],
+    technologies: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Web Audio API", "AssemblyAI Voice Agent API", "AssemblyAI Streaming STT", "AssemblyAI LLM Gateway", "HL7 FHIR R4", "Vercel"],
+    subcards: [
+      {
+        title: "Bedside Voice Triage",
+        description: "Full-duplex voice agent with barge-in. Calls tools mid-conversation and updates the chart, ESI score and drug alerts live.",
+        dotColor: "emerald",
+      },
+      {
+        title: "Ambient Scribe",
+        description: "Universal-3.5 Pro with the medical-v1 domain. Separates Doctor and Patient and catches drug names and clinical terms.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Source-Linked SOAP",
+        description: "Every note item cites transcript turns, checked on the server. Clinician sign-off, then HL7 FHIR R4 export.",
+        dotColor: "amber",
+      },
+    ],
+    githubUrl: "https://github.com/Daddy-Ousen/mediscribe-live",
+    liveUrl: "https://mediscribe.rhasan.online/",
+    caseStudyUrl: "/projects/mediscribe-live",
+    featured: true,
+    metrics: [
+      { label: "AssemblyAI APIs", value: "3" },
+      { label: "Voice modes", value: "2" },
+      { label: "Export", value: "FHIR R4" },
+    ],
+    hackathon: {
+      event: "AssemblyAI Voice Agent Hackathon",
+      eventUrl: "https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon",
+      submissionUrl: "https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/neuron-burners/mediscribe-live",
+      dates: "September 2026",
+      team: "Neuron Burners (solo)",
+      result: "Submitted · judging in progress",
+    },
   },
   {
     id: "timebuddy",
@@ -299,7 +363,7 @@ export const projects: ProjectItem[] = [
       { label: "Microsoft Store", url: "https://apps.microsoft.com/detail/9PM1MTHMCSGK?hl=en-us&gl=BD&ocid=pdpshare" },
     ],
     caseStudyUrl: "/projects/equa",
-    featured: true,
+    featured: false,
     metrics: [
       { label: "Storage", value: "On-device" },
       { label: "Money Math", value: "Integer cents" },
@@ -343,6 +407,11 @@ export const projects: ProjectItem[] = [
     githubUrl: "https://github.com/Daddy-Ousen/LedgerBuddyAIMVP",
     caseStudyUrl: "/projects/ledgerbuddy-ai",
     featured: false,
+    hackathon: {
+      event: "AMD Developer Hackathon: ACT II",
+      eventUrl: "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii",
+      result: "Certificate of Achievement",
+    },
     metrics: [
       { label: "Extraction Accuracy", value: "97.2%" },
       { label: "Reconciliation Speed", value: "3.4s" },

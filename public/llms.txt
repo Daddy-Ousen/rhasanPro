@@ -22,7 +22,8 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 ### Personal projects
 - **NextVector** (https://nextvector.rhasan.online/): Independent digital intelligence publication delivering daily technology & AI news reporting, "The Morning Vector" newsletter, and an integrated, continuously expanding registry of 135+ frontier AI models and LMSYS Arena Elo benchmarks.
 - **Hermes AI Ambassador** (https://rhasan.online/projects/hermes/): Autonomous portfolio concierge and intelligent technical ambassador built with Groq Llama-3.3-70B inference, client-side cryptographic hashing, and dual-layer caching.
-- **LedgerBuddy AI** (https://rhasan.online/projects/ledgerbuddy-ai/): Multi-agent financial intelligence and double-entry bookkeeping assistant with rule-based heuristics, dynamic confidence scoring, and automated reconciliations.
+- **MediScribe Live** (https://mediscribe.rhasan.online/ · case study https://rhasan.online/projects/mediscribe-live/): Hackathon build for the AssemblyAI Voice Agent Hackathon (lablab.ai, September 2026). Voice-first ER assistant: bedside voice triage with the AssemblyAI Voice Agent API and live tool calls, an ambient medical scribe on AssemblyAI Realtime STT (Universal-3.5 Pro, medical-v1), and source-linked SOAP notes via the AssemblyAI LLM Gateway with clinician sign-off and HL7 FHIR R4 export. Source: https://github.com/Daddy-Ousen/mediscribe-live
+- **LedgerBuddy AI** (https://rhasan.online/projects/ledgerbuddy-ai/): Hackathon build for AMD Developer Hackathon: ACT II (lablab.ai). Multi-agent financial intelligence and double-entry bookkeeping assistant with rule-based heuristics, dynamic confidence scoring, and automated reconciliations.
 - **Oggro Tech Enterprise** (https://rhasan.online/projects/oggro-tech/): Enterprise corporate identity and digital transformation platform with dynamic client service portals and hardened infrastructure.
 
 ## Core Competencies
@@ -36,6 +37,7 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 - Projects: https://rhasan.online/projects/
 - NextVector Case Study: https://rhasan.online/projects/nextvector/
 - Hermes Case Study: https://rhasan.online/projects/hermes/
+- MediScribe Live Case Study: https://rhasan.online/projects/mediscribe-live/
 - LedgerBuddy AI Case Study: https://rhasan.online/projects/ledgerbuddy-ai/
 - Oggro Tech Case Study: https://rhasan.online/projects/oggro-tech/
 - TimeBuddy Case Study: https://rhasan.online/projects/timebuddy/

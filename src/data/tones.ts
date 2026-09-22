@@ -38,10 +38,16 @@ export const projectMeta: Record<string, ProjectMeta> = {
     blurb: 'A fast static site with tests that catch broken layouts before they ship.',
   },
   'ledgerbuddy-ai': {
-    tone: 'pink',
-    heroTone: 'pink',
+    tone: 'navy',
+    heroTone: 'navy',
     tag: 'AMD AI Hackathon',
     blurb: 'Reads messy invoices. Balances the books.',
+  },
+  'mediscribe-live': {
+    tone: 'pink',
+    heroTone: 'pink',
+    tag: 'AssemblyAI Hackathon',
+    blurb: 'Voice triage and an ER scribe. Every line of the note links to the words that were said.',
   },
   timebuddy: {
     tone: 'teal',

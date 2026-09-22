@@ -6,17 +6,17 @@ import { projects } from '../../data/projects';
 import { dossier } from '../../data/dossier';
 import { metaFor, shortTitle, toneClass } from '../../data/tones';
 
-const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automation', 'Web Systems'];
+const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automation', 'Web Systems', 'Hackathons'];
 ---
 
 <BaseLayout
   title={`Projects | ${dossier.name}`}
-  description="Case studies: SaaS products (TimeBuddy, OrderBuddy), store-published apps (LedgerBuddy, Equa), a daily tech and AI news platform, a self-hosted AI agent, a production Next.js site, and an AMD hackathon build."
+  description="Case studies: SaaS products (TimeBuddy, OrderBuddy), store-published apps (LedgerBuddy, Equa), a daily tech and AI news platform, a self-hosted AI agent, a production Next.js site, and hackathon builds (AssemblyAI, AMD)."
 >
 
   <PageHeader
     kicker="Projects"
-    intro="SaaS products and store apps built at Thrive IT Solutions, plus side projects, client work and one hackathon. Each has a case study with the problem, the build and the numbers."
+    intro="SaaS products and store apps built at Thrive IT Solutions, plus side projects, client work and hackathon builds. Each has a case study with the problem, the build and the numbers."
   >
     Things I <span class="hl">built.</span>
   </PageHeader>
@@ -32,7 +32,7 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
       {projects.map((project) => {
         const meta = metaFor(project.id);
         return (
-          <article class="project-card box lift grid lg:grid-cols-12" data-project-category={project.category}>
+          <article class="project-card box lift grid lg:grid-cols-12" data-project-category={project.category} data-hackathon={project.hackathon ? 'true' : undefined}>
             <div class={`${toneClass[meta.tone === 'card' ? 'teal' : meta.tone]} lg:col-span-5 p-6 sm:p-8 flex flex-col gap-4 border-b-2 lg:border-b-0 lg:border-r-2 border-line`}>
               <p class="kicker opacity-90">{meta.tag}</p>
               <h2 class="h1 text-[clamp(40px,5vw,64px)]">{shortTitle(project.title)}</h2>
@@ -48,6 +48,15 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
             </div>
 
             <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col gap-6">
+              {project.hackathon && (
+                <p class="border-2 border-line bg-sunk px-4 py-3 text-[14px] leading-relaxed">
+                  <span class="kicker text-pink">Hackathon</span>{' '}
+                  <a href={project.hackathon.eventUrl} target="_blank" rel="noopener noreferrer" class="link font-bold">{project.hackathon.event}</a>
+                  {project.hackathon.dates && <span class="text-muted"> · {project.hackathon.dates}</span>}
+                  <span class="text-muted"> · {project.hackathon.result}</span>
+                </p>
+              )}
+
               <p class="text-[16px] leading-relaxed">{project.overview}</p>
 
               <ul class="grid gap-3 sm:grid-cols-3">
@@ -74,6 +83,9 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
                 {project.githubUrl && (
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>
                 )}
+                {project.hackathon?.submissionUrl && (
+                  <a href={project.hackathon.submissionUrl} target="_blank" rel="noopener noreferrer" class="btn">Submission <Icon name="external" /></a>
+                )}
               </div>
             </div>
           </article>
@@ -94,7 +106,10 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
         const cat = btn.dataset.category;
         buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         cards.forEach((card) => {
-          card.hidden = !(cat === 'All' || card.dataset.projectCategory === cat);
+          const match =
+            cat === 'All' ||
+            (cat === 'Hackathons' ? card.dataset.hackathon === 'true' : card.dataset.projectCategory === cat);
+          card.hidden = !match;
         });
       })
     );

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
+
+const project = projects.find((p) => p.slug === 'mediscribe-live') || projects[0];
+const hackathon = project.hackathon!;
+
+const slidesUrl = 'https://storage.googleapis.com/lablab-static-eu/submissions/fuhu4i40y62bnscxbg2osgmp/u6ztposiyqb1a5xst7mzq3qk/presentation/presentation_vmgyn2wepmpn3rmdqmro5khi.pdf';
+
+const specs = [
+  { label: 'Event', value: hackathon.event },
+  { label: 'Platform', value: 'lablab.ai' },
+  { label: 'Dates', value: hackathon.dates ?? '' },
+  { label: 'Team', value: hackathon.team ?? '' },
+  { label: 'Status', value: hackathon.result },
+  { label: 'Licence', value: 'Open source (MIT)' },
+  { label: 'Repository', value: 'Daddy-Ousen/mediscribe-live' },
+];
+---
+
+<BaseLayout title={`MediScribe Live case study | ${dossier.name}`} description={project.tagline}>
+
+  <CaseStudyHero project={project} kicker="AssemblyAI Voice Agent Hackathon">
+    <Fragment slot="actions">
+      {project.liveUrl && (
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-teal">Try the live app <Icon name="external" /></a>
+      )}
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> Source on GitHub</a>
+      )}
+      {hackathon.submissionUrl && (
+        <a href={hackathon.submissionUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Hackathon submission <Icon name="external" /></a>
+      )}
+      <a href={slidesUrl} target="_blank" rel="noopener noreferrer" class="btn">Slides (PDF) <Icon name="external" /></a>
+    </Fragment>
+  </CaseStudyHero>
+
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">A note you can't check is a note you can't trust</h2>
+        <p>{project.challenge}</p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">Two voice modes, one chart, every line sourced</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          The note stays a DRAFT until a clinician enters their name, acknowledges any unsourced items, and signs. Signing turns the FHIR Composition from preliminary to final with an attester. The voice panel shows real response latency, measured in the browser from end of speech to the first agent audio.
+        </p>
+        <div class="grid sm:grid-cols-3 border-2 border-line bg-line gap-[2px] text-[16px]">
+          {project.subcards.map((sub) => (
+            <div class="bg-card p-4">
+              <p class="font-bold">{sub.title}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What shipped</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
+        <p class="text-[15px] text-muted">
+          A hackathon prototype, not a medical device. The drug-interaction checker uses a small demo rule set.
+        </p>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
+
+</BaseLayout>
