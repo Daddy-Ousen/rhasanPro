@@ -49,6 +49,12 @@ export const projectMeta: Record<string, ProjectMeta> = {
     tag: 'AssemblyAI Hackathon',
     blurb: 'Voice triage and an ER scribe. Every line of the note links to the words that were said.',
   },
+  'innworld-rpg': {
+    tone: 'gold',
+    heroTone: 'gold',
+    tag: 'Fan game · Godot 4',
+    blurb: 'A free fan RPG of The Wandering Inn. You level by living, and when you sleep the world moves on without you.',
+  },
   timebuddy: {
     tone: 'teal',
     heroTone: 'teal',

@@ -23,6 +23,7 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 - **NextVector** (https://nextvector.rhasan.online/): Independent digital intelligence publication delivering daily technology & AI news reporting, "The Morning Vector" newsletter, and an integrated, continuously expanding registry of 135+ frontier AI models and LMSYS Arena Elo benchmarks.
 - **Hermes AI Ambassador** (https://rhasan.online/projects/hermes/): Autonomous portfolio concierge and intelligent technical ambassador built with Groq Llama-3.3-70B inference, client-side cryptographic hashing, and dual-layer caching.
 - **MediScribe Live** (https://mediscribe.rhasan.online/ · case study https://rhasan.online/projects/mediscribe-live/): Hackathon build for the AssemblyAI Voice Agent Hackathon (lablab.ai, September 2026). Voice-first ER assistant: bedside voice triage with the AssemblyAI Voice Agent API and live tool calls, an ambient medical scribe on AssemblyAI Realtime STT (Universal-3.5 Pro, medical-v1), and source-linked SOAP notes via the AssemblyAI LLM Gateway with clinician sign-off and HL7 FHIR R4 export. Source: https://github.com/Daddy-Ousen/mediscribe-live
+- **Innworld RPG** (https://daddy-ousen.github.io/innworld-rpg/ · case study https://rhasan.online/projects/innworld-rpg/): Free, non-commercial fan RPG set in "The Wandering Inn" by pirateaba, built in Godot 4.7 and GDScript. Headless deterministic simulation core (all rules in game/core/, one GameState, one seeded RNG, versioned JSON saves with migrations); Books 1–6 encoded as validated JSON data (898 canon events, 261 characters, 103 places, 38 maps) so canon is the default timeline the player can bend; XCOM-style turn-based combat on the map grid; classes and Skills earned by behaviour rather than chosen from a menu. Ships as a WebAssembly browser build plus Windows and Linux downloads (v0.1.1-alpha). Tested with 147 GUT scripts (~1,400 tests), 102 Python tool tests and a JSON data validator. Source: https://github.com/Daddy-Ousen/innworld-rpg
 - **LedgerBuddy AI** (https://rhasan.online/projects/ledgerbuddy-ai/): Hackathon build for AMD Developer Hackathon: ACT II (lablab.ai). Multi-agent financial intelligence and double-entry bookkeeping assistant with rule-based heuristics, dynamic confidence scoring, and automated reconciliations.
 - **Oggro Tech Enterprise** (https://rhasan.online/projects/oggro-tech/): Enterprise corporate identity and digital transformation platform with dynamic client service portals and hardened infrastructure.
 
@@ -39,6 +40,7 @@ Robiul Hasan is an L2 Infrastructure & Systems Support Engineer and Service Desk
 - Hermes Case Study: https://rhasan.online/projects/hermes/
 - MediScribe Live Case Study: https://rhasan.online/projects/mediscribe-live/
 - LedgerBuddy AI Case Study: https://rhasan.online/projects/ledgerbuddy-ai/
+- Innworld RPG Case Study: https://rhasan.online/projects/innworld-rpg/
 - Oggro Tech Case Study: https://rhasan.online/projects/oggro-tech/
 - TimeBuddy Case Study: https://rhasan.online/projects/timebuddy/
 - OrderBuddy Case Study: https://rhasan.online/projects/orderbuddy/

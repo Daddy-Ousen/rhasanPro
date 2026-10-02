@@ -10,7 +10,7 @@ export interface ProjectItem {
   badge: string;
   title: string;
   subtitle: string;
-  category: "SaaS Products" | "Cross-Platform Apps" | "AI & Automation" | "Web Systems" | "IT Infrastructure";
+  category: "SaaS Products" | "Cross-Platform Apps" | "AI & Automation" | "Web Systems" | "IT Infrastructure" | "Games";
   tagline: string;
   overview: string;
   challenge: string;
@@ -190,6 +190,56 @@ export const projects: ProjectItem[] = [
       team: "Neuron Burners (solo)",
       result: "Submitted · judging in progress",
     },
+  },
+  {
+    id: "innworld-rpg",
+    slug: "innworld-rpg",
+    badge: "GAME DEV • FAN PROJECT • SEP 2026 – PRESENT",
+    title: "Innworld RPG — A Wandering Inn Fan Game",
+    subtitle: "Free, Non-Commercial Fan RPG in Godot 4 with a Headless Deterministic Simulation Core and Six Books of Canon Encoded as Data",
+    category: "Games",
+    tagline: "The books define how the world begins. The player decides what happens next. A turn-based RPG where you level by living, and nights move the world.",
+    overview: "Innworld RPG is a free, non-commercial fan game set in pirateaba's web serial The Wandering Inn. You play an unnamed Earther pulled into Innworld by the Great Ritual at the start of Book 1, and the story of the books runs around you day by day. Books 1–6 are encoded as structured data — 898 canon events, 261 characters, 103 places across 38 maps — so canon is the default timeline rather than a scripted rail: do nothing and the books happen as written, step in and you can delay, change or stop events. I build it to learn systems I do not touch at work: a deterministic simulation engine, a data-driven content pipeline, tactical turn-based combat, and a full release pipeline that ships to the browser, Windows and Linux.",
+    challenge: "A faithful adaptation of a 10-million-word serial cannot be hard-coded. Six books of plot, hundreds of named characters and a live world needed to be playable, changeable by the player, and reproducible for testing — without rewriting engine code every time a new book was added, and without putting any copyrighted book text into the repository.",
+    solution: "Engineered a headless simulation core in GDScript with no nodes and no scenes: all rules live in game/core/, the Godot view only reads state and sends commands. Every game lives in one GameState object that serialises to versioned JSON with migrations, and all randomness runs through a single seeded RNG, so the same seed and the same commands replay the same game. Classes, Skills, spells, enemies, maps, NPC schedules and canon events are all JSON data validated by a Python schema checker, so a new book adds content, not code. Canon events are declarative nodes with roles, preconditions, fallbacks and effects, which is what lets the player bend the timeline instead of breaking it.",
+    impact: [
+      "Shipped v0.1.1-alpha playable three ways from one release script: in the browser via WebAssembly on GitHub Pages, plus Windows and Linux downloads.",
+      "Encoded Books 1–6 as validated data — 898 canon events, 261 characters, 103 places, 38 maps — so a new book adds JSON, not engine code.",
+      "Covered the simulation with 147 GUT test scripts (~1,400 tests) plus 102 Python tool tests and a JSON data validator, all runnable from one command.",
+    ],
+    technologies: ["Godot 4.7", "GDScript", "GUT 9.7", "Python 3.12", "JSON Content Pipeline", "WebAssembly", "GitHub Actions", "LPC Pixel Art"],
+    subcards: [
+      {
+        title: "You Level By Living",
+        description: "Cooking, fighting, trading and talking feed hidden class pools. At night the System may offer a class — decline it and that offer never returns.",
+        dotColor: "amber",
+      },
+      {
+        title: "Canon As Data, Not A Rail",
+        description: "898 events from Books 1–6 as declarative nodes with roles, preconditions and fallbacks, so the player can delay, change or stop them.",
+        dotColor: "cyan",
+      },
+      {
+        title: "Deterministic Headless Core",
+        description: "All rules in game/core/ with no nodes or scenes, one GameState, one seeded RNG. Same seed plus same commands replays the same game.",
+        dotColor: "emerald",
+      },
+    ],
+    githubUrl: "https://github.com/Daddy-Ousen/innworld-rpg",
+    liveUrl: "https://daddy-ousen.github.io/innworld-rpg/",
+    caseStudyUrl: "/projects/innworld-rpg",
+    featured: false,
+    metrics: [
+      { label: "Books As Canon", value: "1–6" },
+      { label: "Canon Events", value: "898" },
+      { label: "Release", value: "v0.1.1-alpha" },
+    ],
+    diagramSteps: [
+      { step: 1, title: "Actions Emit Tags", desc: "Every action logs tags, intensity, risk and novelty that flow into hidden class pools.", icon: "terminal" },
+      { step: 2, title: "Night Resolves The Day", desc: "Sleep is the commit point: levels, Skills, class offers, then the canon events of that night.", icon: "cpu" },
+      { step: 3, title: "World Director Bends Canon", desc: "Canon events check their roles and preconditions, and fall back when the player has changed them.", icon: "play" },
+      { step: 4, title: "State Saves And Replays", desc: "One GameState to versioned JSON, one seeded RNG, so any game is reproducible for tests.", icon: "check" },
+    ],
   },
   {
     id: "timebuddy",
