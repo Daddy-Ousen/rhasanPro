@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/CaseStudyHero.astro';
+import StackCard from '../../components/StackCard.astro';
+import Icon from '../../components/Icon.astro';
+import { projects } from '../../data/projects';
+import { dossier } from '../../data/dossier';
+
+const project = projects.find((p) => p.slug === 'innworld-rpg') || projects[0];
+
+const releaseUrl = 'https://github.com/Daddy-Ousen/innworld-rpg/releases/tag/v0.1.1-alpha';
+
+const specs = [
+  { label: 'Type', value: 'Fan game · free · non-commercial' },
+  { label: 'Source material', value: 'The Wandering Inn by pirateaba' },
+  { label: 'Engine', value: 'Godot 4.7 · GDScript' },
+  { label: 'Platforms', value: 'Browser (WebAssembly), Windows, Linux' },
+  { label: 'Version', value: 'v0.1.1-alpha' },
+  { label: 'Tests', value: '147 GUT scripts · 102 Python tests' },
+  { label: 'Repository', value: 'Daddy-Ousen/innworld-rpg' },
+];
+
+const books = [
+  { n: '1', title: 'The Wandering Inn', chapters: '1.00 – 1.63', events: '151' },
+  { n: '2', title: 'Fae and Fare', chapters: 'Interlude – 2.48', events: '207' },
+  { n: '3', title: 'Flowers of Esthelm', chapters: '3.00 – 3.25', events: '157' },
+  { n: '4', title: 'Winter Solstice', chapters: '3.26 – 3.40', events: '111' },
+  { n: '5', title: 'The Last Light', chapters: '4.00 K – 4.31', events: '140' },
+  { n: '6', title: 'The General of Izril', chapters: '4.32 G – 4.49', events: '132' },
+];
+---
+
+<BaseLayout title={`Innworld RPG case study | ${dossier.name}`} description={project.tagline}>
+
+  <CaseStudyHero project={project} kicker="Fan game · Godot 4 · personal project">
+    <Fragment slot="actions">
+      {project.liveUrl && (
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-teal">Play in your browser <Icon name="external" /></a>
+      )}
+      <a href={releaseUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Download v0.1.1-alpha <Icon name="external" /></a>
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> Source on GitHub</a>
+      )}
+    </Fragment>
+  </CaseStudyHero>
+
+  <section class="wrap py-16 grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-8 grid gap-14 text-[18px] leading-relaxed">
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Why I built it</p>
+        <h2 class="h2">A live project to learn the systems my day job never touches</h2>
+        <p>
+          This is a learning project with a real deadline culture: branches, ADRs, tests and tagged releases.
+          It is free and non-commercial. <em>The Wandering Inn</em> and its world belong to pirateaba.
+          No book text lives in the repository &mdash; canon events are short summaries in my own words with chapter references.
+        </p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The problem</p>
+        <h2 class="h2">You cannot hard-code ten million words</h2>
+        <p>{project.challenge}</p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">The build</p>
+        <h2 class="h2">A headless simulation under a pixel-art skin</h2>
+        <p>{project.solution}</p>
+        <p class="text-muted">
+          Fights happen on the same map grid, XCOM-style: turn order by Agility, action points for moving and attacking,
+          cover, combat Skills, mana and spells. Nights are the commit point &mdash; sleeping closes the day, resolves levels and
+          Skill picks, offers classes, then runs the canon events of that night and simulates the world off-screen.
+        </p>
+        <div class="grid sm:grid-cols-3 border-2 border-line bg-line gap-[2px] text-[16px]">
+          {project.subcards.map((sub) => (
+            <div class="bg-card p-4">
+              <p class="font-bold">{sub.title}</p>
+              <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{sub.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5">
+        <p class="kicker text-teal">Canon coverage</p>
+        <h2 class="h2">Six books, encoded as data</h2>
+        <div class="border-2 border-line overflow-x-auto">
+          <table class="w-full text-[15px] border-collapse">
+            <thead class="fill-gold">
+              <tr>
+                <th scope="col" class="text-left font-display font-extrabold p-3 border-b-2 border-line">Book</th>
+                <th scope="col" class="text-left font-display font-extrabold p-3 border-b-2 border-line">Chapters</th>
+                <th scope="col" class="text-right font-display font-extrabold p-3 border-b-2 border-line">Events</th>
+              </tr>
+            </thead>
+            <tbody>
+              {books.map((b) => (
+                <tr class="border-b-2 border-line last:border-b-0">
+                  <td class="p-3"><span class="font-bold">{b.n}</span> <span class="text-muted">{b.title}</span></td>
+                  <td class="p-3 font-mono text-[14px] text-muted">{b.chapters}</td>
+                  <td class="p-3 text-right font-display font-extrabold tabular-nums">{b.events}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[15px] text-muted">
+          898 events, 261 characters and 103 places across 38 maps. Next up is Book 7, The Rains of Liscor.
+          Anything the text does not state outright is tagged as a guess in the data.
+        </p>
+      </div>
+
+      <div class="grid gap-5 max-w-[65ch]">
+        <p class="kicker text-teal">Results</p>
+        <h2 class="h2">What shipped</h2>
+        <ul class="grid gap-3 text-[17px]">
+          {project.impact.map((item) => (
+            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{item}</span></li>
+          ))}
+        </ul>
+        <p class="text-[15px] text-muted">
+          An alpha, so expect bugs. The browser build needs a keyboard and a first load of about 100&nbsp;MB,
+          and saves from this build may not load in a later one.
+        </p>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start grid gap-6">
+      <StackCard specs={specs} technologies={project.technologies} />
+    </aside>
+  </section>
+
+</BaseLayout>
