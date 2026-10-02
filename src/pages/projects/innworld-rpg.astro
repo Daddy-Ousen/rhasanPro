@@ -9,12 +9,14 @@ import { dossier } from '../../data/dossier';
 const project = projects.find((p) => p.slug === 'innworld-rpg') || projects[0];
 
 const releaseUrl = 'https://github.com/Daddy-Ousen/innworld-rpg/releases/tag/v0.1.1-alpha';
+const itchUrl = 'https://rhasasn229.itch.io/innworld-rpg';
 
 const specs = [
   { label: 'Type', value: 'Fan game · free · non-commercial' },
   { label: 'Source material', value: 'The Wandering Inn by pirateaba' },
   { label: 'Engine', value: 'Godot 4.7 · GDScript' },
   { label: 'Platforms', value: 'Browser (WebAssembly), Windows, Linux' },
+  { label: 'Also on', value: 'itch.io' },
   { label: 'Version', value: 'v0.1.1-alpha' },
   { label: 'Tests', value: '147 GUT scripts · 102 Python tests' },
   { label: 'Repository', value: 'Daddy-Ousen/innworld-rpg' },
@@ -37,7 +39,8 @@ const books = [
       {project.liveUrl && (
         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-teal">Play in your browser <Icon name="external" /></a>
       )}
-      <a href={releaseUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Download v0.1.1-alpha <Icon name="external" /></a>
+      <a href={itchUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Get it on itch.io <Icon name="external" /></a>
+      <a href={releaseUrl} target="_blank" rel="noopener noreferrer" class="btn">Download v0.1.1-alpha <Icon name="external" /></a>
       {project.githubUrl && (
         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> Source on GitHub</a>
       )}
