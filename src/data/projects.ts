@@ -20,6 +20,8 @@ export interface ProjectItem {
   subcards: ProjectSubcard[];
   githubUrl?: string;
   liveUrl?: string;
+  /** Overrides the default liveUrl button label on the projects list. */
+  liveLabel?: string;
   storeLinks?: { label: string; url: string }[];
   caseStudyUrl: string;
   featured: boolean;
@@ -227,6 +229,8 @@ export const projects: ProjectItem[] = [
     ],
     githubUrl: "https://github.com/Daddy-Ousen/innworld-rpg",
     liveUrl: "https://daddy-ousen.github.io/innworld-rpg/",
+    liveLabel: "Play in browser",
+    storeLinks: [{ label: "itch.io", url: "https://rhasasn229.itch.io/innworld-rpg" }],
     caseStudyUrl: "/projects/innworld-rpg",
     featured: true,
     metrics: [
