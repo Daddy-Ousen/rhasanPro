@@ -176,7 +176,7 @@ export const projects: ProjectItem[] = [
     githubUrl: "https://github.com/Daddy-Ousen/mediscribe-live",
     liveUrl: "https://mediscribe.rhasan.online/",
     caseStudyUrl: "/projects/mediscribe-live",
-    featured: true,
+    featured: false,
     metrics: [
       { label: "AssemblyAI APIs", value: "3" },
       { label: "Voice modes", value: "2" },
@@ -228,7 +228,7 @@ export const projects: ProjectItem[] = [
     githubUrl: "https://github.com/Daddy-Ousen/innworld-rpg",
     liveUrl: "https://daddy-ousen.github.io/innworld-rpg/",
     caseStudyUrl: "/projects/innworld-rpg",
-    featured: false,
+    featured: true,
     metrics: [
       { label: "Books As Canon", value: "1–6" },
       { label: "Canon Events", value: "898" },
