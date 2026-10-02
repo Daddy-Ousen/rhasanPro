@@ -78,7 +78,7 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
                   <a href={s.url} target="_blank" rel="noopener noreferrer" class="btn">{s.label} <Icon name="external" /></a>
                 ))}
                 {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">{project.storeLinks ? 'Website' : 'Live site'} <Icon name="external" /></a>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">{project.liveLabel ?? (project.storeLinks ? 'Website' : 'Live site')} <Icon name="external" /></a>
                 )}
                 {project.githubUrl && (
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>
