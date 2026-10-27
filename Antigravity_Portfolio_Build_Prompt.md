@@ -74,7 +74,6 @@ Treat this as one real, working project — give it its own section with real su
 - Python Programming — University of Michigan (Coursera), 2020
 - Linux Operating System (Foundation) — StudySection, 2021
 
-**Education:** Bachelor of Business Administration (BBA) — Bangladesh University of Professionals (BUP), 2022
 
 **Languages:** Bengali (Native), English (Fluent), French (Basic)
 

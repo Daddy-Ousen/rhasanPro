@@ -34,6 +34,7 @@ export interface ProjectHackathon {
   event: string;
   eventUrl: string;
   submissionUrl?: string;
+  certificateUrl?: string;
   dates?: string;
   team?: string;
   result: string;
@@ -151,7 +152,7 @@ export const projects: ProjectItem[] = [
     challenge: "Emergency clinicians lose a large part of every shift to typing EHR notes. AI scribes can help, but a clinician cannot trust a note when they cannot see where each line came from. Invented details, like a default 'no known allergies', are dangerous.",
     solution: "Three AssemblyAI products do three separate jobs. The Voice Agent API runs bedside triage with barge-in and JSON-schema tool calls (record_patient_intake, check_drug_interaction, flag_critical_vital). Realtime STT (Universal-3.5 Pro, domain medical-v1, speaker labels) transcribes the consultation. The LLM Gateway drafts the SOAP note. The server numbers every transcript turn and checks each citation against the real turn text. Wrong citations are fixed or dropped, and items without a source are flagged 'NO SOURCE - VERIFY'.",
     impact: [
-      "Submitted to the AssemblyAI Voice Agent Hackathon (lablab.ai, September 2026). Built solo as team Neuron Burners.",
+      "Awarded official Certificate of Completion for the AssemblyAI Voice Agent Hackathon (lablab.ai, September 2026), built solo as team Neuron Burners.",
       "Uses three AssemblyAI products in one app: Voice Agent API, Realtime STT and LLM Gateway.",
       "Nothing is invented: topics not discussed say so, allergies never default to NKDA, and a diagnosis appears only when the clinician states it.",
       "Exports an HL7 FHIR R4 Bundle. The note moves from preliminary to final only after a named clinician signs.",
@@ -176,7 +177,6 @@ export const projects: ProjectItem[] = [
       },
     ],
     githubUrl: "https://github.com/Daddy-Ousen/mediscribe-live",
-    liveUrl: "https://mediscribe.rhasan.online/",
     caseStudyUrl: "/projects/mediscribe-live",
     featured: false,
     metrics: [
@@ -188,9 +188,10 @@ export const projects: ProjectItem[] = [
       event: "AssemblyAI Voice Agent Hackathon",
       eventUrl: "https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon",
       submissionUrl: "https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/neuron-burners/mediscribe-live",
+      certificateUrl: "https://lablab.ai/u/@rhasan22959110/ai-hackathons/assemblyai-voice-agent-hackathon/certificate",
       dates: "September 2026",
       team: "Neuron Burners (solo)",
-      result: "Submitted · judging in progress",
+      result: "Certificate of Completion",
     },
   },
   {
@@ -464,6 +465,7 @@ export const projects: ProjectItem[] = [
     hackathon: {
       event: "AMD Developer Hackathon: ACT II",
       eventUrl: "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii",
+      certificateUrl: "https://lablab.ai/u/@rhasan22959110/ai-hackathons/amd-developer-hackathon-act-ii/certificate",
       result: "Certificate of Achievement",
     },
     metrics: [

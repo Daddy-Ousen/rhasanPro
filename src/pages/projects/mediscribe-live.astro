@@ -9,6 +9,7 @@ import { dossier } from '../../data/dossier';
 const project = projects.find((p) => p.slug === 'mediscribe-live') || projects[0];
 const hackathon = project.hackathon!;
 
+const certificateUrl = hackathon.certificateUrl ?? 'https://lablab.ai/u/@rhasan22959110/ai-hackathons/assemblyai-voice-agent-hackathon/certificate';
 const slidesUrl = 'https://storage.googleapis.com/lablab-static-eu/submissions/fuhu4i40y62bnscxbg2osgmp/u6ztposiyqb1a5xst7mzq3qk/presentation/presentation_vmgyn2wepmpn3rmdqmro5khi.pdf';
 
 const specs = [
@@ -26,14 +27,12 @@ const specs = [
 
   <CaseStudyHero project={project} kicker="AssemblyAI Voice Agent Hackathon">
     <Fragment slot="actions">
-      {project.liveUrl && (
-        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-teal">Try the live app <Icon name="external" /></a>
-      )}
       {project.githubUrl && (
         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> Source on GitHub</a>
       )}
+      <a href={certificateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Certificate <Icon name="external" /></a>
       {hackathon.submissionUrl && (
-        <a href={hackathon.submissionUrl} target="_blank" rel="noopener noreferrer" class="btn btn-gold">Hackathon submission <Icon name="external" /></a>
+        <a href={hackathon.submissionUrl} target="_blank" rel="noopener noreferrer" class="btn">Submission <Icon name="external" /></a>
       )}
       <a href={slidesUrl} target="_blank" rel="noopener noreferrer" class="btn">Slides (PDF) <Icon name="external" /></a>
     </Fragment>
