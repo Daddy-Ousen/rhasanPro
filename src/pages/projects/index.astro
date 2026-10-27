@@ -83,6 +83,9 @@ const categories = ['All', 'SaaS Products', 'Cross-Platform Apps', 'AI & Automat
                 {project.githubUrl && (
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="btn"><Icon name="github" /> GitHub</a>
                 )}
+                {project.hackathon?.certificateUrl && (
+                  <a href={project.hackathon.certificateUrl} target="_blank" rel="noopener noreferrer" class="btn">Certificate <Icon name="external" /></a>
+                )}
                 {project.hackathon?.submissionUrl && (
                   <a href={project.hackathon.submissionUrl} target="_blank" rel="noopener noreferrer" class="btn">Submission <Icon name="external" /></a>
                 )}
