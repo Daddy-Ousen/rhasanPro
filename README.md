@@ -17,7 +17,7 @@ The personal site of **Robiul Hasan**: L2 infrastructure engineer and service de
 | [`/skills`](https://rhasan.online/skills) | 7 skill domains with search, filters and proficiency levels |
 | [`/experience`](https://rhasan.online/experience) | Work history timeline |
 | [`/credentials`](https://rhasan.online/credentials) | Certifications and hackathon results |
-| [`/about`](https://rhasan.online/about) | Background, principles and education |
+| [`/about`](https://rhasan.online/about) | Background and principles |
 | [`/contact`](https://rhasan.online/contact) | Email, WhatsApp, LinkedIn, GitHub |
 
 ### Projects featured
@@ -32,7 +32,7 @@ The personal site of **Robiul Hasan**: L2 infrastructure engineer and service de
 - **NextVector**: daily tech and AI news with a frontier-model registry. [Live](https://nextvector.rhasan.online/) · [Case study](https://rhasan.online/projects/nextvector)
 - **Hermes**: self-hosted, tool-calling AI assistant. [Case study](https://rhasan.online/projects/hermes)
 - **LedgerBuddy AI MVP**: AMD AI Developer Hackathon (Act II) build. [Case study](https://rhasan.online/projects/ledgerbuddy-ai)
-- **MediScribe Live**: voice-first ER assistant for the AssemblyAI Voice Agent Hackathon. [Live](https://mediscribe.rhasan.online/) · [Case study](https://rhasan.online/projects/mediscribe-live)
+- **MediScribe Live**: voice-first ER assistant for the AssemblyAI Voice Agent Hackathon. [Case study](https://rhasan.online/projects/mediscribe-live)
 - **Innworld RPG**: free, non-commercial fan RPG in Godot 4. [Play](https://daddy-ousen.github.io/innworld-rpg/) · [Case study](https://rhasan.online/projects/innworld-rpg)
 - **OGGRO Technologies**: static Next.js marketing site. [Live](https://www.oggro.tech/) · [Case study](https://rhasan.online/projects/oggro-tech)
 

@@ -3,16 +3,25 @@
 ## Just done (2026-10-27)
 - Branch `feat/assemblyai-certificate` (pushed to origin; PR ready).
 - Added AssemblyAI Voice Agent Hackathon Certificate of Completion for MediScribe Live (URL: `https://lablab.ai/u/@rhasan22959110/ai-hackathons/assemblyai-voice-agent-hackathon/certificate`, Certificate ID: `CMUQV0KAG00BNS601TCNEOUV0`).
+- Removed "Try the live app" button and liveUrl for MediScribe Live from `mediscribe-live.astro`, `src/data/projects.ts`, `public/llms.txt`, `src/pages/api/chat.ts`, and `README.md`.
+- Removed all mentions of BBA from BUP across the site:
+  - `src/data/dossier.ts`: removed `education` from interface and object.
+  - `src/components/SeoHead.astro`: removed `alumniOf` schema.
+  - `src/pages/index.astro`: removed the `BBA BUP` teal pill from the "Certified, verified" paper trail.
+  - `src/pages/about.astro`: removed the Education box section.
+  - `src/pages/api/chat.ts`: removed BBA/BUP from fallback facts.
+  - `src/pages/preview-dark.astro` & `src/pages/preview-light.astro`: removed formal education blocks.
+  - `README.md`: removed education mention from About description.
 - Files changed:
   - `src/data/credentials.ts`: added `assemblyai-voice-agent` (`code: "AAI-VOICE"`, category "AI & Hackathons", pink tone, verified, issuer "AssemblyAI / Lablab.ai").
-  - `src/data/projects.ts`: added optional `certificateUrl` to `ProjectHackathon`; updated `mediscribe-live` hackathon to `Certificate of Completion` + certificate URL, updated impact bullet; updated `ledgerbuddy-ai` hackathon with certificate URL.
-  - `src/pages/projects/mediscribe-live.astro`: added gold "Certificate" button in hero actions and auto-updated Status spec.
+  - `src/data/projects.ts`: added optional `certificateUrl` to `ProjectHackathon`; updated `mediscribe-live` hackathon to `Certificate of Completion` + certificate URL, updated impact bullet, removed `liveUrl`; updated `ledgerbuddy-ai` hackathon with certificate URL.
+  - `src/pages/projects/mediscribe-live.astro`: removed live app button, added gold "Certificate" button in hero actions and auto-updated Status spec.
   - `src/pages/projects/index.astro`: added "Certificate" external link button for hackathons that have `certificateUrl`.
   - `src/pages/credentials.astro`: updated meta description & intro to include AssemblyAI.
   - `src/pages/skills.astro`: updated proof callout copy to mention AssemblyAI & AMD hackathons.
-  - `public/llms.txt`, `src/pages/api/chat.ts`: added AssemblyAI certificate link and facts.
+  - `public/llms.txt`, `src/pages/api/chat.ts`: updated AssemblyAI certificate link and facts.
   - `README.md`: updated projects count (10) and included MediScribe Live & Innworld RPG in personal projects.
-- Verified: `npx astro check` 0 errors, `npm run build` cleanly passed, HTML verified for certificate button and badge on homepage, `/credentials`, `/projects`, and `/projects/mediscribe-live`.
+- Verified: `npx astro check` 0 errors, `npm run build` cleanly passed, HTML verified for certificate button and badge on homepage, `/credentials`, `/projects`, and `/projects/mediscribe-live`. Verified 0 occurrences of BBA, BUP, or mediscribe live URL in build output.
 
 ## 2026-10-07 SEO finding
 Search Console shows 273 pages "Discovered - currently not indexed" and 3 "Page with redirect". Cause: apex `rhasan.online` 308-redirects to `www.rhasan.online` on Vercel, while canonical/sitemap/robots point to the apex. Google sees a loop. Fix is Vercel Domains setting (apex primary, www redirects to apex). User must do it. No repo files changed.

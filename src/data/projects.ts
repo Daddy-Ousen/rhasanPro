@@ -177,7 +177,6 @@ export const projects: ProjectItem[] = [
       },
     ],
     githubUrl: "https://github.com/Daddy-Ousen/mediscribe-live",
-    liveUrl: "https://mediscribe.rhasan.online/",
     caseStudyUrl: "/projects/mediscribe-live",
     featured: false,
     metrics: [

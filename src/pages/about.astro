@@ -82,22 +82,6 @@ const principles = [
           I'm deep into applied AI: <strong>AI automation</strong>, <strong>deploying and optimizing</strong> LLM services for speed and cost, <strong>prompt engineering</strong> that returns clean, predictable output, and <strong>API configuration</strong> that connects models to real products. See the <a href="/skills" class="link">skills page</a> for the details.
         </p>
       </div>
-
-      <div class="box p-6 sm:p-8 grid gap-4">
-        <div class="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 class="h3">Education</h2>
-          <span class="kicker text-teal">{dossier.education.year}</span>
-        </div>
-        <div>
-          <p class="font-bold text-lg">{dossier.education.degree}</p>
-          <p class="text-muted">{dossier.education.institution}</p>
-        </div>
-        <ul class="grid gap-2 text-[16px]">
-          {dossier.education.highlights.map((h) => (
-            <li class="flex gap-3"><span class="led mt-2.5" aria-hidden="true"></span><span>{h}</span></li>
-          ))}
-        </ul>
-      </div>
     </div>
   </section>
 
